@@ -1,0 +1,41 @@
+@import '/src/styles/root';
+@import '/src/styles/mixins';
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-wrap: wrap;
+  width: 37.5rem;
+  padding: 3.125rem 5rem;
+  border: 1px solid $gen;
+  background-color: $accent;
+  font-family: $font-service;
+  text-align: center;
+}
+
+.ok {
+  @extend %button--gen;
+  margin-top: 3.125rem;
+  height: 4rem;
+  width: 17.5rem;
+}
+
+.title {
+  font-family: $font-main;
+}
+
+.order {
+  margin-top: 1.25rem;
+}
+
+.purchase {
+  max-width: 80%;
+  margin-top: 1.875rem;
+  line-height: 1.5;
+  font-size: 0.875rem;
+}
+
+.link {
+  text-decoration: underline;
+}

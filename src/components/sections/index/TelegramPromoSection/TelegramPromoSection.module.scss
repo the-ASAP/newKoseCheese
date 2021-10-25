@@ -1,0 +1,27 @@
+@import "/src/styles/mixins.scss";
+
+.title {
+    text-transform: uppercase;
+    text-align: center;
+}
+.subscribe {
+    @extend %link;
+    display: block;
+    width: fit-content;
+    margin: 1.875rem auto 0 auto;
+    text-align: center;
+}
+.icon {
+    display: block;
+    width: fit-content;
+    text-align: center;
+    margin: 3.125rem auto 0 auto;
+    svg {
+        width: 42px;
+        height: 42px;
+
+    }
+    path {
+        fill: $gen;
+    }
+}

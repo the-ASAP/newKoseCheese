@@ -1,0 +1,35 @@
+@import '/src/styles/mixins.scss';
+@import '/src/styles/root.scss';
+
+.container {
+    @extend %flexbox;
+    margin-top: 0.9375rem;
+}
+
+.add {
+  @extend %button;
+  height: 2.5rem;
+  margin-right: 0.875rem;
+  padding: 0 2.125rem;
+  border-radius: 1.25rem;
+  font-weight: 500;
+  font-size: 0.75rem;
+  background-color: $lightest;
+  color: $gen;
+  &:hover {
+    background-color: $gen;
+    color: $accent;
+  }
+}
+
+@media (max-width: $tablet) {
+  .container {
+    margin-top: 0;
+  }
+}
+
+@media (max-width: $mobile) {
+  .container {
+    margin-top: 10px;
+  }
+}

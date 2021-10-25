@@ -1,0 +1,19 @@
+@import "/src/styles/root";
+
+.image {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+  width: 100%;
+  height: fit-content;
+  mix-blend-mode: multiply;
+  opacity: 0.5;
+  object-fit: cover;
+}
+
+@media (max-width: $landscape) {
+  .image {
+    height: 566px;
+  }
+}

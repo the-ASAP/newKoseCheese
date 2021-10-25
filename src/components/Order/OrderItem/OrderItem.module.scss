@@ -1,0 +1,103 @@
+@import "/src/styles/root";
+@import "/src/styles/mixins";
+
+.container {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 1.875rem 2rem 1.875rem 0;
+  border-bottom: 1px solid $grey;
+  &:first-child {
+    border-top: 1px solid $grey;
+  }
+}
+.border {
+  &:last-child {
+    border-bottom: none;
+  }
+}
+.info {
+  display: flex;
+  align-items: center;
+}
+.image {
+  width: 6.25rem;
+  height: 5rem;
+  margin-right: 1rem;
+  margin-left: 1.5rem;
+  object-fit: contain;
+}
+
+.addition {
+  margin-top: 0.25rem;
+  margin-bottom: 0.5rem;
+  font-family: $font-italic;
+  font-size: 0.875rem;
+}
+
+.price {
+  margin-right: 0.75rem;
+  font-family: $font-numbers;
+  font-size: 20px;
+}
+
+.weight {
+  font-size: 0.875rem;
+  font-family: $font-service;
+  color: $grey;
+}
+
+.count {
+  padding: 0.625rem 2.25rem;
+  border: 1px solid $grey;
+  border-radius: 8px;
+  font-family: $font-service;
+}
+
+@media (max-width: $tablet) {
+  .title {
+    font-size: 18px;
+  }
+  .image {
+    width: 100px;
+    height: 80px;
+  }
+  .container {
+    padding: 14px 0;
+    &:last-child {
+      margin-bottom: 26px;
+    }
+  }
+  .count {
+    padding: 8px 22px;
+  }
+}
+
+@media (max-width: $mobile) {
+  .container {
+    padding-bottom: 20px;
+  }
+  .info {
+    position: relative;
+    flex-wrap: wrap;
+    padding-left: 40px;
+  }
+  .image {
+    margin: 0;
+  }
+  .data {
+    width: 100%;
+    margin-top: 8px;
+  }
+  .count {
+    display: flex;
+    justify-content: flex-end;
+    min-width: 60px;
+    margin-top: 92px;
+    padding: 0;
+    border: none;
+  }
+  .uncontrol {
+    padding-left: 16px;
+  }
+}

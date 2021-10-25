@@ -1,0 +1,93 @@
+@import "/src/styles/root";
+
+.container {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  z-index: 100;
+  background-color: $gen;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 60px;
+  padding: 0 20px;
+}
+
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  &:hover {
+    background: rgba(255, 255, 255, 0.22);
+  }
+}
+
+.line {
+  position: relative;
+  width: 16px;
+  height: 1px;
+
+  span {
+    display: block;
+    width: 16px;
+    height: 1px;
+    background-color: $accent;
+  }
+
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: $accent;
+    transition: top .3s, transform .3s;
+  }
+
+  &::before {
+    top: -5px;
+  }
+
+  &::after {
+    top: 5px;
+  }
+}
+
+.burger {
+
+  &:hover {
+    .line {
+      span,
+      &::before,
+      &::after {
+        background-color: $accent;
+      }
+    }
+
+    span {
+    }
+  }
+
+  &Open {
+    .line {
+      span {
+        opacity: 0;
+      }
+
+      &::before {
+        top: 0;
+        transform: rotate(138deg);
+      }
+
+      &::after {
+        top: 0;
+        transform: rotate(-138deg);
+      }
+    }
+  }
+}

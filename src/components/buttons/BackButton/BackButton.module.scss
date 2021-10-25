@@ -1,0 +1,41 @@
+@import "/src/styles/root";
+
+.container {
+    width: 100%;
+    margin: 1.25rem 0;
+    height: 100%;
+}
+
+.purchase {
+    height: auto;
+}
+
+.button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 3.125rem;
+    height: 3.125rem;
+    border-radius: 50%;
+    background-color: $lightest;
+    &:hover {
+        background-color: $gen;
+        path {
+            fill: $accent;
+        }
+    }
+}
+
+.share {
+    height: 100%;
+}
+
+@media (max-width: $landscape) {
+    .share {
+        margin-top: 14px;
+    }
+    .profile {
+        width: fit-content;
+        margin-top: 0;
+    }
+}

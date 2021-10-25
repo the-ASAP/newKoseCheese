@@ -1,0 +1,75 @@
+@import "/src/styles/root";
+@import "/src/styles/mixins";
+
+.modalBox {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  z-index: 9;
+  @extend %flexbox;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, .3);
+}
+
+.modalContainer {
+  @extend %scrollbar;
+  position: absolute;
+  right: 0;
+  transform: translateX(100%);
+  width: 31.25rem;
+  height: 100%;
+  padding: 0 1.875rem;
+  overflow: auto;
+  background-color: $accent;
+}
+
+.cookiesBox {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 101;
+  width: fit-content;
+  height: fit-content;
+}
+
+.cookiesContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  min-height: 11.125rem;
+  padding: 2.75rem 4.375rem;
+  background-color: $accent;
+  border: 1px solid $grey;
+  z-index: 3;
+}
+
+.menu {
+  width: 100%;
+  background-color: $gen;
+}
+
+@media (max-width: $tablet) {
+  .modalContainer {
+    width: 100%;
+  }
+  .cookiesContainer {
+    flex-wrap: wrap;
+    padding-right: 30px;
+  }
+}
+
+@media (max-width: $mobile) {
+  .modalContainer {
+    padding: 0 18px 0 18px;
+  }
+  .cookiesContainer {
+    padding: 30px 20px 38px 30px;
+  }
+}

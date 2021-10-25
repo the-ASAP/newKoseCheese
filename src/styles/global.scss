@@ -1,0 +1,282 @@
+@import "root";
+@import "mixins";
+@import "fonts";
+
+html {
+  font-size: 16px;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: $font-main; // FF MAIN
+  cursor: default;
+  background-color: $accent;
+  color: $gen;
+  @extend %scrollbar;
+}
+
+
+
+section {
+  position: relative;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  color: $gen;
+  display: inline-block;
+  text-decoration: none;
+}
+
+svg {
+  min-height: 1rem;
+}
+
+textarea,
+button,
+input {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  font-family: $font-main;
+  border: none;
+  background: none;
+  outline: none;
+
+  &[disabled] {
+    cursor: default;
+    opacity: 0.7;
+  }
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+  -moz-appearance:textfield; /* Firefox */
+}
+
+
+a {
+  transition: color .3s, background-color .3s, border-color .3s;
+}
+
+button {
+  font-family: $font-service;
+  text-transform: uppercase;
+  transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+  cursor: pointer;
+
+}
+
+p {
+  line-height: 1.3;
+}
+
+path,
+rect,
+circle {
+  transition: fill 0.3s, stroke 0.3s;
+}
+
+// убирает цвет автокомплита у инпута
+input {
+  &:-webkit-autofill,
+  &:-webkit-autofill:hover,
+  &:-webkit-autofill:focus {
+    font-size: 1rem;
+    -webkit-box-shadow: 0 0 0px 1000px transparent inset;
+    transition: background-color 5000s ease-in-out 0s;
+  }
+}
+
+img {
+  width: 100%;
+}
+
+h1 {
+  font-size: 4rem;
+  line-height: 1.2;
+  font-weight: normal;
+}
+
+h2 {
+  font-size: 2.25rem;
+  font-weight: normal;
+  letter-spacing: 0.045rem;
+}
+
+h3 {
+  font-size: 1.5rem;
+  font-weight: normal;
+}
+
+
+// slider-swiper
+
+.slider_border.swiper-container {
+  padding-left: 1px;
+}
+
+.swiper-container {
+  margin-left: unset !important;
+}
+.swiper-product {
+  position: static !important;
+}
+.swiper-pagination-bullets {
+  position: absolute;
+  bottom: 25px;
+  left: -50%;
+  z-index: 2;
+  transform: translateX(50%);
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.swiper-pagination-bullet {
+  width: 8px;
+  height: 8px;
+  margin-right: 8px;
+  border-radius: 50%;
+  background-color: $accent;
+  &.swiper-pagination-bullet-active {
+    background-color: $gen;
+  }
+}
+
+// preloader
+
+#nprogress .bar {
+  background: #184240 !important;
+}
+
+#nprogress .peg {
+  box-shadow: 0 0 10px #184240, 0 0 5px #184240 !important;
+}
+
+#nprogress .spinner-icon {
+  border-top-color: #184240 !important;
+  border-left-color: #184240 !important;
+}
+
+
+#nprogress .spinner-icon {
+  border-top-color: #184240 !important;
+  border-left-color: #184240 !important;
+
+}
+
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+
+@keyframes moveFromRight {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+@keyframes moveToRight {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes moveFromBottom {
+  0% {
+    transform: translateY(100%);
+  }
+  100% {
+    transform: translateY(0%);
+  }
+}
+
+@keyframes moveToBottom {
+  0% {
+    transform: translateY(0%);
+  }
+  100% {
+    transform: translateY(100%);
+  }
+}
+@media (max-width: 1600px) {
+  html {
+    font-size: 15px;
+  }
+}
+@media (max-width: 1400px) {
+  html {
+    font-size: 14px;
+  }
+}
+//
+//@media (max-width: 1350px) {
+//  html {
+//    font-size: 13.5px;
+//  }
+//}
+//
+//@media (max-width: 1300px) {
+//  html {
+//    font-size: 13px;
+//  }
+//}
+
+@media (max-width: 1250px) {
+  html {
+    font-size: 12.5px;
+  }
+}
+
+@media (max-width: $landscape) {
+  html {
+    font-size: 16px;
+  }
+  //h1 {
+  //  font-size: 48px;
+  //}
+}
+
+@media (max-width: $tablet) {
+  //h1 {
+  //  font-size: 64px;
+  //}
+  h2 {
+    font-size: 24px;
+  }
+}

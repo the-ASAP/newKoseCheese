@@ -1,0 +1,104 @@
+@import "/src/styles/mixins";
+@import "/src/styles/root";
+
+.header {
+  width: 100%;
+  min-height: 10rem;
+  margin-bottom: 3.1875rem;
+  padding: 1.9375rem 3.75rem 2.25rem 2.3125rem;
+  overflow: hidden;
+  border-radius: 12px;
+  background: $lightest;
+}
+
+.title {
+  margin-bottom: 2.0625rem;
+  color: $lighten;
+
+  & > span {
+    color: $gen;
+  }
+}
+
+.row {
+  @extend %flexbox;
+  justify-content: space-between;
+  font-family: $font-service;
+}
+
+.info {
+  display: flex;
+  font-size: 1.125rem;
+}
+
+.field {
+  &:not(:last-child) {
+    margin-right: 6.25rem;
+  }
+}
+
+.label {
+  color: $lighten;
+  &:not(:last-child) {
+    margin-right: .5rem;
+  }
+}
+
+.out {
+  @extend %link;
+}
+
+@media (max-width: $landscape) {
+  .field {
+    &:not(:last-child) {
+      margin-right: 40px;
+    }
+  }
+
+}
+
+@media (max-width: $tablet) {
+  .header {
+    padding: 30px 40px 50px 40px;
+  }
+  .info {
+    justify-content: space-between;
+    flex-wrap: wrap;
+    width: 80%;
+  }
+  .field {
+    width: 50%;
+    &:not(:last-child) {
+      margin-right: 0;
+    }
+    &:nth-child(-n + 2) {
+      margin-bottom: 10px;
+    }
+  }
+  .out {
+    align-self: flex-end;
+  }
+}
+
+@media (max-width: $mobile) {
+  .header {
+    margin-bottom: 30px;
+    padding: 10px 20px 20px 20px;
+  }
+  .row {
+    flex-wrap: wrap;
+  }
+  .title {
+    font-size: 18px;
+  }
+  .info {
+    width: 100%;
+  }
+  .field {
+    font-size: 14px;
+  }
+  .out {
+    margin-top: 18px;
+    font-size: 12px;
+  }
+}

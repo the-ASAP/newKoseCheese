@@ -1,0 +1,109 @@
+@import "src/styles/root";
+
+
+.title {
+  font-size: 3rem;
+}
+
+.description {
+  max-width: 60%;
+  margin-top: 1.875rem;
+  font-family: $font-service;
+  font-size: 1.125rem;
+  line-height: 1.3;
+  color: $lighten;
+}
+
+.info {
+  display: flex;
+  margin-top: 1.875rem;
+  padding: 1.25rem 0;
+  border-top: 0.0625rem solid $lighten;
+  border-bottom: 0.0625rem solid $lighten;
+  font-family: $font-service;
+  color: $grey;
+}
+.field {
+  margin-right: 5rem;
+  &:last-child {
+    margin-right: 0;
+  }
+}
+.label {
+  font-size: 0.8125rem;
+}
+.box {
+  display: flex;
+  align-items: center;
+  margin-top: 0.625rem;
+}
+.value {
+  margin-left: 0.75rem;
+  color: $gen;
+}
+.image {
+  margin-top: 3.125rem;
+  width: 100%;
+  height: 31.25rem;
+  object-fit: cover;
+}
+.ingredients {
+  margin-top: 3.125rem;
+}
+.content {
+  margin-top: 1.875rem;
+  font-family: $font-service;
+  font-size: 1.125rem;
+  line-height: 2;
+  h1, h2, h3 {
+    font-family: $font-main;
+  }
+}
+
+@media (max-width: $landscape) {
+  .description {
+    max-width: 75%;
+  }
+  .image {
+    height: 460px;
+  }
+  .image {
+    margin-top: 30px;
+  }
+  .ingredients {
+    margin-top: 20px;
+  }
+}
+
+@media (max-width: $tablet) {
+  .image {
+    height: 320px;
+  }
+}
+
+@media (max-width: $mobile) {
+  .title {
+    font-size: 24px;
+  }
+  .description {
+    max-width: 100%;
+    margin-top: 16px;
+    font-size: 14px;
+  }
+  .info {
+    padding: 15px 0 20px;
+  }
+  .field {
+    margin-right: 40px;
+  }
+  .image {
+    height: 220px;
+  }
+  .ingredients {
+    margin-top: 30px;
+  }
+  .content {
+    font-size: 14px;
+    margin-top: 14px;
+  }
+}

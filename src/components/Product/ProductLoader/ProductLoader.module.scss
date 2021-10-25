@@ -1,0 +1,26 @@
+@import "/src/styles/root";
+
+.item {
+  width: 25%;
+  height: 26rem;
+  margin-top: 3.125rem;
+  padding: 1.25rem 0.9375rem;
+  border: 1px solid rgba(24, 66, 64, 0.3);
+  border-right: none;
+  &:last-child {
+    border-right: 1px solid rgba(24, 66, 64, 0.3);
+  }
+}
+@media (max-width: $landscape) {
+  .item {
+    width: 33%;
+  }
+}
+
+@media (max-width: $tablet) {
+  .item {
+    width: 50%;
+    height: 204px;
+    margin-top: 0;
+  }
+}

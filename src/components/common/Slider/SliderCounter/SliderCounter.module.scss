@@ -1,0 +1,65 @@
+@import '/src/styles/mixins';
+@import '/src/styles/root';
+
+.container {
+  @extend %flexbox;
+  font-family: $font-numbers;
+}
+
+.counter {
+  margin-right: 4.375rem;
+  font-size: 1.5rem;
+  &All {
+    color: $grey;
+  }
+}
+.large {
+  font-size: 2.25rem;
+}
+
+.nav {
+  @extend %flexbox;
+  button {
+    @extend %flexbox;
+    justify-content: center;
+    width: 3.75rem;
+    height: 3.75rem;
+    border-radius: 50%;
+    background-color: $lightest;
+    &:first-child {
+      margin-right: 1.25rem;
+    }
+    &:hover {
+      background-color: $gen;
+      path {
+        fill: $accent;
+      }
+    }
+  }
+}
+
+.bottom {
+  width: 100%;
+  justify-content: space-between;
+  order: 2;
+  margin-top: 30px;
+}
+
+.full {
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 2.5rem;
+}
+
+@media (max-width: $mobile) {
+  .large {
+    font-size: 24px;
+  }
+  .full {
+    margin-top: 20px;
+  }
+  .arrowsRight {
+    justify-content: flex-end;
+    padding-right: 24px;
+  }
+}

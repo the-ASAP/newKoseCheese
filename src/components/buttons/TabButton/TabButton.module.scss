@@ -1,0 +1,50 @@
+@import '../../../styles/root';
+
+.btn {
+  position: relative;
+  text-transform: uppercase;
+  margin-right: 2.375rem;
+  cursor: pointer;
+  color: $lighten;
+  transition: color 0.3s;
+  font-family: $font-main;
+  white-space: nowrap;
+
+  &:hover {
+    color: $gen;
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: -1.3125rem;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background-color: $gen;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  &.active {
+    color: $gen;
+
+    &::after {
+      opacity: 1;
+    }
+  }
+
+  &.small {
+    text-transform: none;
+
+    &::after {
+      display: none;
+    }
+  }
+}
+
+@media (max-width: $mobile) {
+  .farm {
+    width: 100%;
+  }
+}

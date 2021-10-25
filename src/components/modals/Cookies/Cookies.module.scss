@@ -1,0 +1,56 @@
+@import '/src/styles/mixins.scss';
+@import '/src/styles/root.scss';
+
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    min-height: 11.125rem;
+    padding: 2.75rem 4.375rem;
+    background-color: $accent;
+    border: 1px solid $grey;
+    z-index: 101;
+}
+
+.text {
+    max-width: 50%;
+    font-family: $font-service;
+    font-size: 1.125rem;
+}
+
+.ok {
+    @extend %button--green;
+}
+
+@media (max-width: $landscape) {
+    .text {
+        max-width: 60%;
+    }
+}
+
+@media (max-width: $tablet) {
+    .container {
+        flex-wrap: wrap;
+    }
+    .text {
+        width: 100%;
+        max-width: 100%;
+    }
+    .ok {
+        margin-top: 40px;
+    }
+}
+
+@media (max-width: $mobile) {
+    .text {
+        font-size: 14px;
+    }
+    .ok {
+        width: 100%;
+        max-width: 420px;
+    }
+}

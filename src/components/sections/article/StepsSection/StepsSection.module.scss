@@ -1,0 +1,28 @@
+@import '/src/styles/root';
+
+.section {
+  margin-top: 6.25rem;
+}
+
+.promo {
+  margin-top: 3.125rem;
+  margin-bottom: 3.125rem;
+  height: 30rem;
+  object-fit: cover;
+}
+
+@media (max-width: $tablet) {
+  .promo {
+    height: 320px;
+    margin: 24px 0 30px;
+  }
+}
+
+@media (max-width: $mobile) {
+  .section {
+    margin-top: 40px;
+  }
+  .promo {
+    height: 220px;
+  }
+}

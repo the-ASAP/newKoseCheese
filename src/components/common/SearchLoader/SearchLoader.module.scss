@@ -1,0 +1,10 @@
+@import "/src/styles/root";
+
+.item {
+  width: 100%;
+  height: calc(100% - 36px);
+  padding: 20px 0 16px;
+  * {
+    width: 100%;
+  }
+}

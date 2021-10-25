@@ -1,0 +1,17 @@
+@import 'src/styles/root';
+
+.recommend {
+  display: flex;
+  margin-top: 3.125rem;
+
+}
+
+.section {
+  margin-top: 6.25rem;
+}
+
+@media (max-width: $landscape) {
+  .recommend {
+    margin-top: 40px;
+  }
+}

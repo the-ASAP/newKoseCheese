@@ -1,0 +1,19 @@
+@import '../../../styles/root';
+
+.field {
+  margin-top: 5px;
+  font-size: 14px;
+  &:first-child {
+    margin-top: 0;
+  }
+}
+
+.label {
+  margin-right: 5px;
+  font-family: $font-service;
+
+}
+
+.value {
+  font-family: $font-service--bold;
+}

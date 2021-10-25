@@ -1,0 +1,80 @@
+@import "/src/styles/root";
+
+.container {
+  margin-top: 1.875rem;
+}
+
+.label {
+  font-family: $font-service;
+  font-size: 0.875rem;
+  line-height: 1.6;
+}
+
+
+.field {
+  font-family: $font-service;
+}
+
+.control {
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-height: 2.5rem;
+  border: 1px solid $grey;
+  background-color: $accent !important;
+  cursor: pointer;
+}
+
+.menu {
+  background-color: $accent !important;
+
+  > div {
+    &:hover,
+    &[aria-selected=true] {
+      background-color: $lightest;
+    }
+  }
+}
+
+
+.arrowClosed,
+.arrowOpen {
+  position: absolute;
+  top: 50%;
+  right: 0.9375rem;
+  transform: translateY(-50%);
+  transform-origin: 0 0;
+  border: none;
+  width: 7px;
+  height: 1px;
+
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: $grey;
+  }
+
+  &::before {
+    right: 0;
+    transform: rotate(-45deg);
+  }
+
+  &::after {
+    right: 5px;
+    transform: rotate(45deg);
+  }
+}
+
+.arrowOpen {
+  transform: translateY(-50%) rotate(180deg);
+}
+
+@media (max-width: $tablet) {
+  .field {
+    font-size: 14px;
+  }
+}

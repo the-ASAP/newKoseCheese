@@ -1,0 +1,10 @@
+@import '/src/styles/mixins.scss';
+@import '/src/styles/root.scss';
+
+.subcategories {
+    @extend %flexbox;
+    margin-top: 1.875rem;
+    padding-bottom: 1.25rem;
+    border-bottom: 1px solid rgba($gen, .3);
+}
+

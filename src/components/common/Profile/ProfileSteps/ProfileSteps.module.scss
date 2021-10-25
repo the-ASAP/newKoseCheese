@@ -1,0 +1,110 @@
+@import "src/styles/root";
+
+.steps {
+  display: flex;
+  width: 100%;
+  max-width: 732px;
+  counter-reset: steps-counter;
+  margin-top: 5rem;
+  margin-bottom: 3.5625rem;
+}
+
+.step {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  counter-increment: steps-counter;
+  margin-bottom: 1.25rem;
+
+  &:not(:last-child) .number::after {
+    z-index: -1;
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 73px;
+    transform: translateY(-50%);
+    display: block;
+    width: calc(100% - 73px);
+    height: 1px;
+    background: $lighten;
+  }
+}
+
+.number {
+  position: relative;
+  width: 17.8125rem;
+
+  &::before {
+    content: "0" counter(steps-counter);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 73px;
+    height: 73px;
+    background: $accent;
+    border: 1px solid $grey;
+    border-radius: 50%;
+    font-family: $font-numbers;
+    font-size: 1.5rem;
+  }
+}
+
+.text {
+  max-width: 80%;
+  margin-top: 1.875rem;
+  font-family: $font-service;
+  font-size: 1.125rem;
+}
+
+@media (max-width: $landscape) {
+  .number {
+    width: 250px;
+  }
+}
+
+@media (max-width: $tablet) {
+  .steps {
+    max-width: 100%;
+    margin: 30px 0 40px;
+  }
+
+  .step {
+    margin-bottom: 0;
+  }
+
+  .number {
+    width: 220px;
+  }
+
+  .text {
+    margin-top: 20px;
+    font-size: 16px;
+  }
+}
+
+@media (max-width: $mobile) {
+  .steps {
+    flex-wrap: wrap;
+  }
+  .steps {
+    .number {
+      width: auto;
+      &::after,
+      &:not(:last-child)::after {
+        display: none;
+      }
+    }
+  }
+  .step {
+    flex-direction: row;
+    align-items: center;
+    &:not(:first-child) {
+      margin-top: 20px;
+    }
+  }
+  .text {
+    max-width: 50%;
+    margin-top: 0;
+    margin-left: 22px;
+  }
+}

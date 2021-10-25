@@ -1,0 +1,242 @@
+@import "/src/styles/root.scss";
+@import "/src/styles/mixins.scss";
+
+.container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.block {
+  position: sticky;
+  top: 1.25rem;
+  width: 50%;
+  height: fit-content;
+}
+
+.properties {
+  display: flex;
+  margin-top: 1.25rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid rgba($gen, .2);
+}
+
+.column {
+  &:first-child {
+    margin-right: 4.375rem;
+  }
+}
+
+.compose {
+  margin-top: 1.25rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid rgba($gen, .3);
+  font-family: $font-service;
+  &Wrapper {
+    max-width: 80%;
+  }
+  &Property {
+    font-family: $font-service--bold;
+  }
+  &Text {
+    display: inline;
+    max-width: 80%;
+  }
+}
+
+.title {
+  line-height: 1.1;
+}
+
+.statuses {
+  display: flex;
+  margin-top: 1.25rem;
+
+  span {
+    &:not(:first-child) {
+      margin-left: 2.1875rem;
+    }
+  }
+}
+
+.info {
+  width: 40%;
+}
+
+.producer {
+  margin-top: 1rem;
+  font-size: 0.875rem;
+  font-family: $font-service;
+  &Value {
+    font-family: $font-service--bold;
+  }
+}
+
+.price {
+  display: block;
+  margin-top: 1.875rem;
+  font-size: 2rem;
+  line-height: 1.2;
+  font-family: $font-numbers;
+}
+
+
+.oldPrice {
+  margin-left: 1rem;
+  font-size: 1.5rem;
+  text-decoration: line-through;
+  color: $lighten;
+}
+
+.weight {
+  display: block;
+  margin-top: 1rem;
+  font-family: $font-service;
+  font-size: 1.125rem;
+  &Property {
+    font-family: $font-service--bold;
+  }
+}
+
+.nutrients {
+  display: flex;
+  margin-top: 1.25rem;
+  padding-bottom: 30px;
+  border-bottom: 1px solid rgba($gen, .3);
+}
+
+.about {
+  max-width: 85%;
+  margin-top: 1rem;
+  font-family: $font-service;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  opacity: 0.8;
+}
+
+.with {
+  display: block;
+  margin-top: 1.25rem;
+  margin-bottom: 1.25rem;
+  font-family: $font-service;
+  opacity: 0.8;
+}
+
+.tastes {
+  display: flex;
+
+  span {
+    width: 2.5rem;
+    height: 2.5rem;
+    margin-right: 1rem;
+
+    svg {
+      height: 50%;
+      width: 50%;
+    }
+  }
+}
+
+.composition {
+  margin-top: 3.125rem;
+}
+
+.discount {
+  width: 100%;
+  margin-top: 1.25rem;
+  padding: 1rem 1.25rem 1rem 1.875rem;
+  border-radius: 10px;
+  font-family: $font-service;
+  font-size: 1.125rem;
+  background-color: $lightest;
+}
+
+.status {
+  @extend %status;
+}
+
+.inStock {
+  @extend %inStock;
+}
+
+.outStock {
+  @extend %outStock;
+}
+
+@media (max-width: $landscape) {
+  .nutrients {
+    flex-wrap: wrap;
+  }
+  .about {
+    max-width: 100%;
+  }
+  .column {
+    &:first-child {
+      margin-right: 50px;
+    }
+  }
+  .block {
+    width: 55%;
+  }
+  .statuses {
+    margin-top: 30px;
+  }
+  .price {
+    margin-top: 25px;
+  }
+}
+
+@media (max-width: $tablet) {
+
+  .block {
+    width: 45%;
+  }
+  .info {
+    width: 50%;
+  }
+}
+
+@media (max-width: $mobile) {
+  .container {
+    flex-wrap: wrap;
+  }
+  .block,
+  .info {
+    width: 100%;
+  }
+  .block {
+    position: static;
+  }
+  .slider {
+    position: relative;
+  }
+  .slide {
+    height: 462px;
+    object-fit: cover;
+  }
+  .title {
+    margin-top: 23px;
+  }
+  .statuses {
+    margin-top: 20px;
+  }
+  .properties {
+    justify-content: space-between;
+  }
+  .column {
+    width: 55%;
+
+    &:first-child {
+      margin-right: 0;
+    }
+
+    &:last-child {
+      width: 40%;
+    }
+  }
+  .nutrients {
+    margin-top: 10px;
+  }
+  .description {
+    margin-top: 35px;
+  }
+}

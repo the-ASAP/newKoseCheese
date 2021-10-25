@@ -1,0 +1,21 @@
+@import "/src/styles/root";
+
+.container {
+  padding: 3.125rem 0.9375rem;
+}
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.title {
+  font-size: 1.5rem;
+}
+
+.text {
+  font-size: 14px;
+  line-height: 1.5;
+  margin-top: 1.875rem;
+  font-family: $font-service;
+}
+

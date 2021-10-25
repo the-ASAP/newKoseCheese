@@ -1,0 +1,116 @@
+@import "/src/styles/root.scss";
+@import "/src/styles/mixins.scss";
+.tab {
+    border-bottom: 1px solid rgba($gen, 0.2);
+    &:first-child {
+       border-top: 1px solid rgba($gen, 0.2);
+   }
+}
+.tap {
+   background-color: red;
+}
+.trigger {
+   position: relative;
+   padding: 15px 0;
+   cursor: pointer;
+   user-select: none;
+   &::after {
+      content: "";
+      position: absolute;
+      right: 1.25rem;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 0.8125rem;
+      height: 0.8125rem;
+      background-image: url("/static/img/icons/close.svg");
+      background-size: contain;
+      background-repeat: no-repeat;
+      transition: transform 0.3s, background-color .3s;
+   }
+   &--main {
+      padding: 0.9375rem 3.75rem 0.9375rem 0;
+      &:hover {
+         &::after {
+            background-color: rgba($gen, .3);
+         }
+      }
+      &::after {
+         padding: 0.75rem;
+         border-radius: 50%;
+         background-color: rgba($gen, .1);
+         background-size: 50%;
+         background-position: center;
+      }
+   }
+}
+
+.trigger_open {
+   &::after {
+      transform: translateY(-50%) rotate(45deg);
+   }
+}
+
+.content {
+   max-width: 85%;
+   margin-bottom: 0.9375rem;
+   font-size: 1rem;
+   font-family: $font-service;
+   opacity: 0.8;
+   line-height: 1.4;
+   & > * {
+      line-height: 1.4;
+   }
+   &--main {
+      max-width: 40%;
+      margin-bottom: 3.125rem;
+   }
+}
+
+.button {
+   @extend %button--green;
+   width: 12.5rem;
+   height: 2.5rem;
+   margin-top: 1.875rem;
+   color: $gen;
+   font-family: $font-service--bold;
+}
+
+@media (max-width: $landscape) {
+   .content {
+      max-width: 100%;
+   }
+}
+
+@media (max-width: $tablet) {
+   .content {
+      &--main {
+         max-width: 70%;
+      }
+   }
+}
+
+@media (max-width: $mobile) {
+   .trigger {
+      font-size: 24px;
+      &::after {
+         width: 13px;
+         height: 13px;
+         padding: 0;
+      }
+      &--main {
+         font-size: 18px;
+         &::after {
+            width: 30px;
+            height: 30px;
+         }
+      }
+   }
+   .content {
+      max-width: 95%;
+      &--main {
+         max-width: 80%;
+      }
+   }
+
+}
+

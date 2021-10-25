@@ -1,0 +1,64 @@
+@import "src/styles/root";
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.image {
+  width: fit-content;
+  max-width: 50%;
+  height: fit-content;
+  object-fit: cover;
+}
+
+.content {
+  width: 45%;
+}
+
+.title {
+  line-height: 1.15;
+}
+
+.text {
+  max-width: 75%;
+  margin-top: 3.125rem;
+  font-family: $font-service;
+}
+
+@media (max-width: $landscape) {
+  .text {
+    max-width: 100%;
+    margin-top: 45px;
+  }
+}
+
+
+@media (max-width: $tablet) {
+  .image {
+    max-width: 55%;
+  }
+  .content {
+    width: 40%;
+  }
+  .text {
+    margin-top: 20px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: $mobile) {
+  .container {
+    flex-wrap: wrap;
+  }
+  .image {
+    width: 100%;
+    max-width: 100%;
+  }
+  .content {
+    width: 100%;
+    margin-top: 26px;
+  }
+
+}

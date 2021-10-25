@@ -1,0 +1,57 @@
+@import "/src/styles/root";
+@import "/src/styles/mixins";
+
+.container {
+  @extend %flexbox;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding-top: 1.875rem;
+  border-top: 1px solid rgba($gen, .3);
+}
+
+.title {
+  width: 100%;
+  text-align: center;
+}
+
+.politics {
+  position: relative;
+  display: flex;
+  margin-top: 1.5rem;
+  padding-bottom: 1.25rem;
+}
+
+.label {
+  margin-left: 1rem;
+  font-family: $font-service;
+  color: $lighten;
+}
+
+.submit {
+  @extend %button--green;
+  width: 16.875rem;
+  height: 3.125rem;
+  margin: 2rem auto 0 auto;
+  text-decoration: underline;
+  font-family: $font-service;
+  text-transform: uppercase;
+}
+
+.reg {
+  @extend %link;
+  display: block;
+  width: fit-content;
+  margin: 1.25rem auto 0 auto;
+  text-align: center;
+}
+
+.privacy {
+  display: inline;
+  font-size: 1rem;
+  color: $lighten;
+  text-transform: none;
+  text-decoration: underline;
+  &:hover {
+    color: $gen;
+  }
+}

@@ -1,0 +1,24 @@
+@import '/src/styles/root';
+
+.container {
+  width: 75%;
+}
+
+.title {
+  margin-bottom: 2.5rem;
+}
+
+@media (max-width: $landscape) {
+  .container {
+    width: 72%;
+  }
+  .orderReturn {
+    width: calc(100% - 90px);
+  }
+}
+
+@media (max-width: $mobile) {
+  .container {
+    width: 100%;
+  }
+}

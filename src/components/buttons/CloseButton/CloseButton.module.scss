@@ -1,0 +1,45 @@
+@import '../../../styles/root';
+
+.close {
+    position: relative;
+    width: 1.875rem;
+    height: 1.875rem;
+    border-radius: 50%;
+    background-color: rgba($gen, 0.1);
+    &::after,
+    &::before {
+        transition: background-color .3s;
+        content: '';
+        width: 0.875rem;
+        height: 1px;
+        background-color: $gen;
+        position: absolute;
+        top: 50%;
+        right: calc(50% - 0.4375rem);
+    }
+
+    &::after {
+        transform: rotate(45deg);
+    }
+
+    &::before {
+        transform: rotate(135deg);
+    }
+
+    &:hover {
+        background-color: $gen;
+        &::after,
+        &::before {
+            background-color: $accent;
+        }
+
+    }
+    &Small {
+        width: 1.625rem;
+        height: 1.625rem;
+    }
+}
+
+.privacy {
+    position: fixed;
+}

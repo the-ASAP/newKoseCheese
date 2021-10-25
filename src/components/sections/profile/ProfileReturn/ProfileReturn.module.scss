@@ -1,0 +1,91 @@
+@import "/src/styles/root";
+@import "/src/styles/mixins";
+
+.container {
+  display: flex;
+}
+
+.title {
+  margin-bottom: 2.5rem;
+}
+
+.block {
+  width: calc(50% - 4.0625rem);
+  margin-right: 4.0625rem;
+  > div:first-child {
+    margin-top: 0;
+  }
+}
+
+.replace {
+  margin-top: 1.875rem;
+}
+
+.onchange {
+  display: flex;
+  align-items: center;
+  margin-top: 1.25rem;
+}
+
+.label {
+  padding-left: 0.9375rem;
+  font-family: $font-service;
+  cursor: pointer;
+}
+
+.subtitle {
+  font-family: $font-service;
+  font-size: 0.875rem;
+}
+
+.photos {
+  @extend %hiddenScroll;
+  display: flex;
+  margin-top: 0.625rem;
+}
+
+.submit {
+  @extend %button--green;
+  height: 3.125rem;
+  margin-top: 1.875rem;
+}
+
+@media (max-width: $landscape) {
+  .container {
+    justify-content: space-between;
+  }
+  .block {
+    width: 48%;
+    margin-right: 0;
+  }
+  .photos {
+    > div {
+      width: 120px;
+      height: 120px;
+    }
+  }
+}
+
+
+@media (max-width: $mobile) {
+  .container {
+    flex-wrap: wrap;
+  }
+  .block {
+    width: 100%;
+    &:last-child {
+      margin-top: 20px;
+    }
+  }
+  .submit {
+    width: 215px;
+  }
+  .photos {
+    overflow-x: scroll;
+    & > div {
+      flex-shrink: 0;
+      width: 130px;
+      height: 130px;
+    }
+  }
+}

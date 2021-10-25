@@ -1,0 +1,111 @@
+@import "../../../styles/root";
+
+.container {
+  position: relative;
+  width: 100%;
+  margin-top: 1.5rem;
+}
+
+.label {
+  display: block;
+  margin-bottom: 4px;
+  font-family: $font-service;
+  font-size: 0.875rem;
+  line-height: 1.6;
+}
+
+.field {
+  width: 100%;
+  height: 2.5rem;
+  padding: 0 .8rem;
+  border: 1px solid $grey;
+  border-radius: 6px;
+  font-family: $font-service;
+  transition: border-color .3s;
+
+  &:focus {
+    border-color: $gen;
+  }
+}
+
+.checkbox {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  width: 1.25rem;
+  height: 1.25rem;
+  padding: 0;
+  border-radius: 3px;
+  border: 1px solid $lightest;
+  background-color: rgba($grey, .16);
+  cursor: pointer;
+  transition: background-color .3s, border-color .3s;
+
+  &::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("/static/img/icons/check.svg");
+    background-size: 50%;
+    background-repeat: no-repeat;
+    background-position: center;
+    opacity: 0;
+  }
+
+  &:focus {
+    border-color: $gen;
+  }
+
+  &:checked {
+    background-color: $gen;
+    border-color: $gen;
+
+    &::after {
+      opacity: 1;
+    }
+  }
+}
+
+.search {
+  border: none;
+}
+
+.textarea {
+  height: 7.5rem;
+}
+
+.subscribe {
+  width: 13.125rem;
+  margin-top: 0;
+}
+
+
+.date {
+  width: 10.25rem;
+  margin-top: 0;
+  &Input {
+    border-radius: 6px;
+    cursor: pointer;
+  }
+}
+
+.error {
+  position: absolute;
+  bottom: -1rem;
+  font-size: 12px;
+  font-family: $font-service;
+  color: #ff867c;
+}
+
+@media (max-width: $mobile) {
+  .order {
+    position: absolute;
+    top: 30px;
+    left: 0;
+  }
+}

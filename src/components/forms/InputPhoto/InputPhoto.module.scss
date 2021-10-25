@@ -1,0 +1,72 @@
+@import "../../../styles/mixins";
+@import "../../../styles/root";
+.item {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 13.75rem;
+  height: 13.75rem;
+  margin-right: 0.9375rem;
+}
+
+.replace {
+  width: 7.5rem;
+  height: 7.5rem;
+}
+.box {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.image {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+
+.label {
+  @extend %flexbox;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  border: 1px solid #C4C4C4;
+  cursor: pointer;
+  transition: background-color .3s;
+  & circle {
+      transition: fill .3s, opacity .3s;
+  }
+  &:hover {
+    background-color: rgba($gen, .3);
+  }
+}
+
+
+
+.text {
+  @extend %link;
+  margin-top: 1.25rem;
+  font-family: $font-service--bold;
+  cursor: pointer;
+}
+
+.input {
+  visibility: hidden;
+  opacity: 0;
+  position: absolute;
+  left: -9999px;
+  top: -9999px;
+}
+
+@media (max-width: $landscape) {
+  .item {
+    width: 140px;
+    height: 140px;
+  }
+}

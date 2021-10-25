@@ -1,0 +1,25 @@
+@import "/src/styles/mixins";
+@import "/src/styles/root";
+
+.wrapper {
+  margin-top: 1.875rem;
+
+  > form:first-child .form {
+    border-top: 1px solid rgba($gen, .3);
+  }
+}
+
+.add {
+  @extend %button--green;
+  width: 13.4375rem;
+  height: 2.5rem;
+  margin-top: 1.875rem;
+  font-family: $font-service--bold;
+}
+
+
+@media (max-width: $mobile) {
+  .wrapper {
+    margin-top: 0;
+  }
+}

@@ -1,0 +1,28 @@
+@import "/src/styles/mixins";
+.container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 3.125rem;
+}
+.cancel {
+  @extend %button--green;
+  width: 15rem;
+  height: 2.5rem;
+  margin-right: 1.25rem;
+}
+
+.change {
+  @extend %button--control;
+  width: 15rem;
+  height: 2.5rem;
+  border-radius: 2.25rem;
+}
+
+@media (max-width: $mobile) {
+  .container {
+    flex-wrap: wrap;
+  }
+  .change {
+    margin-top: 16px;
+  }
+}

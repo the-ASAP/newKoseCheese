@@ -1,0 +1,1288 @@
+{
+  "products": [
+    {
+      "statuses": [
+        {
+          "status": "avaliable",
+          "name": "В наличии",
+          "count": 20
+        },
+        {
+          "status": "preparing",
+          "name": "Созревает",
+          "count": 15,
+          "date": "15.08.2021"
+        }
+      ],
+      "image": "/static/img/content/camamberGoat.png",
+      "gallery": [
+        "/static/img/content/camamberGoat.png",
+        "/static/img/content/slide-1.jpg",
+        "/static/img/content/recipe-2.jpg",
+        "/static/img/content/recipe-3.jpg"
+      ],
+      "name": "Камамбер козий",
+      "description": "Французский сыр из молока козы продолговатой формы, имеющий свежий резкий запах и нежный сливочный вкус в середине и пикантный вкус у корочки, покрытой легкой белой плесенью.",
+      "addition": "с белой плесенью",
+      "weight": "200 гр",
+      "price": 320,
+      "tastes": [
+        "red-wine",
+        "fruits"
+      ],
+      "id": "camamber-goat"
+    },
+    {
+      "statuses": [
+        {
+          "status": "avaliable",
+          "name": "В наличии",
+          "count": 20
+        },
+        {
+          "status": "preparing",
+          "name": "Созревает",
+          "count": 15,
+          "date": "15.08.2021"
+        }
+      ],
+      "image": "/static/img/content/camamberCow.png",
+      "gallery": [
+        "/static/img/content/camamberCow.png",
+        "/static/img/content/slide-1.jpg",
+        "/static/img/content/recipe-2.jpg",
+        "/static/img/content/recipe-3.jpg"
+      ],
+      "name": "Камамбер коровий",
+      "description": "Французский сыр из молока козы продолговатой формы, имеющий свежий резкий запах и нежный сливочный вкус в середине и пикантный вкус у корочки, покрытой легкой белой плесенью.",
+      "addition": "с белой плесенью",
+      "weight": "200 гр",
+      "price": 320,
+      "tastes": [
+        "white-wine",
+        "vegetables"
+      ],
+      "id": "camamber-cow",
+      "postName": "name"
+    },
+    {
+      "statuses": [
+        {
+          "status": "avaliable",
+          "name": "В наличии",
+          "count": 20
+        },
+        {
+          "status": "preparing",
+          "name": "Созревает",
+          "count": 15,
+          "date": "15.08.2021"
+        }
+      ],
+      "image": "/static/img/content/goatBalance.png",
+      "gallery": [
+        "/static/img/content/goatBalance.png",
+        "/static/img/content/slide-1.jpg",
+        "/static/img/content/recipe-2.jpg",
+        "/static/img/content/recipe-3.jpg"
+      ],
+      "name": "Cыр Козий Валансе",
+      "description": "Французский сыр из молока козы продолговатой формы, имеющий свежий резкий запах и нежный сливочный вкус в середине и пикантный вкус у корочки, покрытой легкой белой плесенью.",
+      "addition": "с белой плесенью",
+      "weight": "200 гр",
+      "price": 650,
+      "tastes": [
+        "white-wine",
+        "vegetables"
+      ],
+      "id": "valance-goat"
+    },
+    {
+      "statuses": [
+        {
+          "status": "avaliable",
+          "name": "В наличии",
+          "count": 20
+        },
+        {
+          "status": "preparing",
+          "name": "Созревает",
+          "count": 15,
+          "date": "15.08.2021"
+        }
+      ],
+      "image": "/static/img/content/goatBalance2.png",
+      "gallery": [
+        "/static/img/content/goatBalance2.png",
+        "/static/img/content/slide-1.jpg",
+        "/static/img/content/recipe-2.jpg",
+        "/static/img/content/recipe-3.jpg"
+      ],
+      "name": "Cыр Козий Валансе",
+      "description": "Французский сыр из молока козы продолговатой формы, имеющий свежий резкий запах и нежный сливочный вкус в середине и пикантный вкус у корочки, покрытой легкой белой плесенью.",
+      "addition": "с белой плесенью",
+      "weight": "200 гр",
+      "price": 500,
+      "tastes": [
+        "white-wine",
+        "vegetables"
+      ],
+      "id": "valance-goat-2"
+    },
+    {
+      "statuses": [
+        {
+          "status": "avaliable",
+          "name": "В наличии",
+          "count": 20
+        },
+        {
+          "status": "preparing",
+          "name": "Созревает",
+          "count": 15,
+          "date": "15.08.2021"
+        }
+      ],
+      "image": "/static/img/content/bushDeShevr.png",
+      "gallery": [
+        "/static/img/content/bushDeShevr.png",
+        "/static/img/content/slide-1.jpg",
+        "/static/img/content/recipe-2.jpg",
+        "/static/img/content/recipe-3.jpg"
+      ],
+      "name": "Бюш де шевр",
+      "description": "Французский сыр из молока козы продолговатой формы, имеющий свежий резкий запах и нежный сливочный вкус в середине и пикантный вкус у корочки, покрытой легкой белой плесенью.",
+      "weight": "200 гр",
+      "price": 500,
+      "tastes": [
+        "white-wine",
+        "vegetables"
+      ],
+      "id": "bush-de-shevr"
+    },
+    {
+      "statuses": [
+        {
+          "status": "avaliable",
+          "name": "В наличии",
+          "count": 20
+        },
+        {
+          "status": "preparing",
+          "name": "Созревает",
+          "count": 15,
+          "date": "15.08.2021"
+        }
+      ],
+      "image": "/static/img/content/mozzarella.png",
+      "gallery": [
+        "/static/img/content/mozzarella.png",
+        "/static/img/content/slide-1.jpg",
+        "/static/img/content/recipe-2.jpg",
+        "/static/img/content/recipe-3.jpg"
+      ],
+      "name": "Моцарелла",
+      "description": "Французский сыр из молока козы продолговатой формы, имеющий свежий резкий запах и нежный сливочный вкус в середине и пикантный вкус у корочки, покрытой легкой белой плесенью.",
+      "weight": "200 гр",
+      "price": 500,
+      "id": "mozzarela"
+    },
+    {
+      "statuses": [
+        {
+          "status": "avaliable",
+          "name": "В наличии",
+          "count": 20
+        },
+        {
+          "status": "preparing",
+          "name": "Созревает",
+          "count": 15,
+          "date": "15.08.2021"
+        }
+      ],
+      "image": "/static/img/content/buratta.png",
+      "gallery": [
+        "/static/img/content/buratta.png",
+        "/static/img/content/slide-1.jpg",
+        "/static/img/content/recipe-2.jpg",
+        "/static/img/content/recipe-3.jpg"
+      ],
+      "name": "Буратта",
+      "description": "Французский сыр из молока козы продолговатой формы, имеющий свежий резкий запах и нежный сливочный вкус в середине и пикантный вкус у корочки, покрытой легкой белой плесенью.",
+      "weight": "200 гр",
+      "price": 500,
+      "tastes": [
+        "white-wine",
+        "vegetables"
+      ],
+      "id": "buratta"
+    },
+    {
+      "statuses": [
+        {
+          "status": "not-avaliable",
+          "name": "Нет в наличии"
+        }
+      ],
+      "image": "/static/img/content/strachella.png",
+      "gallery": [
+        "/static/img/content/strachella.png",
+        "/static/img/content/slide-1.jpg",
+        "/static/img/content/recipe-2.jpg",
+        "/static/img/content/recipe-3.jpg"
+      ],
+      "name": "Страчелла",
+      "description": "Французский сыр из молока козы продолговатой формы, имеющий свежий резкий запах и нежный сливочный вкус в середине и пикантный вкус у корочки, покрытой легкой белой плесенью.",
+      "weight": "200 гр",
+      "price": 500,
+      "tastes": [
+        "white-wine",
+        "vegetables"
+      ],
+      "id": "strachella"
+    },
+    {
+      "statuses": [
+        {
+          "status": "avaliable",
+          "name": "В наличии",
+          "count": 20
+        },
+        {
+          "status": "preparing",
+          "name": "Созревает",
+          "count": 15,
+          "date": "15.08.2021"
+        }
+      ],
+      "image": "/static/img/content/bushDeShevr.png",
+      "gallery": [
+        "/static/img/content/bushDeShevr.png",
+        "/static/img/content/slide-1.jpg",
+        "/static/img/content/recipe-2.jpg",
+        "/static/img/content/recipe-3.jpg"
+      ],
+      "name": "Бюш де шевр",
+      "description": "Французский сыр из молока козы продолговатой формы, имеющий свежий резкий запах и нежный сливочный вкус в середине и пикантный вкус у корочки, покрытой легкой белой плесенью.",
+      "weight": "200 гр",
+      "price": 500,
+      "tastes": [
+        "white-wine",
+        "vegetables"
+      ],
+      "id": "bush-de-shevr-2"
+    }
+  ],
+  "newProducts": [
+    {
+      "name": "Камамбер козий",
+      "addition": "с белой плесенью",
+      "image": "/static/img/content/newTastes/camamberGoat.jpg",
+      "style": "french",
+      "tastes": [
+        "red-wine",
+        "fruits"
+      ],
+      "id": "camamber-goat"
+    },
+    {
+      "name": "Джем абрикосовый",
+      "addition": "с кленовыми шишками",
+      "image": "/static/img/content/newTastes/jam.jpg",
+      "style": "",
+      "tastes": [],
+      "id": "buratta"
+    },
+    {
+      "name": "Брюш козий",
+      "addition": "с белой плесенью",
+      "image": "/static/img/content/newTastes/brushGoat.jpg",
+      "style": "russian",
+      "tastes": [
+        "red-wine",
+        "fruits"
+      ],
+      "id": "bush-de-shevr"
+    },
+    {
+      "name": "Камамбер козий",
+      "addition": "с белой плесенью",
+      "image": "/static/img/content/newTastes/camamberGoat.jpg",
+      "style": "french",
+      "tastes": [
+        "red-wine",
+        "fruits"
+      ],
+      "link": "/card",
+      "id": "camamber-goat"
+    },
+    {
+      "name": "Джем абрикосовый",
+      "addition": "с кленовыми шишками",
+      "image": "/static/img/content/newTastes/jam.jpg",
+      "style": "",
+      "tastes": [],
+      "id": "buratta"
+    },
+    {
+      "name": "Брюш козий",
+      "addition": "с белой плесенью",
+      "image": "/static/img/content/newTastes/brushGoat.jpg",
+      "style": "russian",
+      "tastes": [
+        "red-wine",
+        "fruits"
+      ],
+      "id": "bush-de-shevr"
+    }
+  ],
+  "discountProduct": {
+    "image": "/static/img/content/discount.jpg",
+    "name": "Камамбер козий",
+    "offer": "10%",
+    "date": "21.09.2021",
+    "category": "сыр",
+    "id": "camamber-goat"
+  },
+  "productsCategories": [
+    {
+      "id": 1,
+      "title": "Сыры",
+      "href": "/",
+      "subcategories": [
+        {
+          "id": 1,
+          "title": "Свежие",
+          "href": "/"
+        },
+        {
+          "id": 2,
+          "title": "Мягкие",
+          "href": "/"
+        },
+        {
+          "id": 3,
+          "title": "Твердые",
+          "href": "/"
+        },
+        {
+          "id": 4,
+          "title": "С белой плесенью",
+          "href": "/"
+        },
+        {
+          "id": 5,
+          "title": "С голубой плесенью",
+          "href": "/"
+        },
+        {
+          "id": 6,
+          "title": "Коровий",
+          "href": "/"
+        },
+        {
+          "id": 7,
+          "title": "Козий",
+          "href": "/"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "title": "Молоко",
+      "href": "/",
+      "subcategories": [
+        {
+          "id": 1,
+          "title": "Свежее",
+          "href": "/"
+        },
+        {
+          "id": 2,
+          "title": "Сухое",
+          "href": "/"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "title": "Десерты",
+      "href": "/",
+      "subcategories": [
+        {
+          "id": 1,
+          "title": "Теплые",
+          "href": "/"
+        },
+        {
+          "id": 2,
+          "title": "Холодные",
+          "href": "/"
+        }
+      ]
+    }
+  ],
+  "articlesCategories": [
+    {
+      "id": 1,
+      "title": "Рецепты",
+      "url": "recipes",
+      "subcategories": [
+        {
+          "id": 1,
+          "title": "Горячие блюда"
+        },
+        {
+          "id": 2,
+          "title": "Холодные блюда"
+        },
+        {
+          "id": 3,
+          "title": "Закуски"
+        },
+        {
+          "id": 4,
+          "title": "Блюда"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "url": "dishes",
+      "title": "Блюда",
+      "subcategories": [
+        {
+          "id": 1,
+          "title": "Закуски"
+        },
+        {
+          "id": 2,
+          "title": "Блюда"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "url": "advices",
+      "title": "Советы",
+      "subcategories": [
+        {
+          "id": 1,
+          "title": "Горячие советы"
+        },
+        {
+          "id": 2,
+          "title": "Вредные советы"
+        }
+      ]
+    }
+  ],
+  "farmCategories": [
+    {
+      "id": 1,
+      "title": "Ферма",
+      "url": "/farm"
+    },
+    {
+      "id": 2,
+      "title": "Сыроварня",
+      "url": "/cheeseboard"
+    }
+  ],
+  "recipes": [
+    {
+      "id": "cheese-sauce",
+      "image": "../static/img/content/recipe-1.jpg",
+      "url": "/",
+      "name": "Сырный соус",
+      "text": "Изумительный рецепт, который надо иметь в своей копилке. Подходит для любых быстрых закусок, можно намазывать на поджаренный хлеб или просто испеченные булочки.  ",
+      "time": "30 минут",
+      "persons": "2-3 человека",
+      "ingredients": "<ul><li>— 8-9 шт средних шампиньонов;</li><li>— ½ помидора;</li><li>— 50 г сыра;</li><li>— зубчик чеснока по желанию;</li><li>— 2-3 веточки петрушки;</li><li>— перец, специи по вкусу.</li><ul>",
+      "category": "горячие блюда",
+      "stages": {
+        "promo": "../static/img/content/article/promo.jpg",
+        "steps": [
+          {
+            "text": "Снимаем с грибов верхнюю шкурку, аккуратно отделяем шляпки от ножек.",
+            "image": "../static/img/content/article/step-1.jpg"
+          },
+          {
+            "text": "С ножек срезаем загрязненную часть. С помощью кулинарной кисти смазываем шляпки растительным маслом со специями..",
+            "image": "../static/img/content/article/step-2.jpg"
+          },
+          {
+            "text": "Заполняйте плотно смесью середину шапочки, прижимая начинку слегка пальцем, а затем накладываем начинку поверх шляпки горкой. Посыпаем грибы сыром. Отправляем шампиньоны с начинкой в духовку на 30 минут запекаться при температуре 170-180 градусов.",
+            "image": "../static/img/content/article/step-3.jpg"
+          }
+        ]
+      }
+    },
+    {
+      "id": "french-cheese-sauce",
+      "image": "../static/img/content/recipe-2.jpg",
+      "url": "/",
+      "name": "Французский сырный соус",
+      "text": "Изумительный рецепт, который надо иметь в своей копилке. Подходит для любых быстрых закусок.",
+      "category": "горячие блюда",
+      "time": "20 минут",
+      "persons": "1-2 человека",
+      "stages": {
+        "promo": "../static/img/content/article/promo.jpg",
+        "steps": [
+          {
+            "text": "Снимаем с грибов верхнюю шкурку, аккуратно отделяем шляпки от ножек.",
+            "image": "../static/img/content/article/step-1.jpg"
+          },
+          {
+            "text": "С ножек срезаем загрязненную часть. С помощью кулинарной кисти смазываем шляпки растительным маслом со специями..",
+            "image": "../static/img/content/article/step-2.jpg"
+          },
+          {
+            "text": "Заполняйте плотно смесью середину шапочки, прижимая начинку слегка пальцем, а затем накладываем начинку поверх шляпки горкой. Посыпаем грибы сыром. Отправляем шампиньоны с начинкой в духовку на 30 минут запекаться при температуре 170-180 градусов.",
+            "image": "../static/img/content/article/step-3.jpg"
+          }
+        ]
+      }
+    },
+    {
+      "id": "salad-with-cheese",
+      "image": "../static/img/content/recipe-3.jpg",
+      "url": "/",
+      "name": "Салат и заправка из сыра с голубой плесенью",
+      "text": "Этот салат – классическое американское блюдо, которое было придумано еще в 1920-х, и практически повсеместно встречалось в меню ресторанов до 1950-х.",
+      "category": "холодные блюда",
+      "time": "60 минут",
+      "persons": "4 человека",
+      "stages": {
+        "promo": "../static/img/content/article/promo.jpg",
+        "steps": [
+          {
+            "text": "Снимаем с грибов верхнюю шкурку, аккуратно отделяем шляпки от ножек.",
+            "image": "../static/img/content/article/step-1.jpg"
+          },
+          {
+            "text": "С ножек срезаем загрязненную часть. С помощью кулинарной кисти смазываем шляпки растительным маслом со специями..",
+            "image": "../static/img/content/article/step-2.jpg"
+          },
+          {
+            "text": "Заполняйте плотно смесью середину шапочки, прижимая начинку слегка пальцем, а затем накладываем начинку поверх шляпки горкой. Посыпаем грибы сыром. Отправляем шампиньоны с начинкой в духовку на 30 минут запекаться при температуре 170-180 градусов.",
+            "image": "../static/img/content/article/step-3.jpg"
+          }
+        ]
+      }
+    },
+    {
+      "id": "cheese-sauce",
+      "image": "../static/img/content/recipe-1.jpg",
+      "url": "/",
+      "name": "Сырный соус",
+      "text": "Мы признаем, что мы встречаемся и работаем на землях коренных народов по всей стране и что суверенитет над этой землей никогда не уступался. ",
+      "category": "горячие блюда",
+      "time": "15 минут",
+      "persons": "1 человек",
+      "stages": {
+        "promo": "../static/img/content/article/promo.jpg",
+        "steps": [
+          {
+            "text": "Снимаем с грибов верхнюю шкурку, аккуратно отделяем шляпки от ножек.",
+            "image": "../static/img/content/article/step-1.jpg"
+          },
+          {
+            "text": "С ножек срезаем загрязненную часть. С помощью кулинарной кисти смазываем шляпки растительным маслом со специями..",
+            "image": "../static/img/content/article/step-2.jpg"
+          },
+          {
+            "text": "Заполняйте плотно смесью середину шапочки, прижимая начинку слегка пальцем, а затем накладываем начинку поверх шляпки горкой. Посыпаем грибы сыром. Отправляем шампиньоны с начинкой в духовку на 30 минут запекаться при температуре 170-180 градусов.",
+            "image": "../static/img/content/article/step-3.jpg"
+          }
+        ]
+      }
+    },
+    {
+      "id": "french-cheese-sauce",
+      "image": "../static/img/content/recipe-2.jpg",
+      "url": "/",
+      "name": "Французский сырный соус",
+      "text": "Изумительный рецепт, который надо иметь в своей копилке. Подходит для любых быстрых закусок.",
+      "category": "закуски",
+      "time": "45 минут",
+      "persons": "2-3 человека",
+      "stages": {
+        "promo": "../static/img/content/article/promo.jpg",
+        "steps": [
+          {
+            "text": "Снимаем с грибов верхнюю шкурку, аккуратно отделяем шляпки от ножек.",
+            "image": "../static/img/content/article/step-1.jpg"
+          },
+          {
+            "text": "С ножек срезаем загрязненную часть. С помощью кулинарной кисти смазываем шляпки растительным маслом со специями..",
+            "image": "../static/img/content/article/step-2.jpg"
+          },
+          {
+            "text": "Заполняйте плотно смесью середину шапочки, прижимая начинку слегка пальцем, а затем накладываем начинку поверх шляпки горкой. Посыпаем грибы сыром. Отправляем шампиньоны с начинкой в духовку на 30 минут запекаться при температуре 170-180 градусов.",
+            "image": "../static/img/content/article/step-3.jpg"
+          }
+        ]
+      }
+    },
+    {
+      "id": "salad-with-cheese",
+      "image": "../static/img/content/recipe-3.jpg",
+      "url": "/",
+      "name": "Салат и заправка из сыра с голубой плесенью",
+      "text": "Этот салат – классическое американское блюдо, которое было придумано еще в 1920-х, и практически повсеместно встречалось в меню ресторанов до 1950-х.",
+      "category": "блюда",
+      "time": "40 минут",
+      "persons": "2-3 человека",
+      "stages": {
+        "promo": "../static/img/content/article/promo.jpg",
+        "steps": [
+          {
+            "text": "Снимаем с грибов верхнюю шкурку, аккуратно отделяем шляпки от ножек.",
+            "image": "../static/img/content/article/step-1.jpg"
+          },
+          {
+            "text": "С ножек срезаем загрязненную часть. С помощью кулинарной кисти смазываем шляпки растительным маслом со специями..",
+            "image": "../static/img/content/article/step-2.jpg"
+          },
+          {
+            "text": "Заполняйте плотно смесью середину шапочки, прижимая начинку слегка пальцем, а затем накладываем начинку поверх шляпки горкой. Посыпаем грибы сыром. Отправляем шампиньоны с начинкой в духовку на 30 минут запекаться при температуре 170-180 градусов.",
+            "image": "../static/img/content/article/step-3.jpg"
+          }
+        ]
+      }
+    },
+    {
+      "id": "cheese-sauce",
+      "image": "../static/img/content/recipe-1.jpg",
+      "url": "/",
+      "name": "Сырный соус",
+      "text": "Мы признаем, что мы встречаемся и работаем на землях коренных народов по всей стране и что суверенитет над этой землей никогда не уступался. ",
+      "category": "блюда",
+      "time": "20 минут",
+      "persons": "2-3 человека",
+      "stages": {
+        "promo": "../static/img/content/article/promo.jpg",
+        "steps": [
+          {
+            "text": "Снимаем с грибов верхнюю шкурку, аккуратно отделяем шляпки от ножек.",
+            "image": "../static/img/content/article/step-1.jpg"
+          },
+          {
+            "text": "С ножек срезаем загрязненную часть. С помощью кулинарной кисти смазываем шляпки растительным маслом со специями..",
+            "image": "../static/img/content/article/step-2.jpg"
+          },
+          {
+            "text": "Заполняйте плотно смесью середину шапочки, прижимая начинку слегка пальцем, а затем накладываем начинку поверх шляпки горкой. Посыпаем грибы сыром. Отправляем шампиньоны с начинкой в духовку на 30 минут запекаться при температуре 170-180 градусов.",
+            "image": "../static/img/content/article/step-3.jpg"
+          }
+        ]
+      }
+    },
+    {
+      "id": "french-cheese-sauce",
+      "image": "../static/img/content/recipe-2.jpg",
+      "url": "/",
+      "name": "Французский сырный соус",
+      "text": "Изумительный рецепт, который надо иметь в своей копилке. Подходит для любых быстрых закусок.",
+      "category": "блюда",
+      "time": "10 минут",
+      "persons": "2-3 человека",
+      "stages": {
+        "promo": "../static/img/content/article/promo.jpg",
+        "steps": [
+          {
+            "text": "Снимаем с грибов верхнюю шкурку, аккуратно отделяем шляпки от ножек.",
+            "image": "../static/img/content/article/step-1.jpg"
+          },
+          {
+            "text": "С ножек срезаем загрязненную часть. С помощью кулинарной кисти смазываем шляпки растительным маслом со специями..",
+            "image": "../static/img/content/article/step-2.jpg"
+          },
+          {
+            "text": "Заполняйте плотно смесью середину шапочки, прижимая начинку слегка пальцем, а затем накладываем начинку поверх шляпки горкой. Посыпаем грибы сыром. Отправляем шампиньоны с начинкой в духовку на 30 минут запекаться при температуре 170-180 градусов.",
+            "image": "../static/img/content/article/step-3.jpg"
+          }
+        ]
+      }
+    },
+    {
+      "id": "salad-cheese-sauce",
+      "image": "../static/img/content/recipe-3.jpg",
+      "url": "/",
+      "name": "Салат и заправка из сыра с голубой плесенью",
+      "text": "Этот салат – классическое американское блюдо, которое было придумано еще в 1920-х, и практически повсеместно встречалось в меню ресторанов до 1950-х.",
+      "category": "блюда",
+      "time": "99 минут",
+      "persons": "2-3 человека",
+      "stages": {
+        "promo": "../static/img/content/article/promo.jpg",
+        "steps": [
+          {
+            "text": "Снимаем с грибов верхнюю шкурку, аккуратно отделяем шляпки от ножек.",
+            "image": "../static/img/content/article/step-1.jpg"
+          },
+          {
+            "text": "С ножек срезаем загрязненную часть. С помощью кулинарной кисти смазываем шляпки растительным маслом со специями..",
+            "image": "../static/img/content/article/step-2.jpg"
+          },
+          {
+            "text": "Заполняйте плотно смесью середину шапочки, прижимая начинку слегка пальцем, а затем накладываем начинку поверх шляпки горкой. Посыпаем грибы сыром. Отправляем шампиньоны с начинкой в духовку на 30 минут запекаться при температуре 170-180 градусов.",
+            "image": "../static/img/content/article/step-3.jpg"
+          }
+        ]
+      }
+    }
+  ],
+  "dishes": [
+    {
+      "id": "cheese-sauce-dish",
+      "image": "../static/img/content/recipe-2.jpg",
+      "url": "/",
+      "name": "Французский сырный соус",
+      "text": "Изумительный рецепт, который надо иметь в своей копилке. Подходит для любых быстрых закусок.",
+      "category": "горячие блюда",
+      "time": "20 минут",
+      "persons": "1-2 человека",
+      "stages": {
+        "promo": "../static/img/content/article/promo.jpg",
+        "steps": [
+          {
+            "text": "Снимаем с грибов верхнюю шкурку, аккуратно отделяем шляпки от ножек.",
+            "image": "../static/img/content/article/step-1.jpg"
+          },
+          {
+            "text": "С ножек срезаем загрязненную часть. С помощью кулинарной кисти смазываем шляпки растительным маслом со специями..",
+            "image": "../static/img/content/article/step-2.jpg"
+          },
+          {
+            "text": "Заполняйте плотно смесью середину шапочки, прижимая начинку слегка пальцем, а затем накладываем начинку поверх шляпки горкой. Посыпаем грибы сыром. Отправляем шампиньоны с начинкой в духовку на 30 минут запекаться при температуре 170-180 градусов.",
+            "image": "../static/img/content/article/step-3.jpg"
+          }
+        ]
+      }
+    },
+    {
+      "id": "salad-cheese-dish",
+      "image": "../static/img/content/recipe-3.jpg",
+      "url": "/",
+      "name": "Салат и заправка из сыра с голубой плесенью",
+      "text": "Этот салат – классическое американское блюдо, которое было придумано еще в 1920-х, и практически повсеместно встречалось в меню ресторанов до 1950-х.",
+      "category": "холодные блюда",
+      "time": "60 минут",
+      "persons": "4 человека",
+      "stages": {
+        "promo": "../static/img/content/article/promo.jpg",
+        "steps": [
+          {
+            "text": "Снимаем с грибов верхнюю шкурку, аккуратно отделяем шляпки от ножек.",
+            "image": "../static/img/content/article/step-1.jpg"
+          },
+          {
+            "text": "С ножек срезаем загрязненную часть. С помощью кулинарной кисти смазываем шляпки растительным маслом со специями..",
+            "image": "../static/img/content/article/step-2.jpg"
+          },
+          {
+            "text": "Заполняйте плотно смесью середину шапочки, прижимая начинку слегка пальцем, а затем накладываем начинку поверх шляпки горкой. Посыпаем грибы сыром. Отправляем шампиньоны с начинкой в духовку на 30 минут запекаться при температуре 170-180 градусов.",
+            "image": "../static/img/content/article/step-3.jpg"
+          }
+        ]
+      }
+    },
+    {
+      "id": "cheese-sauce-dish",
+      "image": "../static/img/content/recipe-1.jpg",
+      "url": "/",
+      "name": "Сырный соус",
+      "text": "Мы признаем, что мы встречаемся и работаем на землях коренных народов по всей стране и что суверенитет над этой землей никогда не уступался. ",
+      "category": "горячие блюда",
+      "time": "15 минут",
+      "persons": "1 человек",
+      "stages": {
+        "promo": "../static/img/content/article/promo.jpg",
+        "steps": [
+          {
+            "text": "Снимаем с грибов верхнюю шкурку, аккуратно отделяем шляпки от ножек.",
+            "image": "../static/img/content/article/step-1.jpg"
+          },
+          {
+            "text": "С ножек срезаем загрязненную часть. С помощью кулинарной кисти смазываем шляпки растительным маслом со специями..",
+            "image": "../static/img/content/article/step-2.jpg"
+          },
+          {
+            "text": "Заполняйте плотно смесью середину шапочки, прижимая начинку слегка пальцем, а затем накладываем начинку поверх шляпки горкой. Посыпаем грибы сыром. Отправляем шампиньоны с начинкой в духовку на 30 минут запекаться при температуре 170-180 градусов.",
+            "image": "../static/img/content/article/step-3.jpg"
+          }
+        ]
+      }
+    },
+    {
+      "id": "french-cheese-sauce-dish",
+      "image": "../static/img/content/recipe-2.jpg",
+      "url": "/",
+      "name": "Французский сырный соус",
+      "text": "Изумительный рецепт, который надо иметь в своей копилке. Подходит для любых быстрых закусок.",
+      "category": "закуски",
+      "time": "45 минут",
+      "persons": "2-3 человека",
+      "stages": {
+        "promo": "../static/img/content/article/promo.jpg",
+        "steps": [
+          {
+            "text": "Снимаем с грибов верхнюю шкурку, аккуратно отделяем шляпки от ножек.",
+            "image": "../static/img/content/article/step-1.jpg"
+          },
+          {
+            "text": "С ножек срезаем загрязненную часть. С помощью кулинарной кисти смазываем шляпки растительным маслом со специями..",
+            "image": "../static/img/content/article/step-2.jpg"
+          },
+          {
+            "text": "Заполняйте плотно смесью середину шапочки, прижимая начинку слегка пальцем, а затем накладываем начинку поверх шляпки горкой. Посыпаем грибы сыром. Отправляем шампиньоны с начинкой в духовку на 30 минут запекаться при температуре 170-180 градусов.",
+            "image": "../static/img/content/article/step-3.jpg"
+          }
+        ]
+      }
+    },
+    {
+      "id": "salad-with-cheese-dish",
+      "image": "../static/img/content/recipe-3.jpg",
+      "url": "/",
+      "name": "Салат и заправка из сыра с голубой плесенью",
+      "text": "Этот салат – классическое американское блюдо, которое было придумано еще в 1920-х, и практически повсеместно встречалось в меню ресторанов до 1950-х.",
+      "category": "блюда",
+      "time": "40 минут",
+      "persons": "2-3 человека",
+      "stages": {
+        "promo": "../static/img/content/article/promo.jpg",
+        "steps": [
+          {
+            "text": "Снимаем с грибов верхнюю шкурку, аккуратно отделяем шляпки от ножек.",
+            "image": "../static/img/content/article/step-1.jpg"
+          },
+          {
+            "text": "С ножек срезаем загрязненную часть. С помощью кулинарной кисти смазываем шляпки растительным маслом со специями..",
+            "image": "../static/img/content/article/step-2.jpg"
+          },
+          {
+            "text": "Заполняйте плотно смесью середину шапочки, прижимая начинку слегка пальцем, а затем накладываем начинку поверх шляпки горкой. Посыпаем грибы сыром. Отправляем шампиньоны с начинкой в духовку на 30 минут запекаться при температуре 170-180 градусов.",
+            "image": "../static/img/content/article/step-3.jpg"
+          }
+        ]
+      }
+    },
+    {
+      "id": "cheese-sauce-dish",
+      "image": "../static/img/content/recipe-1.jpg",
+      "url": "/",
+      "name": "Сырный соус",
+      "text": "Мы признаем, что мы встречаемся и работаем на землях коренных народов по всей стране и что суверенитет над этой землей никогда не уступался. ",
+      "category": "блюда",
+      "time": "20 минут",
+      "persons": "2-3 человека",
+      "stages": {
+        "promo": "../static/img/content/article/promo.jpg",
+        "steps": [
+          {
+            "text": "Снимаем с грибов верхнюю шкурку, аккуратно отделяем шляпки от ножек.",
+            "image": "../static/img/content/article/step-1.jpg"
+          },
+          {
+            "text": "С ножек срезаем загрязненную часть. С помощью кулинарной кисти смазываем шляпки растительным маслом со специями..",
+            "image": "../static/img/content/article/step-2.jpg"
+          },
+          {
+            "text": "Заполняйте плотно смесью середину шапочки, прижимая начинку слегка пальцем, а затем накладываем начинку поверх шляпки горкой. Посыпаем грибы сыром. Отправляем шампиньоны с начинкой в духовку на 30 минут запекаться при температуре 170-180 градусов.",
+            "image": "../static/img/content/article/step-3.jpg"
+          }
+        ]
+      }
+    },
+    {
+      "id": "french-cheese-sauce-dish",
+      "image": "../static/img/content/recipe-2.jpg",
+      "url": "/",
+      "name": "Французский сырный соус",
+      "text": "Изумительный рецепт, который надо иметь в своей копилке. Подходит для любых быстрых закусок.",
+      "category": "блюда",
+      "time": "10 минут",
+      "persons": "2-3 человека",
+      "stages": {
+        "promo": "../static/img/content/article/promo.jpg",
+        "steps": [
+          {
+            "text": "Снимаем с грибов верхнюю шкурку, аккуратно отделяем шляпки от ножек.",
+            "image": "../static/img/content/article/step-1.jpg"
+          },
+          {
+            "text": "С ножек срезаем загрязненную часть. С помощью кулинарной кисти смазываем шляпки растительным маслом со специями..",
+            "image": "../static/img/content/article/step-2.jpg"
+          },
+          {
+            "text": "Заполняйте плотно смесью середину шапочки, прижимая начинку слегка пальцем, а затем накладываем начинку поверх шляпки горкой. Посыпаем грибы сыром. Отправляем шампиньоны с начинкой в духовку на 30 минут запекаться при температуре 170-180 градусов.",
+            "image": "../static/img/content/article/step-3.jpg"
+          }
+        ]
+      }
+    },
+    {
+      "id": "salad-cheese-sauce-dish",
+      "image": "../static/img/content/recipe-3.jpg",
+      "url": "/",
+      "name": "Салат и заправка из сыра с голубой плесенью",
+      "text": "Этот салат – классическое американское блюдо, которое было придумано еще в 1920-х, и практически повсеместно встречалось в меню ресторанов до 1950-х.",
+      "category": "блюда",
+      "time": "99 минут",
+      "persons": "2-3 человека",
+      "stages": {
+        "promo": "../static/img/content/article/promo.jpg",
+        "steps": [
+          {
+            "text": "Снимаем с грибов верхнюю шкурку, аккуратно отделяем шляпки от ножек.",
+            "image": "../static/img/content/article/step-1.jpg"
+          },
+          {
+            "text": "С ножек срезаем загрязненную часть. С помощью кулинарной кисти смазываем шляпки растительным маслом со специями..",
+            "image": "../static/img/content/article/step-2.jpg"
+          },
+          {
+            "text": "Заполняйте плотно смесью середину шапочки, прижимая начинку слегка пальцем, а затем накладываем начинку поверх шляпки горкой. Посыпаем грибы сыром. Отправляем шампиньоны с начинкой в духовку на 30 минут запекаться при температуре 170-180 градусов.",
+            "image": "../static/img/content/article/step-3.jpg"
+          }
+        ]
+      }
+    }
+  ],
+  "advices": [
+    {
+      "id": "salad-advice",
+      "image": "../static/img/content/recipe-3.jpg",
+      "url": "/",
+      "name": "Салат и заправка из сыра с голубой плесенью",
+      "text": "Этот салат – классическое американское блюдо, которое было придумано еще в 1920-х, и практически повсеместно встречалось в меню ресторанов до 1950-х.",
+      "category": "холодные блюда",
+      "time": "60 минут",
+      "persons": "4 человека",
+      "stages": {
+        "promo": "../static/img/content/article/promo.jpg",
+        "steps": [
+          {
+            "text": "Снимаем с грибов верхнюю шкурку, аккуратно отделяем шляпки от ножек.",
+            "image": "../static/img/content/article/step-1.jpg"
+          },
+          {
+            "text": "С ножек срезаем загрязненную часть. С помощью кулинарной кисти смазываем шляпки растительным маслом со специями..",
+            "image": "../static/img/content/article/step-2.jpg"
+          },
+          {
+            "text": "Заполняйте плотно смесью середину шапочки, прижимая начинку слегка пальцем, а затем накладываем начинку поверх шляпки горкой. Посыпаем грибы сыром. Отправляем шампиньоны с начинкой в духовку на 30 минут запекаться при температуре 170-180 градусов.",
+            "image": "../static/img/content/article/step-3.jpg"
+          }
+        ]
+      }
+    },
+    {
+      "id": "cheese-sauce-advice",
+      "image": "../static/img/content/recipe-1.jpg",
+      "url": "/",
+      "name": "Сырный соус",
+      "text": "Мы признаем, что мы встречаемся и работаем на землях коренных народов по всей стране и что суверенитет над этой землей никогда не уступался. ",
+      "category": "горячие блюда",
+      "time": "15 минут",
+      "persons": "1 человек",
+      "stages": {
+        "promo": "../static/img/content/article/promo.jpg",
+        "steps": [
+          {
+            "text": "Снимаем с грибов верхнюю шкурку, аккуратно отделяем шляпки от ножек.",
+            "image": "../static/img/content/article/step-1.jpg"
+          },
+          {
+            "text": "С ножек срезаем загрязненную часть. С помощью кулинарной кисти смазываем шляпки растительным маслом со специями..",
+            "image": "../static/img/content/article/step-2.jpg"
+          },
+          {
+            "text": "Заполняйте плотно смесью середину шапочки, прижимая начинку слегка пальцем, а затем накладываем начинку поверх шляпки горкой. Посыпаем грибы сыром. Отправляем шампиньоны с начинкой в духовку на 30 минут запекаться при температуре 170-180 градусов.",
+            "image": "../static/img/content/article/step-3.jpg"
+          }
+        ]
+      }
+    },
+    {
+      "id": "cheese-sauce-french-advice",
+      "image": "../static/img/content/recipe-2.jpg",
+      "url": "/",
+      "name": "Французский сырный соус",
+      "text": "Изумительный рецепт, который надо иметь в своей копилке. Подходит для любых быстрых закусок.",
+      "category": "закуски",
+      "time": "45 минут",
+      "persons": "2-3 человека",
+      "stages": {
+        "promo": "../static/img/content/article/promo.jpg",
+        "steps": [
+          {
+            "text": "Снимаем с грибов верхнюю шкурку, аккуратно отделяем шляпки от ножек.",
+            "image": "../static/img/content/article/step-1.jpg"
+          },
+          {
+            "text": "С ножек срезаем загрязненную часть. С помощью кулинарной кисти смазываем шляпки растительным маслом со специями..",
+            "image": "../static/img/content/article/step-2.jpg"
+          },
+          {
+            "text": "Заполняйте плотно смесью середину шапочки, прижимая начинку слегка пальцем, а затем накладываем начинку поверх шляпки горкой. Посыпаем грибы сыром. Отправляем шампиньоны с начинкой в духовку на 30 минут запекаться при температуре 170-180 градусов.",
+            "image": "../static/img/content/article/step-3.jpg"
+          }
+        ]
+      }
+    },
+    {
+      "id": "cheese-sauce-salad-advice",
+      "image": "../static/img/content/recipe-3.jpg",
+      "url": "/",
+      "name": "Салат и заправка из сыра с голубой плесенью",
+      "text": "Этот салат – классическое американское блюдо, которое было придумано еще в 1920-х, и практически повсеместно встречалось в меню ресторанов до 1950-х.",
+      "category": "блюда",
+      "time": "40 минут",
+      "persons": "2-3 человека",
+      "stages": {
+        "promo": "../static/img/content/article/promo.jpg",
+        "steps": [
+          {
+            "text": "Снимаем с грибов верхнюю шкурку, аккуратно отделяем шляпки от ножек.",
+            "image": "../static/img/content/article/step-1.jpg"
+          },
+          {
+            "text": "С ножек срезаем загрязненную часть. С помощью кулинарной кисти смазываем шляпки растительным маслом со специями..",
+            "image": "../static/img/content/article/step-2.jpg"
+          },
+          {
+            "text": "Заполняйте плотно смесью середину шапочки, прижимая начинку слегка пальцем, а затем накладываем начинку поверх шляпки горкой. Посыпаем грибы сыром. Отправляем шампиньоны с начинкой в духовку на 30 минут запекаться при температуре 170-180 градусов.",
+            "image": "../static/img/content/article/step-3.jpg"
+          }
+        ]
+      }
+    },
+    {
+      "id": "cheese-sauce-advice",
+      "image": "../static/img/content/recipe-1.jpg",
+      "url": "/",
+      "name": "Сырный соус",
+      "text": "Мы признаем, что мы встречаемся и работаем на землях коренных народов по всей стране и что суверенитет над этой землей никогда не уступался. ",
+      "category": "блюда",
+      "time": "20 минут",
+      "persons": "2-3 человека",
+      "stages": {
+        "promo": "../static/img/content/article/promo.jpg",
+        "steps": [
+          {
+            "text": "Снимаем с грибов верхнюю шкурку, аккуратно отделяем шляпки от ножек.",
+            "image": "../static/img/content/article/step-1.jpg"
+          },
+          {
+            "text": "С ножек срезаем загрязненную часть. С помощью кулинарной кисти смазываем шляпки растительным маслом со специями..",
+            "image": "../static/img/content/article/step-2.jpg"
+          },
+          {
+            "text": "Заполняйте плотно смесью середину шапочки, прижимая начинку слегка пальцем, а затем накладываем начинку поверх шляпки горкой. Посыпаем грибы сыром. Отправляем шампиньоны с начинкой в духовку на 30 минут запекаться при температуре 170-180 градусов.",
+            "image": "../static/img/content/article/step-3.jpg"
+          }
+        ]
+      }
+    },
+    {
+      "id": "french-cheese-sauce-advice",
+      "image": "../static/img/content/recipe-2.jpg",
+      "url": "/",
+      "name": "Французский сырный соус",
+      "text": "Изумительный рецепт, который надо иметь в своей копилке. Подходит для любых быстрых закусок.",
+      "category": "блюда",
+      "time": "10 минут",
+      "persons": "2-3 человека",
+      "stages": {
+        "promo": "../static/img/content/article/promo.jpg",
+        "steps": [
+          {
+            "text": "Снимаем с грибов верхнюю шкурку, аккуратно отделяем шляпки от ножек.",
+            "image": "../static/img/content/article/step-1.jpg"
+          },
+          {
+            "text": "С ножек срезаем загрязненную часть. С помощью кулинарной кисти смазываем шляпки растительным маслом со специями..",
+            "image": "../static/img/content/article/step-2.jpg"
+          },
+          {
+            "text": "Заполняйте плотно смесью середину шапочки, прижимая начинку слегка пальцем, а затем накладываем начинку поверх шляпки горкой. Посыпаем грибы сыром. Отправляем шампиньоны с начинкой в духовку на 30 минут запекаться при температуре 170-180 градусов.",
+            "image": "../static/img/content/article/step-3.jpg"
+          }
+        ]
+      }
+    },
+    {
+      "id": "salad-cheese-advice",
+      "image": "../static/img/content/recipe-3.jpg",
+      "url": "/",
+      "name": "Салат и заправка из сыра с голубой плесенью",
+      "text": "Этот салат – классическое американское блюдо, которое было придумано еще в 1920-х, и практически повсеместно встречалось в меню ресторанов до 1950-х.",
+      "category": "блюда",
+      "time": "99 минут",
+      "persons": "2-3 человека",
+      "stages": {
+        "promo": "../static/img/content/article/promo.jpg",
+        "steps": [
+          {
+            "text": "Снимаем с грибов верхнюю шкурку, аккуратно отделяем шляпки от ножек.",
+            "image": "../static/img/content/article/step-1.jpg"
+          },
+          {
+            "text": "С ножек срезаем загрязненную часть. С помощью кулинарной кисти смазываем шляпки растительным маслом со специями..",
+            "image": "../static/img/content/article/step-2.jpg"
+          },
+          {
+            "text": "Заполняйте плотно смесью середину шапочки, прижимая начинку слегка пальцем, а затем накладываем начинку поверх шляпки горкой. Посыпаем грибы сыром. Отправляем шампиньоны с начинкой в духовку на 30 минут запекаться при температуре 170-180 градусов.",
+            "image": "../static/img/content/article/step-3.jpg"
+          }
+        ]
+      }
+    }
+  ],
+  "delivery": [
+    {
+      "id": 1,
+      "title": "Доставка",
+      "items": [
+        {
+          "subtitle": "Доставка по Москве",
+          "listItems": [
+            "По Москве (в пределах МКАД) - 400 рублей;",
+            "По Москве (в пределах МКАД) при заказе свыше 3000 рублей - бесплатно.",
+            "Срочная доставка по Москве в пределах МКАД (через 3 часа) - 500 рублей."
+          ]
+        },
+        {
+          "subtitle": "Доставка за пределы МКАД:",
+          "listItems": [
+            "за пределы МКАД <  10 км - 400 рублей;",
+            "за пределы МКАД 10-20 км - 500 рублей;",
+            "за пределы МКАД 20-30 км - 600 рублей;",
+            "за пределы МКАД > 30 км - оговаривается отдельно.",
+            "стоимость доставки в другие города уточняйте по телефону или по электронной почте chesom@chesom.ru."
+          ]
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "title": "Оплата",
+      "items": [
+        {
+          "subtitle": "Оплата онлайн",
+          "listItems": [
+            "Банковская карта",
+            "Яндекс деньги",
+            "Биткоины"
+          ]
+        },
+        {
+          "subtitle": "Наложенным платежем",
+          "listItems": [
+            "Перевод на карту курьера",
+            "Наличные",
+            "Р/C"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "title": "Оформление заказа"
+    }
+  ],
+  "cheeseboard": {
+    "title": "Наша сыроварня",
+    "promoImage": "../static/img/content/cheeseboard/promo_img.jpg",
+    "contentLarge": {
+      "title": "Никаких добавок, исключительная натуральность. ",
+      "text": "Использование самой современной щадящей пастеризации, восполнение бактериального баланса \u2028за счет французских заквасок, неограниченный срок годности продукции благодаря соблюдению идеальной чистоты. В Европе у людей отстутствуют понятия срока годности при разговоре о фермерском сыре.",
+      "image": "../static/img/content/cheeseboard/content_image_large.jpg"
+    },
+    "contentSmallItems": [
+      {
+        "title": "",
+        "image": "../static/img/content/cheeseboard/content_image_small_1.jpg",
+        "text": "Цех полностью спроектирован Мишелем Лепажем, сыроваром, с 40 летним опытом, успешно запустившим более 50 сыроварен по всему миру от Франции до Марокко и Аргентины."
+      },
+      {
+        "title": "Фермерский подход",
+        "image": "../static/img/content/cheeseboard/content_image_small_2.jpg",
+        "text": "Мы сохраняем вековые традиции ручного производства и натуральный фермерский подход."
+      }
+    ],
+    "gallery": [
+      {
+        "url": "../static/img/content/cheeseboard/slide_1.jpg"
+      },
+      {
+        "url": "../static/img/content/cheeseboard/slide_2.jpg"
+      }
+    ]
+  },
+  "farm": {
+    "title": "Наша ферма",
+    "promoImage": "../static/img/content/farm/promo_img.jpg",
+    "contentLarge": {
+      "title": "Современный козоводческий комплекс по кормлению и содержанию тысячи дойных коз альпийской породы с цехом по переработке молока. ",
+      "text": "Современное голландское освещение, позволяющее менять продолжительность светового дня. Прямая подача молока из доильного зала в производственный цех. Автоматическое поение и кормление животных.",
+      "image": "../static/img/content/farm/content_image_large.jpg"
+    },
+    "contentSmallItems": [
+      {
+        "title": "Доильный зал",
+        "image": "../static/img/content/farm/content_image_small_2.jpg"
+      },
+      {
+        "title": "Выгульные площадки",
+        "image": "../static/img/content/farm/content_image_small_1.jpg"
+      }
+    ],
+    "gallery": [
+      {
+        "url": "../static/img/content/farm/slide_1.jpg"
+      },
+      {
+        "url": "../static/img/content/farm/slide_2.jpg"
+      }
+    ]
+  },
+  "questions": [
+    {
+      "id": 1,
+      "question": "Если сыр пахнет плохо, что делать ?",
+      "answer": "Французский сыр из молока козы продолговатой формы, имеющий свежий резкий запах и нежный сливочный вкус в середине и пикантный вкус у корочки, покрытой легкой белой плесенью.  \nЭто рыба текст с возможностью замены на оригинальный."
+    },
+    {
+      "id": 2,
+      "question": "Как вернуть испорченый продукт?",
+      "answer": "Французский сыр из молока козы продолговатой формы, имеющий свежий резкий запах и нежный сливочный вкус в середине и пикантный вкус у корочки, покрытой легкой белой плесенью.  \nЭто рыба текст с возможностью замены на оригинальный."
+    },
+    {
+      "id": 3,
+      "question": "Что если сыр не доставили вовремя?",
+      "answer": "Французский сыр из молока козы продолговатой формы, имеющий свежий резкий запах и нежный сливочный вкус в середине и пикантный вкус у корочки, покрытой легкой белой плесенью.  \nЭто рыба текст с возможностью замены на оригинальный."
+    },
+    {
+      "id": 4,
+      "question": "Если сыр пахнет плохо, что делать ?",
+      "answer": "Французский сыр из молока козы продолговатой формы, имеющий свежий резкий запах и нежный сливочный вкус в середине и пикантный вкус у корочки, покрытой легкой белой плесенью.  \nЭто рыба текст с возможностью замены на оригинальный."
+    },
+    {
+      "id": 5,
+      "question": "Как вернуть испорченый продукт?",
+      "answer": "Французский сыр из молока козы продолговатой формы, имеющий свежий резкий запах и нежный сливочный вкус в середине и пикантный вкус у корочки, покрытой легкой белой плесенью.  \nЭто рыба текст с возможностью замены на оригинальный."
+    },
+    {
+      "id": 6,
+      "question": "Что если сыр не доставили вовремя?",
+      "answer": "Французский сыр из молока козы продолговатой формы, имеющий свежий резкий запах и нежный сливочный вкус в середине и пикантный вкус у корочки, покрытой легкой белой плесенью.  \nЭто рыба текст с возможностью замены на оригинальный."
+    }
+  ]
+}

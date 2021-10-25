@@ -1,0 +1,56 @@
+@import '/src/styles/root.scss';
+.main {
+  position: relative;
+  padding-bottom: 7.5rem;
+  padding-top: 5rem;
+}
+
+.promo {
+  padding-top: 0;
+}
+
+.purchase {
+  position: relative;
+  &::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 5rem;
+    transform: translateX(-50%);
+    height: calc(100% - 5rem);
+    width: 1px;
+    border-left: 1px solid rgba($gen, .3);
+  }
+}
+
+main.farm {
+  padding-bottom: 0;
+}
+
+main.cheeseboard {
+  padding-bottom: 16.8125rem;
+}
+@media (max-width: $landscape) {
+  main.cheeseboard {
+    padding-bottom: 160px;
+  }
+}
+@media (max-width: $tablet) {
+  .main {
+    padding-bottom: 80px;
+  }
+  main.cheeseboard {
+    padding-bottom: 110px;
+  }
+}
+
+@media (max-width: $mobile) {
+  main.cheeseboard {
+    padding-bottom: 90px;
+  }
+  main.purchase {
+    &::before {
+      display: none;
+    }
+  }
+}

@@ -1,0 +1,24 @@
+@import '/src/styles/root';
+
+.item {
+  height: 45rem;
+  object-fit: cover;
+}
+
+@media (max-width: $landscape) {
+  .item {
+    height: 600px;
+  }
+}
+
+@media (max-width: $tablet) {
+  .item {
+    height: 450px;
+  }
+}
+
+@media (max-width: $tablet) {
+  .item {
+    height: 220px;
+  }
+}

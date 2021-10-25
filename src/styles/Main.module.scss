@@ -1,0 +1,69 @@
+@import "./root.scss";
+@import "./mixins.scss";
+
+
+
+.wrapper {
+   width: calc(100% - 120px);
+   margin: 0 auto;
+   max-width: 1320px;
+}
+
+
+
+.flex {
+   display: flex;
+   flex-wrap: wrap;
+}
+
+.title {
+   text-align: center;
+   margin: 5rem 0 7.5rem 0;
+}
+
+.italic {
+   font-family: $font-italic;
+}
+
+
+.status {
+   @extend %flexbox;
+   font-family: $font-service;
+   font-size: 0.875rem;
+   text-transform: lowercase;
+   line-height: 1;
+   color: #575757;
+   &::before {
+      content: "";
+      display: inline-block;
+      align-self: center;
+      width: 0.875rem;
+      height: 0.875rem;
+      margin-right: 0.6875rem;
+      border-radius: 50%;
+   }
+   &.avaliable {
+      &::before {
+         background-color: #b2e08d;
+      }
+   }
+   &.not-avaliable {
+      &::before {
+         background-color: #ff867c;
+      }
+   }
+   &.preparing {
+      &::before {
+         background-color: #90b1ca;
+      }
+   }
+}
+
+.divided {
+   @extend %flexbox;
+}
+
+.link {
+   @extend %link;
+   margin-top: 30px;
+}

@@ -1,0 +1,49 @@
+@import "/src/styles/mixins.scss";
+@import "/src/styles/root.scss";
+
+.post {
+  max-width: 100%;
+  font-family: $font-service;
+}
+
+.header {
+  @extend %flexbox;
+  justify-content: space-between;
+}
+
+.user {
+  display: block;
+  text-transform: none;
+  font-size: 1.125rem;
+  font-weight: 500;
+
+}
+
+.date {
+  font-size: 0.75rem;
+}
+
+.image {
+  height: 20rem;
+  margin-top: 0.625rem;
+  object-fit: cover;
+}
+
+.text {
+  margin-top: 1.25rem;
+  font-size: 0.875rem;
+  text-transform: none;
+  letter-spacing: 0.5px;
+}
+
+@media (max-width: $landscape) {
+  .image {
+    height: 256px;
+  }
+}
+
+@media (max-width: $mobile) {
+  .image {
+    height: 316px;
+  }
+}

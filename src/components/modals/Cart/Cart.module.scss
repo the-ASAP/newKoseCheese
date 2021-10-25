@@ -1,0 +1,26 @@
+@import "/src/styles/mixins.scss";
+@import "/src/styles/root.scss";
+
+.promo {
+    @extend %flexbox;
+    justify-content: space-between;
+    margin: 1.875rem 0 5rem;
+    padding: 0 1.625rem;
+    &__text {
+        max-width: 60%;
+        font-family: $font-service;
+        font-size: 1.125rem;
+    }
+}
+
+
+@media (max-width: $mobile) {
+    .promo {
+        align-items: flex-start;
+        margin-bottom: 0;
+        padding: 0;
+        &__text {
+            max-width: 70%;
+        }
+    }
+}

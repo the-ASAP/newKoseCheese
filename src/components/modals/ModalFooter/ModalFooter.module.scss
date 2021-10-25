@@ -1,0 +1,37 @@
+@import "/src/styles/root";
+@import "/src/styles/mixins";
+
+.container {
+  position: sticky;
+  bottom: -1px;
+  left: 0;
+  width: 100%;
+  padding-top: 1.875rem;
+  padding-bottom: 1.875rem;
+  border-top: 1px solid $lightest;
+  background-color: $accent;
+  text-align: center;
+}
+
+.cost {
+  display: block;
+}
+
+.cost,
+.discount {
+  font-family: $font-service;
+  color: $lighten;
+}
+
+.checkout {
+  @extend %button--gen;
+  margin: 1.875rem auto 0 auto;
+  font-family: $font-service;
+  text-transform: uppercase;
+}
+
+@media (max-width: $mobile) {
+  .container {
+    padding-bottom: 70px;
+  }
+}

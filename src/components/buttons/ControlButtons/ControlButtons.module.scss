@@ -1,0 +1,53 @@
+@import "/src/styles/root";
+
+.container {
+  position: absolute;
+  right: 0.625rem;
+  top: 0.6875rem;
+  z-index: 1;
+  display: flex;
+}
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  font-size: 0.875rem;
+  background-color: $lightest;
+  color: rgba($gen, 0.3);
+  transition: background-color 0.3s, color 0.3s;
+  &:first-child {
+    margin-right: 0.6875rem;
+  }
+  &:hover {
+    background-color: $gen;
+    color: $accent;
+    //path {
+    //  stroke: $accent;
+    //}
+    //path:first-child {
+    //  fill:$accent;
+    //}
+    //rect {
+    //  stroke: $accent;
+    //}
+  }
+}
+.cart {
+  &:hover {
+    path,
+    circle {
+      stroke: $accent;
+    }
+  }
+}
+
+.favorite {
+  &:hover {
+    path {
+      fill: $accent;
+    }
+  }
+}

@@ -1,0 +1,51 @@
+@import "/src/styles/mixins";
+@import "/src/styles/root";
+
+.wrapper {
+  margin-top: 1.875rem;
+}
+
+.phone {
+  width: 17.5rem;
+}
+
+.submit {
+  @extend %button--green;
+  margin-top: 3.125rem;
+  height: 4rem;
+  font-size: 1.125rem;
+}
+
+.photos {
+  margin-top: 1.25rem;
+}
+
+.attached {
+  @extend %hiddenScroll;
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 16px;
+}
+
+.label {
+  width: 100%;
+  margin-bottom: 0.625rem;
+  font-family: $font-service;
+}
+
+@media (max-width: $mobile) {
+  .attached {
+    flex-wrap: nowrap;
+    overflow-x: scroll;
+    margin-top: 8px;
+    & > div {
+      flex-shrink: 0;
+    }
+  }
+  .submit {
+    width: 215px;
+    height: 50px;
+    margin-top: 30px;
+    font-size: 14px;
+  }
+}

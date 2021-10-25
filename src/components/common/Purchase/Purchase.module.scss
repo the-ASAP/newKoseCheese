@@ -1,0 +1,83 @@
+@import "/src/styles/mixins.scss";
+@import "/src/styles/root.scss";
+
+.container {
+  display: flex;
+  margin-top: 1.875rem;
+  padding-bottom: 1.875rem;
+  border-bottom: 1px solid rgba($gen, .3);
+}
+
+.image {
+  width: 6rem;
+  height: 4.125rem;
+  object-fit: contain;
+}
+
+.info {
+  margin-left: 1.5rem;
+}
+
+.addition {
+  margin-top: 0.625rem;
+  font-family: $font-italic;
+  font-size: 0.875rem;
+}
+
+.cost {
+  @extend %flexbox;
+  margin-top: 0.625rem;
+}
+
+.price {
+  margin-right: 0.625rem;
+  font-family: $font-numbers;
+  font-size: 1.25rem;
+}
+
+.weight {
+  margin-top: 0.1875rem;
+  font-family: $font-service;
+  font-size: 14px;
+  letter-spacing: 0.035em;
+  color: $grey;
+}
+
+.wrapper {
+  position: relative;
+}
+
+.count {
+  @extend %flexbox;
+  justify-content: center;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 50%;
+  font-family: $font-service;
+  font-size: 1.125rem;
+  background-color: $gen;
+  color: $accent;
+}
+
+@media (max-width: $tablet) {
+  .info {
+    display: flex;
+    align-items: flex-start;
+    width: 100%;
+  }
+  .controls {
+    margin-left: 15%;
+  }
+}
+
+@media (max-width: $mobile) {
+  .info {
+    display: block;
+  }
+  .controls {
+    margin-left: 0;
+  }
+}

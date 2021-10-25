@@ -1,0 +1,18 @@
+@import "/src/styles/root";
+
+.wrapper {
+  max-width: 61.875rem;
+  margin: 0 auto;
+}
+
+@media (max-width: $landscape) {
+  .wrapper {
+    max-width: 740px;
+  }
+}
+
+@media (max-width: $tablet) {
+  .wrapper {
+    max-width: 580px;
+  }
+}

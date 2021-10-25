@@ -1,0 +1,58 @@
+@import "/src/styles/root";
+@import "/src/styles/mixins";
+
+.wrapper {
+  margin-top: 1.875rem;
+}
+
+.password {
+  @extend %link;
+  margin-top: 1.875rem;
+  font-family: $font-service--bold;
+}
+
+.container {
+  display: flex;
+}
+.form {
+  width: 40%;
+}
+
+.photo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 60%;
+}
+
+.submit {
+  @extend %button--gen;
+  width: 11.875rem;
+  margin-top: 3.125rem;
+  font-size: 1.125rem;
+}
+
+.changePhone {
+  @extend %link;
+  margin-top: 1rem;
+  font-size: 0.875rem;
+}
+
+@media (max-width: $landscape) {
+  .form {
+    width: 50%;
+  }
+}
+
+@media (max-width: $mobile) {
+  .form {
+    width: 100%;
+  }
+  .wrapper {
+    margin-top: 0;
+  }
+  .submit {
+    width: 100%;
+    font-size: 16px;
+  }
+}

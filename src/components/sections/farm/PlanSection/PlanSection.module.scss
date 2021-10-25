@@ -1,0 +1,51 @@
+@import "/src/styles/root";
+.wrapper {
+  background-color: #FFE8D1;
+  padding-bottom: 4.25rem;
+}
+.container {
+  display: flex;
+  align-items: flex-end;
+  position: relative;
+  min-height: 47.25rem;
+  font-family: $font-service;
+  line-height: 1.7;
+  font-size: 1.125rem;
+}
+
+.image {
+  position: absolute;
+  left: 30%;
+  mix-blend-mode: darken;
+  width: fit-content;
+  max-width: 60vw;
+  height: 100%;
+  object-fit: contain;
+}
+
+@media (max-width: $landscape) {
+  .container {
+    min-height: 50vw;
+  }
+}
+
+@media (max-width: $tablet) {
+  .container {
+    li {
+      font-size: 14px;
+    }
+  }
+}
+
+@media (max-width: $mobile) {
+  .container {
+    flex-wrap: wrap;
+    padding-top: 28px;
+  }
+  .image {
+    position: static;
+    width: 100%;
+    max-width: 100%;
+    margin-top: 40px;
+  }
+}

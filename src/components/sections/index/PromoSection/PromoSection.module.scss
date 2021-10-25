@@ -1,0 +1,107 @@
+@import '/src/styles/mixins.scss';
+@import '/src/styles/root.scss';
+
+.promo {
+    min-height: 42rem;
+    padding-top: 5rem;
+    //background-image: url('/static/img/promo-bg.jpg');
+    background-size: cover;
+    background-position: center;
+}
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    margin-top: 3.125rem;
+    color: $accent;
+}
+.intro {
+    display: block;
+    text-align: center;
+    font-family: 'Roboto', 'sans-serif';
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    margin-bottom: 1.875rem;
+}
+.title {
+    max-width: 80%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.link {
+    @extend %button;
+    @extend %button--decorate;
+    justify-content: space-between;
+    width: 17.625rem;
+    margin: 5.625rem auto 0 auto;
+    padding-left: 1.875rem;
+    padding-right: 0.875rem;
+    min-height: 4rem;
+    border-radius: 4.375rem;
+    text-transform: none;
+    color: $accent;
+    font-size: 1.125rem;
+    svg {
+        width: 2.625rem;
+        height: 2.625rem;
+    }
+    path {
+        fill: $accent;
+    }
+    &:hover {
+        background-color: $accent;
+        color: $gen;
+        & path {
+            fill: $gen;
+        }
+    }
+}
+
+//.partners {
+//    @extend %flexbox;
+//    margin-left: 1.625rem;
+//}
+//
+//.remark {
+//    display: block;
+//    font-family: $font-service;
+//    font-size: 0.875rem;
+//    text-align: center;
+//    color: $accent;
+//}
+//
+//.container {
+//    @extend %flexbox;
+//    justify-content: space-between;
+//    margin-top: 4vh;
+//}
+
+@media (max-width: $landscape) {
+
+}
+
+@media (max-width: $tablet) {
+    .title {
+        font-size: 48px;
+    }
+}
+
+@media (max-width: $mobile) {
+    .promo {
+        height: 650px;
+    }
+    .container {
+        display: block;
+        height: fit-content;
+        margin-top: 50px;
+    }
+    .title {
+        font-size: 29px;
+        margin-top: 48px;
+    }
+    .link {
+        margin-top: 110px;
+    }
+}

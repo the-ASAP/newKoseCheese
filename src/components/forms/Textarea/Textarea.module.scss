@@ -1,0 +1,33 @@
+@import "../../../styles/root";
+
+.container {
+  width: 100%;
+  margin-top: 1.25rem;
+}
+
+.label {
+  display: block;
+  margin-bottom: 4px;
+  font-family: $font-service;
+  font-size: 0.875rem;
+  line-height: 1.6;
+}
+
+.input {
+  width: 100%;
+  min-height: 7.9rem;
+  padding: .8rem;
+  border: 1px solid $grey;
+  resize: none;
+  font-family: $font-service;
+  transition: border-color .3s;
+
+  &:focus {
+    border-color: $gen;
+  }
+}
+
+.feedback {
+  min-height: 14.625rem;
+  max-width: 930px;
+}

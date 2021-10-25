@@ -1,0 +1,59 @@
+@import '/src/styles/mixins';
+@import '/src/styles/root';
+
+.container {
+  width: 26.25rem;
+  min-height: 100%;
+  padding: 1.25rem 0 3.125rem 0;
+  margin: 0 auto;
+}
+
+.close {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+}
+
+.header {
+  position: relative;
+}
+
+.title,
+.desc {
+  text-align: center;
+}
+
+.desc {
+  margin-top: 1.25rem;
+  font-family: $font-service;
+}
+
+.politics {
+  display: flex;
+  margin-top: 0.625rem;
+
+  &Text {
+    margin-left: 0.5rem;
+    font-family: $font-service;
+    font-size: 0.875rem;
+  }
+
+  &Link {
+    @extend %link;
+    color: $gen;
+    text-transform: none;
+    font-size: 0.875rem;
+  }
+}
+
+.submit {
+  @extend %button--gen;
+  margin: 3.125rem auto 0 auto;
+}
+
+@media (max-width: $mobile) {
+  .container {
+    width: 100%;
+    padding-bottom: 110px;
+  }
+}

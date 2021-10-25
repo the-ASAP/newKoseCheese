@@ -1,0 +1,66 @@
+@import "/src/styles/mixins";
+@import "/src/styles/root";
+
+.wrapper {
+  margin-top: 1.875rem;
+
+  > form:first-child .form {
+    border-top: 1px solid rgba($gen, .3);
+  }
+}
+
+.form {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  width: 85%;
+  padding: 1.25rem 0 3.125rem;
+  border-bottom: 1px solid rgba($gen, .3);
+}
+
+.column {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 48%;
+}
+
+.submit {
+  @extend %link;
+  font-family: $font-service--bold;
+}
+
+
+.controls {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  margin-top: 1.875rem;
+}
+
+.submit {
+  margin-right: 1.5625rem;
+}
+
+@media (max-width: $landscape) {
+  .form {
+    width: 100%;
+  }
+}
+
+@media (max-width: $tablet) {
+  .form {
+    flex-wrap: wrap;
+    padding-top: 0;
+  }
+  .column {
+    width: 340px;
+
+    > .column {
+      width: 47%;
+    }
+  }
+  .controls {
+    width: 100%;
+  }
+}

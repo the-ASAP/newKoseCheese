@@ -1,0 +1,129 @@
+@import '/src/styles/mixins';
+@import '/src/styles/root';
+
+.card {
+    // TODO: SERGEY если была какая то идея с фикисированной шириной, то я ее не понял, она все ломала. Исаправишь
+    // width: 26.25rem;
+    position: relative;
+    &:hover .image {
+        transform: scale(1.07);
+    }
+}
+.link {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.body {
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: space-between;
+    width: 100%;
+    height: 26.25rem;
+    padding: 1.625rem 2rem 1.125rem 1.25rem;
+}
+.image {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s;
+}
+.well {
+    display: flex;
+    position: relative;
+    align-self: flex-start;
+}
+.name {
+    margin-top: 1.875rem;
+    line-height: 1;
+}
+.addition {
+    display: block;
+    font-size: 0.875rem;
+    font-family: $font-italic;
+    line-height: 1.5;
+    margin-top: 0.625rem;
+}
+
+.style {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    position: relative;
+    justify-content: center;
+    width: 5.9375rem;
+    height: 5.9375rem;
+    padding: 0 0.9375rem;
+    background-image: url('/static/img/icons/remark.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    font-family: $font-italic;
+}
+.buttons {
+    position: absolute;
+    right: 0.625rem;
+    top: 0.6875rem;
+    display: flex;
+    transition: right 400ms ease-out;
+    z-index: 1;
+}
+.control {
+    @extend %flexbox;
+    justify-content: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    font-size: 0.875rem;
+    background-color: $lightest;
+    color: rgba($gen, 0.3);
+    transition: background-color 0.3s, color 0.3s;
+    &:first-child {
+        margin-right: 0.6875rem;
+    }
+    &:hover {
+        background-color: $gen;
+        color: $accent;
+        path {
+            stroke: $accent;
+        }
+        path:first-child {
+            fill: $accent;
+        }
+        rect {
+            stroke: $accent;
+        }
+    }
+}
+.country {
+    width: 100%;
+    text-align: center;
+    font-size: 0.875rem;
+    line-height: 1;
+    color: $accent;
+}
+
+.flag {
+    width: 12px;
+    height: 12px;
+    margin-top: 0.625rem;
+}
+
+//@media (max-width: $landscape) {
+//    .body {
+//
+//    }
+//}
+
+@media (max-width: $mobile) {
+    .body {
+        height: 324px;
+    }
+}

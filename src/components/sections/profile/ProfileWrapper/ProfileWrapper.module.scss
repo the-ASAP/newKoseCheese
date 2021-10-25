@@ -1,0 +1,12 @@
+@import '/src/styles/root';
+
+.container {
+  display: flex;
+  justify-content: space-between;
+}
+
+@media (max-width: $mobile) {
+  .container {
+    flex-wrap: wrap;
+  }
+}

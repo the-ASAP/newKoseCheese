@@ -1,0 +1,27 @@
+@import "/src/styles/root";
+
+.promo {
+  margin-top: 3.125rem;
+  height: 38.75rem;
+  object-fit: cover;
+}
+
+@media (max-width: $landscape) {
+  .promo {
+    height: 500px;
+  }
+}
+
+@media (max-width: $tablet) {
+  .promo {
+    height: 370px;
+  }
+}
+
+@media (max-width: $mobile) {
+  .promo {
+    height: 220px;
+    margin-top: 30px;
+  }
+}
+

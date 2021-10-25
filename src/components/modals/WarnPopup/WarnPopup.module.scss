@@ -1,0 +1,26 @@
+@import '/src/styles/root';
+@import '/src/styles/mixins';
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-wrap: wrap;
+  width: 300px;
+  min-height: 200px;
+  padding: 30px;
+  background-color: $accent;
+  font-family: $font-service;
+}
+
+.text {
+  width: 80%;
+  text-align: center;
+}
+
+.ok {
+  @extend %button--gen;
+  margin-top: 20px;
+  height: 40px;
+  width: 70%;
+}

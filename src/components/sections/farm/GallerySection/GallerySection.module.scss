@@ -1,0 +1,12 @@
+@import "/src/styles/root";
+
+
+.title {
+  margin-bottom: 3.125rem;
+}
+
+@media (max-width: $landscape) {
+  .title {
+    margin-bottom: 30px;
+  }
+}

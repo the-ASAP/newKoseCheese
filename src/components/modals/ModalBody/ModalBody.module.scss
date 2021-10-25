@@ -1,0 +1,35 @@
+@import '/src/styles/mixins.scss';
+@import '/src/styles/root.scss';
+
+.header {
+    @extend %flexbox;
+    justify-content: space-between;
+    height: 5rem;
+    border-bottom: 1px solid rgba($gen, .3);
+}
+
+.body {
+    padding: 0 1.875rem 1.875rem 1.875rem;
+}
+
+.close {
+    @extend %close-btn;
+    position: relative;
+    top: unset;
+    right: unset;
+    transform: unset;
+    &_small {
+        width: 1.625rem;
+        height: 1.625rem;
+    }
+}
+
+@media (max-width: $tablet) {
+    .title {
+        font-size: 36px;
+    }
+}
+
+@media (max-width: $mobile) {
+
+}
