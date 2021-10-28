@@ -26,7 +26,11 @@ export const Cart = ({ closeModal }) => {
           <Purchase inCart key={item.item_id} params={item} />
         ))}
       </div>
-      {itemsInCart?.length ? <ModalFooter /> : <h3>Ваша корзина пуста</h3>}
+      {itemsInCart?.length ? (
+        <ModalFooter />
+      ) : (
+        <h3 style={{ marginTop: 40 }}>Ваша корзина пуста</h3>
+      )}
     </ModalBody>
   );
 };

@@ -2,7 +2,7 @@ import React from 'react';
 import clsx from 'clsx';
 
 import { BackButton } from 'components/buttons/BackButton/BackButton';
-import { cartItemsSelector, reqPurchaseOrder } from 'redux/slices/cart';
+import { cartItemsSelector } from 'redux/slices/cart';
 import { Input } from 'components/forms/Input/Input';
 import { InputPhone } from 'components/forms/InputPhone/InputPhone';
 import { Textarea } from 'components/forms/Textarea/Textarea';
@@ -16,10 +16,13 @@ import {
 
 import { useDispatch, useSelector } from 'react-redux';
 import { DropdownCustom } from 'components/common/DropdownCustom/DropdownCustom';
+import { setConfirmOrder } from 'redux/slices/order';
 import s from './OrderingSection.module.scss';
 
-export const OrderingSection = () => {
+export const OrderingSection = ({ formData }) => {
+  const { user_data: user, payments } = formData;
   const formPropsRef = React.useRef(null);
+  const paymentsOptions = payments.map((payment) => payment.title);
   const cartItems = useSelector(cartItemsSelector);
   const steps = [
     {
@@ -28,29 +31,29 @@ export const OrderingSection = () => {
         {
           label: 'Телефон',
           type: 'tel',
-          name: 'phone',
-          id: 'phone',
+          name: 'physical_phone',
+          id: 'physical_phone',
           component: InputPhone
         },
         {
           label: 'Имя',
           type: 'text',
-          name: 'name',
-          id: 'name',
+          name: 'physical_name',
+          id: 'physical_name',
           component: Input
         },
         {
           label: 'E-mail',
           type: 'email',
-          name: 'email',
-          id: 'email',
+          name: 'physical_email',
+          id: 'physical_email',
           component: Input
         }
       ],
       initialValues: {
-        phone: '',
-        name: '',
-        email: ''
+        physical_phone: user.phone ?? '',
+        physical_name: user.name ?? '',
+        physical_email: user.email ?? ''
       },
       validationSchema: PURCHASE_VALIDATION_SCHEMA
     },
@@ -60,44 +63,44 @@ export const OrderingSection = () => {
         {
           label: 'Город',
           type: 'text',
-          name: 'city',
-          id: 'city',
+          name: 'physical_delivery_city',
+          id: 'physical_delivery_city',
           component: Input
         },
         {
           label: 'Улица',
           type: 'text',
-          name: 'street',
-          id: 'street',
+          name: 'physical_delivery_street',
+          id: 'physical_delivery_street',
           component: Input
         },
         {
           label: 'Дом',
           type: 'text',
-          name: 'house',
-          id: 'house',
+          name: 'physical_delivery_building',
+          id: 'physical_delivery_building',
           component: Input
         },
         {
           label: 'Квартира',
           type: 'text',
-          name: 'apartment',
-          id: 'apartment',
+          name: 'physical_delivery_apartment',
+          id: 'physical_delivery_apartment',
           component: Input
         },
         {
           label: 'Комментарий',
-          name: 'comment',
-          id: 'comment',
+          name: 'physical_delivery_comment',
+          id: 'physical_delivery_comment',
           component: Textarea
         }
       ],
       initialValues: {
-        city: '',
-        street: '',
-        house: '',
-        apartment: '',
-        comment: ''
+        physical_delivery_city: '',
+        physical_delivery_street: '',
+        physical_delivery_building: '',
+        physical_delivery_apartment: '',
+        physical_delivery_comment: ''
       },
       validationSchema: DELIVERY_VALIDATION_SCHEMA
     },
@@ -107,18 +110,21 @@ export const OrderingSection = () => {
         {
           label: 'Выберите способ оплаты',
           placeholder: '',
-          options: ['Оплата онлайн', 'Оплата наличными', 'Оплата по Б/C'],
-          name: 'payment',
-          id: 'payment',
-          value: 'Оплата онлайн',
+          options: paymentsOptions,
+          name: 'pay_system_id',
+          id: 'pay_system_id',
+          value: paymentsOptions[0],
           selectHandler: (e) => {
-            formPropsRef.current.setFieldValue('payment', e.value);
+            formPropsRef.current.setFieldValue(
+              'pay_system_id',
+              payments.find((payment) => payment.title === e.value).id
+            );
           },
           component: DropdownCustom
         }
       ],
       initialValues: {
-        payment: 'Оплата онлайн'
+        pay_system_id: paymentsOptions[0]
       },
       validationSchema: EMPTY_VALIDATION_SCHEMA
     }
@@ -128,8 +134,6 @@ export const OrderingSection = () => {
 
   const [stageForm, setStageForm] = React.useState(0);
   const [sendData, setSendData] = React.useState({});
-
-  React.useEffect(() => {}, [sendData]);
 
   const changeFormSteps = () => {
     const isErrors = Object.keys(formPropsRef.current.errors).length;
@@ -155,10 +159,10 @@ export const OrderingSection = () => {
       ...formPropsRef.current.values
     }));
     // purchase call
-    console.log('state', sendData);
-    dispatch(reqPurchaseOrder({ sendData }));
+    // TODO: CONFIRM ORDER
+    console.log(sendData);
+    dispatch(setConfirmOrder({ ...sendData, delivery_id: 2 }));
   };
-  console.log(cartItems);
   return (
     <div className={s.container}>
       <FormContainer
@@ -169,38 +173,41 @@ export const OrderingSection = () => {
         onSubmit={purchaseOrder}
       >
         {(formProps) => {
-          const setSubmit = formProps.submitForm;
           formPropsRef.current = formProps;
           return (
             <>
               <BackButton additionClass="purchase" />
-              <div className={s.purchase}>
-                <h2 className={s.title}>Оформление заказа</h2>
-                <div className={s.steps}>
-                  {steps.map((step, index) => (
-                    <button
-                      type="button"
-                      key={index}
-                      className={clsx(s.step, index === stageForm && s.active)}
-                    >
-                      {step.title}
-                    </button>
-                  ))}
+              {formData ? (
+                <div className={s.purchase}>
+                  <h2 className={s.title}>Оформление заказа</h2>
+                  <div className={s.steps}>
+                    {steps.map((step, index) => (
+                      <button
+                        type="button"
+                        key={index}
+                        className={clsx(s.step, index === stageForm && s.active)}
+                      >
+                        {step.title}
+                      </button>
+                    ))}
+                  </div>
+                  <div className={s.stage}>
+                    {steps[stageForm].stages.map((input, index) => {
+                      const ComponentName = input.component;
+                      return <ComponentName key={index} {...input} />;
+                    })}
+                  </div>
+                  <button
+                    type="button"
+                    onClick={stageForm + 1 === steps.length ? purchaseOrder : changeFormSteps}
+                    className={s.submit}
+                  >
+                    Оформить заказ
+                  </button>
                 </div>
-                <div className={s.stage}>
-                  {steps[stageForm].stages.map((input, index) => {
-                    const ComponentName = input.component;
-                    return <ComponentName key={index} {...input} />;
-                  })}
-                </div>
-                <button
-                  type="button"
-                  onClick={stageForm + 1 === steps.length ? purchaseOrder : changeFormSteps}
-                  className={s.submit}
-                >
-                  Оформить заказ
-                </button>
-              </div>
+              ) : (
+                <div className={s.loader} />
+              )}
             </>
           );
         }}

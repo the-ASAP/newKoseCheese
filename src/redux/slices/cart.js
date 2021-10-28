@@ -201,26 +201,4 @@ export const reqGetProducts = createAsyncThunk(
   }
 );
 
-export const reqPurchaseOrder = createAsyncThunk(
-  'cart/reqAddToCart',
-  async ({ test = 'nothing to show in api' }, { dispatch, getState }) => {
-    console.log({ test });
-    const {
-      user: { id, isLogged }
-    } = getState();
-    await APIBitrix.post('order/form-data/', {
-      fuser_id: id,
-      user_id: isLogged ? id : 0
-    }).then((res) => {
-      console.log('res', res);
-      dispatch(purchaseOrder());
-      dispatch(
-        successPurchasePopupChangeState({
-          visible: true,
-          order: 123,
-          mail: 'kamaPulya@mail.ru'
-        })
-      );
-    });
-  }
-);
+

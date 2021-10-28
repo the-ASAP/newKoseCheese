@@ -3,8 +3,38 @@
 
 .container {
   width: 50%;
+  & form {
+    height: 100%;
+  }
 }
-
+@keyframes load-rotate {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+.loader {
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  z-index: 1;
+  &::before {
+    content: '';
+    z-index: 1;
+    border: 3px solid;
+    border-color: #184240 transparent;
+    border-radius: 50%;
+    height: 40px;
+    width: 40px;
+    animation: load-rotate 1s forwards infinite;
+    position: absolute;
+    top: calc(50% - 20px);
+    left: calc(50% - 20px);
+  }
+}
 .purchase {
   width: 26.875rem;
   margin: 0 auto;
@@ -21,7 +51,7 @@
   font-family: $font-service;
   font-size: 0.75rem;
   font-weight: 500;
-  color: #A0A9A1;
+  color: #a0a9a1;
 }
 
 .step {
@@ -43,7 +73,7 @@
     &::after {
       display: flex;
       align-items: center;
-      content: ">";
+      content: '>';
       margin: 0 0.9375rem;
     }
   }
@@ -106,7 +136,7 @@
     margin-top: 20px;
     margin-bottom: 30px;
     padding-top: 30px;
-    border-top: 1px solid rgba($gen, .3);
+    border-top: 1px solid rgba($gen, 0.3);
   }
   .title {
     text-align: left;
