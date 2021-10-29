@@ -161,7 +161,7 @@ export const OrderingSection = ({ formData }) => {
       ...prevState,
       ...formPropsRef.current.values
     }));
-    dispatch(setConfirmOrder({ ...sendData, delivery_id: 2 }));
+    dispatch(setConfirmOrder({ ...sendData, ...formPropsRef.current.values, delivery_id: 2 }));
   };
   return (
     <div className={s.container}>
