@@ -39,10 +39,8 @@ const Index = ({ promoContent, discountProduct, categories, posts, newProducts }
         cookiesModal.showModal();
       }
     }, 1000);
-    console.log('window', window.location?.search);
-    if (window && window.location?.search && window.location.search.includes('bxOrderId'))
+    if (window && window.location?.search && window.location.search.includes('bxOrderId')) {
       // убрал текст из модалки временно
-
       dispatch(
         successPurchasePopupChangeState({
           visible: true,
@@ -50,6 +48,9 @@ const Index = ({ promoContent, discountProduct, categories, posts, newProducts }
           // mail: 'testmail'
         })
       );
+    } else {
+      alert('123');
+    }
   }, []);
 
   return (
