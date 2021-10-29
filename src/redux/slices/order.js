@@ -62,28 +62,22 @@ export const getOrderFormData = createAsyncThunk(
   }
 );
 
-export const setConfirmOrder = createAsyncThunk(
-  'order/confirm/',
-  async (data, { dispatch, getState }) => {
-    const {
-      user: { id, isLogged }
-    } = getState();
-    await APIBitrix.post('order/confirm/', {
-      fuser_id: id,
-      ...data
-    }).then(({ data: res }) => {
-      purchaseConfirm(res);
-      dispatch(
-        successPurchasePopupChangeState({
-          visible: true,
-          order: res.order_id,
-          mail: data.physical_email || 'емейл не указан'
-        })
-      );
-      if (res.url) window.location.replace(res.url);
-    });
-  }
-);
+export const setConfirmOrder = createAsyncThunk('order/confirm/', async (data, { getState }) => {
+  const {
+    user: { id, isLogged }
+  } = getState();
+  await APIBitrix.post('order/confirm/', {
+    fuser_id: id,
+    ...data
+  }).then(({ data: res }) => {
+    purchaseConfirm(res);
+    if (res.url) {
+      window.location.replace(res.url);
+    } else {
+      window.location.replace(`/?bxOrderId=${res.order_id}&`);
+    }
+  });
+});
 
 export const orderFormDataSelector = (state) => state.order.formData;
 export const orderConfirmSelector = (state) => state.order.confirm;

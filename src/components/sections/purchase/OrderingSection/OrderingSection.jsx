@@ -51,9 +51,9 @@ export const OrderingSection = ({ formData }) => {
         }
       ],
       initialValues: {
-        physical_phone: user.phone ?? '',
-        physical_name: user.name ?? '',
-        physical_email: user.email ?? ''
+        physical_phone: user?.phone || '',
+        physical_name: user?.name || '',
+        physical_email: user?.email || ''
       },
       validationSchema: PURCHASE_VALIDATION_SCHEMA
     },
@@ -145,8 +145,8 @@ export const OrderingSection = ({ formData }) => {
       return prev;
     });
   };
-
   React.useEffect(() => {
+    formPropsRef.current.setFieldValue('pay_system_id', payments[0].id);
     setSendData((prevState) => ({
       ...prevState,
       ...formPropsRef.current.values
@@ -158,9 +158,6 @@ export const OrderingSection = ({ formData }) => {
       ...prevState,
       ...formPropsRef.current.values
     }));
-    // purchase call
-    // TODO: CONFIRM ORDER
-    console.log(sendData);
     dispatch(setConfirmOrder({ ...sendData, delivery_id: 2 }));
   };
   return (

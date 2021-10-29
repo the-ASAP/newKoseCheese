@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import Router from 'next/router';
 import { Section } from 'components/layout/Section/Section';
 import { Wrapper } from 'components/layout/Wrapper/Wrapper';
 import { OrderingSection } from 'components/sections/purchase/OrderingSection/OrderingSection';
@@ -12,6 +13,9 @@ const Purchase = () => {
   const dispatch = useDispatch();
   const userId = useSelector(userIdSelector);
   const { data: formData } = useSelector(orderFormDataSelector);
+  useEffect(() => {
+    // if (!formData?.products?.length) Router.push('/');
+  }, [formData]);
   useEffect(() => {
     if (userId) dispatch(getOrderFormData());
   }, [userId]);
