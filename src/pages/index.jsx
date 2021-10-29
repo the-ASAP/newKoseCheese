@@ -19,7 +19,6 @@ import { getCookie } from 'functions';
 import MockAPI from 'api/MockAPI';
 import { useDispatch } from 'react-redux';
 import { successPurchasePopupChangeState } from 'redux/slices/modals';
-import { useClientSide } from '../hooks';
 
 const cookiesModalProperties = {
   animation: {
@@ -52,7 +51,7 @@ const Index = ({ promoContent, discountProduct, categories, posts, newProducts }
         })
       );
     }
-  }, [useClientSide()]);
+  }, []);
   return (
     <>
       <Head>
