@@ -19,6 +19,7 @@ import { getCookie } from 'functions';
 import MockAPI from 'api/MockAPI';
 import { useDispatch } from 'react-redux';
 import { successPurchasePopupChangeState } from 'redux/slices/modals';
+import { useClientSide } from '../hooks';
 
 const cookiesModalProperties = {
   animation: {
@@ -39,6 +40,8 @@ const Index = ({ promoContent, discountProduct, categories, posts, newProducts }
         cookiesModal.showModal();
       }
     }, 1000);
+  }, []);
+  React.useEffect(() => {
     if (window && window.location?.search && window.location.search.includes('bxOrderId')) {
       // убрал текст из модалки временно
       dispatch(
@@ -48,11 +51,8 @@ const Index = ({ promoContent, discountProduct, categories, posts, newProducts }
           // mail: 'testmail'
         })
       );
-    } else {
-      alert('123');
     }
-  }, []);
-
+  }, [useClientSide()]);
   return (
     <>
       <Head>
