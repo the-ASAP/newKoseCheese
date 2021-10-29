@@ -38,7 +38,7 @@ const MyApp = ({ Component, pageProps, router }) => {
   const dispatch = useDispatch();
 
   const putClientInStorage = async () => {
-    const getClientId = await APIBitrix.get('users/fuser-id/').then((res) => res.fuser_id);
+    const getClientId = await APIBitrix.get('user/fuser-id/').then((res) => res.fuser_id);
     localStorage.setItem('fuser_id', getClientId);
     dispatch(addUserId(localStorage.getItem('fuser_id')));
   };
