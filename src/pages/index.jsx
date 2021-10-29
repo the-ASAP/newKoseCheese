@@ -39,8 +39,10 @@ const Index = ({ promoContent, discountProduct, categories, posts, newProducts }
         cookiesModal.showModal();
       }
     }, 1000);
+    console.log(window.location?.search);
     if (window && window.location?.search && window.location.search.includes('bxOrderId'))
       // убрал текст из модалки временно
+
       dispatch(
         successPurchasePopupChangeState({
           visible: true,
