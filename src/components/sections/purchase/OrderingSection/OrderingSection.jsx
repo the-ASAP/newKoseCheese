@@ -146,7 +146,10 @@ export const OrderingSection = ({ formData }) => {
     });
   };
   React.useEffect(() => {
-    formPropsRef.current.setFieldValue('pay_system_id', payments[0].id);
+    if (stageForm + 1 === steps.length)
+      formPropsRef.current.setFieldValue('pay_system_id', payments[0].id);
+  }, [formPropsRef, stageForm, steps]);
+  React.useEffect(() => {
     setSendData((prevState) => ({
       ...prevState,
       ...formPropsRef.current.values
