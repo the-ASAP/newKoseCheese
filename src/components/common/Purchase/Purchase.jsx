@@ -1,30 +1,31 @@
-import React from "react";
+import React from 'react';
 
-import { BASE_SITE_URL } from "constants.js";
-import { PurchaseControl } from "../PurchaseControl/PurchaseControl";
-import { FavoriteControl } from "../FavoriteControl/FavoriteControl";
+import { BASE_SITE_URL } from 'constants.js';
+import { PurchaseControl } from '../PurchaseControl/PurchaseControl';
+import { FavoriteControl } from '../FavoriteControl/FavoriteControl';
 
-import s from "./Purchase.module.scss";
+import s from './Purchase.module.scss';
 
-export const Purchase = ({ inFavorite, inCart, inOrder, params }) => {
+export const Purchase = ({ inFavorite, id, active, inCart, inOrder, params }) => {
   const defaults = {
-    previewImage: "",
-    name: "",
-    addition: "",
+    previewImage: '',
+    name: '',
+    addition: '',
     price: 0,
     weight: 0,
     quantity: 0
-  }
+  };
   const properties = {
     ...defaults,
     ...params
-  }
+  };
+  const isActive = active === id ? { display: 'none' } : {};
   const { previewImage, name, addition, price, weight, quantity } = properties;
   return (
-    <div className={s.container}>
+    <div className={s.container} style={isActive}>
       <div className={s.wrapper}>
         {inOrder && <span className={s.count}>{parseInt(quantity, 10)}</span>}
-        <img src={BASE_SITE_URL + previewImage} alt="" className={s.image}/>
+        <img src={BASE_SITE_URL + previewImage} alt="" className={s.image} />
       </div>
       <div className={s.info}>
         <div className={s.block}>
@@ -36,8 +37,8 @@ export const Purchase = ({ inFavorite, inCart, inOrder, params }) => {
           </div>
         </div>
         <div className={s.controls}>
-          {inFavorite && <FavoriteControl product={properties}/>}
-          {inCart && <PurchaseControl inCart additionClass="inCart" product={properties}/>}
+          {inFavorite && <FavoriteControl product={properties} />}
+          {inCart && <PurchaseControl inCart additionClass="inCart" product={properties} />}
         </div>
       </div>
     </div>
