@@ -11,7 +11,6 @@
   margin-top: 20px;
 }
 
-
 .mini {
   width: 6.25rem;
   height: 6.25rem;
@@ -39,12 +38,12 @@
   }
 }
 
-
-
 @media (max-width: $landscape) {
   .main {
-    width: 400px;
+    // width: 400px;
     height: 554px;
+
+    max-width: 100%;
   }
   .preview {
     margin-right: 20px;
@@ -61,8 +60,10 @@
 
 @media (max-width: $tablet) {
   .main {
-    width: 250px;
+    // width: 250px;
     height: 320px;
+    width: auto;
+    max-width: 100%;
   }
   .block {
     width: 45%;

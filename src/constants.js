@@ -125,8 +125,6 @@ export const subscribeDays = [
   }
 ];
 
-export const instagramUser = 'ko-cheese';
-
 export const PROFILE_VALIDATION_SCHEMA = Yup.object().shape({
   name: Yup.string().required('Введите имя').nullable(true),
   surname: Yup.string().nullable(true),

@@ -10,7 +10,6 @@ export const DeliverySection = ({ deliveryTitles }) => {
   const [activeCategory, setActiveCategory] = React.useState({});
   const [deliveryContent, setDeliveryContent] = React.useState(0);
   React.useEffect(() => {
-    console.log();
     if (deliveryTitles) setActiveCategory(deliveryTitles.find(({ id }) => id === activeId));
   }, [activeId, deliveryTitles]);
   const getContent = async () => {
@@ -39,7 +38,6 @@ export const DeliverySection = ({ deliveryTitles }) => {
             <div className={s.block} key={i}>
               <span className={s.subtitle}>{item.previewText}</span>
               {/* <ul className={s.list}> */}
-              {console.log(JSON.stringify(item.detailText))}
               <div className={s.content} dangerouslySetInnerHTML={{ __html: item.detailText }} />
               {/* {item.listItems.map((li) => (
                 <li className={s.item} key={li}>{li}</li>

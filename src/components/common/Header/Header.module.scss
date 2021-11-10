@@ -57,7 +57,7 @@
 
 .button {
   @extend %button--circle;
-
+  flex-shrink: 0;
   &:not(:last-of-type) {
     margin-right: 1rem;
   }
@@ -94,9 +94,7 @@
       }
     }
   }
-
 }
-
 
 .search {
   &:not(.button_accent) {
@@ -119,7 +117,6 @@
     &::after,
     &::before {
       background-color: $accent;
-
     }
   }
 
@@ -127,8 +124,6 @@
     background-color: rgba($accent, 0.5);
   }
 }
-
-
 
 //.cardIcon {
 //  path {
@@ -168,7 +163,6 @@
   }
 }
 
-
 .logo_accent {
   path {
     fill: $accent;
@@ -195,7 +189,7 @@
     width: 100%;
     height: 100%;
     background-color: $gen;
-    transition: top .3s, transform .3s;
+    transition: top 0.3s, transform 0.3s;
   }
 
   &::before {
@@ -205,7 +199,6 @@
   &::after {
     top: 5px;
   }
-
 }
 
 .burger {
@@ -219,10 +212,6 @@
         background-color: $accent;
       }
     }
-  }
-
-  span {
-
   }
 
   &Open {
@@ -259,7 +248,7 @@
   }
   .logo {
     width: 100%;
-    transform: translateX(-50px);
+    // transform: translateX(-50px);
   }
   .control {
     margin-left: 0;
@@ -268,7 +257,6 @@
 }
 
 @media (max-width: $tablet) {
-
   .header {
     //&.menuOpen {
     //  z-index: 10;

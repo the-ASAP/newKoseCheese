@@ -91,7 +91,6 @@ export const RegSection = () => {
     localStorage.setItem('fuser_id', userData.user_id);
     await dispatch(setLogged(true));
     router.push('/profile');
-    console.log(userData, verification);
   };
 
   return (

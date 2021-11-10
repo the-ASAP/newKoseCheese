@@ -1,17 +1,17 @@
-import React from "react";
+import React from 'react';
 
-import { Slider } from "components/common/Slider/Slider";
-import { Section } from "components/layout/Section/Section";
-import { Wrapper } from "components/layout/Wrapper/Wrapper";
-import { windowSize } from "constants.js";
-import { NewTaste } from "../../../common/NewTaste/NewTaste";
+import { Slider } from 'components/common/Slider/Slider';
+import { Section } from 'components/layout/Section/Section';
+import { Wrapper } from 'components/layout/Wrapper/Wrapper';
+import { windowSize } from 'constants.js';
+import { NewTaste } from '../../../common/NewTaste/NewTaste';
 
 const sliderParams = {
   slider: {
-    slidesPerView: "auto",
+    slidesPerView: 'auto',
     turnOffAutoSlides: 767,
     spaceBetween: 20,
-    slideClass: "newTaste",
+    slideClass: 'newTaste',
     breakpoints: {
       767: {
         slidesPerView: 2,
@@ -34,20 +34,12 @@ const sliderParams = {
   }
 };
 
-export const NewTastesSection = ({ newProducts }) => {
-  return (
-    <Section>
-      <Wrapper>
-        <Slider
-          title="Новые вкусы"
-          slides={newProducts}
-          params={sliderParams}
-        >
-          <NewTaste/>
-        </Slider>
-      </Wrapper>
-    </Section>
-  );
-};
-
-
+export const NewTastesSection = ({ newProducts }) => (
+  <Section>
+    <Wrapper>
+      <Slider title="Новые вкусы" slides={newProducts} params={sliderParams}>
+        <NewTaste />
+      </Slider>
+    </Wrapper>
+  </Section>
+);

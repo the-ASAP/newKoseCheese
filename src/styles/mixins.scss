@@ -66,6 +66,7 @@
   width: fit-content;
   border: 1px solid $accent;
   font-size: 0.875rem;
+  color: rgb(0, 0, 0);
   &--gen {
     @extend %button;
     background-color: $gen;
@@ -212,8 +213,6 @@
   }
 }
 
-
-
 %status {
   display: flex;
   align-items: center;
@@ -224,7 +223,7 @@
   color: #575757;
 
   &::before {
-    content: "";
+    content: '';
     display: inline-block;
     align-self: center;
     width: 0.875rem;

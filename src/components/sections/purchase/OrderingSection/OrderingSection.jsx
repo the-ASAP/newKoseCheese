@@ -20,7 +20,7 @@ import { setConfirmOrder } from 'redux/slices/order';
 import s from './OrderingSection.module.scss';
 
 export const OrderingSection = ({ formData }) => {
-  const { user_data: user, payments } = formData;
+  const { user_data: user, payments = [] } = formData;
   const formPropsRef = React.useRef(null);
   const paymentsOptions = payments.map((payment) => payment.title);
   const cartItems = useSelector(cartItemsSelector);

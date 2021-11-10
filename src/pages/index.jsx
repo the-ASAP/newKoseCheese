@@ -62,7 +62,7 @@ const Index = ({ promoContent, discountProduct, categories, posts, newProducts }
       <ProductsSection products={[]} categories={categories} />
       <DiscountSection {...discountProduct} />
       <RecipesSliderSection recipes={posts} title="Рецепты" />
-      <TelegramPromoSection url={'http://instagram.com/instagram'} />
+      <TelegramPromoSection />
       <InstagramSection />
       <PartnersSection />
       {cookiesModal.isShowed && (

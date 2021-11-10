@@ -1,44 +1,45 @@
-@import "/src/styles/mixins.scss";
-@import "/src/styles/root.scss";
+@import '/src/styles/mixins.scss';
+@import '/src/styles/root.scss';
 
 .subcategories {
-   @extend %flexbox;
-   justify-content: center;
-   flex-wrap: wrap;
-   margin-top: 1rem;
+  @extend %flexbox;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 1rem;
 }
 
 .body {
-   @extend %flexbox;
-   border-left: 1px solid rgba($gen, 0.3);
-   border-top: 1px solid rgba($gen, 0.3);
-   flex-wrap: wrap;
-   margin-top: 3.125rem;
+  @extend %flexbox;
+  border-left: 1px solid rgba($gen, 0.3);
+  border-top: 1px solid rgba($gen, 0.3);
+  flex-wrap: wrap;
+  margin-top: 3.125rem;
 }
 
 .more {
-   @extend %link;
-   display: block;
-   margin: 3.125rem auto 0 auto;
+  @extend %link;
+  display: block;
+  margin: 3.125rem auto 0 auto;
 }
 
 @media (max-width: $tablet) {
-   .body {
-      margin-top: 10px;
-   }
-   .subcategories {
-      width: 85%;
-      margin: 16px auto 0 auto;
-   }
+  .body {
+    margin-top: 10px;
+  }
+  .subcategories {
+    width: 85%;
+    margin: 16px auto 0 auto;
+  }
 }
 
 @media (max-width: $mobile) {
-   .body {
-      width: 100%;
-      max-width: 420px;
-   }
-   .subcategories {
-      justify-content: flex-start;
-      width: 100%;
-   }
+  .body {
+    width: 100%;
+    max-width: 420px;
+    margin: 0 auto;
+  }
+  .subcategories {
+    justify-content: flex-start;
+    width: 100%;
+  }
 }

@@ -1,6 +1,6 @@
-@import "root";
-@import "mixins";
-@import "fonts";
+@import 'root';
+@import 'mixins';
+@import 'fonts';
 
 html {
   font-size: 16px;
@@ -19,8 +19,6 @@ body {
   color: $gen;
   @extend %scrollbar;
 }
-
-
 
 section {
   position: relative;
@@ -63,13 +61,12 @@ input::-webkit-inner-spin-button {
   margin: 0;
 }
 
-input[type=number] {
-  -moz-appearance:textfield; /* Firefox */
+input[type='number'] {
+  -moz-appearance: textfield; /* Firefox */
 }
 
-
 a {
-  transition: color .3s, background-color .3s, border-color .3s;
+  transition: color 0.3s, background-color 0.3s, border-color 0.3s;
 }
 
 button {
@@ -77,7 +74,6 @@ button {
   text-transform: uppercase;
   transition: background-color 0.3s, color 0.3s, border-color 0.3s;
   cursor: pointer;
-
 }
 
 p {
@@ -122,11 +118,13 @@ h3 {
   font-weight: normal;
 }
 
-
 // slider-swiper
 
 .slider_border.swiper-container {
   padding-left: 1px;
+}
+.swiper-container-pointer-events {
+  width: 100%;
 }
 
 .swiper-container {
@@ -134,6 +132,11 @@ h3 {
 }
 .swiper-product {
   position: static !important;
+}
+@media (max-width: 768px) {
+  .swiper-product {
+    position: relative !important;
+  }
 }
 .swiper-pagination-bullets {
   position: absolute;
@@ -172,13 +175,10 @@ h3 {
   border-left-color: #184240 !important;
 }
 
-
 #nprogress .spinner-icon {
   border-top-color: #184240 !important;
   border-left-color: #184240 !important;
-
 }
-
 
 @keyframes fadeIn {
   0% {
@@ -197,7 +197,6 @@ h3 {
     opacity: 0;
   }
 }
-
 
 @keyframes moveFromRight {
   0% {

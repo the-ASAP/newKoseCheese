@@ -19,10 +19,9 @@ export const Purchase = ({ inFavorite, id, active, inCart, inOrder, params }) =>
     ...defaults,
     ...params
   };
-  const isActive = active === id ? { display: 'none' } : {};
   const { previewImage, name, addition, price, weight, quantity } = properties;
   return (
-    <div className={s.container} style={isActive}>
+    <div className={s.container}>
       <div className={s.wrapper}>
         {inOrder && <span className={s.count}>{parseInt(quantity, 10)}</span>}
         <img src={BASE_SITE_URL + previewImage} alt="" className={s.image} />

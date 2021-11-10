@@ -1,5 +1,5 @@
-@import "/src/styles/root.scss";
-@import "/src/styles/mixins.scss";
+@import '/src/styles/root.scss';
+@import '/src/styles/mixins.scss';
 
 .container {
   display: flex;
@@ -17,7 +17,7 @@
   display: flex;
   margin-top: 1.25rem;
   padding-top: 1.25rem;
-  border-top: 1px solid rgba($gen, .2);
+  border-top: 1px solid rgba($gen, 0.2);
 }
 
 .column {
@@ -29,7 +29,7 @@
 .compose {
   margin-top: 1.25rem;
   padding-top: 1.25rem;
-  border-top: 1px solid rgba($gen, .3);
+  border-top: 1px solid rgba($gen, 0.3);
   font-family: $font-service;
   &Wrapper {
     max-width: 80%;
@@ -79,7 +79,6 @@
   font-family: $font-numbers;
 }
 
-
 .oldPrice {
   margin-left: 1rem;
   font-size: 1.5rem;
@@ -101,7 +100,7 @@
   display: flex;
   margin-top: 1.25rem;
   padding-bottom: 30px;
-  border-bottom: 1px solid rgba($gen, .3);
+  border-bottom: 1px solid rgba($gen, 0.3);
 }
 
 .about {
@@ -186,12 +185,14 @@
 }
 
 @media (max-width: $tablet) {
-
   .block {
     width: 45%;
   }
   .info {
     width: 50%;
+  }
+  .slider {
+    position: relative;
   }
 }
 
@@ -206,9 +207,7 @@
   .block {
     position: static;
   }
-  .slider {
-    position: relative;
-  }
+
   .slide {
     height: 462px;
     object-fit: cover;
