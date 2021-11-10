@@ -72,7 +72,7 @@ export const reqAddToCart = createAsyncThunk(
       }).then((res) => {
         if (res.code === 200) {
           dispatch(putProducts(res.data));
-          dispatch(cartChangeModalState(true));
+          // dispatch(cartChangeModalState(true));
         } else {
           throw new Error(
             'Ошибка при добавлении товара. Попробуйте обновить страницу и добавить товар еще раз'
@@ -200,5 +200,3 @@ export const reqGetProducts = createAsyncThunk(
     }
   }
 );
-
-

@@ -2,7 +2,6 @@ import React from 'react';
 import clsx from 'clsx';
 
 import { BackButton } from 'components/buttons/BackButton/BackButton';
-import { cartItemsSelector } from 'redux/slices/cart';
 import { Input } from 'components/forms/Input/Input';
 import { InputPhone } from 'components/forms/InputPhone/InputPhone';
 import { Textarea } from 'components/forms/Textarea/Textarea';
@@ -14,7 +13,7 @@ import {
   windowSize
 } from 'constants.js';
 
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { DropdownCustom } from 'components/common/DropdownCustom/DropdownCustom';
 import { setConfirmOrder } from 'redux/slices/order';
 import s from './OrderingSection.module.scss';
@@ -23,7 +22,6 @@ export const OrderingSection = ({ formData }) => {
   const { user_data: user, payments = [] } = formData;
   const formPropsRef = React.useRef(null);
   const paymentsOptions = payments.map((payment) => payment.title);
-  const cartItems = useSelector(cartItemsSelector);
   const steps = [
     {
       title: 'Информация',

@@ -30,7 +30,6 @@ export const Product = (props) => {
 
   const { status, previewImage, name, addition, weight, price, tastes, additionClass, id } =
     properties;
-
   return (
     <div className={clsx(s.card, additionClass && s[additionClass])}>
       <ControlButtons productProps={cartProductsProps} />

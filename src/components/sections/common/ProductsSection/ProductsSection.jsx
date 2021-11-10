@@ -28,6 +28,7 @@ export const ProductsSection = ({ products, categories }) => {
   const [activeCategory, setActiveCategory] = React.useState(categories[0]);
 
   const [activeProducts, setActiveProducts] = React.useState(products);
+
   const [goodsPagination, setGoodsPage] = React.useState({
     perPage: 4,
     currentPage: 4,
@@ -64,7 +65,6 @@ export const ProductsSection = ({ products, categories }) => {
   const handleSetGoodsPagination = () => {
     setGoodsPage((prev) => ({ ...prev, currentPage: prev.currentPage + prev.perPage }));
   };
-
   return (
     <Section>
       <Wrapper>

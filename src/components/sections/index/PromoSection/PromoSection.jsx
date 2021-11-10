@@ -7,7 +7,9 @@ import { telegram } from 'contacts';
 import s from './PromoSection.module.scss';
 
 export const PromoSection = ({ image, previewText, detailText }) => (
-  <section className={s.promo} style={{ backgroundImage: `url(${BASE_SITE_URL + image})` }}>
+  <section className={s.promo}>
+    {/* image приходит с бека, но дизайнеры захотели разные изображения для мобилки и десктопа */}
+    {/* style={{ backgroundImage: `url(${BASE_SITE_URL + image})` }} */}
     <Wrapper style={{ height: '100%' }}>
       <div className={s.container}>
         <span className={s.intro}>{previewText}</span>

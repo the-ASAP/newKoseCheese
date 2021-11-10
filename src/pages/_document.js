@@ -13,6 +13,7 @@ export default class MyDocument extends Document {
         <Head>
           <link rel="shortcut icon" href="/static/favicon.ico" />
           <link rel="apple-touch-icon" href="/static/apple-touch-icon.png" />
+          <meta name="format-detection" content="telephone=no" />
         </Head>
         <body>
           <Main />

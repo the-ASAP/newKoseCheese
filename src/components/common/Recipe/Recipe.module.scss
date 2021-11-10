@@ -63,6 +63,9 @@
 }
 
 @media (max-width: $tablet) {
+  .image {
+    height: 200px;
+  }
   .preview {
     height: auto;
     .text {
@@ -70,6 +73,7 @@
     }
     .link {
       margin-top: 30px;
+      position: static;
     }
   }
 }
