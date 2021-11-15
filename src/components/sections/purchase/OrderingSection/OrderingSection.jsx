@@ -19,8 +19,9 @@ import { setConfirmOrder } from 'redux/slices/order';
 import YandexDelivery from 'yandexDelivery';
 import s from './OrderingSection.module.scss';
 
-export const OrderingSection = ({ formData }) => {
+export const OrderingSection = ({ formData, setCost }) => {
   const { user_data: user, payments = [] } = formData;
+
   const formPropsRef = React.useRef(null);
   const paymentsOptions = payments.map((payment) => payment.title);
   const steps = [
@@ -95,9 +96,9 @@ export const OrderingSection = ({ formData }) => {
         }
       ],
       initialValues: {
-        physical_delivery_city: '',
-        physical_delivery_street: '',
-        physical_delivery_building: '',
+        physical_delivery_city: 'Москва',
+        physical_delivery_street: 'Большая Тульская улица',
+        physical_delivery_building: '44',
         physical_delivery_apartment: '',
         physical_delivery_comment: ''
       },
@@ -131,8 +132,14 @@ export const OrderingSection = ({ formData }) => {
 
   const dispatch = useDispatch();
 
-  const [stageForm, setStageForm] = React.useState(0);
+  const [stageForm, setStageForm] = React.useState(1);
   const [sendData, setSendData] = React.useState({});
+  const deliveryParams = {
+    city: sendData?.physical_delivery_city,
+    street: sendData?.physical_delivery_street,
+    building: sendData?.physical_delivery_building,
+    apart: sendData?.physical_delivery_apartment
+  };
 
   const changeFormSteps = () => {
     const isErrors = Object.keys(formPropsRef.current.errors).length;
@@ -196,7 +203,7 @@ export const OrderingSection = ({ formData }) => {
                       return <ComponentName key={index} {...input} />;
                     })}
                   </div>
-                  <YandexDelivery />
+                  {stageForm === 2 && <YandexDelivery deliveryParams={deliveryParams} />}
                   <button
                     type="button"
                     onClick={stageForm + 1 === steps.length ? purchaseOrder : changeFormSteps}

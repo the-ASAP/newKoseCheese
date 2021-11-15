@@ -14,6 +14,7 @@ const Purchase = () => {
   const dispatch = useDispatch();
   const userId = useSelector(userIdSelector);
   const { data: formData } = useSelector(orderFormDataSelector);
+  const [cost, setCost] = React.useState('');
   useEffect(() => {
     console.log('ya', yandex);
   }, []);
@@ -28,7 +29,7 @@ const Purchase = () => {
       <Head>
         <title>Оформление заказа</title>
         <script
-          defer
+          async
           src={`https://api-maps.yandex.ru/2.1/?apikey=22831a61-cd4e-43d4-a56e-13b907784078&lang=ru_RU`}
           type="text/javascript"
         />
@@ -36,8 +37,8 @@ const Purchase = () => {
       <Section margin="none">
         <Wrapper>
           <div className={g.flex}>
-            <OrderingSection formData={formData} />
-            <CartSection />
+            <OrderingSection setCost={setCost} formData={formData} />
+            <CartSection cost={cost} />
           </div>
         </Wrapper>
       </Section>
