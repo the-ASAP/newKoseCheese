@@ -204,6 +204,10 @@
   .info {
     width: 100%;
   }
+  .info {
+    display: flex;
+    flex-direction: column;
+  }
   .block {
     position: static;
   }
@@ -214,9 +218,33 @@
   }
   .title {
     margin-top: 23px;
+    order: 0;
   }
   .statuses {
     margin-top: 20px;
+    order: 1;
+  }
+  .price {
+    order: 2;
+  }
+  .about {
+    order: 3;
+  }
+  .producer {
+    order: 4;
+  }
+  .nutrients {
+    order: 5;
+  }
+  .purchase {
+    order: 6;
+  }
+  .composition {
+    order: 7;
+    margin-top: 1.2rem;
+  }
+  .weight {
+    display: none;
   }
   .properties {
     justify-content: space-between;

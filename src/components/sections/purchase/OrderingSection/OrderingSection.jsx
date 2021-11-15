@@ -16,6 +16,7 @@ import {
 import { useDispatch } from 'react-redux';
 import { DropdownCustom } from 'components/common/DropdownCustom/DropdownCustom';
 import { setConfirmOrder } from 'redux/slices/order';
+import YandexDelivery from 'yandexDelivery';
 import s from './OrderingSection.module.scss';
 
 export const OrderingSection = ({ formData }) => {
@@ -195,6 +196,7 @@ export const OrderingSection = ({ formData }) => {
                       return <ComponentName key={index} {...input} />;
                     })}
                   </div>
+                  <YandexDelivery />
                   <button
                     type="button"
                     onClick={stageForm + 1 === steps.length ? purchaseOrder : changeFormSteps}
