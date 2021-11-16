@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 import { SubcategoryButton } from 'components/buttons/SubcategoryButton/SubcategoryButton';
 import { Purchase } from 'components/common/Purchase/Purchase';
 import { useTabs } from 'hooks';
 import { useSelector } from 'react-redux';
 import { favoriteItemsSelector } from 'redux/slices/favorite';
+import APIBitrix from 'api/APIBitrix';
 import { ModalBody } from '../ModalBody/ModalBody';
 import s from './Favorite.module.scss';
 
@@ -17,7 +18,23 @@ const favorites = [
 export const Favorite = ({ closeModal }) => {
   const { activeId, toggleActiveId } = useTabs(1, false);
   const itemsInFavorite = useSelector(favoriteItemsSelector);
-
+  const [cats, setCats] = useState([]);
+  let data;
+  useEffect(() => {
+    data = APIBitrix.get('products/categories/').then((res) => setCats(res));
+  }, []);
+  useEffect(() => {
+    if (data?.length)
+      setCats(
+        data.filter((item) => {
+          for (let i = 0; i < itemsInFavorite.length; i += 1) {
+            return item.id === itemsInFavorite[i].id;
+          }
+        })
+      );
+    console.log(cats);
+  }, [data]);
+  console.log(cats);
   return (
     <ModalBody closeModal={closeModal} title="Избранное">
       <div className={s.subcategories}>

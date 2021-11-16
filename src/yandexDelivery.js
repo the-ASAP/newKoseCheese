@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 // import { ymaps, Map, Polygon, SearchControl } from 'react-yandex-maps';
 
-const YandexDelivery = ({ deliveryParams }) => {
-  const [coords, setCoords] = useState([
+const YandexDelivery = ({ deliveryParams, setCost, setDeliveryDistance }) => {
+  const coords = [
     [55.882453, 37.726268],
     [55.829798, 37.828943],
     [55.81387, 37.839307],
@@ -66,108 +66,77 @@ const YandexDelivery = ({ deliveryParams }) => {
     [55.895786, 37.663247],
     [55.895496, 37.673203],
     [55.891982, 37.707107]
-  ]);
+  ];
 
   function init() {
-    console.log(deliveryParams);
-    // searchControl.search('')
-    const DELIVERY_TARIFF = 30;
-    const MINIMUM_COST = 600;
-    let // Точка по клику
-      myPlacemark;
-    // Замыкание маршрута
-    let myRoute;
+    const geocodeParams = fetch(
+      `https://geocode-maps.yandex.ru/1.x/?apikey=22831a61-cd4e-43d4-a56e-13b907784078&format=json&geocode=${deliveryParams.join(
+        ','
+      )}`
+    );
+    geocodeParams
+      .then((data) => data.json())
+      .then(({ response }) => {
+        const resPoints =
+          response?.GeoObjectCollection?.featureMember[0]?.GeoObject?.Point?.pos || '';
+        if (resPoints) {
+          getDeliveryCost(resPoints.split(' ').reverse());
+        } else {
+          setCost('Стоимость доставки уточняется у менеджера');
+        }
+      });
+    const calculateDeliveryResult = (value) => {
+      if (value === 0) {
+        setCost('Доставка:  Бесплатно');
+      } else if (value < 10) {
+        setCost(150);
+      } else if (value < 20) {
+        setCost(350);
+      } else if (value < 30) {
+        setCost(550);
+      } else {
+        setCost('Стоимость доставки уточняется у менеджера');
+      }
+      if (typeof value === 'number') {
+        setDeliveryDistance(value);
+      } else {
+        setDeliveryDistance(null);
+      }
+    };
+    let distance;
+    // Создание карты яндекс
     const myMap = new ymaps.Map('map', {
       center: [55.73, 37.75],
       zoom: 8,
       behaviors: ['default', 'scrollZoom']
     });
-    // отлавливаем Панель поиска
-    const searchControl = myMap.controls.get('searchControl');
-    // Строим многоугольник
-    const myPolygon = new ymaps.geometry.Polygon(
-      [coords],
-      { pointColor: 'yellow' },
-      { strokeColor: 'FFFF00AA' }
-    );
-    function calculate(routeLength) {
-      return Math.max(routeLength * DELIVERY_TARIFF, MINIMUM_COST);
-    }
-    function Marshrutizator(coordC) {
-      if (myPlacemark) {
-        // Если точка уже есть перетаскваем ее
-        myPlacemark.geometry.setCoordinates(coordC);
-      } else {
-        // Иначе создаем
-        myPlacemark = new ymaps.Placemark(coordC);
-        myMap.geoObjects.add(myPlacemark);
-      }
-      // Создаем Массив координат по кадому кмтру мкада
-      const arPlaseMarks = [];
-      for (let i = 0; i < coords.length; i += 1) {
-        arPlaseMarks[i] = new ymaps.Placemark(coords[i]);
+    const polygon = new ymaps.Polygon([coords]);
+    myMap.geoObjects.add(polygon);
+    myMap.setBounds(polygon.geometry.getBounds());
+    const getDeliveryCost = (place) => {
+      const initialMarks = [];
+      for (let i = 0; i < coords.length; i++) {
+        initialMarks[i] = new ymaps.Placemark(coords[i]);
       }
       // делаем точки невидимыми и добавляем на карту
-      const rezz = ymaps.geoQuery(arPlaseMarks).addToMap(myMap).setOptions('visible', false);
+      const marks = ymaps.geoQuery(initialMarks).addToMap(myMap).setOptions('visible', false);
       // ловим ближайшую точку из массива до поставленной на карту
-      const closestObject = rezz.getClosestTo(coordC);
-      // Прокладываем маршрут от поставленной точки до найденной ближайшей точки
-      ymaps.route([closestObject.geometry.getCoordinates(), coordC]).then((route) => {
-        // если точка попадает в полигон выплевываем фиксированный тариф
-        if (myPolygon.contains(coordC)) {
-          if (myRoute) myMap.geoObjects.remove(myRoute);
-          myMap.balloon.open(
-            myPlacemark.geometry.getCoordinates(),
-            `<span>В пределах МКАД стоимость доставки составит ${MINIMUM_COST} р.</span><br/>` +
-              `<span style="font-weight: bold; font-style: italic">При сумме заказа свыше 5000 р. - БЕСПЛАТНО</span>`,
-            {
-              // Опция: не показываем кнопку закрытия.
-              closeButton: true
-            }
-          );
+      const closestObject = marks.getClosestTo(place);
+      ymaps.route([closestObject.geometry.getCoordinates(), place]).then((route) => {
+        distance = Math.round(route.getLength() / 1000);
+        if (polygon.geometry.contains(place)) {
+          calculateDeliveryResult(0);
         } else {
-          // иначе перестраиваем маршрут и делаем расчет стоимости по тарифу
-          if (myRoute) myMap.geoObjects.remove(myRoute);
-          myMap.geoObjects.add((myRoute = route));
-          const distance = Math.round(route.getLength() / 1000);
-          const price = calculate(distance);
-          myMap.balloon.open(
-            myPlacemark.geometry.getCoordinates(),
-            `<span>Расстояние от МКАД: ${distance} км.</span><br/>` +
-              `<span style="font-weight: bold; font-style: italic">Стоимость доставки: ${price} р.</span>`,
-            {
-              // Опция: не показываем кнопку закрытия.
-              closeButton: true
-            }
-          );
+          calculateDeliveryResult(distance);
         }
       });
-    }
-
-    myPolygon.options.setParent(myMap.options);
-    myPolygon.setMap(myMap);
-    // по клику на карту
-    myMap.events.add('click', (e) => {
-      // Координаты
-      const coord = e.get('coords');
-      // прокладываем маршрут
-      Marshrutizator(coord);
-    });
-    // делаем все тоже самое только по поиску адреса
-    searchControl.events.add(
-      'resultselect',
-      (e) => {
-        const coord1 = searchControl.getResultsArray()[0].geometry.getCoordinates();
-        // прокладываем маршрут
-        Marshrutizator(coord1);
-      },
-      this
-    );
+    };
   }
+
   useEffect(() => {
-    if (ymaps) ymaps.ready(init);
-  }, []);
-  return <div id="map" style={{ height: 300 }} />;
+    if (ymaps || deliveryParams?.length) ymaps.ready(init);
+  }, [deliveryParams]);
+  return <div id="map" style={{ height: 0, opacity: 0, visibility: 'hidden' }} />;
 };
 
 export default YandexDelivery;

@@ -6,10 +6,12 @@ import { useSelector } from 'react-redux';
 import { cartItemsSelector, totalPriceSelector } from 'redux/slices/cart';
 import s from './CartSection.module.scss';
 
+const isNubmer = (value) => typeof value === 'number';
+
 export const CartSection = ({ cost }) => {
   const itemsInCart = useSelector(cartItemsSelector);
   const totalPrice = useSelector(totalPriceSelector);
-
+  console.log('итог', cost);
   return (
     <>
       <div className={s.container}>
@@ -27,14 +29,19 @@ export const CartSection = ({ cost }) => {
               <span className={s.info}>Цена:</span>
               <span className={s.value}>{totalPrice} руб.</span>
             </div>
-            {cost && (
-              <div className={s.field}>
-                <span className={s.info}>Доставка:</span>
-                <span className={s.value}>Бесплатно</span>
-              </div>
-            )}
+            <div className={s.field}>
+              {cost && (
+                <>
+                  {isNubmer(cost) && <span className={s.info}>Доставка:</span>}
+                  <span className={s.value}>
+                    {cost}
+                    {isNubmer(cost) && ' руб.'}
+                  </span>
+                </>
+              )}
+            </div>
           </div>
-          <TotalPrice value={totalPrice} />
+          <TotalPrice value={isNubmer(cost) ? totalPrice + cost : totalPrice} />
         </div>
       </div>
     </>

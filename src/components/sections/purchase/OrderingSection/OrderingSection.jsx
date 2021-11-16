@@ -96,9 +96,9 @@ export const OrderingSection = ({ formData, setCost }) => {
         }
       ],
       initialValues: {
-        physical_delivery_city: 'Москва',
-        physical_delivery_street: 'Большая Тульская улица',
-        physical_delivery_building: '44',
+        physical_delivery_city: '',
+        physical_delivery_street: '',
+        physical_delivery_building: '',
         physical_delivery_apartment: '',
         physical_delivery_comment: ''
       },
@@ -113,6 +113,7 @@ export const OrderingSection = ({ formData, setCost }) => {
           options: paymentsOptions,
           name: 'pay_system_id',
           id: 'pay_system_id',
+          physical_delivery_mkad_distance: '',
           value: paymentsOptions[0],
           selectHandler: (e) => {
             formPropsRef.current.setFieldValue(
@@ -124,7 +125,8 @@ export const OrderingSection = ({ formData, setCost }) => {
         }
       ],
       initialValues: {
-        pay_system_id: paymentsOptions[0]
+        pay_system_id: paymentsOptions[0],
+        physical_delivery_mkad_distance: ''
       },
       validationSchema: EMPTY_VALIDATION_SCHEMA
     }
@@ -132,15 +134,18 @@ export const OrderingSection = ({ formData, setCost }) => {
 
   const dispatch = useDispatch();
 
-  const [stageForm, setStageForm] = React.useState(1);
+  const [stageForm, setStageForm] = React.useState(0);
   const [sendData, setSendData] = React.useState({});
-  const deliveryParams = {
-    city: sendData?.physical_delivery_city,
-    street: sendData?.physical_delivery_street,
-    building: sendData?.physical_delivery_building,
-    apart: sendData?.physical_delivery_apartment
-  };
-
+  const [deliveryDistance, setDeliveryDistance] = React.useState(null);
+  const deliveryParams = [
+    sendData?.physical_delivery_city,
+    sendData?.physical_delivery_street,
+    sendData?.physical_delivery_building,
+    sendData?.physical_delivery_apartment
+  ];
+  React.useEffect(() => {
+    formPropsRef.current.setFieldValue('physical_delivery_mkad_distance', deliveryDistance);
+  }, [deliveryDistance]);
   const changeFormSteps = () => {
     const isErrors = Object.keys(formPropsRef.current.errors).length;
 
@@ -203,7 +208,13 @@ export const OrderingSection = ({ formData, setCost }) => {
                       return <ComponentName key={index} {...input} />;
                     })}
                   </div>
-                  {stageForm === 2 && <YandexDelivery deliveryParams={deliveryParams} />}
+                  {deliveryParams[0] && stageForm === 2 && (
+                    <YandexDelivery
+                      setCost={setCost}
+                      setDeliveryDistance={setDeliveryDistance}
+                      deliveryParams={deliveryParams}
+                    />
+                  )}
                   <button
                     type="button"
                     onClick={stageForm + 1 === steps.length ? purchaseOrder : changeFormSteps}

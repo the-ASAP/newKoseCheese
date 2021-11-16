@@ -15,9 +15,9 @@ const Purchase = () => {
   const userId = useSelector(userIdSelector);
   const { data: formData } = useSelector(orderFormDataSelector);
   const [cost, setCost] = React.useState('');
-  useEffect(() => {
-    console.log('ya', yandex);
-  }, []);
+  // useEffect(() => {
+  //   console.log('ya', yandex);
+  // }, []);
   useEffect(() => {
     // if (!formData?.products?.length) Router.push('/');
   }, [formData]);
