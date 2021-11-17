@@ -23,7 +23,7 @@ export const ControlButtons = ({ productProps }) => {
   };
 
   const cartHandler = () => {
-    if (productProps.status && !isItemInCart) {
+    if (productProps.status) {
       dispatch(reqAddToCart(productProps));
     } else if (!productProps.status) {
       dispatch(
@@ -32,14 +32,15 @@ export const ControlButtons = ({ productProps }) => {
           text: 'Товара временно нет в наличии'
         })
       );
-    } else if (isItemInCart) {
-      dispatch(
-        popUpChangeModalState({
-          visible: true,
-          text: 'Товар уже в корзине'
-        })
-      );
     }
+    // else if (isItemInCart) {
+    //   dispatch(
+    //     popUpChangeModalState({
+    //       visible: true,
+    //       text: 'Товар уже в корзине'
+    //     })
+    //   );
+    // }
   };
 
   return (
