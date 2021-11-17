@@ -9,48 +9,66 @@ import APIBitrix from 'api/APIBitrix';
 import { ModalBody } from '../ModalBody/ModalBody';
 import s from './Favorite.module.scss';
 
-const favorites = [
-  { title: 'сыры', id: 1 },
-  { title: 'молоко', id: 2 },
-  { title: 'десерты', id: 3 }
-];
-
 export const Favorite = ({ closeModal }) => {
   const { activeId, toggleActiveId } = useTabs(1, false);
-  const itemsInFavorite = useSelector(favoriteItemsSelector);
+  const itt = useSelector(favoriteItemsSelector);
+  const itemsInFavorite = [
+    ...itt,
+    {
+      addition: 'с томатами ',
+      additionClass: '',
+      category_id: '43',
+      category_name: 'Соусы',
+      code: '',
+      count: 0,
+      detailImage: '/upload/iblock/08d/nossqn8sdjc9q5juz6jyetd2stzbg4i6/DSC_8152.JPG',
+      id: '86',
+      name: 'Песто Россо',
+      parent_category_id: '9',
+      parent_category_name: 'тест',
+      previewImage: '/upload/iblock/08d/nossqn8sdjc9q5juz6jyetd2stzbg4i6/DSC_8152.JPG',
+      previewText: '',
+      price: '1.00',
+      quantity: 1,
+      sort: '500',
+      status: false
+    }
+  ];
   const [cats, setCats] = useState([]);
-  let data;
   useEffect(() => {
-    data = APIBitrix.get('products/categories/').then((res) => setCats(res));
+    APIBitrix.get('products/categories/').then((res) => {
+      if (res?.length) {
+        const arr = res.filter((category) =>
+          itemsInFavorite.find((item) => category.id === item.parent_category_id)
+        );
+        setCats(arr);
+      }
+    });
   }, []);
   useEffect(() => {
-    if (data?.length)
-      setCats(
-        data.filter((item) => {
-          for (let i = 0; i < itemsInFavorite.length; i += 1) {
-            return item.id === itemsInFavorite[i].id;
-          }
-        })
-      );
-    console.log(cats);
-  }, [data]);
-  console.log(cats);
+    if (cats?.length) toggleActiveId(cats[0].id);
+  }, [cats]);
   return (
     <ModalBody closeModal={closeModal} title="Избранное">
       <div className={s.subcategories}>
-        {favorites.map((favorite) => (
-          <SubcategoryButton
-            {...favorite}
-            key={favorite.id}
-            active={activeId}
-            toggleActive={toggleActiveId}
-          />
-        ))}
+        {cats.length > 0 &&
+          cats.map((favorite) => (
+            <SubcategoryButton
+              {...favorite}
+              title={favorite.name}
+              key={favorite.id}
+              active={activeId}
+              toggleActive={toggleActiveId}
+            />
+          ))}
       </div>
       <div>
-        {itemsInFavorite.map((item) => (
-          <Purchase inFavorite key={item.id} params={item} />
-        ))}
+        {itemsInFavorite.map(
+          (item) =>
+            activeId === item.parent_category_id && (
+              <Purchase inFavorite key={item.id} params={item} />
+            )
+        )}
       </div>
     </ModalBody>
   );

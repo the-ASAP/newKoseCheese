@@ -126,9 +126,13 @@ export const subscribeDays = [
 ];
 
 export const PROFILE_VALIDATION_SCHEMA = Yup.object().shape({
-  name: Yup.string().required('Введите имя').nullable(true),
-  surname: Yup.string().nullable(true),
-  email: Yup.string().email('Введите корректный e-mail').nullable(true)
+  phone: Yup.string()
+    .length(11, 'Номер телефона должен содержать 11 символов')
+    .required('Введите номер телефона'),
+  name: Yup.string().required('Введите имя'),
+  surname: Yup.string(),
+  comment: Yup.string(),
+  email: Yup.string().email('Введите корректный e-mail')
 });
 
 export const ADDRESS_VALIDATION_SCHEMA = Yup.object().shape({

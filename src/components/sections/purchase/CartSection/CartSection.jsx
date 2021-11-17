@@ -11,7 +11,6 @@ const isNubmer = (value) => typeof value === 'number';
 export const CartSection = ({ cost }) => {
   const itemsInCart = useSelector(cartItemsSelector);
   const totalPrice = useSelector(totalPriceSelector);
-  console.log('итог', cost);
   return (
     <>
       <div className={s.container}>

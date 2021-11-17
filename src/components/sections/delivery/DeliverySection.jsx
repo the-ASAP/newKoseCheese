@@ -36,7 +36,7 @@ export const DeliverySection = ({ deliveryTitles }) => {
         {deliveryContent &&
           deliveryContent.map((item, i) => (
             <div className={s.block} key={i}>
-              <span className={s.subtitle}>{item.previewText}</span>
+              <span className={s.subtitle} dangerouslySetInnerHTML={{ __html: item.previewText }} />
               {/* <ul className={s.list}> */}
               <div className={s.content} dangerouslySetInnerHTML={{ __html: item.detailText }} />
               {/* {item.listItems.map((li) => (

@@ -76,7 +76,7 @@
     padding: 0 5rem;
     color: $accent;
     letter-spacing: 0.54px;
-    &:hover {
+    &:not(:disabled):hover {
       border-color: $gen;
       background-color: $accent;
       color: $gen;
