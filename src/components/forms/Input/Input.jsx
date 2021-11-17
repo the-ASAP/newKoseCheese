@@ -33,7 +33,6 @@ export const Input = (props) => {
               {label}
             </label>
           )}
-          {console.log(meta)}
           <input
             autoFocus={!!autoFocus}
             id={id}
