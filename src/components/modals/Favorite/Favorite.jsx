@@ -11,29 +11,8 @@ import s from './Favorite.module.scss';
 
 export const Favorite = ({ closeModal }) => {
   const { activeId, toggleActiveId } = useTabs(1, false);
-  const itt = useSelector(favoriteItemsSelector);
-  const itemsInFavorite = [
-    ...itt,
-    {
-      addition: 'с томатами ',
-      additionClass: '',
-      category_id: '43',
-      category_name: 'Соусы',
-      code: '',
-      count: 0,
-      detailImage: '/upload/iblock/08d/nossqn8sdjc9q5juz6jyetd2stzbg4i6/DSC_8152.JPG',
-      id: '86',
-      name: 'Песто Россо',
-      parent_category_id: '9',
-      parent_category_name: 'тест',
-      previewImage: '/upload/iblock/08d/nossqn8sdjc9q5juz6jyetd2stzbg4i6/DSC_8152.JPG',
-      previewText: '',
-      price: '1.00',
-      quantity: 1,
-      sort: '500',
-      status: false
-    }
-  ];
+  const itemsInFavorite = useSelector(favoriteItemsSelector);
+
   const [cats, setCats] = useState([]);
   useEffect(() => {
     APIBitrix.get('products/categories/').then((res) => {
