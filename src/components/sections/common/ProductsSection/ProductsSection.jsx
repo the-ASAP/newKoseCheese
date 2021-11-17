@@ -41,7 +41,15 @@ export const ProductsSection = ({ products, categories }) => {
 
   React.useEffect(() => {
     activeCategory.subcategories && toggleSubcategoryId(activeCategory.subcategories[0].id);
-  }, [activeCategory]);
+  }, [activeCategory, activeCategoryId]);
+
+  React.useEffect(() => {
+    console.log();
+    const id = localStorage.getItem('activeCategory');
+    if (id) {
+      toggleActiveCategoryId(id);
+    }
+  }, []);
 
   React.useEffect(() => {
     const getProducts = async () => {
@@ -61,7 +69,10 @@ export const ProductsSection = ({ products, categories }) => {
     const thatCategory = categories.find((category) => category.name === name).id;
     toggleActiveCategoryId(thatCategory);
   };
-
+  const handleSelectCategory = (id) => {
+    toggleActiveCategoryId(id);
+    localStorage.setItem('activeCategory', id);
+  };
   const handleSetGoodsPagination = () => {
     setGoodsPage((prev) => ({ ...prev, currentPage: prev.currentPage + prev.perPage }));
   };
@@ -77,7 +88,7 @@ export const ProductsSection = ({ products, categories }) => {
                   title={name}
                   id={id}
                   active={activeCategoryId}
-                  toggleActive={toggleActiveCategoryId}
+                  toggleActive={handleSelectCategory}
                 />
               ))}
             </Tabs>
