@@ -85,3 +85,14 @@ https://ko-cheese-six.vercel.app/
 1. И systemctl start frontend.service
 1. Проверям что все запустилось нормально systemctl status frontend.service
 1. Готово.
+
+## Прочее
+Если не хватает оперативы
+1. fallocate -l 2G /swapfile
+1. chmod 600 /swapfile
+1. mkswap /swapfile
+1. swapon /swapfile
+
+Для удаления
+1. swapoff -v /swapfile
+1. rm /swapfile
