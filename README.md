@@ -69,8 +69,6 @@ https://ko-cheese-six.vercel.app/
         Description=Node.Js, Next.Js application
 
         [Service]
-        AmbientCapabilities=CAP_SYS_RAWIO
-        User=nobody
         WorkingDirectory=/app/frontend/
         Type=simple
         ExecStart=/usr/bin/npm start
