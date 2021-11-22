@@ -72,8 +72,8 @@ https://ko-cheese-six.vercel.app/
         WorkingDirectory=/app/frontend/
         Type=simple
         ExecStart=/usr/bin/npm start
-        #Restart=on-failure
-        #RestartSec=10
+        Restart=on-failure
+        RestartSec=10
 
         [Install]
         WantedBy=multi-user.target
