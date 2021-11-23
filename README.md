@@ -6,7 +6,7 @@ https://ko-cheese-six.vercel.app/
 
 # deploy
 ## Предварительная настройка
-1. Загрузить архив на VPS.
+1. Загрузить архив на VPS. (scp absolut/path root@45.67.59.150:/app/)
 1. В настройках битрикс активрировать node js.
 В меню настроек bitrix vm (bash /root/menu.sh) выбираем "9. Configure Push/RTC service for the pool" 
 потом "Install/Update NodeJS RTC service" и устанавливаем. (минут 5-10 дилтся установка).
