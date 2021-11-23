@@ -1,12 +1,12 @@
-import { createSlice } from "@reduxjs/toolkit";
-import { HYDRATE } from "next-redux-wrapper";
+import { createSlice } from '@reduxjs/toolkit';
+import { HYDRATE } from 'next-redux-wrapper';
 
 const initialState = {
   order: {}
 };
 
 export const returnOrderSlice = createSlice({
-  name: "returnOrder",
+  name: 'returnOrder',
   initialState,
   reducers: {
     addOrderToReturn(state, action) {
@@ -28,4 +28,3 @@ export const returnOrderSlice = createSlice({
 export const { addOrderToReturn } = returnOrderSlice.actions;
 
 export const returnOrderSelector = (state) => state.order;
-

@@ -16,6 +16,7 @@ export const DeliverySection = ({ deliveryTitles }) => {
     const { data: content } = await delivery.getDeliveryContent(activeCategory?.id);
     if (content) setDeliveryContent(content);
   };
+
   React.useEffect(() => {
     if (activeCategory) getContent();
   }, [activeCategory]);
@@ -37,12 +38,15 @@ export const DeliverySection = ({ deliveryTitles }) => {
           deliveryContent.map((item, i) => (
             <div className={s.block} key={i}>
               <span className={s.subtitle} dangerouslySetInnerHTML={{ __html: item.previewText }} />
-              {/* <ul className={s.list}> */}
               <div className={s.content} dangerouslySetInnerHTML={{ __html: item.detailText }} />
-              {/* {item.listItems.map((li) => (
-                <li className={s.item} key={li}>{li}</li>
-              ))} */}
-              {/* </ul> */}
+              <div className={s.content__imageWrap}>
+                {item.gallery &&
+                  item.gallery.map((imageSrc, j) => {
+                    // let host = 'https://co-ko.asap-lp.ru/';
+                    // host = host + imageSrc;
+                    return <img src={imageSrc} key={j} className={s.content__image} />;
+                  })}
+              </div>
             </div>
           ))}
       </div>

@@ -22,6 +22,10 @@
   font-size: 1.125rem;
 }
 .content {
+  font-size: 1.125rem;
+  line-height: 1.33;
+  color: #184240;
+
   & ul {
     margin-top: 1.875rem;
     list-style: circle;
@@ -33,6 +37,18 @@
         margin-top: 0;
       }
     }
+  }
+
+  &__imageWrap {
+    width: 100%;
+    position: relative;
+  }
+
+  &__image {
+    display: block;
+    margin-top: 1rem;
+    max-height: 8.75rem;
+    object-fit: contain;
   }
 }
 

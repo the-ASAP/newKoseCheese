@@ -8,6 +8,7 @@ export const BASE_URL = 'https://api.jsonbin.io/b/60f8295399892a4ae9a732dc/8';
 export const BASE_API_URL = 'https://co-ko.asap-lp.ru/api/';
 
 export const BASE_SITE_URL = 'https://co-ko.asap-lp.ru/';
+
 export const allStatus = {
   avaliable: {
     title: 'в наличии',
