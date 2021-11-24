@@ -62,17 +62,12 @@ export const ProfileReturn = () => {
 
   return (
     <>
-      {
-        isClientSide &&
+      {isClientSide && (
         <>
-          <ProfileSteps/>
-          <FormContainer
-            initialValues={initialValues}
-            submitHandler={submitHandler}
-          >
+          <ProfileSteps />
+          <FormContainer initialValues={initialValues} onSubmit={submitHandler}>
             {(formProps) => (
               <>
-
                 <h3 className={s.title}>Заявление на замену</h3>
                 <div className={s.container}>
                   <div className={s.block}>
@@ -81,71 +76,123 @@ export const ProfileReturn = () => {
                       placeholder=""
                       options={allOrders}
                       selectHandler={(e) => {
-                        formProps.setFieldValue("orderNumber", e.value);
+                        formProps.setFieldValue('orderNumber', e.value);
                         selectHandler(e);
-                      }
-                      }/>
-                    {
-                      curProducts.length > 0 &&
+                      }}
+                    />
+                    {curProducts.length > 0 && (
                       <DropdownCustom
                         label="*Выберите товар из списка"
                         placeholder=""
-                        options={curProducts.map(product => `${product.name}, ${product.count} шт.`)}
+                        options={curProducts.map(
+                          (product) => `${product.name}, ${product.count} шт.`
+                        )}
                         selectHandler={(e) => {
-                          formProps.setFieldValue("orderProduct", e.value);
-                        }
-                        }/>
-                    }
-                    <Input label="*Телефон" type="number" id="phone" name="phone"/>
-                    <Input label="*Имя" type="text" id="name" name="name"/>
-                    <Input label="Фамилия" type="text" id="surname" name="surname"/>
-                    <Input label="Е-mail" type="text" id="email" name="email"/>
+                          formProps.setFieldValue('orderProduct', e.value);
+                        }}
+                      />
+                    )}
+                    <Input label="*Телефон" type="number" id="phone" name="phone" />
+                    <Input label="*Имя" type="text" id="name" name="name" />
+                    <Input label="Фамилия" type="text" id="surname" name="surname" />
+                    <Input label="Е-mail" type="text" id="email" name="email" />
                     <DropdownCustom
                       label="*Причина замены"
                       placeholder="Выберите причину"
                       options={returnReasonOptions}
                       selectHandler={(e) => {
-                        formProps.setFieldValue("reason", e.value);
-                      }
-                      }
+                        formProps.setFieldValue('reason', e.value);
+                      }}
                     />
                     <div className={s.replace}>
                       <span className={s.subtitle}>Замена на</span>
                       <div className={s.onchange}>
-                        <Input id="product" name="replace" value="product" type="radio" additionClass="checkbox"/>
-                        <label htmlFor="product" className={s.label}>Товар</label>
+                        <Input
+                          id="product"
+                          name="replace"
+                          value="product"
+                          type="radio"
+                          additionClass="checkbox"
+                        />
+                        <label htmlFor="product" className={s.label}>
+                          Товар
+                        </label>
                       </div>
                       <div className={s.onchange}>
-                        <Input id="internal" name="replace" value="internal" type="radio" additionClass="checkbox"/>
-                        <label htmlFor="internal" className={s.label}>На внутренний счет</label>
+                        <Input
+                          id="internal"
+                          name="replace"
+                          value="internal"
+                          type="radio"
+                          additionClass="checkbox"
+                        />
+                        <label htmlFor="internal" className={s.label}>
+                          На внутренний счет
+                        </label>
                       </div>
                       <div className={s.onchange}>
-                        <Input id="card" name="replace" value="card" type="radio" additionClass="checkbox"/>
-                        <label htmlFor="card" className={s.label}>Деньги на карту</label>
+                        <Input
+                          id="card"
+                          name="replace"
+                          value="card"
+                          type="radio"
+                          additionClass="checkbox"
+                        />
+                        <label htmlFor="card" className={s.label}>
+                          Деньги на карту
+                        </label>
                       </div>
                     </div>
-                    <Input label="Номер карты" type="number" id="cardNumber" name="cardNumber"/>
-
+                    <Input label="Номер карты" type="number" id="cardNumber" name="cardNumber" />
                   </div>
                   <div className={s.block}>
                     <span className={s.subtitle}>*Добавить фото чека и продукта</span>
                     <div className={s.photos}>
-                      <InputPhoto id="photo1" name="photo1" className="replace" formProps={formProps}/>
-                      <InputPhoto id="photo2" name="photo2" className="replace" formProps={formProps}/>
-                      {
-                        (windowSize < 768 || windowSize > 1024)
-                        &&
-                        <InputPhoto id="photo3" name="photo3" className="replace" formProps={formProps}/>
-                      }
+                      <InputPhoto
+                        id="photo1"
+                        name="photo1"
+                        className="replace"
+                        formProps={formProps}
+                      />
+                      <InputPhoto
+                        id="photo2"
+                        name="photo2"
+                        className="replace"
+                        formProps={formProps}
+                      />
+                      {(windowSize < 768 || windowSize > 1024) && (
+                        <InputPhoto
+                          id="photo3"
+                          name="photo3"
+                          className="replace"
+                          formProps={formProps}
+                        />
+                      )}
                     </div>
                     <div className={s.replace}>
                       <div className={s.onchange}>
-                        <Input id="toCourier" name="return" value="toCourier" type="radio" additionClass="checkbox"/>
-                        <label htmlFor="toCourier" className={s.label}>Вернём товар курьеру</label>
+                        <Input
+                          id="toCourier"
+                          name="return"
+                          value="toCourier"
+                          type="radio"
+                          additionClass="checkbox"
+                        />
+                        <label htmlFor="toCourier" className={s.label}>
+                          Вернём товар курьеру
+                        </label>
                       </div>
                       <div className={s.onchange}>
-                        <Input id="toPoint" name="return" value="toPoint" type="radio" additionClass="checkbox"/>
-                        <label htmlFor="toPoint" className={s.label}>Вернём товар на точку продаж</label>
+                        <Input
+                          id="toPoint"
+                          name="return"
+                          value="toPoint"
+                          type="radio"
+                          additionClass="checkbox"
+                        />
+                        <label htmlFor="toPoint" className={s.label}>
+                          Вернём товар на точку продаж
+                        </label>
                       </div>
                     </div>
                     <DropdownCustom
@@ -153,17 +200,19 @@ export const ProfileReturn = () => {
                       placeholder="Выберите точку продаж"
                       options={salePoints}
                       selectHandler={(e) => {
-                        formProps.setFieldValue("point", e.value);
-                      }
-                      }
+                        formProps.setFieldValue('point', e.value);
+                      }}
                     />
                   </div>
                 </div>
-                <button type="submit" className={s.submit}>Отправить заявку</button>
+                <button type="submit" className={s.submit}>
+                  Отправить заявку
+                </button>
               </>
             )}
           </FormContainer>
-        </>}
+        </>
+      )}
     </>
   );
 };

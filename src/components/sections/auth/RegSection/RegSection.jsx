@@ -102,7 +102,7 @@ export const RegSection = () => {
         validateOnChange={false}
         validateOnBlur={false}
         className="loginForm"
-        submitHandler={(values) => {
+        onSubmit={(values) => {
           confirmField ? confirmHandler(formData, values) : regHandler(values);
         }
       >

@@ -26,7 +26,9 @@ export const NewTaste = (props) => {
     price,
     weight,
     category_id,
-    category_name
+    category_name,
+    status,
+    parent_category_id
   } = props;
   const cartProductProps = {
     id,
@@ -37,7 +39,10 @@ export const NewTaste = (props) => {
     weight,
     category_id,
     category_name,
-    countInCart: 1
+    countInCart: 1,
+    status,
+    parent_category_id,
+    quantity: 1
   };
   return (
     <div className={s.card}>
@@ -47,19 +52,6 @@ export const NewTaste = (props) => {
       <ControlButtons productProps={cartProductProps} />
       <div className={s.body}>
         <img src={BASE_SITE_URL + detailImage} alt={name} className={s.image} />
-        <div>
-          {/* TODO: SERGEY,  В НОВОМО МАКЕТЕ ЭТОГО НЕТ, ПОТОМ САМ УДАЛИШЬ, ЕСЛИ НЕ НАДО */}
-          {/* {!!style && (
-              <div className={s.style}>
-                <span className={s.country}>{style} style</span>
-                <img src={countryFlags[style]} alt={style} className={s.flag} />
-              </div>
-            )} */}
-        </div>
-        {/* TODO: SERGEY,  В НОВОМО МАКЕТЕ ЭТОГО НЕТ, ПОТОМ САМ УДАЛИШЬ, ЕСЛИ НЕ НАДО */}
-        {/* {!!tastes.length && (
-            <div className={s.well}>{tastes.map((taste, i) => allTastes[taste])}</div>
-          )} */}
       </div>
       <h3 className={s.name}>{name}</h3>
       <span className={s.addition}>{addition}</span>

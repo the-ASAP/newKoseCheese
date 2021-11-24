@@ -1,17 +1,20 @@
-import React from "react";
-import Link from "next/link";
-import { H1 } from "components/layout/H1/H1";
-import s from "./ProfileHeader.module.scss";
-import { useSelector } from "react-redux";
-import { userInfoSelector } from "redux/slices/user";
+import React from 'react';
+import Link from 'next/link';
+import { H1 } from 'components/layout/H1/H1';
+import s from './ProfileHeader.module.scss';
+import { useSelector } from 'react-redux';
+import { userInfoSelector } from 'redux/slices/user';
 
 export const ProfileHeader = () => {
   const userInfo = useSelector(userInfoSelector);
+  console.log(userInfo);
   return (
     <>
       <H1 additionClass="profile">Личный кабинет</H1>
       <header className={s.header}>
-        <h3 className={s.title}>Здравствуйте, <span>{userInfo.name}</span></h3>
+        <h3 className={s.title}>
+          Здравствуйте, <span>{userInfo?.name}</span>
+        </h3>
         <div className={s.row}>
           <div className={s.info}>
             <div className={s.field}>
@@ -40,4 +43,3 @@ export const ProfileHeader = () => {
     </>
   );
 };
-

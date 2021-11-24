@@ -1,24 +1,25 @@
-import { createSlice } from "@reduxjs/toolkit";
-import { HYDRATE } from "next-redux-wrapper";
+import { createSlice } from '@reduxjs/toolkit';
+import { HYDRATE } from 'next-redux-wrapper';
 
 const initialState = {
-  items: [],
+  items: []
 };
 
 export const favoriteSlice = createSlice({
-  name: "favorite",
+  name: 'favorite',
   initialState,
   reducers: {
     addToFavorite(state, action) {
-      if (!state.items.some(product => product.id === action.payload.id)) {
-        state.items.push(action.payload);
-      }
+      // if (!state.items.some((product) => product.id === action.payload.id)) {
+      //   state.items.push(action.payload);
+      // }
+      state.items.push(action.payload);
     },
     removeFromFavorite(state, action) {
-      state.items = state.items.filter(item => item.id !== action.payload.id);
+      state.items = state.items.filter((item) => item.id !== action.payload.id);
     },
     getFavorite(state, action) {
-      state.items = action.payload
+      state.items = action.payload;
     }
   },
   extraReducers: {
@@ -31,11 +32,6 @@ export const favoriteSlice = createSlice({
   }
 });
 
-export const {
-  addToFavorite,
-  removeFromFavorite,
-  getFavorite
-} = favoriteSlice.actions;
+export const { addToFavorite, removeFromFavorite, getFavorite } = favoriteSlice.actions;
 
 export const favoriteItemsSelector = (state) => state.favorite.items;
-

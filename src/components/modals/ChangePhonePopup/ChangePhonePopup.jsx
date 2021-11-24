@@ -64,7 +64,7 @@ export const ChangePhonePopup = () => {
           initialValues={{
             newPhone: ''
           }}
-          submitHandler={isConfirm ? confirmNewPhoneHandler : changePhoneHandler}
+          onSubmit={isConfirm ? confirmNewPhoneHandler : changePhoneHandler}
         >
           {() => (
             <>
