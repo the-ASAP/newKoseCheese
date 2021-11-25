@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 // import { ymaps, Map, Polygon, SearchControl } from 'react-yandex-maps';
 
+//TODO: Починить яндекс распределение
 const YandexDelivery = ({ deliveryParams, setCost, setDeliveryDistance }) => {
   const coords = [
     [55.882453, 37.726268],

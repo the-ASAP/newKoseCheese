@@ -1,43 +1,42 @@
-import React from "react";
-import { SearchIcon, CloseIcon } from "components/SVG/Icons";
-import Link from "next/link";
-import { useDebounce } from "hooks";
-import axios from "axios";
-import clsx from "clsx";
-import s from "./SearchPanel.module.scss";
-import { SearchLoader } from "../SearchLoader/SearchLoader";
-import { windowSize } from "../../../constants";
-
+import React from 'react';
+import { SearchIcon, CloseIcon } from 'components/SVG/Icons';
+import Link from 'next/link';
+import { useDebounce } from 'hooks';
+import axios from 'axios';
+import clsx from 'clsx';
+import s from './SearchPanel.module.scss';
+import { SearchLoader } from '../SearchLoader/SearchLoader';
+import { windowSize } from '../../../constants';
 
 const initialValue = {
-  search: ""
+  search: ''
 };
 
 const fakeResults = [
   {
-    url: "/",
-    name: "Камамбер козий",
+    url: '/',
+    name: 'Камамбер козий',
     weight: 210
   },
   {
-    url: "/",
-    name: "Сыр Бюш Де Шевр коровий с прованскими травами",
+    url: '/',
+    name: 'Сыр Бюш Де Шевр коровий с прованскими травами',
     weight: 210
   },
   {
-    url: "/",
-    name: "Камамбер козий",
+    url: '/',
+    name: 'Камамбер козий',
     weight: 210
   },
   {
-    url: "/",
-    name: "Сыр Бюш Де Шевр коровий с прованскими травами",
+    url: '/',
+    name: 'Сыр Бюш Де Шевр коровий с прованскими травами',
     weight: 210
   }
 ];
 
 export const SearchPanel = ({ setOpen, isPromo }) => {
-  const [searchTerm, setSearchTerm] = React.useState("");
+  const [searchTerm, setSearchTerm] = React.useState('');
 
   const [results, setResults] = React.useState([]);
   const [isSearching, setIsSearching] = React.useState(false);
@@ -46,20 +45,20 @@ export const SearchPanel = ({ setOpen, isPromo }) => {
 
   const wrapperRef = React.useRef(null);
 
-  const closePanelHandler = e => {
+  const closePanelHandler = (e) => {
     if (wrapperRef.current && !wrapperRef.current.contains(e.target)) {
       if (windowSize > 768) {
         setOpen(false);
       } else {
-        setSearchTerm("");
+        setSearchTerm('');
         setResults([]);
       }
     }
   };
 
   React.useEffect(() => {
-    document.addEventListener("click", closePanelHandler);
-    return () => document.removeEventListener("click", closePanelHandler);
+    document.addEventListener('click', closePanelHandler);
+    return () => document.removeEventListener('click', closePanelHandler);
   }, [wrapperRef]);
 
   React.useEffect(() => {
@@ -68,23 +67,25 @@ export const SearchPanel = ({ setOpen, isPromo }) => {
 
   React.useEffect(
     () => {
-
       // Убедиться что у нас есть значение (пользователь ввел что-то)
       if (debouncedSearchTerm) {
         // Выставить состояние isSearching
         // setIsSearching(true);
         // Сделать запрос к АПИ
-        axios.get(`https://jsonplaceholder.typicode.com/comments?postId=${searchTerm}`).then(res => {
+        axios.post(`http://co-ko.asap-lp.ru/api/search/`, { query: searchTerm }).then((res) => {
+          let { data } = res.data;
           // Выставить состояние в false, так-как запрос завершен
           setIsSearching(false);
           // Выставит состояние с результатом
-          if (res.data.length) {
-            setResults(res.data);
+          if (data.length) {
+            setResults(data);
           } else {
-            setResults([{
-              id: 1,
-              name: "К сожалению ничего не найдено"
-            }]);
+            setResults([
+              {
+                id: 1,
+                name: 'К сожалению ничего не найдено'
+              }
+            ]);
           }
         });
       } else {
@@ -98,40 +99,43 @@ export const SearchPanel = ({ setOpen, isPromo }) => {
     [debouncedSearchTerm]
   );
 
-
   return (
-    <div ref={wrapperRef}
-         className={clsx(s.item, searchTerm && s.itemOpen, !isPromo && windowSize > 768 && s.itemBorder)}>
-      <input autoFocus={windowSize > 768}
-             type="text" name="search"
-             className={s.input}
-             value={searchTerm}
-             onChange={e => setSearchTerm(e.target.value)}/>
-      <button
-        type="button"
-        className={s.icon}
-        onClick={() => setSearchTerm("")}>
-        {
-          searchTerm ?
-            <CloseIcon color={windowSize > 768 ? "#184240" : "#FFF3E7"}/>
-            :
-            <SearchIcon color={windowSize > 768 ? "#184240" : "#FFF3E7"}/>
-        }
+    <div
+      ref={wrapperRef}
+      className={clsx(
+        s.item,
+        searchTerm && s.itemOpen,
+        !isPromo && windowSize > 768 && s.itemBorder
+      )}
+    >
+      <input
+        autoFocus={windowSize > 768}
+        type="text"
+        name="search"
+        className={s.input}
+        value={searchTerm}
+        onChange={(e) => setSearchTerm(e.target.value)}
+      />
+      <button type="button" className={s.icon} onClick={() => setSearchTerm('')}>
+        {searchTerm ? (
+          <CloseIcon color={windowSize > 768 ? '#184240' : '#FFF3E7'} />
+        ) : (
+          <SearchIcon color={windowSize > 768 ? '#184240' : '#FFF3E7'} />
+        )}
       </button>
-      {
-        searchTerm &&
-
+      {searchTerm && (
         <div className={clsx(s.results, !isPromo && windowSize > 768 && s.resultsPromo)}>
-          {
-            isSearching ?
-              <SearchLoader/> :
-              results.map(({ id, name }) =>
-                <Link key={id} href={"/"}>
-                  <a className={s.link}>{id}:{name} 200 гр.</a>
-                </Link>)
-          }
+          {isSearching ? (
+            <SearchLoader />
+          ) : (
+            results.map(({ id, name }) => (
+              <Link key={id} href={`/products/${id}`}>
+                <a className={s.link}>{name}</a>
+              </Link>
+            ))
+          )}
         </div>
-      }
+      )}
     </div>
   );
 };

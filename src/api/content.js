@@ -1,5 +1,6 @@
 import API from './APIBitrix';
 
+// TODO: переименовать класс в APIDelivery
 class Delivery {
   getDeliveryItems = () => API.get(`content/info-page/categories/`);
 

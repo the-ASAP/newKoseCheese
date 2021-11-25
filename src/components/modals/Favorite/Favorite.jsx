@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React, { useState, useEffect } from 'react';
 
 import { SubcategoryButton } from 'components/buttons/SubcategoryButton/SubcategoryButton';
@@ -24,9 +25,11 @@ export const Favorite = ({ closeModal }) => {
       }
     });
   }, []);
+
   useEffect(() => {
     if (cats?.length) toggleActiveId(cats[0].id);
   }, [cats]);
+
   return (
     <ModalBody closeModal={closeModal} title="Избранное">
       <div className={s.subcategories}>

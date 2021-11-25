@@ -1,26 +1,26 @@
-import React from "react";
+import React from 'react';
 
-export const formatPhone = (phone) => phone.replace(/[^0-9.]/gim, "");
-export const stringFromArray = (array, field) => array.map(el => el[field]).join(", ");
+export const formatPhone = (phone) => phone.replace(/[^0-9.]/gim, '');
+export const stringFromArray = (array, field) => array.map((el) => el[field]).join(', ');
 export const useOutsideClicker = (ref, action) => {
   React.useEffect(() => {
-    const handleClickOutside = event => {
+    const handleClickOutside = (event) => {
       if (ref.current && !ref.current.contains(event.target)) {
         action(false);
       }
     };
 
-    document.addEventListener("mousedown", handleClickOutside);
+    document.addEventListener('mousedown', handleClickOutside);
     return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener('mousedown', handleClickOutside);
     };
   }, [ref]);
 };
 
 export const getCookie = (name) => {
-  const matches = document.cookie.match(new RegExp(
-    "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, "\\$1") + "=([^;]*)"
-  ));
+  const matches = document.cookie.match(
+    new RegExp('(?:^|; )' + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + '=([^;]*)')
+  );
   return matches ? decodeURIComponent(matches[1]) : undefined;
 };
 
@@ -34,4 +34,20 @@ export const getOffsetTop = () => {
   }
 
   return scrollTop;
+};
+
+export const addFavorite = (product) => {
+  if (!localStorage.getItem('itemsInFavorite')) {
+    localStorage.setItem('itemsInFavorite', JSON.stringify([product]));
+  } else {
+    let favorite = JSON.parse(localStorage.getItem('itemsInFavorite'));
+    if (!favorite.some((item) => item.id === product.id)) favorite.push(product);
+    localStorage.setItem('itemsInFavorite', JSON.stringify(favorite));
+  }
+};
+
+export const removeFavorite = (product) => {
+  let favorite = JSON.parse(localStorage.getItem('itemsInFavorite'));
+  favorite = favorite.filter((item) => item.id !== product.id);
+  localStorage.setItem('itemsInFavorite', JSON.stringify(favorite));
 };

@@ -1,4 +1,5 @@
-import React from 'react';
+// @ts-nocheck
+import React, { useEffect, useState } from 'react';
 
 import { Product } from 'components/Product/Product';
 import { SubcategoryButton } from 'components/buttons/SubcategoryButton/SubcategoryButton';
@@ -23,45 +24,44 @@ export const ProductsSection = ({ products, categories }) => {
     false
   );
 
-  const [isLoading, setLoading] = React.useState(false);
+  const [isLoading, setLoading] = useState(false);
 
-  const [activeCategory, setActiveCategory] = React.useState(categories[0]);
+  const [activeCategory, setActiveCategory] = useState(categories[0]);
 
-  const [activeProducts, setActiveProducts] = React.useState(products);
+  const [activeProducts, setActiveProducts] = useState(products);
 
-  const [goodsPagination, setGoodsPage] = React.useState({
+  const [goodsPagination, setGoodsPage] = useState({
     perPage: 4,
     currentPage: 4,
     limit: 4
   });
 
-  React.useEffect(() => {
-    setActiveCategory(categories.find(({ id }) => id === activeCategoryId));
-  }, [activeCategoryId]);
-
-  React.useEffect(() => {
-    activeCategory.subcategories && toggleSubcategoryId(activeCategory.subcategories[0].id);
-  }, [activeCategory, activeCategoryId]);
-
-  React.useEffect(() => {
-    console.log();
+  useEffect(() => {
     const id = localStorage.getItem('activeCategory');
     if (id) {
       toggleActiveCategoryId(id);
     }
   }, []);
 
-  React.useEffect(() => {
-    const getProducts = async () => {
-      setLoading(true);
-      const requestId = activeCategory.subcategories ? activeSubcategoryId : activeCategory.id;
-      const requestProducts = await APIBitrix.get(`products/collection/${requestId}`);
-      setActiveProducts(requestProducts);
-      setLoading(false);
-      setGoodsPage((prev) => ({ ...prev, limit: requestProducts.length }));
-    };
-    getProducts();
+  useEffect(() => {
+    setActiveCategory(categories.find(({ id }) => id === activeCategoryId));
+  }, [activeCategoryId]);
+
+  useEffect(async () => {
+    activeCategory.subcategories && toggleSubcategoryId(activeCategory.subcategories[0].id);
+    console.log('its work');
+    setLoading(true);
+
+    const requestId = activeCategory.subcategories ? activeSubcategoryId : activeCategory.id;
+    const requestProducts = await APIBitrix.get(`products/collection/${requestId}`);
+
+    setActiveProducts(requestProducts);
   }, [activeCategory, activeSubcategoryId]);
+
+  useEffect(() => {
+    setLoading(false);
+    setGoodsPage((prev) => ({ ...prev, limit: activeProducts.length }));
+  }, [activeProducts]);
 
   const isClientSide = useClientSide();
 
@@ -69,10 +69,12 @@ export const ProductsSection = ({ products, categories }) => {
     const thatCategory = categories.find((category) => category.name === name).id;
     toggleActiveCategoryId(thatCategory);
   };
+
   const handleSelectCategory = (id) => {
     toggleActiveCategoryId(id);
     localStorage.setItem('activeCategory', id);
   };
+
   const handleSetGoodsPagination = () => {
     setGoodsPage((prev) => ({ ...prev, currentPage: prev.currentPage + prev.perPage }));
   };
@@ -120,11 +122,14 @@ export const ProductsSection = ({ products, categories }) => {
         ) : (
           activeProducts.length > 0 && (
             <div className={s.body}>
-              {activeProducts.map((product, index) => {
+              {/* {activeProducts.map((product, index) => {
                 if (index < goodsPagination.currentPage)
                   return <Product key={product.id} {...product} />;
                 return false;
-              })}
+              })} */}
+              {activeProducts.map((product, index) => (
+                <Product key={product.id} {...product} />
+              ))}
             </div>
           )
         )}

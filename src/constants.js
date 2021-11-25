@@ -24,6 +24,8 @@ export const allStatus = {
   }
 };
 
+// svg иконки в объекте
+// TODO: Переписать через camelCase потом
 export const allTastes = {
   'red-wine': <RedWine border={'accent'} key={0} />,
   'white-wine': <WhiteWine border={'accent'} key={1} />,

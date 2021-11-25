@@ -74,7 +74,9 @@ export const Header = ({ router }) => {
                   </Link>
                 )
               )}
-              {isLogged ? (
+
+              {/* Временно блок скрыт */}
+              {/* {isLogged ? (
                 <Link href="/profile">
                   <a className={clsx(s.link, isPromoPage && s.link_accent)}>Профиль</a>
                 </Link>
@@ -82,7 +84,7 @@ export const Header = ({ router }) => {
                 <Link href="/login">
                   <a className={clsx(s.link, isPromoPage && s.link_accent)}>Войти</a>
                 </Link>
-              )}
+              )} */}
             </nav>
             <div className={s.control}>
               {isClientSide && windowSize > 768 && (

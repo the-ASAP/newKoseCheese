@@ -2,5 +2,8 @@ export const instargam = 'instagram.com/koico.ru';
 export const tel = '8 (800) 250-58-24';
 export const email = 'sales@koico.ru';
 export const telegram = 'https://t.me/KoiCoCompany';
-export const adress = `Смоленская область, Кардымовский район, село Каменка ООО "Красная горка", ОГРН
-1136733008763, ИНН 6722041039`;
+// export const adress = `Смоленская область, Кардымовский район, село Каменка ООО "Красная горка", ОГРН
+// 1136733008763, ИНН 6722041039`;
+
+// Новые реквизиты
+export const adress = `СМОЛЕНСКАЯ ОБЛАСТЬ, Р-Н ДОРОГОБУЖСКИЙ, ПОСЕЛОК ГОРОДСКОГО ТИПА, ПРОСПЕКТ ХИМИКОВ, Д. 26, КВ./ОФ. 2, ИНН 670402158782`;

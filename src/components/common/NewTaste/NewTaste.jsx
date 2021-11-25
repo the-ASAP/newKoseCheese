@@ -5,16 +5,16 @@ import { ControlButtons } from 'components/buttons/ControlButtons/ControlButtons
 import { BASE_SITE_URL } from 'constants.js';
 import s from './NewTaste.module.scss';
 
-const allTastes = {
-  'red-wine': <RedWine key={0} />,
-  'white-wine': <WhiteWine key={1} />,
-  vegetables: <Vegetables key={2} />,
-  fruits: <Fruits key={3} />
-};
-const countryFlags = {
-  french: '/static/img/icons/french-flag.jpg',
-  russian: '/static/img/icons/rus-flag.jpg'
-};
+// const allTastes = {
+//   'red-wine': <RedWine key={0} />,
+//   'white-wine': <WhiteWine key={1} />,
+//   vegetables: <Vegetables key={2} />,
+//   fruits: <Fruits key={3} />
+// };
+// const countryFlags = {
+//   french: '/static/img/icons/french-flag.jpg',
+//   russian: '/static/img/icons/rus-flag.jpg'
+// };
 
 export const NewTaste = (props) => {
   const {

@@ -1,13 +1,13 @@
-import React from "react";
+import React, { useState, useEffect } from 'react';
 
 export const useModal = (init = false, stopScroll = true) => {
-  const [isShowed, setIsShowed] = React.useState(init);
+  const [isShowed, setIsShowed] = useState(init);
 
   const hideModal = () => setIsShowed(false);
   const showModal = () => setIsShowed(true);
 
   // eslint-disable-next-line consistent-return
-  // React.useEffect(() => {
+  //useEffect(() => {
   //   if (stopScroll) {
   //     document.body.style.overflow = isShowed ? "hidden" : "unset";
   //     document.addEventListener("keydown", (e) => {
@@ -22,9 +22,8 @@ export const useModal = (init = false, stopScroll = true) => {
   return { isShowed, hideModal, showModal };
 };
 
-
 export const useTabs = (init = null, isRemovable = true) => {
-  const [activeId, setActiveId] = React.useState(init);
+  const [activeId, setActiveId] = useState(init);
 
   const toggleActiveId = (id) => {
     setActiveId(id);
@@ -34,19 +33,21 @@ export const useTabs = (init = null, isRemovable = true) => {
   return { activeId, setActiveId, toggleActiveId };
 };
 
+// TODO: рендер элемента только после загрузки страницы? зачем это нужно?
 export const useClientSide = () => {
-  const [isRender, setIsRender] = React.useState(false);
-  React.useEffect(() => {
+  const [isRender, setIsRender] = useState(false);
+  useEffect(() => {
     setIsRender(true);
   }, []);
   return isRender;
 };
 
+// При печатании пользователем работает стандартная задержка
 export const useDebounce = (value, delay) => {
   // Состояние и сеттер для отложенного значения
-  const [debouncedValue, setDebouncedValue] = React.useState(value);
+  const [debouncedValue, setDebouncedValue] = useState(value);
 
-  React.useEffect(
+  useEffect(
     () => {
       // Выставить debouncedValue равным value (переданное значение)
       // после заданной задержки
@@ -74,4 +75,4 @@ export const useDebounce = (value, delay) => {
   );
 
   return debouncedValue;
-}
+};

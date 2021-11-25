@@ -1,5 +1,6 @@
-import API from './APIService'
+import API from './APIService';
 
+// TODO: Пока что понятия не имею, что он делает
 class FarmAPI {
   getFarmCategories = () => API.get('farmCategories');
 

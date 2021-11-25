@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Head from 'next/head';
 
 import { PromoSection } from 'components/sections/index/PromoSection/PromoSection';
@@ -17,7 +17,9 @@ import { PartnersSection } from 'components/sections/index/PartnersSection/Partn
 import APIBitrix from 'api/APIBitrix';
 import { getCookie } from 'functions';
 import MockAPI from 'api/MockAPI';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { favoriteItemsSelector } from 'redux/slices/favorite';
+import { addToFavorite } from 'redux/slices/favorite';
 import { successPurchasePopupChangeState } from 'redux/slices/modals';
 
 const cookiesModalProperties = {
@@ -33,14 +35,23 @@ const cookiesModalProperties = {
 const Index = ({ promoContent, discountProduct, categories, posts, newProducts }) => {
   const cookiesModal = useModal(false, false);
   const dispatch = useDispatch();
-  React.useEffect(() => {
+  const itemsFavorite = useSelector(favoriteItemsSelector);
+
+  useEffect(() => {
     setTimeout(() => {
       if (!getCookie('hideCookie')) {
         cookiesModal.showModal();
       }
+
+      let favorite = JSON.parse(localStorage.getItem('itemsInFavorite'));
+
+      if (!itemsFavorite.length && localStorage.getItem('itemsInFavorite')) {
+        dispatch(addToFavorite(favorite));
+      }
     }, 1000);
   }, []);
-  React.useEffect(() => {
+
+  useEffect(() => {
     if (window && window.location?.search && window.location.search.includes('bxOrderId')) {
       // убрал текст из модалки временно
       dispatch(
@@ -52,6 +63,7 @@ const Index = ({ promoContent, discountProduct, categories, posts, newProducts }
       );
     }
   }, []);
+
   return (
     <>
       <Head>

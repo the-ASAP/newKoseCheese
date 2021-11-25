@@ -1,4 +1,4 @@
-@import "/src/styles/root";
+@import '/src/styles/root';
 
 .container {
   position: absolute;
@@ -21,7 +21,9 @@
   &:first-child {
     margin-right: 0.6875rem;
   }
-  &:hover {
+  &:hover,
+  &:active,
+  &:focus {
     background-color: $gen;
     color: $accent;
     //path {
@@ -36,7 +38,9 @@
   }
 }
 .cart {
-  &:hover {
+  &:hover,
+  &:active,
+  &:focus {
     path,
     circle {
       stroke: $accent;
@@ -45,9 +49,24 @@
 }
 
 .favorite {
-  &:hover {
+  &:hover,
+  &:active,
+  &:focus {
     path {
       fill: $accent;
     }
+  }
+}
+
+.clickedFav {
+  path {
+    fill: $accent;
+  }
+}
+
+.clickedPur {
+  path,
+  circle {
+    stroke: $accent;
   }
 }
