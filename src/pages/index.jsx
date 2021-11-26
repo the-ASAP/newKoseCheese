@@ -32,7 +32,7 @@ const cookiesModalProperties = {
     containerClass: 'cookiesContainer'
   }
 };
-const Index = ({ promoContent, discountProduct, categories, posts, newProducts }) => {
+const Index = ({ promoContent, discountProduct, categories, posts, newProducts, seo }) => {
   const cookiesModal = useModal(false, false);
   const dispatch = useDispatch();
   const itemsFavorite = useSelector(favoriteItemsSelector);
@@ -67,7 +67,9 @@ const Index = ({ promoContent, discountProduct, categories, posts, newProducts }
   return (
     <>
       <Head>
-        <title>Главная</title>
+        <meta name="keywords" content={seo?.meta_keywords || `KO&CO`} />
+        <meta name="description" content={seo?.meta_description || `KO&CO`} />
+        <title>{seo?.meta_title || `Главная страница`}</title>
       </Head>
       <PromoSection {...promoContent} />
       <NewTastesSection newProducts={newProducts} />
@@ -97,6 +99,7 @@ export const getServerSideProps = async () => {
   const categories = await APIBitrix.get('products/categories/').then((res) => res);
   const newProducts = await APIBitrix.get('products/slider/').then((res) => res.products);
   const posts = await APIBitrix.get(`articles/collection/`);
+  const seo = await APIBitrix.get(`seo/main-page/`).then((res) => res);
   const { discountProduct } = await MockAPI.getData();
-  return { props: { discountProduct, categories, posts, newProducts, promoContent } };
+  return { props: { discountProduct, categories, posts, newProducts, promoContent, seo } };
 };

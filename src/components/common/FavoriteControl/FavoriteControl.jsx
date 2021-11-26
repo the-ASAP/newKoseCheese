@@ -18,8 +18,8 @@ export const FavoriteControl = ({ product }) => {
   const addToCartHandler = () => {
     if (product.status && !isItemInCart) {
       dispatch(reqAddToCart({ ...product, quantity: 1 }));
-      dispatch(closeAllModals());
-      dispatch(cartChangeModalState(true));
+      // dispatch(closeAllModals());
+      // dispatch(cartChangeModalState(true));
     } else if (!product.status) {
       alert('Товара временно нет в наличии');
     } else if (isItemInCart) {

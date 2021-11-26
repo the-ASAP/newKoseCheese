@@ -41,7 +41,9 @@ export const Product = (props) => {
         <h3 className={s.name}>{name}</h3>
         {addition && <span className={s.addition}>{addition}</span>}
         <div className={s.info}>
-          <div className={s.well}>{tastes?.length && tastes.map((taste) => allTastes[taste])}</div>
+          <div className={s.well}>
+            {tastes?.length ? tastes.map((taste) => allTastes[taste]) : ''}
+          </div>
           <span className={s.weight}>{weight} г.</span>
         </div>
         <h3 className={s.price}>{parseInt(price, 10)} руб.</h3>

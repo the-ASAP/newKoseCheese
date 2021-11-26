@@ -21,52 +21,41 @@
   &:first-child {
     margin-right: 0.6875rem;
   }
-  &:hover,
-  &:active,
-  &:focus {
-    background-color: $gen;
-    color: $accent;
-    //path {
-    //  stroke: $accent;
-    //}
-    //path:first-child {
-    //  fill:$accent;
-    //}
-    //rect {
-    //  stroke: $accent;
-    //}
-  }
-}
-.cart {
-  &:hover,
-  &:active,
-  &:focus {
-    path,
-    circle {
-      stroke: $accent;
-    }
-  }
+  // &:active,
+  // &:focus {
+  //   background-color: $gen;
+  //   color: $accent;
+  // }
 }
 
-.favorite {
-  &:hover,
-  &:active,
-  &:focus {
-    path {
-      fill: $accent;
-    }
-  }
-}
-
-.clickedFav {
+.favClicked {
+  background-color: $gen;
+  color: $accent;
   path {
     fill: $accent;
   }
 }
-
-.clickedPur {
+.cartClicked {
+  background-color: $gen;
+  color: $accent;
   path,
   circle {
     stroke: $accent;
   }
 }
+// .cart {
+//   &:active,
+//   &:focus {
+//     path,
+//     circle {
+//       stroke: $accent;
+//     }
+//   }
+// }
+
+// .favorite {
+//   &:active,
+//   &:focus {
+//
+//   }
+// }

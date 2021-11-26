@@ -1,4 +1,5 @@
-import React from 'react';
+// @ts-nocheck
+import React, { useState, useEffect, useRef } from 'react';
 import clsx from 'clsx';
 import Link from 'next/link';
 import {
@@ -12,10 +13,12 @@ import { useClientSide } from 'hooks.js';
 import { MainLogo } from 'components/SVG/MainLogo';
 
 import { Wrapper } from 'components/layout/Wrapper/Wrapper';
-import { FavoriteIcon, CartIcon, SearchIcon } from 'components/SVG/Icons';
+import { FavoriteIcon, SearchIcon } from 'components/SVG/Icons';
 import { useDispatch, useSelector } from 'react-redux';
 import { SearchPanel } from 'components/common/SearchPanel/SearchPanel';
 import { isLoggedSelector } from 'redux/slices/user';
+import { CartButton } from 'components/buttons/CartButton/CartButton';
+
 import s from './Header.module.scss';
 
 const headerLinks = [
@@ -37,11 +40,6 @@ export const Header = ({ router }) => {
     dispatch(favoriteChangeModalState(true));
   };
 
-  const cartModalHandler = () => {
-    dispatch(cartChangeModalState(true));
-    dispatch(menuChangeModalState(false));
-  };
-
   const menuModalHandler = (value) => {
     dispatch(menuChangeModalState(value));
   };
@@ -52,25 +50,48 @@ export const Header = ({ router }) => {
 
   const isPromoPage = router.pathname === '/';
   const isClientSide = useClientSide();
+
+  const [headerColors, setHeaderColors] = useState(false);
+  const scroll = () => {
+    if (window.scrollY > 672) setHeaderColors(true);
+    else setHeaderColors(false);
+  };
+
+  useEffect(() => {
+    window.addEventListener('scroll', scroll);
+    return () => window.removeEventListener('scroll', scroll);
+  }, []);
+
   return (
     <>
-      <header className={clsx(s.header, menuModalValue && s.menuOpen)}>
+      <header
+        className={clsx(
+          s.header,
+          isPromoPage && headerColors && s.newColor,
+          menuModalValue && s.menuOpen
+        )}
+      >
         <Wrapper>
-          <div className={clsx(s.container, isPromoPage || menuModalValue ? s.border_accent : '')}>
+          <div className={clsx(s.container, isPromoPage && !headerColors && s.border_accent)}>
             <nav className={s.nav}>
               {headerLinks.map((el, i) =>
                 el.logo ? (
                   <Link href="/" key={i}>
                     <a
                       onClick={() => menuModalHandler(false)}
-                      className={clsx(s.logo, isPromoPage || menuModalValue ? s.logo_accent : '')}
+                      className={clsx(
+                        s.logo,
+                        (isPromoPage || menuModalValue) && !headerColors ? s.logo_accent : ''
+                      )}
                     >
                       <MainLogo />
                     </a>
                   </Link>
                 ) : (
                   <Link href={el.link} key={i}>
-                    <a className={clsx(s.link, isPromoPage && s.link_accent)}>{el.title}</a>
+                    <a className={clsx(s.link, isPromoPage && !headerColors && s.link_accent)}>
+                      {el.title}
+                    </a>
                   </Link>
                 )
               )}
@@ -94,29 +115,27 @@ export const Header = ({ router }) => {
                   )}
                   <button
                     type="button"
-                    className={clsx(s.button, s.search, isPromoPage && s.button_accent)}
+                    className={clsx(
+                      s.button,
+                      s.search,
+                      isPromoPage && !headerColors && s.button_accent
+                    )}
                     onClick={() => searchPanelHandler(!isSearchOpen)}
                   >
                     <SearchIcon />
                   </button>
                   <button
                     type="button"
-                    className={clsx(s.button, s.favorite, isPromoPage && s.button_accent)}
+                    className={clsx(
+                      s.button,
+                      s.favorite,
+                      isPromoPage && !headerColors && s.button_accent
+                    )}
                     onClick={favoriteModalHandler}
                   >
                     <FavoriteIcon />
                   </button>
-                  <button
-                    type="button"
-                    className={clsx(
-                      s.button,
-                      s.cart,
-                      (isPromoPage || menuModalValue) && s.button_accent
-                    )}
-                    onClick={cartModalHandler}
-                  >
-                    <CartIcon />
-                  </button>
+                  <CartButton router={router} headerColors={headerColors} />
                 </>
               )}
             </div>

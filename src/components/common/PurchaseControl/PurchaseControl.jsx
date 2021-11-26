@@ -48,7 +48,7 @@ export const PurchaseControl = ({ product, inCart, ...other }) => {
     if (quantity > 1) {
       await dispatch(reqDecProductCount({ ...productSelector, quantity }));
       setQuantity(quantity - 1);
-    }
+    } else removeHandler();
   };
 
   const incHandlerInCart = async () => {
@@ -78,7 +78,8 @@ export const PurchaseControl = ({ product, inCart, ...other }) => {
   };
 
   return (
-    <div {...other}>
+    // <div {...other}>
+    <div>
       <div className={clsx(s.container)}>
         <div className={s.counter}>
           <button

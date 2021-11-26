@@ -12,7 +12,7 @@ import s from './Cart.module.scss';
 export const Cart = ({ closeModal }) => {
   const discountModal = useModal(true);
   const itemsInCart = useSelector(cartItemsSelector);
-  console.log('123', itemsInCart);
+
   return (
     <ModalBody closeModal={closeModal} title="Корзина">
       {/* TODO: СКИДКА НА ТОВАР  */}
