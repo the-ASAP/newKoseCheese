@@ -3,7 +3,7 @@ import Head from 'next/head';
 
 import { PromoSection } from 'components/sections/index/PromoSection/PromoSection';
 import { NewTastesSection } from 'components/sections/common/NewTastesSection/NewTastesSection';
-import { ProductsSection } from 'components/sections/common/ProductsSection/ProductsSection';
+import { NewProductsSection } from 'components/sections/common/ProductsSection/newProductsSection';
 import { DiscountSection } from 'components/sections/common/DiscountSection/DiscountSection';
 import { RecipesSliderSection } from 'components/sections/common/RecipesSliderSection/RecipesSliderSection';
 import { TelegramPromoSection } from 'components/sections/index/TelegramPromoSection/TelegramPromoSection';
@@ -71,7 +71,7 @@ const Index = ({ promoContent, discountProduct, categories, posts, newProducts }
       </Head>
       <PromoSection {...promoContent} />
       <NewTastesSection newProducts={newProducts} />
-      <ProductsSection products={[]} categories={categories} />
+      <NewProductsSection products={[]} categories={categories} />
       <DiscountSection {...discountProduct} />
       <RecipesSliderSection recipes={posts} title="Рецепты" />
       <TelegramPromoSection />

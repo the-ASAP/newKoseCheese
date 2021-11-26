@@ -49,7 +49,7 @@ export const ProductsSection = ({ products, categories }) => {
 
   useEffect(async () => {
     activeCategory.subcategories && toggleSubcategoryId(activeCategory.subcategories[0].id);
-    console.log('its work');
+
     setLoading(true);
 
     const requestId = activeCategory.subcategories ? activeSubcategoryId : activeCategory.id;
