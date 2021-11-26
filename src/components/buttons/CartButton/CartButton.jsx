@@ -7,15 +7,13 @@ import { cartItemsSelector } from 'redux/slices/cart';
 
 import s from './CartButton.module.scss';
 
-export const CartButton = ({ router, headerColors }) => {
+export const CartButton = ({ router, headerColors, isPromoPage }) => {
   const dispatch = useDispatch();
   const cartModalHandler = () => {
     dispatch(cartChangeModalState(true));
     dispatch(menuChangeModalState(false));
   };
   const menuModalValue = useSelector(menuModalSelector);
-  // const isPromoPage = router.pathname === '/';
-  const isPromoPage = true;
   const itemsInCart = useSelector(cartItemsSelector);
 
   const [count, setCount] = useState(0);

@@ -52,10 +52,10 @@ export const Header = ({ router }) => {
   const isClientSide = useClientSide();
 
   const [headerColors, setHeaderColors] = useState(false);
-  const scroll = () => {
-    if (window.scrollY > 672) setHeaderColors(true);
-    else setHeaderColors(false);
-  };
+  // const scroll = () => {
+  //   if (window.scrollY > 672) setHeaderColors(true);
+  //   else setHeaderColors(false);
+  // };
 
   useEffect(() => {
     window.addEventListener('scroll', scroll);
@@ -72,7 +72,13 @@ export const Header = ({ router }) => {
         )}
       >
         <Wrapper>
-          <div className={clsx(s.container, isPromoPage && !headerColors && s.border_accent)}>
+          <div
+            className={clsx(
+              s.container,
+              isPromoPage && !headerColors && s.border_accent,
+              isPromoPage && s.positionFixed
+            )}
+          >
             <nav className={s.nav}>
               {headerLinks.map((el, i) =>
                 el.logo ? (
@@ -135,7 +141,11 @@ export const Header = ({ router }) => {
                   >
                     <FavoriteIcon />
                   </button>
-                  <CartButton router={router} headerColors={headerColors} />
+                  <CartButton
+                    router={router}
+                    headerColors={headerColors}
+                    isPromoPage={isPromoPage}
+                  />
                 </>
               )}
             </div>
