@@ -1,5 +1,5 @@
-@import "/src/styles/mixins.scss";
-@import "/src/styles/root.scss";
+@import '/src/styles/mixins.scss';
+@import '/src/styles/root.scss';
 
 .post {
   max-width: 100%;
@@ -16,7 +16,6 @@
   text-transform: none;
   font-size: 1.125rem;
   font-weight: 500;
-
 }
 
 .date {
@@ -34,6 +33,11 @@
   font-size: 0.875rem;
   text-transform: none;
   letter-spacing: 0.5px;
+
+  -webkit-line-clamp: 4; /* Число отображаемых строк */
+  display: -webkit-box; /* Включаем флексбоксы */
+  -webkit-box-orient: vertical; /* Вертикальная ориентация */
+  overflow: hidden; /* Обрезаем всё за пределами блока */
 }
 
 @media (max-width: $landscape) {

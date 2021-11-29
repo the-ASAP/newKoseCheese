@@ -7,9 +7,11 @@ export async function InstagramAPI() {
   });
 
   // eslint-disable-next-line no-underscore-dangle
+  // IGQVJWVFNINmtqcGRQZAFZAMU1dObW9GcHRjUmRmeGprYWEtM2xKS3dXdGhBTTRFQ2k0MnNURW1LVERBbWhVWk15T1VnZAGFvTGZAwZA1lrX00tVTh5YWNDZAHRFLXY0Y2xqUzYwRlZAhX0wwalRocHNkX3dYVQZDZD
   const _token =
     localStorage.getItem('instagramToken') ||
-    'IGQVJVX1o0dG5oUWZAuNDVuT2FhbkdnbVk0c2Vyc0VCZATJoQkFoRm83cmFwb3ZA0a20wNm5yd0ZA4ekxBdlhJYXdRcWF5LTdDbDVjX1hMOUdnMVlXQWtNQks3aXZA6em1BRnBOc1pjbVpNUEVEaldONE5JegZDZD';
+    'IGQVJWVFNINmtqcGRQZAFZAMU1dObW9GcHRjUmRmeGprYWEtM2xKS3dXdGhBTTRFQ2k0MnNURW1LVERBbWhVWk15T1VnZAGFvTGZAwZA1lrX00tVTh5YWNDZAHRFLXY0Y2xqUzYwRlZAhX0wwalRocHNkX3dYVQZDZD';
+  // 'IGQVJVX1o0dG5oUWZAuNDVuT2FhbkdnbVk0c2Vyc0VCZATJoQkFoRm83cmFwb3ZA0a20wNm5yd0ZA4ekxBdlhJYXdRcWF5LTdDbDVjX1hMOUdnMVlXQWtNQks3aXZA6em1BRnBOc1pjbVpNUEVEaldONE5JegZDZD';
   const {
     // eslint-disable-next-line camelcase
     data: { access_token }

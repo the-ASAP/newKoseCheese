@@ -6,7 +6,7 @@ export const Instagram = ({ permalink, media_url, timestamp, caption, thumbnail_
   <a href={permalink} target="_blank" className={s.post} rel="noreferrer">
     <div className={s.header}>
       <div className={s.info}>
-        <span className={s.user}>{instagram}</span>
+        <span className={s.user}>koico.ru</span>
         <span className={s.date}>{timestamp.slice(0, 10)}</span>
       </div>
       <span className={s.icon}>

@@ -52,10 +52,10 @@ export const Header = ({ router }) => {
   const isClientSide = useClientSide();
 
   const [headerColors, setHeaderColors] = useState(false);
-  // const scroll = () => {
-  //   if (window.scrollY > 672) setHeaderColors(true);
-  //   else setHeaderColors(false);
-  // };
+  const scroll = () => {
+    if (window.scrollY > 672) setHeaderColors(true);
+    else setHeaderColors(false);
+  };
 
   useEffect(() => {
     window.addEventListener('scroll', scroll);
@@ -67,6 +67,7 @@ export const Header = ({ router }) => {
       <header
         className={clsx(
           s.header,
+          isPromoPage && s.positionFixed,
           isPromoPage && headerColors && s.newColor,
           menuModalValue && s.menuOpen
         )}

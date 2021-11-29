@@ -1,5 +1,6 @@
 export const instagram = 'https://instagram.com/koico.ru';
-export const tel = '8 (800) 250-58-24';
+// export const tel = '8 (800) 250-58-24';
+export const tel = '+7 (495) 260 11 12';
 export const email = 'sales@koico.ru';
 export const telegram = 'https://t.me/KoiCoCompany';
 // export const adress = `Смоленская область, Кардымовский район, село Каменка ООО "Красная горка", ОГРН
