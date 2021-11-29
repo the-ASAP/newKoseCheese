@@ -1,5 +1,5 @@
-@import "/src/styles/root";
-@import "/src/styles/mixins";
+@import '/src/styles/root';
+@import '/src/styles/mixins';
 
 .modalBox {
   position: fixed;
@@ -7,11 +7,11 @@
   left: 0;
   width: 100vw;
   height: 100vh;
-  overflow: hidden;
+  overflow-y: hidden;
   z-index: 9;
   @extend %flexbox;
   justify-content: center;
-  background-color: rgba(0, 0, 0, .3);
+  background-color: rgba(0, 0, 0, 0.3);
 }
 
 .modalContainer {

@@ -99,7 +99,7 @@ export const getServerSideProps = async () => {
   const categories = await APIBitrix.get('products/categories/').then((res) => res);
   const newProducts = await APIBitrix.get('products/slider/').then((res) => res.products);
   const posts = await APIBitrix.get(`articles/collection/`);
-  const seo = await APIBitrix.get(`seo/main-page/`).then((res) => res);
+  const seo = await APIBitrix.get(`seo/main-page/`);
   const { discountProduct } = await MockAPI.getData();
   return { props: { discountProduct, categories, posts, newProducts, promoContent, seo } };
 };

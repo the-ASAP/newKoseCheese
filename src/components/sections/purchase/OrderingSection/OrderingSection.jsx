@@ -14,6 +14,7 @@ import {
 } from 'constants.js';
 
 import { useDispatch } from 'react-redux';
+import { useRouter } from 'next/router';
 import { DropdownCustom } from 'components/common/DropdownCustom/DropdownCustom';
 import { setConfirmOrder } from 'redux/slices/order';
 import YandexDelivery from 'yandexDelivery';
@@ -146,6 +147,7 @@ export const OrderingSection = ({ formData, setCost }) => {
   React.useEffect(() => {
     formPropsRef.current.setFieldValue('physical_delivery_mkad_distance', deliveryDistance);
   }, [deliveryDistance]);
+
   const changeFormSteps = () => {
     const isErrors = Object.keys(formPropsRef.current.errors).length;
 
@@ -175,6 +177,8 @@ export const OrderingSection = ({ formData, setCost }) => {
     console.log({ ...sendData, ...formPropsRef.current.values, delivery_id: 2 });
     // dispatch(setConfirmOrder({ ...sendData, ...formPropsRef.current.values, delivery_id: 2 }));
   };
+
+  const router = useRouter();
   return (
     <div className={s.container}>
       <FormContainer
@@ -188,7 +192,13 @@ export const OrderingSection = ({ formData, setCost }) => {
           formPropsRef.current = formProps;
           return (
             <>
-              <BackButton additionClass="purchase" />
+              <BackButton
+                additionClass="purchase"
+                clickHandler={() => {
+                  if (stageForm - 1 > -1) setStageForm((prev) => prev - 1);
+                  else router.back();
+                }}
+              />
               {formData ? (
                 <div className={s.purchase}>
                   <h2 className={s.title}>Оформление заказа</h2>

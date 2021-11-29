@@ -78,14 +78,17 @@ const YandexDelivery = ({ deliveryParams, setCost, setDeliveryDistance }) => {
     geocodeParams
       .then((data) => data.json())
       .then(({ response }) => {
+        console.log(deliveryParams);
+        console.log(response);
+        if (response?.GeoObjectCollection?.featureMember.length === 0)
+          return setCost('Адреса не существует');
         const resPoints =
           response?.GeoObjectCollection?.featureMember[0]?.GeoObject?.Point?.pos || '';
-        if (resPoints) {
-          getDeliveryCost(resPoints.split(' ').reverse());
-        } else {
-          setCost('Стоимость доставки уточняется у менеджера');
-        }
+        if (response?.GeoObjectCollection?.featureMember[0]?.GeoObject?.Point?.pos)
+          return getDeliveryCost(resPoints.split(' ').reverse());
+        return setCost('Стоимость доставки уточняется у менеджера');
       });
+
     const calculateDeliveryResult = (value) => {
       if (value === 0) {
         setCost('Доставка:  Бесплатно');

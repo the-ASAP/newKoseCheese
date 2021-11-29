@@ -54,7 +54,7 @@ const Card = ({ id, product, products, posts }) => {
       </Head>
       <Wrapper>
         <DescriptionSection product={product} id={id} />
-        {products.length && (
+        {products.length > 0 && (
           <Section>
             <Slider title={'Мы рекомендуем'} slides={products} params={sliderParams}>
               <Product additionClass={'card_slider'} />
