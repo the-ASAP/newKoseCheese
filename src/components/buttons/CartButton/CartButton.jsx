@@ -13,7 +13,6 @@ export const CartButton = ({ router, headerColors, isPromoPage }) => {
     dispatch(cartChangeModalState(true));
     dispatch(menuChangeModalState(false));
   };
-  const menuModalValue = useSelector(menuModalSelector);
   const itemsInCart = useSelector(cartItemsSelector);
 
   const [count, setCount] = useState(0);

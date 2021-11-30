@@ -1,66 +1,71 @@
 @import '/src/styles/root.scss';
+@import '/src/styles/mixins.scss';
 
 .container {
-    width: 50%;
-    margin-top: 5.625rem;
+  width: 50%;
+  height: 31.25rem;
+  padding-right: 1rem;
+  margin-top: 5.625rem;
+  overflow-y: scroll;
+  @extend %scrollbar;
 }
 
 .cart {
-    padding-left: 5rem;
+  padding-left: 5rem;
 }
 
 .header {
-    padding-bottom: 1.25rem;
-    border-bottom: 1px solid rgba($gen, .3);
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid rgba($gen, 0.3);
 }
 
 .footer {
-    display: flex;
-    justify-content: flex-end;
-    flex-wrap: wrap;
-    margin-top: 1.875rem;
-    padding-top: 3.125rem;
-    border-top: 1px solid rgba($gen, .3);
+  display: flex;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  margin-top: 1.875rem;
+  padding-top: 3.125rem;
+  border-top: 1px solid rgba($gen, 0.3);
 }
 .fields {
-    width: 100%;
-    margin-bottom: 1.875rem;
+  width: 100%;
+  margin-bottom: 1.875rem;
 }
 .field {
-    display: flex;
-    justify-content: flex-end;
-    width: 100%;
-    margin-top: 0.375rem;
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  margin-top: 0.375rem;
 }
 
 .info,
 .value {
-    font-family: $font-service;
+  font-family: $font-service;
 }
 
 .info {
-    margin-right: .4rem;
+  margin-right: 0.4rem;
 }
 
 .value {
-    display: flex;
-    justify-content: flex-end;
-    min-width: 5.5rem;
+  display: flex;
+  justify-content: flex-end;
+  min-width: 5.5rem;
 }
 
 @media (max-width: $landscape) {
-    .cart {
-        padding-left: 12px;
-    }
+  .cart {
+    padding-left: 12px;
+  }
 }
 
 @media (max-width: $mobile) {
-    .container {
-        width: 100%;
-        margin-top: 50px;
-        padding-bottom: 110px;
-    }
-    .cart {
-        padding-left: 0;
-    }
+  .container {
+    width: 100%;
+    margin-top: 50px;
+    padding-bottom: 110px;
+  }
+  .cart {
+    padding-left: 0;
+  }
 }

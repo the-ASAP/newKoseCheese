@@ -23,15 +23,16 @@ export const Purchase = ({ inFavorite, id, active, inCart, inOrder, params }) =>
   return (
     <div className={s.container}>
       <div className={s.wrapper}>
-        {inOrder && <span className={s.count}>{parseInt(quantity, 10)}</span>}
         <img src={BASE_SITE_URL + previewImage} alt="" className={s.image} />
       </div>
       <div className={s.info}>
         <div className={s.block}>
-          <h3 className={s.title}>{name}</h3>
+          <h3 className={s.title}>
+            {name} {inOrder && <span className={s.count}>- {parseInt(quantity, 10)}шт.</span>}
+          </h3>
           <div className={s.addition}>{addition}</div>
           <div className={s.cost}>
-            <span className={s.price}>{price} руб.</span>
+            <span className={s.price}>{price * Number(quantity)} руб.</span>
             <span className={s.weight}>{parseInt(weight, 10)} г.</span>
           </div>
         </div>

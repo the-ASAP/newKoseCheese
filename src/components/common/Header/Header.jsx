@@ -3,7 +3,6 @@ import React, { useState, useEffect, useRef } from 'react';
 import clsx from 'clsx';
 import Link from 'next/link';
 import {
-  cartChangeModalState,
   favoriteChangeModalState,
   menuChangeModalState,
   menuModalSelector
@@ -16,7 +15,8 @@ import { Wrapper } from 'components/layout/Wrapper/Wrapper';
 import { FavoriteIcon, SearchIcon } from 'components/SVG/Icons';
 import { useDispatch, useSelector } from 'react-redux';
 import { SearchPanel } from 'components/common/SearchPanel/SearchPanel';
-import { isLoggedSelector } from 'redux/slices/user';
+
+import { FavoriteButton } from 'components/buttons/FavoriteButton/FavoriteButton';
 import { CartButton } from 'components/buttons/CartButton/CartButton';
 
 import s from './Header.module.scss';
@@ -33,12 +33,7 @@ const headerLinks = [
 export const Header = ({ router }) => {
   const dispatch = useDispatch();
   const menuModalValue = useSelector(menuModalSelector);
-  const isLogged = useSelector(isLoggedSelector);
   const [isSearchOpen, setSearchOpen] = React.useState(false);
-
-  const favoriteModalHandler = () => {
-    dispatch(favoriteChangeModalState(true));
-  };
 
   const menuModalHandler = (value) => {
     dispatch(menuChangeModalState(value));
@@ -67,7 +62,8 @@ export const Header = ({ router }) => {
       <header
         className={clsx(
           s.header,
-          isPromoPage && s.positionFixed,
+          s.positionFixed,
+          !isPromoPage && s.newColor,
           isPromoPage && headerColors && s.newColor,
           menuModalValue && s.menuOpen
         )}
@@ -131,17 +127,11 @@ export const Header = ({ router }) => {
                   >
                     <SearchIcon />
                   </button>
-                  <button
-                    type="button"
-                    className={clsx(
-                      s.button,
-                      s.favorite,
-                      isPromoPage && !headerColors && s.button_accent
-                    )}
-                    onClick={favoriteModalHandler}
-                  >
-                    <FavoriteIcon />
-                  </button>
+                  <FavoriteButton
+                    router={router}
+                    headerColors={headerColors}
+                    isPromoPage={isPromoPage}
+                  />
                   <CartButton
                     router={router}
                     headerColors={headerColors}

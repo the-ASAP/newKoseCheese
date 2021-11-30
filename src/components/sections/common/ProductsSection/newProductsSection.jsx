@@ -120,14 +120,9 @@ export const NewProductsSection = ({ products, categories }) => {
           ) : (
             activeProducts.length > 0 && (
               <div className={s.body}>
-                {/* {activeProducts.map((product, index) => {
-                if (index < goodsPagination.currentPage)
+                {activeProducts.map((product) => {
                   return <Product key={product.id} {...product} />;
-                return false;
-              })} */}
-                {activeProducts.map((product) => (
-                  <Product key={product.id} {...product} />
-                ))}
+                })}
               </div>
             )
           )}

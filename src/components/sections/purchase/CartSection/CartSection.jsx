@@ -15,6 +15,17 @@ export const CartSection = ({ cost }) => {
     <>
       <div className={s.container}>
         <div className={s.cart}>
+          <div className={s.field}>
+            {cost && (
+              <>
+                {isNubmer(cost) && <span className={s.info}>Доставка:</span>}
+                <span className={s.value}>
+                  {cost}
+                  {isNubmer(cost) && ' руб.'}
+                </span>
+              </>
+            )}
+          </div>
           <TotalPrice value={isNubmer(cost) ? totalPrice + cost : totalPrice} />
           <div className={s.header}>
             <h2>Корзина</h2>
@@ -29,17 +40,6 @@ export const CartSection = ({ cost }) => {
               <span className={s.info}>Цена:</span>
               <span className={s.value}>{totalPrice} руб.</span>
             </div> */}
-            <div className={s.field}>
-              {cost && (
-                <>
-                  {isNubmer(cost) && <span className={s.info}>Доставка:</span>}
-                  <span className={s.value}>
-                    {cost}
-                    {isNubmer(cost) && ' руб.'}
-                  </span>
-                </>
-              )}
-            </div>
           </div>
         </div>
       </div>
