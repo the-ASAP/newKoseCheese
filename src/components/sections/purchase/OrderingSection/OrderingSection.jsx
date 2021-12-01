@@ -174,8 +174,8 @@ export const OrderingSection = ({ formData, setCost }) => {
       ...prevState,
       ...formPropsRef.current.values
     }));
-    console.log({ ...sendData, ...formPropsRef.current.values, delivery_id: 2 });
-    // dispatch(setConfirmOrder({ ...sendData, ...formPropsRef.current.values, delivery_id: 2 }));
+    // console.log({ ...sendData, ...formPropsRef.current.values, delivery_id: 2 });
+    dispatch(setConfirmOrder({ ...sendData, ...formPropsRef.current.values, delivery_id: 2 }));
   };
 
   const router = useRouter();
