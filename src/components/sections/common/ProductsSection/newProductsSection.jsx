@@ -18,8 +18,8 @@ export const NewProductsSection = ({ products, categories }) => {
   const [categoryId, setCategoryId] = useState(categories[0].id);
   const [subCategoryId, setSubCategoryId] = useState(categories[0]?.subcategories[0]?.id);
   const [activeCategory, setActiveCategory] = useState(categories[0]);
-  const [activeProducts, setActiveProducts] = useState(products);
-  const [isLoading, setLoading] = useState('');
+  const [activeProducts, setActiveProducts] = useState(false);
+  const [isLoading, setLoading] = useState(false);
   const [goodsPagination, setGoodsPage] = useState({
     perPage: 4,
     currentPage: 4,
@@ -41,22 +41,27 @@ export const NewProductsSection = ({ products, categories }) => {
       setSubCategoryId(activeCategory.subcategories[0].id);
     } else {
       setLoading(activeCategory.id);
+      setSubCategoryId(null);
     }
   }, [activeCategory]);
 
   useEffect(() => {
-    setLoading(subCategoryId);
+    if (subCategoryId) setLoading(subCategoryId);
   }, [subCategoryId]);
 
   useEffect(async () => {
-    const requestId = activeCategory.subcategories ? subCategoryId : activeCategory.id;
-    const requestProducts = await APIBitrix.get(`products/collection/${requestId}`);
-    setActiveProducts(requestProducts);
+    // const requestId = activeCategory.subcategories ? subCategoryId : activeCategory.id;
+    if (isLoading) {
+      const requestProducts = await APIBitrix.get(`products/collection/${isLoading}`);
+      setActiveProducts(requestProducts);
+    }
   }, [isLoading]);
 
   useEffect(() => {
-    setLoading(false);
-    setGoodsPage((prev) => ({ ...prev, limit: activeProducts.length }));
+    if (activeProducts !== false) {
+      setLoading(false);
+      setGoodsPage((prev) => ({ ...prev, limit: activeProducts.length }));
+    }
   }, [activeProducts]);
 
   const isClientSide = useClientSide();

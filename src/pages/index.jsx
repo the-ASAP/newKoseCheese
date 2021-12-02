@@ -20,7 +20,7 @@ import MockAPI from 'api/MockAPI';
 import { useDispatch, useSelector } from 'react-redux';
 import { favoriteItemsSelector } from 'redux/slices/favorite';
 import { addToFavorite } from 'redux/slices/favorite';
-import { successPurchasePopupChangeState } from 'redux/slices/modals';
+import { successPurchasePopupChangeState, popUpChangeModalState } from 'redux/slices/modals';
 
 const cookiesModalProperties = {
   animation: {
@@ -54,14 +54,23 @@ const Index = ({ promoContent, discountProduct, categories, posts, newProducts, 
   useEffect(() => {
     if (window && window.location?.search && window.location.search.includes('bxOrderId')) {
       // убрал текст из модалки временно
-      dispatch(
-        successPurchasePopupChangeState({
-          visible: true,
-          order: window.location.search.split('=')[1].split('&')[0]
-          // mail: 'testmail'
-        })
-      );
+      // dispatch(
+      //   successPurchasePopupChangeState({
+      //     visible: true,
+      //     order: window.location.search.split('=')[1].split('&')[0]
+      //     // mail: 'testmail'
+      //   })
+      // );
     }
+    dispatch(
+      popUpChangeModalState({
+        visible: true,
+        text: `На сайте ведутся техничениские работы!
+          Для оформления заказа, перейдите по ссылке:
+          https://koico.ru/
+        `
+      })
+    );
   }, []);
 
   return (
