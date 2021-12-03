@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import { RemoveButton } from 'components/buttons/RemoveButton/RemoveButton';
 import s from './FavoriteControl.module.scss';
+import clsx from 'clsx';
+import { MinusIcon, PlusIcon } from 'components/SVG/Icons';
 import { useDispatch, useSelector } from 'react-redux';
-import { addToCart, cartItemsSelector, reqAddToCart } from 'redux/slices/cart';
+import { cartItemsSelector, reqAddToCart } from 'redux/slices/cart';
 import { cartChangeModalState, closeAllModals } from 'redux/slices/modals';
 import { removeFromFavorite } from 'redux/slices/favorite';
 import { removeFavorite } from 'functions';
@@ -15,9 +17,11 @@ export const FavoriteControl = ({ product }) => {
 
   const isItemInCart = productSelector?.id === product.id;
 
+  const [quantity, setQuantity] = useState(1);
   const addToCartHandler = () => {
     if (product.status && !isItemInCart) {
-      dispatch(reqAddToCart({ ...product, quantity: 1 }));
+      // @ts-ignore
+      dispatch(reqAddToCart({ ...product, quantity }));
       // dispatch(closeAllModals());
       // dispatch(cartChangeModalState(true));
     } else if (!product.status) {
@@ -34,10 +38,30 @@ export const FavoriteControl = ({ product }) => {
 
   return (
     <div className={s.container}>
+      <div className={s.info}>
+        <div className={s.counter}>
+          <button
+            type="button"
+            className={clsx(s.change, s.minus)}
+            onClick={() => setQuantity((prev) => --prev)}
+          >
+            <MinusIcon />
+          </button>
+          <span className={s.count}>{quantity}</span>
+          <button
+            type="button"
+            className={clsx(s.change, s.plus)}
+            onClick={() => setQuantity((prev) => ++prev)}
+          >
+            <PlusIcon />
+          </button>
+        </div>
+        <RemoveButton small clickHandler={removeFromFavoriteHandler} />
+      </div>
+
       <button type="button" className={s.add} onClick={addToCartHandler}>
         в корзину
       </button>
-      <RemoveButton small clickHandler={removeFromFavoriteHandler} />
     </div>
   );
 };

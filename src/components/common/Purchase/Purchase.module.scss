@@ -6,6 +6,7 @@
   margin-top: 1.875rem;
   padding-bottom: 1.875rem;
   border-bottom: 1px solid rgba($gen, 0.3);
+  justify-content: space-between;
 }
 
 .image {
@@ -16,6 +17,9 @@
 
 .info {
   margin-left: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
 }
 
 .addition {

@@ -7,6 +7,7 @@ import { ModalFooter } from 'components/modals/ModalFooter/ModalFooter';
 import { useSelector } from 'react-redux';
 import { cartItemsSelector } from 'redux/slices/cart';
 import { ModalBody } from '../ModalBody/ModalBody';
+
 import s from './Cart.module.scss';
 
 export const Cart = ({ closeModal }) => {

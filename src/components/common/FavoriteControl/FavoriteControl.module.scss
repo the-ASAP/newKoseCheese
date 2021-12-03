@@ -2,8 +2,8 @@
 @import '/src/styles/root.scss';
 
 .container {
-    @extend %flexbox;
-    margin-top: 0.9375rem;
+  @extend %flexbox;
+  display: block;
 }
 
 .add {
@@ -16,10 +16,55 @@
   font-size: 0.75rem;
   background-color: $lightest;
   color: $gen;
+  margin-top: 0.625rem;
+  width: 100%;
+
   &:hover {
     background-color: $gen;
     color: $accent;
   }
+}
+
+.info {
+  display: flex;
+}
+
+.counter {
+  position: relative;
+  @extend %flexbox;
+  justify-content: center;
+  width: 8.75rem;
+  height: 2.5rem;
+  margin-right: 1.125rem;
+  border: 1px solid $grey;
+  border-radius: 8px;
+  font-family: $font-service;
+  user-select: none;
+}
+
+.count {
+  font-size: 1.125rem;
+}
+
+.change {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40%;
+  height: 100%;
+  transition: top 0.1s;
+  &:active {
+    top: 55%;
+  }
+}
+.minus {
+  left: 0;
+}
+.plus {
+  right: 0;
 }
 
 @media (max-width: $tablet) {

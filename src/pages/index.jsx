@@ -67,7 +67,7 @@ const Index = ({ promoContent, discountProduct, categories, posts, newProducts, 
         visible: true,
         text: `На сайте ведутся техничениские работы!
           Для оформления заказа, перейдите по ссылке:
-          https://koico.ru/
+          http://koico-corp.store/
         `
       })
     );

@@ -9,8 +9,7 @@ import { FormContainer } from 'components/forms/FormContainer/FormContainer';
 import {
   PURCHASE_VALIDATION_SCHEMA,
   DELIVERY_VALIDATION_SCHEMA,
-  EMPTY_VALIDATION_SCHEMA,
-  windowSize
+  EMPTY_VALIDATION_SCHEMA
 } from 'constants.js';
 
 import { useDispatch } from 'react-redux';
@@ -18,6 +17,8 @@ import { useRouter } from 'next/router';
 import { DropdownCustom } from 'components/common/DropdownCustom/DropdownCustom';
 import { setConfirmOrder } from 'redux/slices/order';
 import YandexDelivery from 'yandexDelivery';
+
+import { YMaps, Map } from 'react-yandex-maps';
 import s from './OrderingSection.module.scss';
 
 export const OrderingSection = ({ formData, setCost }) => {
@@ -179,6 +180,7 @@ export const OrderingSection = ({ formData, setCost }) => {
   };
 
   const router = useRouter();
+
   return (
     <div className={s.container}>
       <FormContainer
@@ -241,6 +243,20 @@ export const OrderingSection = ({ formData, setCost }) => {
           );
         }}
       </FormContainer>
+      {/* {stageForm === 2 && (
+        <div style={{ display: 'none' }}>
+          <YMaps>
+            <Map
+              onLoad={(ymaps) => {
+                const suggestView = new ymaps.SuggestView('physical_delivery_city');
+                console.log(suggestView);
+              }}
+              defaultState={{ center: [55.751574, 37.573856], zoom: 9 }}
+              modules={['SuggestView']}
+            />
+          </YMaps>
+        </div>
+      )} */}
     </div>
   );
 };
