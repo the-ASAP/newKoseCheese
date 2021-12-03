@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React, { useEffect } from 'react';
 import Head from 'next/head';
 
@@ -52,16 +53,17 @@ const Index = ({ promoContent, discountProduct, categories, posts, newProducts, 
   }, []);
 
   useEffect(() => {
-    if (window && window.location?.search && window.location.search.includes('bxOrderId')) {
-      // убрал текст из модалки временно
-      // dispatch(
-      //   successPurchasePopupChangeState({
-      //     visible: true,
-      //     order: window.location.search.split('=')[1].split('&')[0]
-      //     // mail: 'testmail'
-      //   })
-      // );
-    }
+    // if (window && window.location?.search && window.location.search.includes('bxOrderId')) {
+    //   // убрал текст из модалки временно
+    //   dispatch(
+    //     successPurchasePopupChangeState({
+    //       visible: true,
+    //       order: window.location.search.split('=')[1].split('&')[0]
+    //       // mail: 'testmail'
+    //     })
+    //   );
+    // }
+
     dispatch(
       popUpChangeModalState({
         visible: true,
@@ -83,7 +85,7 @@ const Index = ({ promoContent, discountProduct, categories, posts, newProducts, 
       <PromoSection {...promoContent} />
       <NewTastesSection newProducts={newProducts} />
       <NewProductsSection products={[]} categories={categories} />
-      <DiscountSection {...discountProduct} />
+      {/* <DiscountSection {...discountProduct} /> */}
       <RecipesSliderSection recipes={posts} title="Рецепты" />
       <TelegramPromoSection />
       <InstagramSection />
@@ -109,6 +111,23 @@ export const getServerSideProps = async () => {
   const newProducts = await APIBitrix.get('products/slider/').then((res) => res.products);
   const posts = await APIBitrix.get(`articles/collection/`);
   const seo = await APIBitrix.get(`seo/main-page/`);
-  const { discountProduct } = await MockAPI.getData();
-  return { props: { discountProduct, categories, posts, newProducts, promoContent, seo } };
+  // const { discountProduct } = MockAPI.getData();
+
+  return {
+    props: {
+      discountProduct: {
+        image: '',
+        offer: '10%',
+        category: 'Бюш-де-шевр',
+        name: '',
+        date: 'До 15.05.2021',
+        id: '40'
+      },
+      categories,
+      posts,
+      newProducts,
+      promoContent,
+      seo
+    }
+  };
 };

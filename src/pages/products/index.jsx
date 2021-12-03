@@ -30,7 +30,7 @@ const Products = ({ newProducts, discountProduct, categories }) => {
       </Wrapper>
       <NewProductsSection products={[]} categories={categories} />
       <NewTastesSection newProducts={newProducts} />
-      <DiscountSection {...discountProduct} />
+      {/* <DiscountSection {...discountProduct} /> */}
     </>
   );
 };
@@ -40,6 +40,6 @@ export default Products;
 export const getServerSideProps = async () => {
   const categories = await APIBitrix.get('products/categories/');
   const newProducts = await APIBitrix.get('products/slider/').then((res) => res.products);
-  const { discountProduct } = await MockAPI.getData();
-  return { props: { discountProduct, newProducts, categories } };
+  // const { discountProduct } = await MockAPI.getData();
+  return { props: { discountProduct: {}, newProducts, categories } };
 };
