@@ -19,7 +19,9 @@ import { setConfirmOrder } from 'redux/slices/order';
 import YandexDelivery from 'yandexDelivery';
 
 import { YMaps, Map } from 'react-yandex-maps';
-import { format } from 'date-fns';
+
+import { format, formatDistance } from 'date-fns';
+import { ru } from 'date-fns/locale';
 
 import s from './OrderingSection.module.scss';
 
@@ -31,7 +33,6 @@ export const OrderingSection = ({ formData, setCost }) => {
   const formTimeRef = React.useRef(null);
 
   const paymentsOptions = payments.map((payment) => payment.title);
-  const daysOptions = ['06.12', '07.12', '08.12', '09.12', '10.12', '11.12'];
 
   function getDays() {
     let date = Date.now();
@@ -39,7 +40,7 @@ export const OrderingSection = ({ formData, setCost }) => {
     let arrDays = [];
 
     for (let i = 1; i < 6; i++) {
-      arrDays.push(format(date + day * i, 'dd/MM'));
+      arrDays.push(`${format(date + day * i, 'dd.MM.YY')}`);
     }
 
     return arrDays;

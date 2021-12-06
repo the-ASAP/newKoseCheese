@@ -28,7 +28,12 @@ export const Purchase = ({ inFavorite, id, active, inCart, inOrder, params }) =>
       <div className={s.info}>
         <div className={s.block}>
           <h3 className={s.title}>
-            {name} {inOrder && <span className={s.count}>- {parseInt(quantity, 10)}шт.</span>}
+            {name}{' '}
+            {inOrder && (
+              <span className={s.count}>
+                - {parseInt(quantity, 10)} <span style={{ fontSize: '1rem' }}>шт.</span>
+              </span>
+            )}
           </h3>
           <div className={s.addition}>{addition}</div>
           <div className={s.cost}>
