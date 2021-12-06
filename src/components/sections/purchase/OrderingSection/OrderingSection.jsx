@@ -40,7 +40,7 @@ export const OrderingSection = ({ formData, setCost }) => {
     let arrDays = [];
 
     for (let i = 1; i < 6; i++) {
-      arrDays.push(`${format(date + day * i, 'dd.MM.YY')}`);
+      arrDays.push(`${format(date + day * i, 'dd/MM')}`);
     }
 
     return arrDays;
@@ -235,7 +235,7 @@ export const OrderingSection = ({ formData, setCost }) => {
       ...formPropsRef.current.values,
       ...formDaysRef.current,
       ...formTimeRef.current,
-      delivery_id: 2
+      delivery_id: 6
     });
     dispatch(
       setConfirmOrder({
@@ -243,7 +243,7 @@ export const OrderingSection = ({ formData, setCost }) => {
         ...formPropsRef.current.values,
         ...formDaysRef.current,
         ...formTimeRef.current,
-        delivery_id: 2
+        delivery_id: 6
       })
     );
   };
