@@ -14,7 +14,7 @@ import g from '/src/styles/Main.module.scss';
 import { useClientSide } from 'hooks.js';
 import Head from 'next/head';
 
-const Card = ({ id, product, products, posts }) => {
+const Card = ({ id, product, products, posts, seo }) => {
   const sliderParams = {
     slider: {
       slidesPerView: 'auto',
@@ -50,7 +50,9 @@ const Card = ({ id, product, products, posts }) => {
   return (
     <>
       <Head>
-        <title>{product.name}</title>
+        <meta name="keywords" content={seo?.meta_keywords || `KO&CO`} />
+        <meta name="description" content={seo?.meta_description || `KO&CO`} />
+        <title>{seo?.meta_title || `KO&CO`}</title>
       </Head>
       <Wrapper>
         <DescriptionSection product={product} id={id} />
@@ -77,6 +79,9 @@ export default Card;
 export const getServerSideProps = async ({ params }) => {
   const product = await APIBitrix.get(`products/item/${params.id}`);
   const posts = await APIBitrix.get(`articles/collection/`);
+  const seo = await APIBitrix.get(`seo/product-item/${params.id}`);
+
   const { products = [] } = product;
-  return { props: { id: params.id, product, products, posts } };
+
+  return { props: { id: params.id, product, products, posts, seo } };
 };

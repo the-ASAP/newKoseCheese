@@ -161,9 +161,9 @@ export const PURCHASE_VALIDATION_SCHEMA = Yup.object().shape({
 });
 
 export const DELIVERY_VALIDATION_SCHEMA = Yup.object().shape({
-  physical_delivery_city: Yup.string().required('Введите город'),
-  physical_delivery_street: Yup.string().required('Введите улицу'),
-  physical_delivery_building: Yup.string().required('Введите номер дома')
+  physical_delivery_city: Yup.string().required('Введите адрес')
+  // physical_delivery_street: Yup.string().required('Введите улицу'),
+  // physical_delivery_building: Yup.string().required('Введите номер дома')
 });
 
 export const EMPTY_VALIDATION_SCHEMA = Yup.object().shape({});

@@ -3,7 +3,7 @@ import Head from 'next/head';
 
 import { NewProductsSection } from 'components/sections/common/ProductsSection/newProductsSection';
 import { NewTastesSection } from 'components/sections/common/NewTastesSection/NewTastesSection';
-import { DiscountSection } from 'components/sections/common/DiscountSection/DiscountSection';
+// import { DiscountSection } from 'components/sections/common/DiscountSection/DiscountSection';
 import { Discount } from 'components/common/Discount/Discount';
 import { useModal } from 'hooks';
 import { Wrapper } from 'components/layout/Wrapper/Wrapper';
@@ -12,12 +12,14 @@ import { H1 } from 'components/layout/H1/H1';
 import APIBitrix from 'api/APIBitrix';
 import MockAPI from 'api/MockAPI';
 
-const Products = ({ newProducts, discountProduct, categories }) => {
+const Products = ({ newProducts, discountProduct, categories, seo }) => {
   const discountModal = useModal(true, false);
   return (
     <>
       <Head>
-        <title>Каталог</title>
+        <meta name="keywords" content={seo?.meta_keywords || `KO&CO`} />
+        <meta name="description" content={seo?.meta_description || `KO&CO`} />
+        <title>{seo?.meta_title || `Каталог`}</title>
       </Head>
       <Wrapper>
         {discountModal.isShowed && (
@@ -41,5 +43,7 @@ export const getServerSideProps = async () => {
   const categories = await APIBitrix.get('products/categories/');
   const newProducts = await APIBitrix.get('products/slider/').then((res) => res.products);
   // const { discountProduct } = await MockAPI.getData();
-  return { props: { discountProduct: {}, newProducts, categories } };
+  const seo = await APIBitrix.get(`seo/catalog-page/`);
+
+  return { props: { discountProduct: {}, newProducts, categories, seo } };
 };

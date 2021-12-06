@@ -78,8 +78,6 @@ const YandexDelivery = ({ deliveryParams, setCost, setDeliveryDistance }) => {
     geocodeParams
       .then((data) => data.json())
       .then(({ response }) => {
-        console.log(deliveryParams);
-        console.log(response);
         if (response?.GeoObjectCollection?.featureMember.length === 0)
           return setCost('Адреса не существует');
         const resPoints =

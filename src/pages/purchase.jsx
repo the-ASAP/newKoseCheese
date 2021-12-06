@@ -4,10 +4,10 @@ import { Wrapper } from 'components/layout/Wrapper/Wrapper';
 import { OrderingSection } from 'components/sections/purchase/OrderingSection/OrderingSection';
 import { CartSection } from 'components/sections/purchase/CartSection/CartSection';
 import { useDispatch, useSelector } from 'react-redux';
-import * as yandex from 'react-yandex-maps';
 import { getOrderFormData, orderFormDataSelector } from 'redux/slices/order';
 import Head from 'next/head';
 import { userIdSelector } from '../redux/slices/user';
+
 import g from '../styles/Main.module.scss';
 
 const Purchase = () => {
