@@ -29,8 +29,8 @@ export const OrderingSection = ({ formData, setCost }) => {
   const { user_data: user, payments = [] } = formData;
 
   const formPropsRef = React.useRef(null);
-  const formDaysRef = React.useRef(null);
-  const formTimeRef = React.useRef(null);
+  const formDaysRef = React.useRef({ physical_delivery_date: format(Date.now(), 'dd/MM') });
+  const formTimeRef = React.useRef({ physical_delivery_time: '10:00 - 12:00' });
 
   const paymentsOptions = payments.map((payment) => payment.title);
 
@@ -161,7 +161,7 @@ export const OrderingSection = ({ formData, setCost }) => {
           id: 'pay_day_id',
           value: getDays()[0],
           selectHandler: (e) => {
-            formDaysRef.current = { day: e.value };
+            formDaysRef.current = { physical_delivery_date: e.value };
           },
           component: DropdownCustom
         },
@@ -173,7 +173,7 @@ export const OrderingSection = ({ formData, setCost }) => {
           id: 'pay_time_id',
           value: timeOptions[0],
           selectHandler: (e) => {
-            formTimeRef.current = { time: e.value };
+            formTimeRef.current = { physical_delivery_time: e.value };
           },
           component: DropdownCustom
         }
@@ -230,13 +230,6 @@ export const OrderingSection = ({ formData, setCost }) => {
       ...prevState,
       ...formPropsRef.current.values
     }));
-    console.log({
-      ...sendData,
-      ...formPropsRef.current.values,
-      ...formDaysRef.current,
-      ...formTimeRef.current,
-      delivery_id: 6
-    });
     dispatch(
       setConfirmOrder({
         ...sendData,

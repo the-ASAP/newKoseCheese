@@ -67,7 +67,7 @@ const Index = ({ promoContent, discountProduct, categories, posts, newProducts, 
     dispatch(
       popUpChangeModalState({
         visible: true,
-        text: `На сайте ведутся техничениские работы!
+        text: `На сайте ведутся технические работы!
           Для оформления заказа, перейдите по ссылке:
           http://koico-corp.store/
         `
