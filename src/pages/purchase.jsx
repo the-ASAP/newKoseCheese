@@ -24,6 +24,7 @@ const Purchase = () => {
   useEffect(() => {
     if (userId) dispatch(getOrderFormData());
   }, [userId]);
+
   return (
     <>
       <Head>
@@ -37,7 +38,7 @@ const Purchase = () => {
       <Section margin="none">
         <Wrapper>
           <div className={g.flex}>
-            <OrderingSection setCost={setCost} formData={formData} />
+            <OrderingSection cost={cost} setCost={setCost} formData={formData} />
             <CartSection cost={cost} />
           </div>
         </Wrapper>

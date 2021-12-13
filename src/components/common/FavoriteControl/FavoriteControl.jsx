@@ -36,15 +36,20 @@ export const FavoriteControl = ({ product }) => {
     removeFavorite(product);
   };
 
+  const decHandlerInCart = () => {
+    if (Number(quantity) > 1) {
+      setQuantity((prev) => --prev);
+    } else {
+      removeFavorite(product);
+      dispatch(removeFromFavorite(product));
+    }
+  };
+
   return (
     <div className={s.container}>
       <div className={s.info}>
         <div className={s.counter}>
-          <button
-            type="button"
-            className={clsx(s.change, s.minus)}
-            onClick={() => setQuantity((prev) => --prev)}
-          >
+          <button type="button" className={clsx(s.change, s.minus)} onClick={decHandlerInCart}>
             <MinusIcon />
           </button>
           <span className={s.count}>{quantity}</span>

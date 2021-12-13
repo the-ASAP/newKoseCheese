@@ -25,7 +25,7 @@ import { ru } from 'date-fns/locale';
 
 import s from './OrderingSection.module.scss';
 
-export const OrderingSection = ({ formData, setCost }) => {
+export const OrderingSection = ({ formData, setCost, cost }) => {
   const { user_data: user, payments = [] } = formData;
 
   const formPropsRef = React.useRef(null);
@@ -119,6 +119,20 @@ export const OrderingSection = ({ formData, setCost }) => {
           component: Input
         },
         {
+          label: 'Подъезд',
+          type: 'text',
+          name: 'physical_delivery_entrance',
+          id: 'physical_delivery_entrance',
+          component: Input
+        },
+        {
+          label: 'Этаж',
+          type: 'text',
+          name: 'physical_delivery_floor',
+          id: 'physical_delivery_floor',
+          component: Input
+        },
+        {
           label: 'Комментарий',
           name: 'physical_delivery_comment',
           id: 'physical_delivery_comment',
@@ -130,7 +144,9 @@ export const OrderingSection = ({ formData, setCost }) => {
         // physical_delivery_street: '',
         // physical_delivery_building: '',
         physical_delivery_apartment: '',
-        physical_delivery_comment: ''
+        physical_delivery_comment: '',
+        physical_delivery_entrance: '',
+        physical_delivery_floor: ''
       },
       validationSchema: DELIVERY_VALIDATION_SCHEMA
     },
@@ -192,14 +208,21 @@ export const OrderingSection = ({ formData, setCost }) => {
   const [sendData, setSendData] = React.useState({});
   const [deliveryDistance, setDeliveryDistance] = React.useState(null);
   const deliveryParams = [
-    sendData?.physical_delivery_city
-    // sendData?.physical_delivery_street,
+    sendData?.physical_delivery_city,
+    sendData?.physical_delivery_entrance,
+    sendData?.physical_delivery_floor
     // sendData?.physical_delivery_building,
     // sendData?.physical_delivery_apartment
   ];
   React.useEffect(() => {
     formPropsRef.current.setFieldValue('physical_delivery_mkad_distance', deliveryDistance);
   }, [deliveryDistance]);
+
+  const [activeButton, setActiveButton] = React.useState(true);
+  React.useEffect(() => {
+    if (cost === 'Адреса не существует' && stageForm + 1 === steps.length) setActiveButton(false);
+    else setActiveButton(true);
+  }, [cost]);
 
   const changeFormSteps = () => {
     const isErrors = Object.keys(formPropsRef.current.errors).length;
@@ -242,6 +265,12 @@ export const OrderingSection = ({ formData, setCost }) => {
   };
 
   const router = useRouter();
+  const ordering = () => {
+    if (stageForm + 1 === steps.length && cost !== 'Адреса не существует') purchaseOrder();
+    else {
+      changeFormSteps();
+    }
+  };
 
   return (
     <div className={s.container}>
@@ -292,8 +321,9 @@ export const OrderingSection = ({ formData, setCost }) => {
                   )}
                   <button
                     type="button"
-                    onClick={stageForm + 1 === steps.length ? purchaseOrder : changeFormSteps}
+                    onClick={ordering}
                     className={s.submit}
+                    style={!activeButton ? { opacity: 0.5 } : {}}
                   >
                     Оформить заказ
                   </button>
