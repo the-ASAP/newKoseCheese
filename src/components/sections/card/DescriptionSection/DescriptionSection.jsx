@@ -152,7 +152,10 @@ export const DescriptionSection = ({ id, product }) => {
           {/*  </div> */}
           {/* </> */}
           {/* } */}
-          <PurchaseControl className={s.purchase} product={properties} id={id} cart={false} />
+          <div style={{ width: 'fit-content' }}>
+            <PurchaseControl className={s.purchase} product={properties} id={id} cart={false} />
+          </div>
+
           <div className={s.composition}>
             {compose && isClientSide && windowSize <= 768 && (
               <Accordion title={'Состав'}>{parse(compose)}</Accordion>
