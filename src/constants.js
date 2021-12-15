@@ -5,9 +5,9 @@ import { RedWine, WhiteWine, Vegetables, Fruits } from 'components/SVG/TastesSVG
 
 export const BASE_URL = 'https://api.jsonbin.io/b/60f8295399892a4ae9a732dc/8';
 
-export const BASE_API_URL = 'http://koico.ru/api/';
+export const BASE_API_URL = 'https://koico.ru/api/';
 
-export const BASE_SITE_URL = 'http://koico.ru/';
+export const BASE_SITE_URL = 'https://koico.ru/';
 
 export const allStatus = {
   avaliable: {
