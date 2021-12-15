@@ -84,13 +84,15 @@ const Index = ({ promoContent, discountProduct, categories, posts, newProducts, 
       </Head>
       <PromoSection {...promoContent} />
       <NewTastesSection newProducts={newProducts} />
-      <NewProductsSection products={[]} categories={categories} />
+      {/* <NewProductsSection products={[]} categories={categories} /> */}
       {/* <DiscountSection {...discountProduct} /> */}
-      <RecipesSliderSection recipes={posts} title="Рецепты" />
+
+      {/* <RecipesSliderSection recipes={posts} title="Рецепты" />
       <TelegramPromoSection />
       <InstagramSection />
-      <PartnersSection />
-      {cookiesModal.isShowed && (
+      <PartnersSection /> */}
+
+      {/* {cookiesModal.isShowed && ( 
         <ModalWrapper
           show={cookiesModal.isShowed}
           closeModal={cookiesModal.hideModal}
@@ -98,7 +100,7 @@ const Index = ({ promoContent, discountProduct, categories, posts, newProducts, 
         >
           <Cookies close={cookiesModal.hideModal} />
         </ModalWrapper>
-      )}
+      )} */}
     </>
   );
 };

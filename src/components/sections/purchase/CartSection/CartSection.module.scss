@@ -6,8 +6,12 @@
   height: 31.25rem;
   padding-right: 1rem;
   margin-top: 5.625rem;
-  overflow-y: scroll;
-  @extend %scrollbar;
+
+  &__purchase {
+    height: 31.25rem;
+    overflow-y: scroll;
+    @extend %scrollbar;
+  }
 }
 
 .cart {

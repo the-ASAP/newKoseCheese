@@ -1,7 +1,7 @@
-import React from "react";
-import { Wrapper } from "components/layout/Wrapper/Wrapper";
-import { useTabs } from "hooks";
-import { windowSize } from "constants.js";
+import React from 'react';
+import { Wrapper } from 'components/layout/Wrapper/Wrapper';
+import { useTabs } from 'hooks';
+import { windowSize } from 'constants.js';
 
 import {
   ProfileHeader,
@@ -16,59 +16,59 @@ import {
   ProfileBody,
   ProfileHistory,
   ProfileSubscribe
-} from "components/sections/profile";
-import { BackButton } from "components/buttons/BackButton/BackButton";
+} from 'components/sections/profile';
+import { BackButton } from 'components/buttons/BackButton/BackButton';
 
 const profileData = [
   {
     id: 1,
-    title: "Заказы",
-    component: <ProfileOrders/>
+    title: 'Заказы',
+    component: <ProfileOrders />
   },
   {
     id: 2,
-    title: "Подписки",
-    component: <ProfileSubscribe/>
+    title: 'Подписки',
+    component: <ProfileSubscribe />
   },
   {
     id: 3,
-    title: "Адреса доставки",
-    component: <ProfileDelivery/>
+    title: 'Адреса доставки',
+    component: <ProfileDelivery />
   },
   {
     id: 4,
-    title: "Личные данные",
-    component: <ProfilePersonal/>
+    title: 'Личные данные',
+    component: <ProfilePersonal />
   },
   {
     id: 5,
-    title: "Отправка отзыва",
-    component: <ProfileFeedback/>
+    title: 'Отправка отзыва',
+    component: <ProfileFeedback />
   },
   {
     id: 6,
-    title: "Программа лояльности",
-    component: <ProfileLoyalty/>
+    title: 'Программа лояльности',
+    component: <ProfileLoyalty />
   },
   {
     id: 7,
-    title: "Возврат товара",
-    component: <ProfileReturn/>
+    title: 'Возврат товара',
+    component: <ProfileReturn />
   }
 ];
 
 const Profile = () => {
-
   const { activeId, toggleActiveId, setActiveId } = useTabs(1, false);
 
-  const [activePage, setActivePage] = React.useState(profileData.find(component => component.id === activeId));
-
+  const [activePage, setActivePage] = React.useState(
+    profileData.find((component) => component.id === activeId)
+  );
   const [prevPage, setPrevPage] = React.useState(null);
 
   React.useEffect(() => {
-    setActivePage(prev => {
+    setActivePage((prev) => {
       setPrevPage(prev);
-      return profileData.find(component => component.id === activeId);
+      return profileData.find((component) => component.id === activeId);
     });
   }, [activeId]);
 
@@ -79,25 +79,17 @@ const Profile = () => {
 
   return (
     <Wrapper>
-      <ProfileHeader/>
+      <ProfileHeader />
       <ProfileWrapper>
-        {
-          activePage.id === 7 && windowSize <= 1200 && windowSize >= 768 ?
-            <BackButton
-              clickHandler={backButtonHandler}
-              additionClass="profile"
-            />
-            :
-            <ProfileAside
-              categories={profileData}
-              active={activeId}
-              setActive={toggleActiveId}
-            />
-        }
+        {activePage.id === 7 && windowSize <= 1200 && windowSize >= 768 ? (
+          <BackButton clickHandler={backButtonHandler} additionClass="profile" />
+        ) : (
+          <ProfileAside categories={profileData} active={activeId} setActive={toggleActiveId} />
+        )}
         <ProfileBody
           title={activePage.title}
           id={activeId}
-          additionClass={activePage.id === 7 && "orderReturn"}
+          additionClass={activePage.id === 7 && 'orderReturn'}
         >
           {activePage.component}
         </ProfileBody>

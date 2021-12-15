@@ -1,6 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
-import { RedWine, WhiteWine, Vegetables, Fruits } from 'components/SVG/TastesSVG/TastesSVG';
+// import { RedWine, WhiteWine, Vegetables, Fruits } from 'components/SVG/TastesSVG/TastesSVG';
+import Image from 'next/image';
 import { ControlButtons } from 'components/buttons/ControlButtons/ControlButtons';
 import { BASE_SITE_URL } from 'constants.js';
 import s from './NewTaste.module.scss';
@@ -44,6 +45,7 @@ export const NewTaste = (props) => {
     parent_category_id,
     quantity: 1
   };
+
   return (
     <div className={s.card}>
       <Link href={`products/${id}`}>
@@ -51,6 +53,7 @@ export const NewTaste = (props) => {
       </Link>
       <ControlButtons productProps={cartProductProps} />
       <div className={s.body}>
+        {/* <Image src={BASE_SITE_URL + detailImage} alt={name} className={s.image} layout="fill" loader='imgix'/> */}
         <img src={BASE_SITE_URL + detailImage} alt={name} className={s.image} />
       </div>
       <h3 className={s.name}>{name}</h3>

@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React from 'react';
 
 import { Purchase } from 'components/common/Purchase/Purchase';
@@ -30,9 +31,11 @@ export const CartSection = ({ cost }) => {
           <div className={s.header}>
             <h2>Корзина</h2>
           </div>
-          {itemsInCart.map((item, i) => (
-            <Purchase inOrder key={i} params={item} />
-          ))}
+          <div className={s.container__purchase}>
+            {itemsInCart.map((item, i) => (
+              <Purchase inOrder key={i} params={item} />
+            ))}
+          </div>
         </div>
         <div className={s.footer}>
           <div className={s.fields}>

@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React from 'react';
 import clsx from 'clsx';
 
@@ -21,7 +22,7 @@ import YandexDelivery from 'yandexDelivery';
 import { YMaps, Map } from 'react-yandex-maps';
 
 import { format, formatDistance } from 'date-fns';
-import { ru } from 'date-fns/locale';
+import ruLocale from 'date-fns/locale/ru';
 
 import s from './OrderingSection.module.scss';
 
@@ -40,7 +41,11 @@ export const OrderingSection = ({ formData, setCost, cost }) => {
     let arrDays = [];
 
     for (let i = 1; i < 6; i++) {
-      arrDays.push(`${format(date + day * i, 'dd/MM')}`);
+      arrDays.push(
+        `${format(date + day * i, 'dd.MM.yyyy')} - ${format(date + day * i, 'EEEE', {
+          locale: ruLocale
+        })}`
+      );
     }
 
     return arrDays;
@@ -214,6 +219,7 @@ export const OrderingSection = ({ formData, setCost, cost }) => {
     // sendData?.physical_delivery_building,
     // sendData?.physical_delivery_apartment
   ];
+
   React.useEffect(() => {
     formPropsRef.current.setFieldValue('physical_delivery_mkad_distance', deliveryDistance);
   }, [deliveryDistance]);
@@ -222,7 +228,7 @@ export const OrderingSection = ({ formData, setCost, cost }) => {
   React.useEffect(() => {
     if (cost === 'Адреса не существует' && stageForm + 1 === steps.length) setActiveButton(false);
     else setActiveButton(true);
-  }, [cost]);
+  }, [cost, stageForm]);
 
   const changeFormSteps = () => {
     const isErrors = Object.keys(formPropsRef.current.errors).length;
@@ -253,6 +259,7 @@ export const OrderingSection = ({ formData, setCost, cost }) => {
       ...prevState,
       ...formPropsRef.current.values
     }));
+
     dispatch(
       setConfirmOrder({
         ...sendData,
