@@ -53,16 +53,16 @@ const Index = ({ promoContent, discountProduct, categories, posts, newProducts, 
   }, []);
 
   useEffect(() => {
-    // if (window && window.location?.search && window.location.search.includes('bxOrderId')) {
-    //   // убрал текст из модалки временно
-    //   dispatch(
-    //     successPurchasePopupChangeState({
-    //       visible: true,
-    //       order: window.location.search.split('=')[1].split('&')[0]
-    //       // mail: 'testmail'
-    //     })
-    //   );
-    // }
+    if (window && window.location?.search && window.location.search.includes('bxOrderId')) {
+      // убрал текст из модалки временно
+      dispatch(
+        successPurchasePopupChangeState({
+          visible: true,
+          order: window.location.search.split('=')[1].split('&')[0]
+          // mail: 'testmail'
+        })
+      );
+    }
 
     dispatch(
       popUpChangeModalState({
@@ -84,15 +84,15 @@ const Index = ({ promoContent, discountProduct, categories, posts, newProducts, 
       </Head>
       <PromoSection {...promoContent} />
       <NewTastesSection newProducts={newProducts} />
-      {/* <NewProductsSection products={[]} categories={categories} /> */}
+      <NewProductsSection products={[]} categories={categories} />
       {/* <DiscountSection {...discountProduct} /> */}
 
-      {/* <RecipesSliderSection recipes={posts} title="Рецепты" />
+      <RecipesSliderSection recipes={posts} title="Рецепты" />
       <TelegramPromoSection />
       <InstagramSection />
-      <PartnersSection /> */}
+      <PartnersSection />
 
-      {/* {cookiesModal.isShowed && ( 
+      {cookiesModal.isShowed && (
         <ModalWrapper
           show={cookiesModal.isShowed}
           closeModal={cookiesModal.hideModal}
@@ -100,7 +100,7 @@ const Index = ({ promoContent, discountProduct, categories, posts, newProducts, 
         >
           <Cookies close={cookiesModal.hideModal} />
         </ModalWrapper>
-      )} */}
+      )}
     </>
   );
 };

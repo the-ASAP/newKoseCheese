@@ -1,5 +1,5 @@
 // @ts-nocheck
-import React from 'react';
+import React, { useRef } from 'react';
 import clsx from 'clsx';
 
 import { BackButton } from 'components/buttons/BackButton/BackButton';
@@ -102,27 +102,6 @@ export const OrderingSection = ({ formData, setCost, cost }) => {
           id: 'physical_delivery_city',
           component: Input
         },
-        // {
-        //   label: 'Улица',
-        //   type: 'text',
-        //   name: 'physical_delivery_street',
-        //   id: 'physical_delivery_street',
-        //   component: Input
-        // },
-        // {
-        //   label: 'Дом',
-        //   type: 'text',
-        //   name: 'physical_delivery_building',
-        //   id: 'physical_delivery_building',
-        //   component: Input
-        // },
-        {
-          label: 'Квартира',
-          type: 'text',
-          name: 'physical_delivery_apartment',
-          id: 'physical_delivery_apartment',
-          component: Input
-        },
         {
           label: 'Подъезд',
           type: 'text',
@@ -137,6 +116,14 @@ export const OrderingSection = ({ formData, setCost, cost }) => {
           id: 'physical_delivery_floor',
           component: Input
         },
+        {
+          label: 'Квартира',
+          type: 'text',
+          name: 'physical_delivery_apartment',
+          id: 'physical_delivery_apartment',
+          component: Input
+        },
+
         {
           label: 'Комментарий',
           name: 'physical_delivery_comment',
@@ -272,10 +259,54 @@ export const OrderingSection = ({ formData, setCost, cost }) => {
   };
 
   const router = useRouter();
+
+  const ymapsRef = useRef(null);
   const ordering = () => {
-    if (stageForm + 1 === steps.length && cost !== 'Адреса не существует') purchaseOrder();
+    // if (stageForm + 1 === steps.length && cost !== 'Адреса не существует') purchaseOrder();
+    // else {
+    //   changeFormSteps();
+    // }
+    if (stageForm === 0) changeFormSteps();
+    // else console.log(ymapsRef.current.geocode('Мытищи').then((res) => console.log(res)));
     else {
-      changeFormSteps();
+      console.log(sendData?.physical_delivery_city);
+      ymapsRef.current.geocode(sendData?.physical_delivery_city).then(
+        function (res) {
+          const address = res.geoObjects.get(0);
+          console.log(sendData?.physical_delivery_city);
+          console.log(res);
+
+          if (address) {
+            // Об оценке точности ответа геокодера можно прочитать тут: https://tech.yandex.ru/maps/doc/geocoder/desc/reference/precision-docpage/
+            switch (address.properties.get('metaDataProperty.GeocoderMetaData.precision')) {
+              case 'exact':
+                break;
+              case 'number':
+              case 'near':
+              case 'range':
+                console.log('Неточный адрес, требуется уточнение, Уточните номер дома');
+                break;
+              case 'street':
+                console.log('Неполный адрес, требуется уточнение, Уточните номер дома');
+                break;
+              case 'other':
+              default:
+                console.log('Неточный адрес, требуется уточнение, Уточните адрес');
+            }
+          } else {
+            console.log('Адрес не найден, Уточните адрес');
+          }
+
+          if (error) {
+            console.log('Произошла ошибка');
+          } else {
+            console.log(address);
+          }
+        },
+        function (e) {
+          console.log(e);
+        }
+      );
     }
   };
 
@@ -344,9 +375,12 @@ export const OrderingSection = ({ formData, setCost, cost }) => {
       </FormContainer>
       {stageForm === 1 && (
         <div style={{ display: 'none' }}>
-          <YMaps>
+          <YMaps query={{ load: 'package.full', apikey: '22831a61-cd4e-43d4-a56e-13b907784078' }}>
             <Map
-              onLoad={(ymaps) => new ymaps.SuggestView('physical_delivery_city')}
+              onLoad={(ymaps) => {
+                new ymaps.SuggestView('physical_delivery_city');
+                ymapsRef.current = ymaps;
+              }}
               defaultState={{ center: [55.751574, 37.573856], zoom: 9 }}
               modules={['SuggestView']}
             />
