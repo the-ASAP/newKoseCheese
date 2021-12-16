@@ -71,9 +71,7 @@ const YandexDelivery = ({ deliveryParams, setCost, setDeliveryDistance }) => {
 
   function init() {
     const geocodeParams = fetch(
-      `https://geocode-maps.yandex.ru/1.x/?apikey=22831a61-cd4e-43d4-a56e-13b907784078&format=json&geocode=${deliveryParams.join(
-        ','
-      )}`
+      `https://geocode-maps.yandex.ru/1.x/?apikey=22831a61-cd4e-43d4-a56e-13b907784078&format=json&geocode=${deliveryParams}`
     );
     geocodeParams
       .then((data) => data.json())

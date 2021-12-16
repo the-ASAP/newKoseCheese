@@ -4,6 +4,7 @@ import clsx from 'clsx';
 
 import { BackButton } from 'components/buttons/BackButton/BackButton';
 import { Input } from 'components/forms/Input/Input';
+import { NewInput } from 'components/forms/Input/NewInput';
 import { InputPhone } from 'components/forms/InputPhone/InputPhone';
 import { Textarea } from 'components/forms/Textarea/Textarea';
 import { FormContainer } from 'components/forms/FormContainer/FormContainer';
@@ -100,7 +101,7 @@ export const OrderingSection = ({ formData, setCost, cost }) => {
           type: 'text',
           name: 'physical_delivery_city',
           id: 'physical_delivery_city',
-          component: Input
+          component: NewInput
         },
         {
           label: 'Подъезд',
@@ -200,9 +201,9 @@ export const OrderingSection = ({ formData, setCost, cost }) => {
   const [sendData, setSendData] = React.useState({});
   const [deliveryDistance, setDeliveryDistance] = React.useState(null);
   const deliveryParams = [
-    sendData?.physical_delivery_city,
-    sendData?.physical_delivery_entrance,
-    sendData?.physical_delivery_floor
+    sendData?.physical_delivery_city
+    // sendData?.physical_delivery_entrance,
+    // sendData?.physical_delivery_floor
     // sendData?.physical_delivery_building,
     // sendData?.physical_delivery_apartment
   ];
@@ -262,41 +263,46 @@ export const OrderingSection = ({ formData, setCost, cost }) => {
 
   const ymapsRef = useRef(null);
   const [userAddress, setUserAddress] = React.useState('');
-
-  const ordering = () => {
+  const handleSubmit = (values) => {
     if (stageForm + 1 === steps.length && cost !== 'Адреса не существует') purchaseOrder();
-    else {
+
+    if (stageForm === 0) {
       changeFormSteps();
     }
-    // if (stageForm === 0) changeFormSteps();
-    // else {
-    //   // console.log(`${sendData?.physical_delivery_city}`);
-    //   ymapsRef.current.geocode(`${sendData?.physical_delivery_city}`).then((res) => {
-    //     const address = res.geoObjects.get(0);
-    //     console.log(address);
-
-    //     if (address) {
-    //       // Об оценке точности ответа геокодера можно прочитать тут: https://tech.yandex.ru/maps/doc/geocoder/desc/reference/precision-docpage/
-    //       switch (address.properties.get('metaDataProperty.GeocoderMetaData.precision')) {
-    //         case 'exact':
-    //           break;
-    //         case 'number':
-    //         case 'near':
-    //         case 'range':
-    //           console.log('Неточный адрес, требуется уточнение, Уточните номер дома');
-    //           break;
-    //         case 'street':
-    //           console.log('Неполный адрес, требуется уточнение, Уточните номер дома');
-    //           break;
-    //         case 'other':
-    //         default:
-    //           console.log('Неточный адрес, требуется уточнение, Уточните адрес');
-    //       }
-    //     } else {
-    //       console.log('Адрес не найден, Уточните адрес');
-    //     }
-    //   });
-    // }
+    if (stageForm === 1) {
+      ymapsRef.current.geocode(`${userAddress}`).then((res) => {
+        const address = res.geoObjects.get(0);
+        // console.log(address);
+        if (address) {
+          // Об оценке точности ответа геокодера можно прочитать тут: https://tech.yandex.ru/maps/doc/geocoder/desc/reference/precision-docpage/
+          switch (address.properties.get('metaDataProperty.GeocoderMetaData.precision')) {
+            case 'exact':
+              // setCost(address.properties._data.text);
+              setUserAddress(address.properties._data.text);
+              changeFormSteps();
+              break;
+            case 'number':
+            case 'near':
+            case 'range':
+              setCost('Адреса не существует');
+              break;
+            case 'street':
+              setCost('Адреса не существует');
+              break;
+            case 'other':
+              setCost('Адреса не существует');
+              break;
+            default:
+              // setCost(address.properties._data.text);
+              // setDeliveryDistance(address.properties._data.text);
+              setUserAddress(address.properties._data.text);
+              changeFormSteps();
+          }
+        } else {
+          setCost('Адреса не существует');
+        }
+      });
+    }
   };
 
   return (
@@ -307,6 +313,7 @@ export const OrderingSection = ({ formData, setCost, cost }) => {
         validateOnMount
         validationSchema={steps[stageForm].validationSchema}
         onSubmit={purchaseOrder}
+        // onSubmit={handleSubmit}
       >
         {(formProps) => {
           formPropsRef.current = formProps;
@@ -336,21 +343,32 @@ export const OrderingSection = ({ formData, setCost, cost }) => {
                   <div className={s.stage}>
                     {steps[stageForm].stages.map((input, index) => {
                       const ComponentName = input.component;
+                      if (input.id === 'physical_delivery_city') {
+                        return (
+                          <ComponentName
+                            key={index}
+                            {...input}
+                            value={userAddress}
+                            onChange={(e) => setUserAddress(e.target.value)}
+                          />
+                        );
+                      }
                       return <ComponentName key={index} {...input} />;
                     })}
                   </div>
-                  {deliveryParams[0] && stageForm === 2 && (
+                  {userAddress && stageForm === 2 && (
                     <YandexDelivery
                       setCost={setCost}
                       setDeliveryDistance={setDeliveryDistance}
-                      deliveryParams={deliveryParams}
+                      deliveryParams={userAddress}
                     />
                   )}
                   <button
-                    type="button"
-                    onClick={ordering}
+                    type="submit"
+                    onClick={handleSubmit}
                     className={s.submit}
                     style={!activeButton ? { opacity: 0.5 } : {}}
+                    // onSubmit={handleSubmit}
                   >
                     Оформить заказ
                   </button>
@@ -367,7 +385,11 @@ export const OrderingSection = ({ formData, setCost, cost }) => {
           <YMaps query={{ load: 'package.full', apikey: '22831a61-cd4e-43d4-a56e-13b907784078' }}>
             <Map
               onLoad={(ymaps) => {
-                new ymaps.SuggestView('physical_delivery_city');
+                let suggest = new ymaps.SuggestView('physical_delivery_city');
+                suggest.events.add('select', function (e) {
+                  setUserAddress(e.get('item').value);
+                });
+
                 ymapsRef.current = ymaps;
               }}
               defaultState={{ center: [55.751574, 37.573856], zoom: 9 }}

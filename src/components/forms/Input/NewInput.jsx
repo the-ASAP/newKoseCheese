@@ -3,7 +3,7 @@ import { Field } from 'formik';
 import clsx from 'clsx';
 import s from 'components/forms/Input/Input.module.scss';
 
-export const Input = (props) => {
+export const NewInput = (props) => {
   const {
     label,
     type,
@@ -32,7 +32,7 @@ export const Input = (props) => {
         form, // also values, setXXXX, handleXXXX, dirty, isValid, status, etc.
         meta
       }) => {
-        // if (cityBool) console.log(value);
+        // if (cityBool) console.log(id);
         return (
           <div className={clsx(s[containerClass], label && s.container)}>
             {label && (
@@ -48,6 +48,8 @@ export const Input = (props) => {
               // onBlur={field.onBlur}
               {...other}
               {...field}
+              onChange={cityBool ? onChange : field.onChange}
+              value={cityBool ? value : field.values}
             />
             {meta.error && <div className={s.error}>{meta.error}</div>}
           </div>
