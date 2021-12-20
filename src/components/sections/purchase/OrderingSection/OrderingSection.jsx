@@ -99,8 +99,8 @@ export const OrderingSection = ({ formData, setCost, cost }) => {
         {
           label: 'Адрес',
           type: 'text',
-          name: 'physical_delivery_city',
-          id: 'physical_delivery_city',
+          name: 'physical_delivery_address',
+          id: 'physical_delivery_address',
           component: NewInput
         },
         {
@@ -133,7 +133,7 @@ export const OrderingSection = ({ formData, setCost, cost }) => {
         }
       ],
       initialValues: {
-        physical_delivery_city: '',
+        physical_delivery_address: '',
         // physical_delivery_street: '',
         // physical_delivery_building: '',
         physical_delivery_apartment: '',
@@ -201,7 +201,7 @@ export const OrderingSection = ({ formData, setCost, cost }) => {
   const [sendData, setSendData] = React.useState({});
   const [deliveryDistance, setDeliveryDistance] = React.useState(null);
   const deliveryParams = [
-    sendData?.physical_delivery_city
+    sendData?.physical_delivery_address
     // sendData?.physical_delivery_entrance,
     // sendData?.physical_delivery_floor
     // sendData?.physical_delivery_building,
@@ -254,6 +254,7 @@ export const OrderingSection = ({ formData, setCost, cost }) => {
         ...formPropsRef.current.values,
         ...formDaysRef.current,
         ...formTimeRef.current,
+        physical_delivery_address: userAddress,
         delivery_id: 6
       })
     );
@@ -343,7 +344,7 @@ export const OrderingSection = ({ formData, setCost, cost }) => {
                   <div className={s.stage}>
                     {steps[stageForm].stages.map((input, index) => {
                       const ComponentName = input.component;
-                      if (input.id === 'physical_delivery_city') {
+                      if (input.id === 'physical_delivery_address') {
                         return (
                           <ComponentName
                             key={index}
@@ -385,7 +386,7 @@ export const OrderingSection = ({ formData, setCost, cost }) => {
           <YMaps query={{ load: 'package.full', apikey: '22831a61-cd4e-43d4-a56e-13b907784078' }}>
             <Map
               onLoad={(ymaps) => {
-                let suggest = new ymaps.SuggestView('physical_delivery_city');
+                let suggest = new ymaps.SuggestView('physical_delivery_address');
                 suggest.events.add('select', function (e) {
                   setUserAddress(e.get('item').value);
                 });

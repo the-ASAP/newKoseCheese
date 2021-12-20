@@ -1,7 +1,9 @@
+// @ts-nocheck
 import React from 'react';
 import { Wrapper } from 'components/layout/Wrapper/Wrapper';
 import { useTabs } from 'hooks';
 import { windowSize } from 'constants.js';
+import APIBitrix from 'api/APIBitrix';
 
 import {
   ProfileHeader,
@@ -71,6 +73,17 @@ const Profile = () => {
       return profileData.find((component) => component.id === activeId);
     });
   }, [activeId]);
+
+  React.useEffect(async () => {
+    const history = await APIBitrix.post('uuser/orders-history/items/', {
+      "date_from": "10.01.2020",
+      "date_to": "10.01.2022",
+      "status": "all",     // active, completed, all
+      "page": 1,
+      "limit": 5
+    }).then((res) => console.log(res.data))
+
+  }, [])
 
   const backButtonHandler = () => {
     setActiveId(prevPage.id);

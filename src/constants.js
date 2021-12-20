@@ -157,13 +157,14 @@ export const RETURN_VALIDATION_SCHEMA = Yup.object().shape({
 export const PURCHASE_VALIDATION_SCHEMA = Yup.object().shape({
   physical_name: Yup.string().required('Введите имя'),
   physical_phone: Yup.string().required('Введите номер телефона'),
-  physical_email: Yup.string().email('Введите корректный e-mail')
+  physical_email: Yup.string().email('Введите корректный e-mail').required('Введите почту')
 });
 
 export const DELIVERY_VALIDATION_SCHEMA = Yup.object().shape({
-  // physical_delivery_city: Yup.string().required('Введите адрес')
-  // physical_delivery_street: Yup.string().required('Введите улицу'),
-  // physical_delivery_building: Yup.string().required('Введите номер дома')
+  physical_delivery_address: Yup.string().required('Введите адрес'),
+  physical_delivery_entrance: Yup.string().required('Введите подъезд'),
+  physical_delivery_floor: Yup.string().required('Введите этаж'),
+  physical_delivery_apartment: Yup.string().required('Введите номер квартиры'),
 });
 
 export const EMPTY_VALIDATION_SCHEMA = Yup.object().shape({});
