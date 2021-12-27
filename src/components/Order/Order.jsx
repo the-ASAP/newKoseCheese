@@ -10,15 +10,20 @@ import s from "components/Order/Order.module.scss";
 
 
 export const Order = ({ controls, subscribe, data }) => {
+  let { products, ...orderInfo } = data;
 
-  const dispatch = useDispatch();
+  const quantityProducts = data.products.reduce((acc, item) => {
+    if(item && item.quantity) {
+      return acc + ~~Number(item.quantity)
+    }
+  }, 0) 
 
-  const { products, ...orderInfo } = data;
+  orderInfo = {...orderInfo, count: quantityProducts}
 
   const getOrders = (controlPanel, props) => products.length ? products.map((order, i) => i < 2 &&
     <OrderItem controls={controlPanel} key={i} {...order} {...props}/>) : "";
 
-
+  
   return (
     <div className={s.container}>
       <OrderHeader data={orderInfo}/>
@@ -36,6 +41,7 @@ export const Order = ({ controls, subscribe, data }) => {
         :
         <div>{getOrders(false)}</div>}
       {subscribe && <SubscribeControls/>}
+
     </div>
   );
 };

@@ -6,6 +6,8 @@ import { orderSlice } from 'redux/slices/order';
 import { favoriteSlice } from 'redux/slices/favorite';
 import { returnOrderSlice } from 'redux/slices/returnOrder';
 import { userSlice } from './slices/user';
+import { historySlice } from 'redux/slices/history'
+import { historyAttrSlice } from 'redux/slices/historyAttr'
 
 const makeStore = () =>
   configureStore({
@@ -15,7 +17,9 @@ const makeStore = () =>
       [orderSlice.name]: orderSlice.reducer,
       [favoriteSlice.name]: favoriteSlice.reducer,
       [returnOrderSlice.name]: returnOrderSlice.reducer,
-      [userSlice.name]: userSlice.reducer
+      [userSlice.name]: userSlice.reducer,
+      [historySlice.name]: historySlice.reducer,
+      [historyAttrSlice.name]: historyAttrSlice.reducer
     }
   });
 

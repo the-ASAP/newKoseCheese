@@ -23,8 +23,6 @@ export const NewInput = (props) => {
     ...(value && { value })
   };
 
-  const cityBool = id === 'physical_delivery_city';
-
   return (
     <Field {...fieldProps}>
       {({
@@ -48,8 +46,8 @@ export const NewInput = (props) => {
               // onBlur={field.onBlur}
               {...other}
               {...field}
-              onChange={cityBool ? onChange : field.onChange}
-              value={cityBool ? value : field.values}
+              onChange={onChange}
+              value={value}
             />
             {meta.error && <div className={s.error}>{meta.error}</div>}
           </div>

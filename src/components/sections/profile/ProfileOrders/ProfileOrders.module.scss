@@ -1,0 +1,10 @@
+@import "/src/styles/mixins";
+@import "/src/styles/root";
+
+.more {
+  @extend %link;
+  font-family: $font-service--bold;
+  font-size: 0.875rem;
+  margin: 1.25rem auto 0;
+    display: block;
+}

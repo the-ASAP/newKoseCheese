@@ -15,19 +15,19 @@ export const OrderControls = ({ formProps, order }) => {
 
   return (
     <>
-      <button type="button" className={s.more}>показать еще +</button>
+      {/* <button type="button" className={s.more}>показать еще +</button> */}
       <div className={s.controls}>
         <button type="button" className={s.repeat}>
           <RepeatIcon/>
           <span>Повторить заказ</span>
         </button>
-        <button type="button" onClick={returnOrderHandler} className={s.return}>
+        {/* <button type="button" onClick={returnOrderHandler} className={s.return}>
           <ReplaceIcon/>
           <span>Заменить товар</span>
-        </button>
-        <button type="button" onClick={() => formProps.handleSubmit(alert(formProps.values))}
+        </button> */}
+        {/* <button type="button" onClick={() => formProps.handleSubmit(alert(formProps.values))}
                 className={s.remove}>Удалить товар
-        </button>
+        </button> */}
       </div>
     </>
   );

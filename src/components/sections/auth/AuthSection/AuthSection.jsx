@@ -46,8 +46,11 @@ export const AuthSection = () => {
     const profileInfo = await APIBitrix.post(
       'user/personal-data/',
       {},
+      // {
+      //   Authorization: `Bearer ${confirmRequest.token}`
+      // }
       {
-        Authorization: `Bearer ${confirmRequest.token}`
+        Authorization: `Bearer 1`
       }
     ).then((res) => res.data);
 

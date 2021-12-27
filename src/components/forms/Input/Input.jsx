@@ -23,8 +23,6 @@ export const Input = (props) => {
     ...(value && { value })
   };
 
-  const cityBool = id === 'physical_delivery_city';
-
   return (
     <Field {...fieldProps}>
       {({
@@ -32,7 +30,7 @@ export const Input = (props) => {
         form, // also values, setXXXX, handleXXXX, dirty, isValid, status, etc.
         meta
       }) => {
-        // if (cityBool) console.log(value);
+        // console.log(field, form, meta)
         return (
           <div className={clsx(s[containerClass], label && s.container)}>
             {label && (

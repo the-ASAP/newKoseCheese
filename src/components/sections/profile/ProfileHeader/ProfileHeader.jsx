@@ -7,7 +7,7 @@ import { userInfoSelector } from 'redux/slices/user';
 
 export const ProfileHeader = () => {
   const userInfo = useSelector(userInfoSelector);
-  console.log(userInfo);
+
   return (
     <>
       <H1 additionClass="profile">Личный кабинет</H1>
@@ -21,17 +21,17 @@ export const ProfileHeader = () => {
               <span className={s.label}>Скидка:</span>
               <span className={s.value}>5%</span>
             </div>
-            <div className={s.field}>
+            {/* <div className={s.field}>
               <span className={s.label}>Баланс:</span>
               <span className={s.value}>320 руб.</span>
-            </div>
+            </div> */}
             <div className={s.field}>
               <span className={s.label}>Всего покупок:</span>
-              <span className={s.value}>112</span>
+              <span className={s.value}>?</span>
             </div>
             <div className={s.field}>
               <span className={s.label}>Доставка:</span>
-              <span className={s.value}>Бесплатно</span>
+              <span className={s.value}>?</span>
             </div>
           </div>
           <Link href="/login">
