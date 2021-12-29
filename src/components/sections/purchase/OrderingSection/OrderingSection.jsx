@@ -264,6 +264,12 @@ export const OrderingSection = ({ formData, setCost, cost }) => {
 
   const ymapsRef = useRef(null);
   const [userAddress, setUserAddress] = React.useState('');
+  
+  React.useEffect(() => {
+    formPropsRef.current.setFieldValue('physical_delivery_address', userAddress);
+  }, [userAddress])
+
+
   const handleSubmit = (values) => {
     if (stageForm + 1 === steps.length && cost !== 'Адреса не существует') purchaseOrder();
 
@@ -350,7 +356,10 @@ export const OrderingSection = ({ formData, setCost, cost }) => {
                             key={index}
                             {...input}
                             value={userAddress}
-                            onChange={(e) => setUserAddress(e.target.value)}
+                            onChange={(e) => {
+                              setUserAddress(e.target.value)
+                              console.log(e.target.value)
+                            }}  
                           />
                         );
                       }

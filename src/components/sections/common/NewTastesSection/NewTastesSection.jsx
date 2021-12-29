@@ -22,7 +22,7 @@ const sliderParams = {
         slidesPerGroup: 3
       },
       1201: {
-        slidesPerView: 4,
+        slidesPerView: 5,
         slidesPerGroup: 4,
         spaceBetween: 50
       }

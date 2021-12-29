@@ -17,8 +17,8 @@ export const RecipesSliderSection = ({ recipes, title }) => {
         slideClass: "recipe_slide",
         breakpoints: {
           1023: {
-            slidesPerView: 3,
-            slidesPerGroup: 3
+            slidesPerView: 5,
+            slidesPerGroup: 5
           }
         }
       },
