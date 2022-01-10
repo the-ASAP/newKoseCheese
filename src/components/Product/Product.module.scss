@@ -140,8 +140,13 @@
 }
 
 @media (max-width: $mobile) {
+  .body {
+    height: fit-content;
+    justify-content: flex-start;
+  }
   .card:not(.card_slider) {
-    height: 240px;
+    height: fit-content;
+    width: 100%;
     padding: 11px 8px;
     // control buttons
     button {
@@ -156,38 +161,44 @@
       }
     }
     .image {
-      width: 128px;
-      height: 76px;
+      width: 16rem;
+      height: 12.5rem;
     }
     .name {
       margin-top: 8px;
-      font-size: 12px;
+      font-size: 24px;
+      line-height: 22px;
     }
     .addition {
       min-height: 18px;
-      font-size: 7px;
+      font-size: 14px;
+      line-height: 22px;
     }
     .info {
       margin-top: 4px;
+      font-size: 14px;
+      line-height: 22px;
     }
     .well {
       span {
-        width: 18px;
-        height: 18px;
+        width: 1.5625rem;
+        height: 1.5625rem;
       }
       svg {
         width: 50%;
       }
     }
     .status {
-      font-size: 8px;
+      font-size: 14px;
     }
     .weight {
-      margin-top: 5px;
-      font-size: 7px;
+      margin-top: 10px;
+      font-size: 14px;
+      line-height: 22px
     }
     .price {
-      font-size: 10px;
+      font-size: 20px;
+      line-height: 40px;
     }
   }
   .card.card_slider {
@@ -209,4 +220,12 @@
   //.image {
   //  width: 128px;
   //}
+  .name {
+    font-size: 24px;
+    line-height: 22px;
+  }
+  .info {
+    font-size: 14px;
+    line-height: 22px;
+  }
 }

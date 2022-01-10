@@ -46,7 +46,7 @@ export const NewFooter = () => {
             </address>
           </div>
           <div className={s.block}>
-              <a href={`mailto:${email}`} className={s.link}>
+              <a href={`mailto:${email}`} className={clsx(s.link, s.email)}>
                 <h2 className={s.title}>{email}</h2>
               </a>
               <button type="button" onClick={letterModalHandler} className={s.mail}>

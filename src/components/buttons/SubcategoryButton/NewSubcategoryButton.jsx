@@ -3,8 +3,10 @@ import clsx from 'clsx';
 import { useRouter } from 'next/router'
 import s from 'components/buttons/SubcategoryButton/NewSubcategoryButton.module.scss';
 
+
 export const NewSubcategoryButton = ({ title, id, active, additionClass, subcategories, showButtonId, onMouseEnter }) => {
   const history = useRouter()
+
 
   const newSetActiveCategory = (id) => {
     localStorage.setItem('activeCategory', id)
