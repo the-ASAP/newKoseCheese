@@ -1,0 +1,145 @@
+@import "/src/styles/root.scss";
+@import "/src/styles/mixins.scss";
+
+.footer {
+    background-color: $gen;
+    color: $accent;
+    padding: 7.5rem 0 3.125rem;
+  
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+}
+.block {
+    display: flex;
+    flex-direction: column;
+    width: calc(100% / 3);
+
+    &:nth-child(2) {
+        align-items: center;
+    }
+
+    &:last-child {
+        align-items: flex-end;
+    }
+}
+.menu {
+
+}
+.link {
+    color: $accent;
+    font-family: $font-main;
+    text-transform: none;
+    display: block;
+    margin-bottom: 1.875rem;
+}
+.social {
+    width: fit-content;
+    margin-right: 40px;
+    &:last-child {
+        margin-right: 0;
+    }
+}
+.title {
+    @extend %underline;
+    width: fit-content;
+}
+.info {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.address {
+    margin-top: 2rem;
+    font-family: $font-service;
+    font-style: normal;
+    font-size: 0.875rem;
+    line-height: 1.75;
+    display: block;
+    text-align: center;
+}
+.contacts {
+    width: 100%;
+    a {
+        display: block;
+        width: fit-content;
+        text-transform: none;
+        &:not(:first-child) {
+            margin-top: 1.25rem;
+        }
+    }
+}
+.contact {
+    @extend %underline;
+    font-family: $font-numbers;
+    color: $accent;
+    font-weight: 400;
+    &::after {
+        background-color: $accent;
+    }
+}
+
+.mail {
+    @extend %link;
+    margin-top: 2.5rem;
+    color: $accent;
+    font-weight: 400;
+    &::after {
+        background-color: $accent;
+    }
+    display: block;
+}
+
+.corp {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 3.125rem;
+    padding-top: 3.125rem;
+    border-top: 1px solid rgba($accent, .3);
+    text-align: center;
+    font-family: $font-service;
+    span {
+        display: block;
+        font-size: 0.875rem;
+        line-height: 1.4;
+    }
+}
+
+.logo {
+    width: 4.875rem;
+    & svg {
+        width: 100%;
+    }
+}
+
+@media (max-width: $landscape) {
+    .address {
+        font-size: 12px;
+        line-height: 20px;
+    }
+}
+
+@media (max-width: $mobile) {
+    .footer {
+        padding-bottom: 80px;
+        padding-top: 50px;
+    }
+    .title {
+        font-size: 18px;
+    }
+    .corp {
+        display: block;
+        margin-top: 30px;
+        padding-top: 20px;
+    }
+    .company {
+        max-width: 60%;
+        margin: 18px auto 0;
+    }
+    .asap {
+        margin-top: 18px;
+    }
+}

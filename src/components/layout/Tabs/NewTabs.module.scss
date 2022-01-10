@@ -1,0 +1,35 @@
+@import '/src/styles/mixins.scss';
+@import '/src/styles/root.scss';
+
+.container {
+  @extend %hiddenScroll;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin: 1rem auto 0;
+  width: 64.5rem;
+}
+
+
+.top {
+
+}
+
+
+@media (max-width: $mobile) {
+  .container {
+    overflow-y: scroll;
+    justify-content: flex-start;
+    > * {
+      margin-right: 20px;
+    }
+  }
+  .farm {
+    overflow: auto;
+    > * {
+      width: 50%;
+      margin-right: 0;
+      text-align: center;
+    }
+  }
+}

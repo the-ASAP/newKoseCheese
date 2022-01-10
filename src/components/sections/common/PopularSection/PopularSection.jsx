@@ -2,8 +2,6 @@
 import React, { useState, useEffect } from 'react';
 
 import { Product } from 'components/Product/Product';
-import { SubcategoryButton } from 'components/buttons/SubcategoryButton/SubcategoryButton';
-import { Tabs } from 'components/layout/Tabs/Tabs';
 import { Section } from 'components/layout/Section/Section';
 import { Wrapper } from 'components/layout/Wrapper/Wrapper';
 import { windowSize } from 'constants.js';
@@ -11,10 +9,9 @@ import { ProductLoader } from 'components/Product/ProductLoader/ProductLoader';
 import { useClientSide } from 'hooks.js';
 
 import APIBitrix from 'api/APIBitrix';
-import { DropdownCustom } from 'components/common/DropdownCustom/DropdownCustom';
-import s from './ProductsSection.module.scss';
+import s from './PopularSection.module.scss';
 
-export const NewProductsSection = ({ products, categories }) => {
+export const PopularSection = ({ products, categories }) => {
   const [categoryId, setCategoryId] = useState(categories[0].id);
   const [subCategoryId, setSubCategoryId] = useState(categories[0]?.subcategories[0]?.id);
   const [activeCategory, setActiveCategory] = useState(categories[0]);
@@ -38,9 +35,7 @@ export const NewProductsSection = ({ products, categories }) => {
 
   useEffect(() => {
     if (activeCategory.subcategories) {
-      const subId = localStorage.getItem('activeSubCaterogy')
-      if(subId) setSubCategoryId(subId)
-      else setSubCategoryId(activeCategory.subcategories[0].id);
+      setSubCategoryId(activeCategory.subcategories[0].id);
     } else {
       setLoading(activeCategory.id);
       setSubCategoryId(null);
@@ -68,16 +63,6 @@ export const NewProductsSection = ({ products, categories }) => {
 
   const isClientSide = useClientSide();
 
-  const selectHandlerForDropdown = (name) => {
-    const thatCategory = categories.find((category) => category.name === name).id;
-    setCategoryId(thatCategory);
-  };
-
-  const handleSelectCategory = (id) => {
-    setCategoryId(id);
-    localStorage.setItem('activeCategory', id);
-  };
-
   const handleSetGoodsPagination = () => {
     setGoodsPage((prev) => ({ ...prev, currentPage: prev.currentPage + prev.perPage }));
   };
@@ -86,42 +71,7 @@ export const NewProductsSection = ({ products, categories }) => {
     <>
       <Section>
         <Wrapper>
-          <div className={s.header}>
-            {isClientSide && windowSize >= 1200 ? (
-              <Tabs>
-                {categories.map(({ name, id }) => (
-                  <SubcategoryButton
-                    key={id}
-                    title={name}
-                    id={id}
-                    active={categoryId}
-                    toggleActive={handleSelectCategory}
-                  />
-                ))}
-              </Tabs>
-            ) : (
-              <DropdownCustom
-                value={categories[0].name}
-                options={categories.map((el) => el.name)}
-                selectHandler={(e) => selectHandlerForDropdown(e.value)}
-              />
-            )}
-            {activeCategory.subcategories && (
-              <div className={s.subcategories}>
-                {activeCategory.subcategories.map(({ name, id }) => (
-                  <SubcategoryButton
-                    key={id}
-                    id={id}
-                    title={name}
-                    active={subCategoryId}
-                    toggleActive={setSubCategoryId}
-                    additionClass="product"
-                  />
-                ))}
-              </div>
-            )}
-          </div>
-
+            <h1 className={s.title}>Популярное</h1>
           {isLoading ? (
             <ProductLoader />
           ) : (

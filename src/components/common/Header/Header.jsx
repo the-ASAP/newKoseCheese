@@ -46,16 +46,7 @@ export const Header = ({ router }) => {
   const isPromoPage = router.pathname === '/';
   const isClientSide = useClientSide();
 
-  const [headerColors, setHeaderColors] = useState(false);
-  const scroll = () => {
-    if (window.scrollY > 672) setHeaderColors(true);
-    else setHeaderColors(false);
-  };
-
-  useEffect(() => {
-    window.addEventListener('scroll', scroll);
-    return () => window.removeEventListener('scroll', scroll);
-  }, []);
+  const [headerColors, setHeaderColors] = useState(true);
 
   return (
     <>

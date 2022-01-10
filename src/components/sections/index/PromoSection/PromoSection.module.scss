@@ -2,11 +2,7 @@
 @import '/src/styles/root.scss';
 
 .promo {
-  min-height: 42rem;
   padding-top: 5rem;
-  background-image: url('/static/img/promo-bg.jpg');
-  background-size: cover;
-  background-position: center;
 }
 .container {
   display: flex;
@@ -15,19 +11,25 @@
   height: 100%;
   margin-top: 3.125rem;
   color: $accent;
+  padding-bottom: 5rem;
+  border-bottom: 1px solid rgba(24, 66, 64, 0.3);
 }
 .intro {
   display: block;
   text-align: center;
-  font-family: 'Roboto', 'sans-serif';
-  font-size: 0.75rem;
-  text-transform: uppercase;
-  margin-bottom: 1.875rem;
+  margin-top: 4.8125rem;
+  font-size: 3.5rem;
+  line-height: 1;
+  color: $gen;
 }
 .title {
-  max-width: 80%;
+  max-width: 30.1875rem;
   margin: 0 auto;
   text-align: center;
+  font-size: 1.5rem;
+  line-height: 1.45;
+  margin-top: 1.875rem;
+  color: $gen;
 }
 
 .link {
@@ -90,7 +92,6 @@
 @media (max-width: $mobile) {
   .promo {
     height: 650px;
-    background-image: url('/static/img/promo-bg-mobile.jpg');
   }
   .container {
     display: block;

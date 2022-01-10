@@ -5,6 +5,7 @@ import Head from 'next/head';
 import { PromoSection } from 'components/sections/index/PromoSection/PromoSection';
 import { NewTastesSection } from 'components/sections/common/NewTastesSection/NewTastesSection';
 import { NewProductsSection } from 'components/sections/common/ProductsSection/newProductsSection';
+import { PopularSection } from 'components/sections/common/PopularSection/PopularSection';
 import { DiscountSection } from 'components/sections/common/DiscountSection/DiscountSection';
 import { RecipesSliderSection } from 'components/sections/common/RecipesSliderSection/RecipesSliderSection';
 import { TelegramPromoSection } from 'components/sections/index/TelegramPromoSection/TelegramPromoSection';
@@ -82,13 +83,13 @@ const Index = ({ promoContent, discountProduct, categories, posts, newProducts, 
         <meta name="description" content={seo?.meta_description || `KO&CO`} />
         <title>{seo?.meta_title || `Главная страница`}</title>
       </Head>
-      <PromoSection {...promoContent} />
+      <PromoSection {...promoContent} categories={categories}/>
       <NewTastesSection newProducts={newProducts} />
-      <NewProductsSection products={[]} categories={categories} />
+      <PopularSection products={[]} categories={categories} />
       {/* <DiscountSection {...discountProduct} /> */}
 
       <RecipesSliderSection recipes={posts} title="Рецепты" />
-      <TelegramPromoSection />
+      {/* <TelegramPromoSection /> */}
       <InstagramSection />
       <PartnersSection />
 

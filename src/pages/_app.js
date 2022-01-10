@@ -8,7 +8,7 @@ import NProgress from 'nprogress';
 import Router from 'next/router';
 import { Header } from 'components/common/Header/Header';
 import { Main } from 'components/layout/Main/Main';
-import { Footer } from 'components/common/Footer/Footer';
+import { NewFooter } from 'components/common/Footer/NewFooter';
 import { AllModals } from 'components/modals/AllModals/AllModals';
 import { Submenu } from 'components/common/Submenu/Submenu';
 import { windowSize } from 'constants.js';
@@ -65,7 +65,7 @@ const MyApp = ({ Component, pageProps, router }) => {
         <AllModals />
         {isClientSide && windowSize < 768 && <Submenu />}
       </Main>
-      <Footer />
+      <NewFooter />
     </>
   );
 };

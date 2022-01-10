@@ -1,26 +1,44 @@
-import React from 'react';
-import g from 'styles/Main.module.scss';
+// @ts-nocheck
+import React, {useState, useEffect} from 'react';
 import { Wrapper } from 'components/layout/Wrapper/Wrapper';
-import { Telegram } from 'components/SVG/ArticleIcons';
-import { BASE_SITE_URL } from 'constants.js';
-import { telegram } from 'contacts';
+import { NewTabs } from 'components/layout/Tabs/NewTabs';
+import { NewSubcategoryButton } from 'components/buttons/SubcategoryButton/NewSubcategoryButton';
 import s from './PromoSection.module.scss';
 
-export const PromoSection = ({ image, previewText, detailText }) => (
-  <section className={s.promo}>
-    {/* image приходит с бека, но дизайнеры захотели разные изображения для мобилки и десктопа */}
-    {/* style={{ backgroundImage: `url(${BASE_SITE_URL + image})` }} */}
-    <Wrapper style={{ height: '100%' }}>
-      <div className={s.container}>
-        <span className={s.intro}>{previewText}</span>
-        <h1 className={s.title}>{detailText}</h1>
-        <div className={s.footer}>
-          <a href={telegram} className={s.link}>
-            <span>Наш телеграм канал</span>
-            {<Telegram />}
-          </a>
+export const PromoSection = ({ image, previewText, detailText, categories }) => {
+  const [useShowButtonId, setUseShowButtonId] = useState(null)
+
+  const onMouseEnter = (id) => {
+    setUseShowButtonId(id)
+  }
+
+  useEffect(() => {
+    window.addEventListener('click', () => setUseShowButtonId(null))
+
+    return window.removeEventListener('click', () => setUseShowButtonId(null))
+  }, [])
+
+  return (
+    <section className={s.promo}>
+      <Wrapper style={{ height: '100%' }}>
+          <NewTabs>
+            {categories.map(({ name, id, subcategories }) => (
+              <NewSubcategoryButton
+                key={id}
+                title={name}
+                id={id}
+                subcategories={subcategories}
+                showButtonId={useShowButtonId}
+                onMouseEnter={() => onMouseEnter(id)}
+              />
+            ))}
+          </NewTabs>
+        <div className={s.container}>
+          <span className={s.intro}>{previewText}</span>
+          <h1 className={s.title}>{detailText}</h1>
         </div>
-      </div>
-    </Wrapper>
-  </section>
-);
+      </Wrapper>
+    </section>
+  );
+}
+
