@@ -7,6 +7,7 @@ import {
   menuChangeModalState,
   menuModalSelector
 } from 'redux/slices/modals';
+import { categoriesItemsSelector } from 'redux/slices/categories'
 import { windowSize } from 'constants.js';
 import { useClientSide } from 'hooks.js';
 import { MainLogo } from 'components/SVG/MainLogo';
@@ -18,6 +19,9 @@ import { SearchPanel } from 'components/common/SearchPanel/SearchPanel';
 
 import { FavoriteButton } from 'components/buttons/FavoriteButton/FavoriteButton';
 import { CartButton } from 'components/buttons/CartButton/CartButton';
+
+import { NewTabs } from 'components/layout/Tabs/NewTabs';
+import { NewSubcategoryButton } from 'components/buttons/SubcategoryButton/NewSubcategoryButton';
 
 import s from './Header.module.scss';
 
@@ -33,6 +37,7 @@ const headerLinks = [
 export const Header = ({ router }) => {
   const dispatch = useDispatch();
   const menuModalValue = useSelector(menuModalSelector);
+  const { categories } = useSelector(categoriesItemsSelector)
   const [isSearchOpen, setSearchOpen] = React.useState(false);
 
   const menuModalHandler = (value) => {
@@ -44,9 +49,22 @@ export const Header = ({ router }) => {
   };
 
   const isPromoPage = router.pathname === '/';
-  const isClientSide = useClientSide();
+  const notCatalogPage = router.pathname !== '/products'
 
   const [headerColors, setHeaderColors] = useState(true);
+
+  const [useShowButtonId, setUseShowButtonId] = useState(null)
+  const isClientSide = useClientSide();
+
+  const onMouseEnter = (id) => {
+    setUseShowButtonId(id)
+  }
+
+  useEffect(() => {
+    window.addEventListener('click', () => setUseShowButtonId(null))
+
+    return window.removeEventListener('click', () => setUseShowButtonId(null))
+  }, [])
 
   return (
     <>
@@ -100,6 +118,9 @@ export const Header = ({ router }) => {
                   <a className={clsx(s.link, isPromoPage && s.link_accent)}>Войти</a>
                 </Link>
               )} */}
+              <Link href="/login">
+                <a className={clsx(s.link, isPromoPage && !headerColors && s.link_accent)}>Профиль</a>
+              </Link>
             </nav>
             <div className={s.control}>
               {isClientSide && windowSize > 768 && (
@@ -146,6 +167,19 @@ export const Header = ({ router }) => {
               </span>
             </button>
           </div>
+          {isClientSide && windowSize >= 1200 && notCatalogPage && 
+            <NewTabs>
+              {categories?.map(({ name, id, subcategories }) => (
+                <NewSubcategoryButton
+                  key={id}
+                  title={name}
+                  id={id}
+                  subcategories={subcategories}
+                  showButtonId={useShowButtonId}
+                  onMouseEnter={() => onMouseEnter(id)}
+                />
+              ))}
+            </NewTabs>}
         </Wrapper>
       </header>
     </>

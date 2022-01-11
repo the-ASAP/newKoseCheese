@@ -23,6 +23,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { favoriteItemsSelector } from 'redux/slices/favorite';
 import { addToFavorite } from 'redux/slices/favorite';
 import { successPurchasePopupChangeState, popUpChangeModalState } from 'redux/slices/modals';
+import { addCategories } from 'redux/slices/categories'
+import { categoriesItemsSelector } from 'redux/slices/categories'
 
 const cookiesModalProperties = {
   animation: {
@@ -36,10 +38,13 @@ const cookiesModalProperties = {
 };
 const Index = ({ promoContent, discountProduct, categories, posts, newProducts, seo }) => {
   const cookiesModal = useModal(false, false);
-  const dispatch = useDispatch();
+  const categoriesInStore = useSelector(categoriesItemsSelector)
   const itemsFavorite = useSelector(favoriteItemsSelector);
+  const dispatch = useDispatch();
 
   useEffect(() => {
+    if(categories && categoriesInStore.categories.length === 0) dispatch(addCategories(categories))
+
     setTimeout(() => {
       if (!getCookie('hideCookie')) {
         cookiesModal.showModal();

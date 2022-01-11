@@ -71,11 +71,11 @@ export const setConfirmOrder = createAsyncThunk('order/confirm/', async (data, {
     ...data
   }).then(({ data: res }) => {
     purchaseConfirm(res);
-    if (res.url) {
-      window.location.replace(res.url);
-    } else {
-      window.location.replace(`/?bxOrderId=${res.order_id}&`);
-    }
+    // if (res.url) {
+    //   window.location.replace(res.url);
+    // } else {
+    //   window.location.replace(`/?bxOrderId=${res.order_id}&`);
+    // }
   });
 });
 

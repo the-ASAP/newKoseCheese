@@ -13,7 +13,7 @@ export const ProfileFeedback = () => {
   };
   return (
     <>
-      <FormContainer initialValues={initialValues} validationScheme={PROFILE_VALIDATION_SCHEMA}>
+      <FormContainer initialValues={initialValues} validationScheme={PROFILE_VALIDATION_SCHEMA} onSubmit={(values) => console.log(values)}>
         {(formProps) => (
           <>
             <div className={s.phone}>
