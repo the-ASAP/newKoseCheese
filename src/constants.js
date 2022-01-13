@@ -77,16 +77,9 @@ export const cities = [
         image: '/static/img/content/marketPoints/usach.jpg',
         phone: '+7 (495) 120-18-01',
         workingTime: 'с 08 до 21 часа'
-      }
-    ]
-  },
-  {
-    id: 3,
-    title: 'Арамиль',
-    cityCoords: [56.694568, 60.834342],
-    points: [
+      },
       {
-        id: 1,
+        id: 2,
         market: 'Арамильcкий рынок',
         coords: [56.694568, 60.834342],
         image: '/static/img/content/marketPoints/chermush.jpg',
@@ -94,7 +87,22 @@ export const cities = [
         workingTime: 'с 08 до 21 часа'
       }
     ]
-  }
+  },
+  // {
+  //   id: 3,
+  //   title: 'Арамиль',
+  //   cityCoords: [56.694568, 60.834342],
+  //   points: [
+  //     {
+  //       id: 1,
+  //       market: 'Арамильcкий рынок',
+  //       coords: [56.694568, 60.834342],
+  //       image: '/static/img/content/marketPoints/chermush.jpg',
+  //       phone: '+7 (495) 120-18-01',
+  //       workingTime: 'с 08 до 21 часа'
+  //     }
+  //   ]
+  // }
 ];
 
 export const subscribeDays = [

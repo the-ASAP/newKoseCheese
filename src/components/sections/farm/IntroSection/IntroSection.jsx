@@ -15,7 +15,7 @@ export const IntroSection = ({ categories, url, pageData }) => {
   return (
     <Section>
       <Wrapper>
-        <Tabs additionClass="farm">
+        {/* <Tabs additionClass="farm">
           {
             // eslint-disable-next-line no-shadow
             categories.map(({ title, id, url }) =>
@@ -29,7 +29,7 @@ export const IntroSection = ({ categories, url, pageData }) => {
                 </a>
               </Link>
             )}
-        </Tabs>
+        </Tabs> */}
         <img src={promoImage} className={s.promo} alt=""/>
         <H1>{title}</H1>
       </Wrapper>
