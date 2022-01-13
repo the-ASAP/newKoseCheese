@@ -11,7 +11,7 @@ import { ModalBody } from '../ModalBody/ModalBody';
 import s from './Cart.module.scss';
 
 export const Cart = ({ closeModal }) => {
-  const discountModal = useModal(true);
+  const discountModal = useModal(false);
   const itemsInCart = useSelector(cartItemsSelector);
 
   return (

@@ -116,11 +116,11 @@ export const PurchaseControl = ({ product, inCart, ...other }) => {
           <span>Подписаться на доставку</span>
         </button>
       )}
-      <div className={s.delivery}>
+      {/* <div className={s.delivery}>
         <DeliveryIcon />
         <span className={s.text}>Ближайшая доставка: </span>
         <span className={s.terms}>15.05.2021 </span>
-      </div>
+      </div> */}
     </div>
   );
 };

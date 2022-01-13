@@ -52,14 +52,14 @@ export const AuthSection = () => {
       {
         Authorization: `Bearer 1`
       }
-    ).then((res) => res.data);
+    ).then((res) => console.log(res.data));
 
-    await dispatch(setUserInfo(profileInfo));
-    localStorage.setItem('authToken', confirmRequest.token);
-    // localStorage.setItem('fuser_id', userData.user_id);
-    // localStorage.removeItem("fuser_id");
-    await dispatch(setLogged(true));
-    router.push('/profile');
+    // await dispatch(setUserInfo(profileInfo));
+    // localStorage.setItem('authToken', confirmRequest.token);
+    // // localStorage.setItem('fuser_id', userData.user_id);
+    // // localStorage.removeItem("fuser_id");
+    // await dispatch(setLogged(true));
+    // router.push('/profile');
   };
 
   const privacyModalHandler = () => {
@@ -79,7 +79,7 @@ export const AuthSection = () => {
         //   confirmField ? confirmHandler(formData, values) : regHandler(values);
         // }}
         onSubmit={(values) => {
-          confirmField ? confirmHandler(formData, values) : regHandler(values);
+          confirmField ? confirmHandler(formData, values) : confirmHandler(formData, values);
         }}
       >
         {() => (

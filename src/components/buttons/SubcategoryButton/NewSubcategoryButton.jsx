@@ -10,6 +10,7 @@ export const NewSubcategoryButton = ({ title, id, active, additionClass, subcate
 
   const newSetActiveCategory = (id) => {
     localStorage.setItem('activeCategory', id)
+    localStorage.removeItem('activeSubCaterogy')
     history.push('/products')
   }
 

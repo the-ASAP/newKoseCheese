@@ -119,7 +119,7 @@ export const Header = ({ router }) => {
                   <a className={clsx(s.link, isPromoPage && s.link_accent)}>Войти</a>
                 </Link>
               )} */}
-              <Link href="/login">
+              <Link href="/profile">
                 <a className={clsx(s.link, isPromoPage && !headerColors && s.link_accent)}>Профиль</a>
               </Link>
             </nav>

@@ -31,7 +31,7 @@ export const OrderHeader = ({data}) => {
         <div className={s.field}>
           <span className={s.label}>Дата:</span>
           {" "}
-          <span className={s.value}>{format(data.date, "dd.MM.yyyy")}</span>
+          <span className={s.value}>{data?.date}</span>
         </div>
       </div>
       {/* <span className={s.details}>Детали заказа</span> */}

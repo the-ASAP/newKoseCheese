@@ -51,3 +51,27 @@ export const removeFavorite = (product) => {
   favorite = favorite.filter((item) => item.id !== product.id);
   localStorage.setItem('itemsInFavorite', JSON.stringify(favorite));
 };
+
+
+export const sortProductsFunction = (productsArr, sortKey, sortBy) => {
+  return productsArr.sort((a,b) => {
+    if(sortBy === 'DESC') {
+      if (+a[sortKey] > +b[sortKey]) {
+        return -1;
+      }
+      if (+a[sortKey] < +b[sortKey]) {
+        return 1;
+      }
+      return 0;
+    }                        
+    if(sortBy === "ASC") {
+      if (+a[sortKey] > +b[sortKey]) {
+        return 1;
+      }
+      if (+a[sortKey] < +b[sortKey]) {
+        return -1;
+      }
+      return 0;
+    }
+  })
+}

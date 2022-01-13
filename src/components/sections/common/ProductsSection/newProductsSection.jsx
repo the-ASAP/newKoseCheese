@@ -13,6 +13,7 @@ import { useClientSide } from 'hooks.js';
 import APIBitrix from 'api/APIBitrix';
 import { DropdownCustom } from 'components/common/DropdownCustom/DropdownCustom';
 import { NewDropdownCustom } from 'components/common/DropdownCustom/NewDropdownCustom';
+import { sortProductsFunction } from 'functions';
 import { filterDropdown } from 'constants.js';
 import s from './ProductsSection.module.scss';
 
@@ -66,6 +67,8 @@ export const NewProductsSection = ({ products, categories }) => {
     if (activeProducts !== false) {
       setLoading(false);
       setGoodsPage((prev) => ({ ...prev, limit: activeProducts.length }));
+
+      const sortArr = sortProductsFunction(activeProducts, filterDropdown[0].value, filterDropdown[0].sort)
       setSortProducts(activeProducts)
     }
   }, [activeProducts]);
@@ -133,27 +136,7 @@ export const NewProductsSection = ({ products, categories }) => {
               selectHandler={(e) => {
                 filterDropdown.forEach(elem => {
                   if(elem.title === e.value) {
-                    let sortArr = activeProducts.sort((a,b) => {
-                      if(elem.sort === 'DESC') {
-                        if (+a[elem.value] > +b[elem.value]) {
-                          return -1;
-                        }
-                        if (+a[elem.value] < +b[elem.value]) {
-                          return 1;
-                        }
-                        return 0;
-                      }                        
-                      if(elem.sort === "ASC") {
-                        if (+a[elem.value] > +b[elem.value]) {
-                          return 1;
-                        }
-                        if (+a[elem.value] < +b[elem.value]) {
-                          return -1;
-                        }
-                        return 0;
-                      }
-                      
-                    })
+                    const sortArr = sortProductsFunction(activeProducts, elem.value, elem.sort)
                     setActiveProducts([...sortArr])  
                   }
                 })

@@ -13,7 +13,8 @@ import APIBitrix from 'api/APIBitrix';
 import MockAPI from 'api/MockAPI';
 
 const Products = ({ newProducts, discountProduct, categories, seo }) => {
-  const discountModal = useModal(true, false);
+  const discountModal = useModal(false, false);
+
   return (
     <>
       <Head>

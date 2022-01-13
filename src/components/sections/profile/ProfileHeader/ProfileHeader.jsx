@@ -8,6 +8,8 @@ import { userInfoSelector } from 'redux/slices/user';
 export const ProfileHeader = () => {
   const userInfo = useSelector(userInfoSelector);
 
+  console.log(userInfo)
+
   return (
     <>
       <H1 additionClass="profile">Личный кабинет</H1>
