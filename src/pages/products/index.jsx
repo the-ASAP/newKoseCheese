@@ -41,7 +41,7 @@ export default Products;
 
 export const getServerSideProps = async () => {
   const categories = await APIBitrix.get('products/categories/');
-  const newProducts = await APIBitrix.get('products/slider/').then((res) => res.products);
+  const newProducts = await APIBitrix.get('products/slider/new/').then((res) => res.products);
   // const { discountProduct } = await MockAPI.getData();
   const seo = await APIBitrix.get(`seo/catalog-page/`);
 
