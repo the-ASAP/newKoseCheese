@@ -5,6 +5,7 @@ import { Instagram } from "components/common/Instagram/Instagram";
 import { Section } from "components/layout/Section/Section";
 import { Wrapper } from "components/layout/Wrapper/Wrapper";
 import { Slider } from "components/common/Slider/Slider";
+import { H1 } from "components/layout/H1/H1"
 import s from "./InstagramSection.module.scss";
 
 const sliderParams = {
@@ -38,6 +39,7 @@ export const InstagramSection = () => {
     <Section>
       <Wrapper>
         <div className={s.container}>
+          <H1>Instagram</H1>
           {photos.length > 0 && <Slider slides={photos} params={sliderParams}>
             <Instagram/>
           </Slider>}

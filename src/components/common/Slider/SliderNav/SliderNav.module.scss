@@ -39,7 +39,13 @@
   font-family: $font-service--bold;
 }
 
+
 .center {
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.newCenter {
   left: 50%;
   transform: translateX(-50%);
 }
@@ -48,6 +54,10 @@
   right: 20%;
 }
 @media (max-width: $landscape) {
+  .newCenter {
+    left: 16%;
+
+  }
   .right {
     right: 25%;
   }

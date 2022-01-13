@@ -47,3 +47,14 @@
     line-height: 1.25rem;
     color: #8D9A9A;
 }
+
+@media (max-width: 768px) {
+    .container {
+        margin-top: 2.5rem;
+    }
+
+    .text {
+        font-size: 1.5rem;
+    }
+
+}

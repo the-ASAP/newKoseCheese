@@ -171,13 +171,13 @@ export const NewProductsSection = ({ products, categories }) => {
               </div>
             )
           )}
-          {isClientSide &&
+          {/* {isClientSide &&
             windowSize <= 1200 &&
             goodsPagination.currentPage <= goodsPagination.limit && (
               <button type="button" className={s.more} onClick={handleSetGoodsPagination}>
                 Показать еще <span>({goodsPagination.perPage})</span>
               </button>
-            )}
+            )} */}
         </Wrapper>
       </Section>
     </>

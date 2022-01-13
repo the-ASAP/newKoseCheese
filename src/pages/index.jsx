@@ -36,7 +36,7 @@ const cookiesModalProperties = {
     containerClass: 'cookiesContainer'
   }
 };
-const Index = ({ promoContent, discountProduct, categories, posts, newProducts, seo }) => {
+const Index = ({ promoContent, discountProduct, categories, posts, newProducts, popularProducts, seo }) => {
   const cookiesModal = useModal(false, false);
   const categoriesInStore = useSelector(categoriesItemsSelector)
   const itemsFavorite = useSelector(favoriteItemsSelector);
@@ -90,7 +90,7 @@ const Index = ({ promoContent, discountProduct, categories, posts, newProducts, 
       </Head>
       <PromoSection {...promoContent} categories={categories}/>
       <NewTastesSection title={'Новые вкусы'} newProducts={newProducts} />
-      <PopularSection products={[]} categories={categories} />
+      <PopularSection products={popularProducts} categories={categories} />
       {/* <DiscountSection {...discountProduct} /> */}
 
       <RecipesSliderSection recipes={posts} title="Рецепты" />
@@ -116,7 +116,8 @@ export default Index;
 export const getServerSideProps = async () => {
   const promoContent = await APIBitrix.get('content/main/promo-section/').then((res) => res[0]);
   const categories = await APIBitrix.get('products/categories/').then((res) => res);
-  const newProducts = await APIBitrix.get('products/slider/').then((res) => res.products);
+  const newProducts = await APIBitrix.get('products/slider/new/').then((res) => res.products);
+  const popularProducts = await APIBitrix.get('products/slider/popular/').then((res) => res.products);
   const posts = await APIBitrix.get(`articles/collection/`);
   const seo = await APIBitrix.get(`seo/main-page/`);
   // const { discountProduct } = MockAPI.getData();
@@ -134,6 +135,7 @@ export const getServerSideProps = async () => {
       categories,
       posts,
       newProducts,
+      popularProducts,
       promoContent,
       seo
     }

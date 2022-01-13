@@ -26,8 +26,8 @@ export const RecipesSliderSection = ({ recipes, title }) => {
         counter: true,
         counterBottom: windowSize <= 1200,
         seeAll: {
-          visible: windowSize >= 1200,
-          position: "center",
+          visible: windowSize >= 0,
+          position: "newCenter",
           link: "/articles"
         }
       }

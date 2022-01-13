@@ -25,15 +25,6 @@ import { NewSubcategoryButton } from 'components/buttons/SubcategoryButton/NewSu
 
 import s from './Header.module.scss';
 
-// const headerLinks = [
-//   { title: 'Каталог', link: '/products' },
-//   { title: 'Доставка', link: '/delivery' },
-//   { title: 'Пункты продаж', link: '/sale-points' },
-//   { logo: true },
-//   { title: 'Наше производство', link: '/farm' },
-//   { title: 'Вопросы', link: '/questions' }
-// ];
-
 const headerLinks = [
   { title: 'Ферма', link: '/farm' },
   { title: 'Сыроварня', link: '/cheeseboard' },

@@ -12,7 +12,8 @@ export const SliderNav = (props) => {
       <div className={clsx(s.wrapper, isGallery && s.bottom)}>
         {title && <h2>{title}</h2>}
         {seeAll?.visible &&
-        <Link href={seeAll.link}><a className={clsx(s.link, s[seeAll.position])}>Посмотреть все</a></Link>}
+          <Link href={seeAll.link}><a className={clsx(s.link, s[seeAll.position])}>Посмотреть все</a></Link> 
+        }
         {!counterBottom && <SliderCounter {...counterProps}/>}
       </div>
       {counterBottom && <SliderCounter {...counterProps}/>}

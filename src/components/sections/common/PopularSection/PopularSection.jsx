@@ -77,19 +77,19 @@ export const PopularSection = ({ products, categories }) => {
           ) : (
             activeProducts.length > 0 && (
               <div className={s.body}>
-                {activeProducts.map((product) => {
+                {products.map((product) => {
                   return <Product key={product.id} {...product} />;
                 })}
               </div>
             )
           )}
-          {isClientSide &&
+          {/* {isClientSide &&
             windowSize <= 1200 &&
             goodsPagination.currentPage <= goodsPagination.limit && (
               <button type="button" className={s.more} onClick={handleSetGoodsPagination}>
                 Показать еще <span>({goodsPagination.perPage})</span>
               </button>
-            )}
+            )} */}
         </Wrapper>
       </Section>
     </>
