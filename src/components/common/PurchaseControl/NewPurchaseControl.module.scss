@@ -1,0 +1,130 @@
+@import '/src/styles/root.scss';
+@import '/src/styles/mixins.scss';
+
+.container {
+  @extend %flexbox;
+  margin-top: 1.875rem;
+  width: 22.5rem;
+  flex-wrap: wrap;
+}
+
+.counter {
+  position: relative;
+  @extend %flexbox;
+  justify-content: center;
+  width: 10rem;
+  height: 2.5rem;
+  margin-right: 1.125rem;
+  margin-bottom: 0.9375rem;
+  border: 1px solid $grey;
+  border-radius: 8px;
+  font-family: $font-service;
+  user-select: none;
+}
+.count {
+
+  font-size: 1.125rem;
+}
+
+.change {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40%;
+  height: 100%;
+  transition: top 0.1s;
+  &:active {
+    top: 55%;
+  }
+}
+.minus {
+  left: 0;
+}
+.plus {
+  right: 0;
+}
+
+.add {
+  width: 19rem;
+  height: 2.5rem;
+  margin-right: 0.625rem;
+  border: 1px solid transparent;
+  border-radius: 42px;
+  font-size: 12px;
+  text-decoration: underline;
+  text-transform: uppercase;
+  color: $accent;
+  background-color: $gen;
+  &:hover {
+    border-color: $gen;
+    background-color: transparent;
+    color: $gen;
+  }
+}
+
+.favorite {
+  @extend %button--circle;
+}
+
+.subscribe {
+  @extend %button--green;
+  width: 19.375rem;
+  height: 2.5rem;
+  margin-top: 20px;
+  &:hover {
+    span::after {
+      background-color: $accent;
+      bottom: 0;
+    }
+  }
+  span {
+    @extend %link;
+    font-size: 0.75rem;
+    &::after {
+      transition: background-color 0.3s;
+    }
+  }
+}
+
+.delivery {
+  @extend %flexbox;
+  margin-top: 1.875rem;
+  font-family: $font-service;
+  font-size: 0.875rem;
+}
+.text {
+  opacity: 0.6;
+  margin: 0 0.25rem 0 0.875rem;
+  min-width: 10rem;
+}
+
+@media (max-width: $landscape) {
+  .subscribe {
+    width: 300px;
+  }
+}
+@media (max-width: $tablet) {
+  .inCart {
+    margin-top: 0;
+  }
+}
+
+@media (max-width: $mobile) {
+  .inCart {
+    margin-top: 10px;
+  }
+  .counter {
+    margin-right: 10px;
+  }
+  .delivery {
+    margin-top: 16px;
+  }
+  .subscribe {
+    width: 100%;
+    max-width: 420px;
+    margin-bottom: 45px;
+  }
+}

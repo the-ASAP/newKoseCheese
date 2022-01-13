@@ -229,3 +229,21 @@ export const orders = [
     ]
   }
 ];
+
+export const filterDropdown = [
+  {
+    title: 'По популярности',
+    value: 'sort',
+    sort: 'DESC',
+  },
+  {
+    title: 'По убыванию цены',
+    value: 'price',
+    sort: 'DESC'
+  },
+  {
+    title: 'По возрастанию цены',
+    value: 'price',
+    sort: 'ASC'
+  }
+]

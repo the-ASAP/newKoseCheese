@@ -5,7 +5,7 @@ import parse from 'html-react-parser';
 import Accordion from 'components/common/Accordion/Accordion';
 import { BackButton } from 'components/buttons/BackButton/BackButton';
 import { Thumbnails } from 'components/common/Thumbnails/Thumbnails';
-import { PurchaseControl } from 'components/common/PurchaseControl/PurchaseControl';
+import { NewPurchaseControl } from 'components/common/PurchaseControl/NewPurchaseControl';
 import { ProductProperty } from 'components/Product/ProductProperty/ProductProperty';
 import { allTastes, windowSize, BASE_SITE_URL } from 'constants.js';
 import SwiperCore, { Pagination } from 'swiper/core';
@@ -106,6 +106,7 @@ export const DescriptionSection = ({ id, product }) => {
             <br />
             {addition}
           </h2>
+
           {producer && (
             <div className={s.producer}>
               <span className={s.producerProperty}>Производитель: </span>
@@ -124,6 +125,9 @@ export const DescriptionSection = ({ id, product }) => {
               {/* {count > 0 && ` ${count}  шт `} */}
               {/* {date && `до ${date}`} */}
             </span>
+          </div>
+          <div style={{ width: 'fit-content' }}>
+            <NewPurchaseControl className={s.purchase} product={properties} id={id} cart={false} />
           </div>
           <div className={s.price}>
             {newPrice && <span className={s.newPrice}>{newPrice} руб.</span>}
@@ -152,9 +156,7 @@ export const DescriptionSection = ({ id, product }) => {
           {/*  </div> */}
           {/* </> */}
           {/* } */}
-          <div style={{ width: 'fit-content' }}>
-            <PurchaseControl className={s.purchase} product={properties} id={id} cart={false} />
-          </div>
+
 
           <div className={s.composition}>
             {compose && isClientSide && windowSize <= 768 && (

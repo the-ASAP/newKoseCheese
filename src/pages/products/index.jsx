@@ -21,7 +21,7 @@ const Products = ({ newProducts, discountProduct, categories, seo }) => {
         <meta name="description" content={seo?.meta_description || `KO&CO`} />
         <title>{seo?.meta_title || `Каталог`}</title>
       </Head>
-      <Wrapper>
+      <Wrapper style={{marginTop: '6rem'}}>
         {discountModal.isShowed && (
           <Discount
             text="Вам представлена скидка на первый заказ 10%"
@@ -31,7 +31,7 @@ const Products = ({ newProducts, discountProduct, categories, seo }) => {
         <H1>Продукция</H1>
       </Wrapper>
       <NewProductsSection products={[]} categories={categories} />
-      <NewTastesSection newProducts={newProducts} />
+      <NewTastesSection title={'Мы рекомендуем'} newProducts={newProducts} />
       {/* <DiscountSection {...discountProduct} /> */}
     </>
   );

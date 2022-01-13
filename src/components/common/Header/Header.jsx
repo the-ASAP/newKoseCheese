@@ -78,6 +78,7 @@ export const Header = ({ router }) => {
         )}
       >
         <Wrapper>
+          <div className={s.mainContainer}>
           <div
             className={clsx(
               s.container,
@@ -180,6 +181,8 @@ export const Header = ({ router }) => {
                 />
               ))}
             </NewTabs>}
+          </div>
+         
         </Wrapper>
       </header>
     </>

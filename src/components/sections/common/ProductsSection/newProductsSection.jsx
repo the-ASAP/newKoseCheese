@@ -12,6 +12,8 @@ import { useClientSide } from 'hooks.js';
 
 import APIBitrix from 'api/APIBitrix';
 import { DropdownCustom } from 'components/common/DropdownCustom/DropdownCustom';
+import { NewDropdownCustom } from 'components/common/DropdownCustom/NewDropdownCustom';
+import { filterDropdown } from 'constants.js';
 import s from './ProductsSection.module.scss';
 
 export const NewProductsSection = ({ products, categories }) => {
@@ -19,6 +21,7 @@ export const NewProductsSection = ({ products, categories }) => {
   const [subCategoryId, setSubCategoryId] = useState(categories[0]?.subcategories[0]?.id);
   const [activeCategory, setActiveCategory] = useState(categories[0]);
   const [activeProducts, setActiveProducts] = useState(false);
+  const [sortProducts, setSortProducts] = useState(null);
   const [isLoading, setLoading] = useState(false);
   const [goodsPagination, setGoodsPage] = useState({
     perPage: 4,
@@ -63,6 +66,7 @@ export const NewProductsSection = ({ products, categories }) => {
     if (activeProducts !== false) {
       setLoading(false);
       setGoodsPage((prev) => ({ ...prev, limit: activeProducts.length }));
+      setSortProducts(activeProducts)
     }
   }, [activeProducts]);
 
@@ -121,13 +125,47 @@ export const NewProductsSection = ({ products, categories }) => {
               </div>
             )}
           </div>
-
+            
+          <div>
+            <NewDropdownCustom
+              value={filterDropdown[0]?.title}
+              options={filterDropdown.map(elem => elem.title)}
+              selectHandler={(e) => {
+                filterDropdown.forEach(elem => {
+                  if(elem.title === e.value) {
+                    let sortArr = activeProducts.sort((a,b) => {
+                      if(elem.sort === 'DESC') {
+                        if (+a[elem.value] > +b[elem.value]) {
+                          return -1;
+                        }
+                        if (+a[elem.value] < +b[elem.value]) {
+                          return 1;
+                        }
+                        return 0;
+                      }                        
+                      if(elem.sort === "ASC") {
+                        if (+a[elem.value] > +b[elem.value]) {
+                          return 1;
+                        }
+                        if (+a[elem.value] < +b[elem.value]) {
+                          return -1;
+                        }
+                        return 0;
+                      }
+                      
+                    })
+                    setActiveProducts([...sortArr])  
+                  }
+                })
+              }}
+            />
+          </div>
           {isLoading ? (
             <ProductLoader />
           ) : (
-            activeProducts.length > 0 && (
+            sortProducts?.length > 0 && (
               <div className={s.body}>
-                {activeProducts.map((product) => {
+                {sortProducts.map((product) => {
                   return <Product key={product.id} {...product} />;
                 })}
               </div>

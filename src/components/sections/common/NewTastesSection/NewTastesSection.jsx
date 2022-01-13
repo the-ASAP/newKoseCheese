@@ -34,10 +34,10 @@ const sliderParams = {
   }
 };
 
-export const NewTastesSection = ({ newProducts }) => (
+export const NewTastesSection = ({ title = 'Новые вкусы', newProducts }) => (
   <Section>
     <Wrapper>
-      <Slider title="Новые вкусы" slides={newProducts} params={sliderParams}>
+      <Slider title={title} slides={newProducts} params={sliderParams}>
         <NewTaste />
       </Slider>
     </Wrapper>

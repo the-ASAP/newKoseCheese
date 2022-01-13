@@ -18,13 +18,15 @@
   background-color: #fff3e7;
 }
 
+.mainContainer {
+  border-bottom: 1px solid rgba($gen, 0.3);
+}
 .container {
   @extend %flexbox;
   justify-content: space-between;
   height: 5rem;
   border-bottom: 1px solid rgba($gen, 0.3);
   position: sticky;
-  top: 0;
 }
 
 .nav {

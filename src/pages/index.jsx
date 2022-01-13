@@ -89,7 +89,7 @@ const Index = ({ promoContent, discountProduct, categories, posts, newProducts, 
         <title>{seo?.meta_title || `Главная страница`}</title>
       </Head>
       <PromoSection {...promoContent} categories={categories}/>
-      <NewTastesSection newProducts={newProducts} />
+      <NewTastesSection title={'Новые вкусы'} newProducts={newProducts} />
       <PopularSection products={[]} categories={categories} />
       {/* <DiscountSection {...discountProduct} /> */}
 
