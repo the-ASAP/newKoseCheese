@@ -1,0 +1,49 @@
+@import '/src/styles/mixins.scss';
+@import '/src/styles/root.scss';
+
+.container {
+    margin-top: 7.3125rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+.bigComma {
+    position: absolute;
+    top: -4rem;
+    left: 12rem;
+    font-size: 6.875rem;
+    line-height: 110.69%;
+    color: $gen;
+    opacity: 0.3;
+    font-size: $font-main;
+}
+
+.text {
+    max-width: 50.625rem;
+    font-size: 2.25rem;
+    line-height: 1.1;
+    text-align: center;
+    color: $gen;
+}
+
+.author {
+    display: block;
+    margin-top: 1.875rem;
+    max-width: 35rem;
+    text-align: center;
+    font-size: 1.125rem;
+    line-height: 1.5rem;
+    color: $gen;
+}
+
+.position {
+    display: block;
+    margin-top: 0.625rem;
+    max-width: 35rem;
+    text-align: center;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    color: #8D9A9A;
+}

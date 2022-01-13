@@ -37,7 +37,7 @@ import s from './Header.module.scss';
 const headerLinks = [
   { title: 'Ферма', link: '/farm' },
   { title: 'Сыроварня', link: '/cheeseboard' },
-  { title: 'Контроль качества', link: '/' },
+  { title: 'Контроль качества', link: '/control' },
   { logo: true },
   { title: 'Условия доставки', link: '/delivery' },
   { title: 'Вопросы', link: '/questions' }
