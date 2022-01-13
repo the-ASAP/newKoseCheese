@@ -72,17 +72,12 @@ export const PopularSection = ({ products, categories }) => {
       <Section>
         <Wrapper>
             <h1 className={s.title}>Популярное</h1>
-          {isLoading ? (
-            <ProductLoader />
-          ) : (
-            activeProducts.length > 0 && (
-              <div className={s.body}>
-                {activeProducts.map((product) => {
-                  return <Product key={product.id} {...product} />;
-                })}
-              </div>
-            )
-          )}
+            <div className={s.body}>
+              {activeProducts?.map((product) => {
+                return <Product key={product.id} {...product} />;
+              })}
+            </div>
+
           {isClientSide &&
             windowSize <= 1200 &&
             goodsPagination.currentPage <= goodsPagination.limit && (

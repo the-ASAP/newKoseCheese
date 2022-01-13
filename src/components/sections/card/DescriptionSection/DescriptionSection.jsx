@@ -113,12 +113,12 @@ export const DescriptionSection = ({ id, product }) => {
               <span className={s.producerValue}>{producer}</span>
             </div>
           )}
-          {discount && (
+          {/* {discount && (
             <div className={s.discount}>
               <span>На этот заказ у вас скидка </span>
               <span>-{discount}</span>
             </div>
-          )}
+          )} */}
           <div className={s.statuses}>
             <span className={clsx(s.status, status && count > 0 ? s.inStock : s.outStock)}>
               {status && count > 0 ? 'в наличии' : 'нет в наличии'}

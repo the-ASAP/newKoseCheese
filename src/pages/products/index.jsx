@@ -31,7 +31,7 @@ const Products = ({ newProducts, discountProduct, categories, seo }) => {
         <H1>Продукция</H1>
       </Wrapper>
       <NewProductsSection products={[]} categories={categories} />
-      <NewTastesSection title={'Мы рекомендуем'} newProducts={newProducts} />
+      <NewTastesSection title={'Новые вкусы'} newProducts={newProducts} />
       {/* <DiscountSection {...discountProduct} /> */}
     </>
   );
