@@ -54,7 +54,7 @@
   border: 1px solid transparent;
   border-radius: 42px;
   font-size: 12px;
-  text-decoration: underline;
+  // text-decoration: underline;
   text-transform: uppercase;
   color: $accent;
   background-color: $gen;
@@ -86,6 +86,7 @@
     &::after {
       transition: background-color 0.3s;
     }
+    text-decoration: none;
   }
 }
 
