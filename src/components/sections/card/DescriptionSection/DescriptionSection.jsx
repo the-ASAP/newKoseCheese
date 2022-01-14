@@ -119,14 +119,14 @@ export const DescriptionSection = ({ id, product }) => {
               <span>-{discount}</span>
             </div>
           )} */}
-          <div className={s.statuses}>
+          {/* <div className={s.statuses}>
             <span className={clsx(s.status, status && count > 0 ? s.inStock : s.outStock)}>
               {status && count > 0 ? 'в наличии' : 'нет в наличии'}
-              {/* {count > 0 && ` ${count}  шт `} */}
-              {/* {date && `до ${date}`} */}
+              {count > 0 && ` ${count}  шт `}
+              {date && `до ${date}`} 
             </span>
-          </div>
-          <div style={{ width: 'fit-content' }}>
+          </div> */}
+          <div className={s.newPurchase}>
             <NewPurchaseControl className={s.purchase} product={properties} id={id} cart={false} />
           </div>
           <div className={s.price}>

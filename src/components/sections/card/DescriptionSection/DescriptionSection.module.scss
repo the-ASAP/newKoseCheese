@@ -6,6 +6,9 @@
   justify-content: space-between;
 }
 
+.newPurchase {
+  width: fit-content;
+}
 
 
 .block {
@@ -199,6 +202,9 @@
 }
 
 @media (max-width: $mobile) {
+  .newPurchase {
+    width: 100%;
+  }
   .container {
     flex-wrap: wrap;
   }

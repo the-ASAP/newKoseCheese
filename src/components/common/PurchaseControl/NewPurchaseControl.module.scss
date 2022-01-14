@@ -75,6 +75,7 @@
   height: 2.5rem;
   margin-top: 20px;
   text-decoration: none;
+  display: none;
   &:hover {
     span::after {
       background-color: $accent;
@@ -116,11 +117,19 @@
 }
 
 @media (max-width: $mobile) {
+  .container {
+    width: 100%;
+    flex-wrap: initial;
+  }
+  .favorite {
+    min-width: 2.75rem;
+  }
   .inCart {
     margin-top: 10px;
   }
   .counter {
     margin-right: 10px;
+    margin-bottom: 0;
   }
   .delivery {
     margin-top: 16px;
