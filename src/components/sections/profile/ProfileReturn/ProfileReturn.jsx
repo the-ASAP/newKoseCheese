@@ -41,7 +41,7 @@ export const ProfileReturn = () => {
   ];
 
   const [orderNumber, setOrderNumber] = React.useState("");
-  const [curProducts, setCurProducts] = React.useState([]);
+  const [curProducts, setCurProducts] = React.useState(currentProducts);
 
   const submitHandler = (value) => {
     console.log(value);
@@ -59,6 +59,7 @@ export const ProfileReturn = () => {
   }, [orderNumber]);
 
   const isClientSide = useClientSide();
+  const [showSalePoints, setShowSalePoints] = React.useState(false)
 
   return (
     <>
@@ -92,10 +93,10 @@ export const ProfileReturn = () => {
                         }}
                       />
                     )}
-                    <Input label="*Телефон" type="number" id="phone" name="phone" />
+                    {/* <Input label="*Телефон" type="number" id="phone" name="phone" />
                     <Input label="*Имя" type="text" id="name" name="name" />
                     <Input label="Фамилия" type="text" id="surname" name="surname" />
-                    <Input label="Е-mail" type="text" id="email" name="email" />
+                    <Input label="Е-mail" type="text" id="email" name="email" /> */}
                     <DropdownCustom
                       label="*Причина замены"
                       placeholder="Выберите причину"
@@ -130,7 +131,7 @@ export const ProfileReturn = () => {
                           На внутренний счет
                         </label>
                       </div>
-                      <div className={s.onchange}>
+                      {/* <div className={s.onchange}>
                         <Input
                           id="card"
                           name="replace"
@@ -141,9 +142,9 @@ export const ProfileReturn = () => {
                         <label htmlFor="card" className={s.label}>
                           Деньги на карту
                         </label>
-                      </div>
+                      </div> */}
                     </div>
-                    <Input label="Номер карты" type="number" id="cardNumber" name="cardNumber" />
+                    {/* <Input label="Номер карты" type="number" id="cardNumber" name="cardNumber" /> */}
                   </div>
                   <div className={s.block}>
                     <span className={s.subtitle}>*Добавить фото чека и продукта</span>
@@ -177,6 +178,7 @@ export const ProfileReturn = () => {
                           value="toCourier"
                           type="radio"
                           additionClass="checkbox"
+                          onClick={(e) => setShowSalePoints(false)}
                         />
                         <label htmlFor="toCourier" className={s.label}>
                           Вернём товар курьеру
@@ -189,20 +191,24 @@ export const ProfileReturn = () => {
                           value="toPoint"
                           type="radio"
                           additionClass="checkbox"
+                          onClick={(e) => setShowSalePoints(true)}
                         />
                         <label htmlFor="toPoint" className={s.label}>
                           Вернём товар на точку продаж
                         </label>
                       </div>
                     </div>
-                    <DropdownCustom
-                      label="Точка продаж"
-                      placeholder="Выберите точку продаж"
-                      options={salePoints}
-                      selectHandler={(e) => {
-                        formProps.setFieldValue('point', e.value);
-                      }}
-                    />
+                    {
+                      showSalePoints && 
+                      <DropdownCustom
+                        label="Точка продаж"
+                        placeholder="Выберите точку продаж"
+                        options={salePoints}
+                        selectHandler={(e) => {
+                          formProps.setFieldValue('point', e.value);
+                        }}
+                      />
+                    }
                   </div>
                 </div>
                 <button type="submit" className={s.submit}>

@@ -40,5 +40,7 @@
   .subcategories {
     justify-content: flex-start;
     width: 100%;
+    flex-wrap: nowrap;
+    overflow-x: scroll;
   }
 }

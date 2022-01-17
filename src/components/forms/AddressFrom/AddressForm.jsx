@@ -23,6 +23,7 @@ export const AddressForm = ({ initialValues, removeAddressHandler, id }) => {
       {(formProps) => (
         <div className={s.form}>
           <div className={s.column}>
+            <Input id={`title_${new Date().getTime()}`} label="Наименование адреса" name="title" type="text" />
             <Input id={`city_${new Date().getTime()}`} label="Город" name="city" type="text" />
             <Input id={`street_${new Date().getTime()}`} label="Улица" name="street" type="text" />
             <div className={s.column}>
@@ -41,7 +42,7 @@ export const AddressForm = ({ initialValues, removeAddressHandler, id }) => {
                 name="apartment"
                 type="text"
               />
-              <Input id={`code_${new Date().getTime()}`} label="Код" name="code" type="text" />
+              {/* <Input id={`code_${new Date().getTime()}`} label="Код" name="code" type="text" /> */}
             </div>
           </div>
           <div className={s.column}>

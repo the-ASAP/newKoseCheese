@@ -21,6 +21,10 @@
     height: auto;
 }
 
+.instagram {
+   max-height: 26rem;
+}
+
 @media (max-width: $tablet) {
    .recipe_slide {
       width: 340px;

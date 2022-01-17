@@ -5,7 +5,7 @@ export const LoyaltyItem = ({children}) => {
   return (
     <div className={s.container}>
       <div className={s.content}>{children}</div>
-      <button type="button" className={s.button}>Узнать у менеджера</button>
+      {/* <button type="button" className={s.button}>Узнать у менеджера</button> */}
     </div>
   );
 };

@@ -29,6 +29,7 @@ const headerLinks = [
   { title: 'Ферма', link: '/farm' },
   { title: 'Сыроварня', link: '/cheeseboard' },
   { title: 'Контроль качества', link: '/control' },
+  { title: 'Рецерты', link: '/articles'},
   { logo: true },
   { title: 'Условия доставки', link: '/delivery' },
   { title: 'Вопросы', link: '/questions' }
@@ -58,6 +59,9 @@ export const Header = ({ router }) => {
 
   const onMouseEnter = (id) => {
     setUseShowButtonId(id)
+  }
+
+  const onMouseMove = () => {
   }
 
   useEffect(() => {
@@ -178,6 +182,7 @@ export const Header = ({ router }) => {
                   subcategories={subcategories}
                   showButtonId={useShowButtonId}
                   onMouseEnter={() => onMouseEnter(id)}
+                  onMouseMove={onMouseMove}
                 />
               ))}
             </NewTabs>}
