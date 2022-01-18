@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React from "react";
 import { AddressForm } from "components/forms/AddressFrom/AddressForm";
 import s from "./ProfileDelivery.module.scss";
@@ -7,12 +8,14 @@ export const ProfileDelivery = (props) => {
 
   const initialAddresses = [{
     id: 1,
-    city: "Москва"
-  }, {
-    id: 2,
-    city: "",
-    street: "Аткарская"
-  }];
+    title: "Домашний адрес",
+    city: "Саратов",
+    street: "Московская",
+    house: '37',
+    floor: '1',
+    apartment: '1'
+  },
+];
 
 
   const [addresses, setAddresses] = React.useState(initialAddresses);

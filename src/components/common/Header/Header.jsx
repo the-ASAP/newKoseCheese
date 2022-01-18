@@ -35,7 +35,7 @@ const headerLinks = [
   { title: 'Вопросы', link: '/questions' }
 ];
 
-export const Header = ({ router }) => {
+export const Header = ({ router, cat }) => {
   const dispatch = useDispatch();
   const menuModalValue = useSelector(menuModalSelector);
   const { categories } = useSelector(categoriesItemsSelector)
@@ -55,19 +55,27 @@ export const Header = ({ router }) => {
   const [headerColors, setHeaderColors] = useState(true);
 
   const [useShowButtonId, setUseShowButtonId] = useState(null)
+  const [moveData, setMoveData] = useState([])
   const isClientSide = useClientSide();
 
   const onMouseEnter = (id) => {
     setUseShowButtonId(id)
   }
 
-  const onMouseMove = () => {
-  }
+  useEffect(() => {
+    setUseShowButtonId(moveData[1])
+    const handler = setTimeout(() => setUseShowButtonId(null), 3000)
+    return () => clearTimeout(handler)
+  }, [moveData])
 
   useEffect(() => {
-    window.addEventListener('click', () => setUseShowButtonId(null))
+    const dontShowButton = () => setUseShowButtonId(null)
+    window.addEventListener('click', dontShowButton())
 
-    return window.removeEventListener('click', () => setUseShowButtonId(null))
+    const clearFunc = () => {
+      window.removeEventListener('click', dontShowButton())
+    }
+    return clearFunc()
   }, [])
 
   return (
@@ -181,8 +189,9 @@ export const Header = ({ router }) => {
                   id={id}
                   subcategories={subcategories}
                   showButtonId={useShowButtonId}
-                  onMouseEnter={() => onMouseEnter(id)}
-                  onMouseMove={onMouseMove}
+                  // onMouseEnter={() => onMouseEnter(id)}
+                  onMouseMove={() => setMoveData([new Date(), id])}
+                  onMouseMoveCat={() => setMoveData([new Date(), id])}
                 />
               ))}
             </NewTabs>}

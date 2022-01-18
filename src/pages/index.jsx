@@ -18,12 +18,11 @@ import { useModal } from 'hooks';
 import { PartnersSection } from 'components/sections/index/PartnersSection/PartnersSection';
 import APIBitrix from 'api/APIBitrix';
 import { getCookie } from 'functions';
-import MockAPI from 'api/MockAPI';
 import { useDispatch, useSelector } from 'react-redux';
 import { favoriteItemsSelector } from 'redux/slices/favorite';
 import { addToFavorite } from 'redux/slices/favorite';
 import { successPurchasePopupChangeState, popUpChangeModalState } from 'redux/slices/modals';
-import { addCategories } from 'redux/slices/categories'
+// import { addCategories } from 'redux/slices/categories'
 import { categoriesItemsSelector } from 'redux/slices/categories'
 
 const cookiesModalProperties = {
@@ -38,12 +37,12 @@ const cookiesModalProperties = {
 };
 const Index = ({ promoContent, discountProduct, categories, posts, newProducts, popularProducts, seo }) => {
   const cookiesModal = useModal(false, false);
-  const categoriesInStore = useSelector(categoriesItemsSelector)
+  // const categoriesInStore = useSelector(categoriesItemsSelector)
   const itemsFavorite = useSelector(favoriteItemsSelector);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if(categories && categoriesInStore.categories.length === 0) dispatch(addCategories(categories))
+    // if(categories && categoriesInStore.categories.length === 0) dispatch(addCategories(categories))
 
     setTimeout(() => {
       if (!getCookie('hideCookie')) {

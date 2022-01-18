@@ -264,3 +264,10 @@ export const SearchIcon = ({ color = "#FAEEE2" }) => (
           fill={color}/>
   </svg>
 );
+
+export const ProductsIcon = () => (
+  <svg width="15" height="21" viewBox="0 0 15 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <rect x="0.5" y="6.5" width="14" height="14" stroke="#FFF3E7"/>
+    <path d="M12 10V5.5C12 3.01472 9.98528 1 7.5 1V1C5.01472 1 3 3.01472 3 5.5V10" stroke="#FFF3E7"/>
+  </svg>
+)

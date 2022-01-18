@@ -55,7 +55,7 @@ export const AddressForm = ({ initialValues, removeAddressHandler, id }) => {
           </div>
           <div className={s.controls}>
             <button type="submit" className={s.submit}>
-              сохранить
+              Редактировать
             </button>
             <RemoveButton clickHandler={() => removeAddressHandler(formProps, id)} />
           </div>

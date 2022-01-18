@@ -48,11 +48,12 @@
     position: absolute;
     top: calc(100% + 1.625rem);
     border: 1px solid rgba(24, 66, 64, 0.3);
-    display: none;
-    opacity: 0;
-    transition: opacity 0.3s ease-in;
     background-color: $accent;
     padding: 0.9375rem 0;
+
+    transition: opacity .3s ease-in;
+    opacity: 0;
+    visibility: hidden;
 
     &__ref {
         color: $gen;
@@ -72,8 +73,8 @@
     }
 
     &_active {
-        display: block;
-        opacity: 1;
+      opacity: 1;
+      visibility: visible;
     }
 }
 

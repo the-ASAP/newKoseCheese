@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import clsx from "clsx";
-import { CartIconMobile, FavoriteIconMobile, GeoIcon, ProfileIcon } from "components/SVG/Icons";
+import { CartIconMobile, FavoriteIconMobile, ProductsIcon, ProfileIcon } from "components/SVG/Icons";
 import { useDispatch, useSelector } from "react-redux";
 import {
   cartChangeModalState, cartModalSelector,
@@ -36,9 +36,9 @@ export const Submenu = () => {
 
   return (
     <div className={s.container}>
-      <Link href="/sale-points">
+      <Link href="/products">
         <a className={s.button}>
-          <GeoIcon/>
+          <ProductsIcon/>
         </a>
       </Link>
       <Link href="/login">

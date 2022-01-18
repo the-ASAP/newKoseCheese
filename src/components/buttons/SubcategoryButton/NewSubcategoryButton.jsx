@@ -4,7 +4,7 @@ import { useRouter } from 'next/router'
 import s from 'components/buttons/SubcategoryButton/NewSubcategoryButton.module.scss';
 
 
-export const NewSubcategoryButton = ({ title, id, active, additionClass, subcategories, showButtonId, onMouseEnter, onMouseMove }) => {
+export const NewSubcategoryButton = ({ title, id, active, additionClass, subcategories, showButtonId, onMouseEnter, onMouseMove, onMouseMoveCat }) => {
   const history = useRouter()
 
 
@@ -33,7 +33,7 @@ export const NewSubcategoryButton = ({ title, id, active, additionClass, subcate
           {title}
           </button>
           {subcategories && 
-            <div className={clsx(s.block,  showButtonId === id && s.block_active)}>
+            <div className={clsx(s.block,  showButtonId === id && s.block_active)} onMouseMove={onMouseMoveCat}>
               {subcategories?.map(subcategory => 
                 <button type="button" className={s.block__ref} key={subcategory.id} onClick={() => newSetActiveSubCategory(id, subcategory.id)}>
                   {subcategory.name}

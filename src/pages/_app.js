@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React from 'react';
 import { wrapper } from 'redux/store';
 
@@ -14,25 +15,26 @@ import { Submenu } from 'components/common/Submenu/Submenu';
 import { windowSize } from 'constants.js';
 import { useClientSide } from 'hooks.js';
 import APIBitrix from 'api/APIBitrix';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { addUserId } from '../redux/slices/user';
 import { reqGetProducts } from '../redux/slices/cart';
+import { categoriesItemsSelector, addCategories } from 'redux/slices/categories'
 
 const MyApp = ({ Component, pageProps, router }) => {
-  // preloader
-  NProgress.configure({ easing: 'ease', speed: 500 });
+  // // preloader
+  // NProgress.configure({ easing: 'ease', speed: 500 });
 
-  Router.onRouteChangeStart = () => {
-    NProgress.start();
-  };
+  // Router.onRouteChangeStart = () => {
+  //   NProgress.start();
+  // };
 
-  Router.onRouteChangeComplete = () => {
-    NProgress.done();
-  };
+  // Router.onRouteChangeComplete = () => {
+  //   NProgress.done();
+  // };
 
-  Router.onRouteChangeError = () => {
-    NProgress.done();
-  };
+  // Router.onRouteChangeError = () => {
+  //   NProgress.done();
+  // };
 
   const isClientSide = useClientSide();
   const dispatch = useDispatch();
@@ -45,15 +47,20 @@ const MyApp = ({ Component, pageProps, router }) => {
 
   const getProducts = async () => {
     if (!localStorage.getItem('fuser_id')) {
-      await putClientInStorage();
+      putClientInStorage();
     }
-    await dispatch(addUserId(localStorage.getItem('fuser_id')));
-    await dispatch(reqGetProducts());
+    dispatch(addUserId(localStorage.getItem('fuser_id')));
+    dispatch(reqGetProducts());
+
+    categories = await APIBitrix.get('products/categories/').then((res) => res);  
+    dispatch(addCategories(categories))
+    // const categoriesInStore = useSelector(categoriesItemsSelector)
+    // if(categories && categoriesInStore.categories.length === 0) dispatch(addCategories(categories))
   };
 
-  React.useEffect(() => {
+  let categories = []
+  React.useEffect(async () => {
     getProducts();
-
     // избранное
   }, []);
 
