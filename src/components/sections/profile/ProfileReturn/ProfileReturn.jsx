@@ -11,6 +11,7 @@ import { returnOrderSelector } from "redux/slices/returnOrder";
 import s from "./ProfileReturn.module.scss";
 import { Field } from "formik";
 import Dropdown from "react-dropdown";
+import { Textarea } from 'components/forms/Textarea/Textarea';
 
 const initialValues = {
   name: "Сергей",
@@ -69,7 +70,7 @@ export const ProfileReturn = () => {
           <FormContainer initialValues={initialValues} onSubmit={submitHandler}>
             {(formProps) => (
               <>
-                <h3 className={s.title}>Заявление на замену</h3>
+                <h3 className={s.title}>Заявка на замену</h3>
                 <div className={s.container}>
                   <div className={s.block}>
                     <DropdownCustom
@@ -104,6 +105,12 @@ export const ProfileReturn = () => {
                       selectHandler={(e) => {
                         formProps.setFieldValue('reason', e.value);
                       }}
+                    />
+                    <Textarea
+                      id={`comment_${new Date().getTime()}`}
+                      label="Описание проблемы"
+                      name="comment"
+                      type="text"
                     />
                     <div className={s.replace}>
                       <span className={s.subtitle}>Замена на</span>

@@ -9,8 +9,8 @@ import {
 } from 'redux/slices/modals';
 import { cartItemsSelector, reqAddToCart } from 'redux/slices/cart';
 import { favoriteItemsSelector } from 'redux/slices/favorite';
-import { addToFavorite } from 'redux/slices/favorite';
-import { addFavorite } from 'functions';
+import { addToFavorite, removeFromFavorite } from 'redux/slices/favorite';
+import { addFavorite, removeFavorite } from 'functions';
 import clsx from 'clsx';
 import s from './ControlButtons.module.scss';
 
@@ -21,8 +21,14 @@ export const ControlButtons = ({ productProps }) => {
   const favorite = useSelector(favoriteItemsSelector);
 
   const favoriteModalHandler = () => {
-    dispatch(addToFavorite(productProps));
-    addFavorite(productProps);
+    if(favorite.some(item => item.id === id)) {
+      dispatch(removeFromFavorite(productProps));
+      removeFavorite(productProps);
+    }
+    else {
+      dispatch(addToFavorite(productProps));
+      addFavorite(productProps);
+    }
     // dispatch(favoriteChangeModalState(true));
   };
 

@@ -64,7 +64,7 @@ export const Header = ({ router, cat }) => {
 
   useEffect(() => {
     setUseShowButtonId(moveData[1])
-    const handler = setTimeout(() => setUseShowButtonId(null), 3000)
+    const handler = setTimeout(() => setUseShowButtonId(null), 2000)
     return () => clearTimeout(handler)
   }, [moveData])
 
