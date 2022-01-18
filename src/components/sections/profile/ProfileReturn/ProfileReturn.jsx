@@ -108,7 +108,7 @@ export const ProfileReturn = () => {
                     />
                     <Textarea
                       id={`comment_${new Date().getTime()}`}
-                      label="Описание проблемы"
+                      label="*Описание проблемы"
                       name="comment"
                       type="text"
                     />
