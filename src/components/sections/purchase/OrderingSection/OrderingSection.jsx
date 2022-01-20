@@ -373,6 +373,15 @@ export const OrderingSection = ({ formData, setCost, cost }) => {
                       deliveryParams={userAddress}
                     />
                   )}
+                  {cost && (
+                    <>
+                      {cost instanceof Number && <span className={s.info}>Доставка:</span>}
+                        <span className={s.value}>
+                          {cost}
+                          {cost instanceof Number && ' руб.'}
+                        </span>
+                    </>
+                  )}
                   <button
                     type="submit"
                     onClick={handleSubmit}

@@ -182,7 +182,7 @@ export const Header = ({ router, cat }) => {
               </span>
             </button>
           </div>
-          {isClientSide && windowSize >= 1200 && notCatalogPage && 
+          {isClientSide && notCatalogPage && 
             <NewTabs>
               {categories?.map(({ name, id, subcategories }) => (
                 <NewSubcategoryButton

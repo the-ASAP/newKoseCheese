@@ -20,7 +20,7 @@ export const FarmContentLargeSection = ({ pageData, orientation = "left" }) => {
           <div className={s.container}>
             <div className={s.content}>
               <h2 className={s.title}>{title}</h2>
-              <p className={s.text}>{text}</p>
+              <p className={s.text}>Использование самой современной щадящей пастеризации, восполнение бактериального баланса за счет французских заквасок, неограниченный срок годности продукции благодаря соблюдению идеальной чистоты. В Европе у людей отстутствуют понятия срока годности при разговоре о фермерском сыре.</p>
             </div>
             <img src={image} className={s.image} alt=""/>
           </div>
