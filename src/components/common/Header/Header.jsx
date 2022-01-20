@@ -2,6 +2,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import clsx from 'clsx';
 import Link from 'next/link';
+import { useRouter } from 'next/router'
 import {
   favoriteChangeModalState,
   menuChangeModalState,
@@ -103,7 +104,8 @@ export const Header = ({ router, cat }) => {
                 el.logo ? (
                   <Link href="/" key={i}>
                     <a
-                      onClick={() => menuModalHandler(false)}
+                      // onClick={() => menuModalHandler(false)}
+                      onClick={() => router.push('/')}
                       className={clsx(
                         s.logo,
                         (isPromoPage || menuModalValue) && !headerColors ? s.logo_accent : ''

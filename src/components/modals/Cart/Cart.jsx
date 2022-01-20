@@ -14,6 +14,8 @@ export const Cart = ({ closeModal }) => {
   const discountModal = useModal(false);
   const itemsInCart = useSelector(cartItemsSelector);
 
+  console.log(itemsInCart)
+
   return (
     <ModalBody closeModal={closeModal} title="Корзина">
       {/* TODO: СКИДКА НА ТОВАР  */}

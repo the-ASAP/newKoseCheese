@@ -1,13 +1,13 @@
 // @ts-nocheck
 import React, { useEffect, useState, useRef } from 'react';
-import { FavoriteIcon, PurchaseIcon } from 'components/SVG/Icons';
+import { FavoriteIcon, ProductsIcon, PurchaseIcon } from 'components/SVG/Icons';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   cartChangeModalState,
   favoriteChangeModalState,
   popUpChangeModalState
 } from 'redux/slices/modals';
-import { cartItemsSelector, reqAddToCart } from 'redux/slices/cart';
+import { cartItemsSelector, reqAddToCart, reqRemoveFromCart } from 'redux/slices/cart';
 import { favoriteItemsSelector } from 'redux/slices/favorite';
 import { addToFavorite, removeFromFavorite } from 'redux/slices/favorite';
 import { addFavorite, removeFavorite } from 'functions';
@@ -33,16 +33,22 @@ export const ControlButtons = ({ productProps }) => {
   };
 
   const cartHandler = () => {
-    if (productProps.status) {
-      // @ts-ignore
-      dispatch(reqAddToCart(productProps));
-    } else if (!productProps.status) {
-      dispatch(
-        popUpChangeModalState({
-          visible: true,
-          text: 'Товара временно нет в наличии'
-        })
-      );
+    if(itemsInCart.some(item => item.id === id)) {
+      let deletedProduct = itemsInCart.filter(item => item.id === id)[0]
+      dispatch(reqRemoveFromCart(deletedProduct))
+    }
+    else {
+      if (productProps.status) {
+        // @ts-ignore
+        dispatch(reqAddToCart(productProps));
+      } else if (!productProps.status) {
+        dispatch(
+          popUpChangeModalState({
+            visible: true,
+            text: 'Товара временно нет в наличии'
+          })
+        );
+      }
     }
   };
 
