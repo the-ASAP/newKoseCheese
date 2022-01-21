@@ -39,7 +39,7 @@ export const InstagramSection = () => {
     <Section>
       <Wrapper>
         <div className={s.container}>
-          <H1>Instagram</H1>
+          <h2 className={s.title}>Instagram</h2>
           {photos.length > 0 && <Slider slides={photos} params={sliderParams}>
             <Instagram/>
           </Slider>}

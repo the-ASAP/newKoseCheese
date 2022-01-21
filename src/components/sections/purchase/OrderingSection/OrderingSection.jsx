@@ -358,7 +358,6 @@ export const OrderingSection = ({ formData, setCost, cost }) => {
                             value={userAddress}
                             onChange={(e) => {
                               setUserAddress(e.target.value)
-                              console.log(e.target.value)
                             }}  
                           />
                         );

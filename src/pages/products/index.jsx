@@ -29,7 +29,7 @@ const Products = ({ newProducts, discountProduct, categories, seo }) => {
             close={discountModal.hideModal}
           />
         )}
-        <H1>Каталог</H1>
+        <H1 additionClass={'products'}>Каталог</H1>
       </Wrapper>
       <NewProductsSection products={[]} categories={categories} />
       <NewTastesSection title={'Новые вкусы'} newProducts={newProducts} />

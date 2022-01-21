@@ -3,7 +3,6 @@
 .title {
   width: fit-content;
   margin: 0 auto;
-  text-transform: uppercase;
 }
 
 .grid {
@@ -11,7 +10,7 @@
   display: flex;
   justify-content: flex-start;
   flex-wrap: wrap;
-  margin-top: 7.5rem;
+  margin-top: 3.75rem;
   &::after {
     content: '';
     position: absolute;

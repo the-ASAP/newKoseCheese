@@ -14,8 +14,8 @@ const Index = ({ categories }) => {
           <title>Статьи</title>
         </Head>
         <Wrapper>
-          <H1>Культура потребления</H1>
-          <RecipesSection categories={categories} items={[]}/>
+          <H1 additionClass={'products'}>Культура потребления</H1>
+          <RecipesSection categories={[categories[0]]} items={[]}/>
         </Wrapper>
       </>
     );

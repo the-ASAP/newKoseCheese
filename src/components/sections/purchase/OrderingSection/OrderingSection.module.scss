@@ -47,7 +47,7 @@
 .steps {
   @extend %flexbox;
   width: fit-content;
-  margin: 5rem auto 0 auto;
+  margin: 3rem auto 0 auto;
   font-family: $font-service;
   font-size: 0.75rem;
   font-weight: 500;
@@ -88,8 +88,12 @@
   @extend %button--accent;
   width: 100%;
   height: 4rem;
-  margin-top: 0.5rem;
+  margin-top: 2.5rem;
   font-size: 1.125rem;
+}
+
+.value + .submit {
+  margin-top: 0.5rem;
 }
 
 @media (max-width: $landscape) {

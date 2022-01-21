@@ -37,12 +37,11 @@ export const AddressForm = ({ initialValues, removeAddressHandler, id }) => {
               value={userAddress}
               onChange={(e) => {
                 setUserAddress(e.target.value)
-                console.log(e.target.value)
               }}  />
             {/* <Input id={`city_${new Date().getTime()}`} label="Город" name="city" type="text" />
             <Input id={`street_${new Date().getTime()}`} label="Улица" name="street" type="text" /> */}
             <div className={s.column}>
-              <Input id={`house_${new Date().getTime()}`} label="Дом" name="house" type="text" />
+              {/* <Input id={`house_${new Date().getTime()}`} label="Дом" name="house" type="text" /> */}
               <Input
                 id={`floor_${new Date().getTime()}`}
                 label="Подъезд"
