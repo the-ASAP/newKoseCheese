@@ -72,7 +72,7 @@ export const SearchPanel = ({ setOpen, isPromo }) => {
         // Выставить состояние isSearching
         // setIsSearching(true);
         // Сделать запрос к АПИ
-        axios.post(`http://co-ko.asap-lp.ru/api/search/`, { query: searchTerm }).then((res) => {
+        axios.post(`/api/search/`, { query: searchTerm }).then((res) => {
           let { data } = res.data;
           // Выставить состояние в false, так-как запрос завершен
           setIsSearching(false);

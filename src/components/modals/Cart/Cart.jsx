@@ -6,7 +6,7 @@ import { useModal } from 'hooks';
 import { ModalFooter } from 'components/modals/ModalFooter/ModalFooter';
 import { useSelector } from 'react-redux';
 import { cartItemsSelector } from 'redux/slices/cart';
-import { ModalBody } from '../ModalBody/ModalBody';
+import { NewModalBody } from '../ModalBody/NewModalBody';
 
 import s from './Cart.module.scss';
 
@@ -14,10 +14,8 @@ export const Cart = ({ closeModal }) => {
   const discountModal = useModal(false);
   const itemsInCart = useSelector(cartItemsSelector);
 
-  console.log(itemsInCart)
-
   return (
-    <ModalBody closeModal={closeModal} title="Корзина">
+    <NewModalBody closeModal={closeModal} title="Корзина">
       {/* TODO: СКИДКА НА ТОВАР  */}
       {discountModal.isShowed && (
         <div className={s.promo}>
@@ -35,6 +33,6 @@ export const Cart = ({ closeModal }) => {
       ) : (
         <h3 style={{ marginTop: 40 }}>Ваша корзина пуста</h3>
       )}
-    </ModalBody>
+    </NewModalBody>
   );
 };

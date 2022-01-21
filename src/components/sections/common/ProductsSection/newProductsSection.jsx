@@ -69,7 +69,7 @@ export const NewProductsSection = ({ products, categories }) => {
       setGoodsPage((prev) => ({ ...prev, limit: activeProducts.length }));
 
       const sortArr = sortProductsFunction(activeProducts, filterDropdown[0].value, filterDropdown[0].sort)
-      setSortProducts(activeProducts)
+      setSortProducts(sortArr)
     }
   }, [activeProducts]);
 
@@ -137,7 +137,7 @@ export const NewProductsSection = ({ products, categories }) => {
                 filterDropdown.forEach(elem => {
                   if(elem.title === e.value) {
                     const sortArr = sortProductsFunction(activeProducts, elem.value, elem.sort)
-                    setActiveProducts([...sortArr])  
+                    setSortProducts([...sortArr])  
                   }
                 })
               }}

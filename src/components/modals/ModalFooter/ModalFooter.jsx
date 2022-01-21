@@ -12,9 +12,9 @@ export const ModalFooter = () => {
   const dispatch = useDispatch();
   return (
     <div className={s.container}>
-      <span className={s.cost}>сумма: {totalPrice} руб.</span>
+      {/* <span className={s.cost}>сумма: {totalPrice} руб.</span> */}
       {/* <span className={s.discount}>скидка: 135 руб.</span> */}
-      <TotalPrice value={totalPrice} />
+      {/* <TotalPrice value={totalPrice} /> */}
       <Link href="/purchase">
         <a onClick={() => dispatch(closeAllModals())} className={s.checkout}>
           Оформить заказ
