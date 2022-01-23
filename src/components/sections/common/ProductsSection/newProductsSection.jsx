@@ -18,36 +18,39 @@ import { filterDropdown } from 'constants.js';
 import s from './ProductsSection.module.scss';
 
 export const NewProductsSection = ({ products, categories }) => {
-  const [categoryId, setCategoryId] = useState(categories[0].id);
-  const [subCategoryId, setSubCategoryId] = useState(categories[0]?.subcategories[0]?.id);
-  const [activeCategory, setActiveCategory] = useState(categories[0]);
+  const [categoryId, setCategoryId] = useState(null);
+  const [subCategoryId, setSubCategoryId] = useState(null);
+  const [activeCategory, setActiveCategory] = useState(null);
   const [activeProducts, setActiveProducts] = useState(false);
   const [sortProducts, setSortProducts] = useState(null);
   const [isLoading, setLoading] = useState(false);
-  const [goodsPagination, setGoodsPage] = useState({
-    perPage: 4,
-    currentPage: 4,
-    limit: 4
-  });
+  // const [goodsPagination, setGoodsPage] = useState({
+  //   perPage: 4,
+  //   currentPage: 4,
+  //   limit: 4
+  // });
 
   useEffect(() => {
     const id = localStorage.getItem('activeCategory');
     if (id) setCategoryId(id);
+    else setCategoryId(categories[0]?.id)
   }, []);
 
   useEffect(() => {
-    let newActiveCategory = categories.find((category) => category?.id === categoryId);
-    setActiveCategory(newActiveCategory);
+    if(categoryId) {
+      let newActiveCategory = categories.find((category) => category?.id === categoryId);
+      setActiveCategory(newActiveCategory);
+    }
   }, [categoryId]);
 
   useEffect(() => {
-    if (activeCategory.subcategories) {
+    if (activeCategory?.subcategories) {
       const subId = localStorage.getItem('activeSubCaterogy')
       if(subId) setSubCategoryId(subId)
-      else setSubCategoryId(activeCategory.subcategories[0].id);
+      else setSubCategoryId(activeCategory?.subcategories[0].id);
     } else {
-      setLoading(activeCategory.id);
       setSubCategoryId(null);
+      setLoading(activeCategory?.id);
     }
   }, [activeCategory]);
 
@@ -66,7 +69,7 @@ export const NewProductsSection = ({ products, categories }) => {
   useEffect(() => {
     if (activeProducts !== false) {
       setLoading(false);
-      setGoodsPage((prev) => ({ ...prev, limit: activeProducts.length }));
+      // setGoodsPage((prev) => ({ ...prev, limit: activeProducts.length }));
 
       const sortArr = sortProductsFunction(activeProducts, filterDropdown[0].value, filterDropdown[0].sort)
       setSortProducts(sortArr)
@@ -85,16 +88,16 @@ export const NewProductsSection = ({ products, categories }) => {
     localStorage.setItem('activeCategory', id);
   };
 
-  const handleSetGoodsPagination = () => {
-    setGoodsPage((prev) => ({ ...prev, currentPage: prev.currentPage + prev.perPage }));
-  };
+  // const handleSetGoodsPagination = () => {
+  //   setGoodsPage((prev) => ({ ...prev, currentPage: prev.currentPage + prev.perPage }));
+  // };
 
   return (
     <>
       <Section>
         <Wrapper>
           <div className={s.header}>
-            {isClientSide && windowSize >= 1200 ? (
+           
               <Tabs>
                 {categories.map(({ name, id }) => (
                   <SubcategoryButton
@@ -106,14 +109,8 @@ export const NewProductsSection = ({ products, categories }) => {
                   />
                 ))}
               </Tabs>
-            ) : (
-              <DropdownCustom
-                value={categories[0].name}
-                options={categories.map((el) => el.name)}
-                selectHandler={(e) => selectHandlerForDropdown(e.value)}
-              />
-            )}
-            {activeCategory.subcategories && (
+            
+            {activeCategory?.subcategories && (
               <div className={s.subcategories}>
                 {activeCategory.subcategories.map(({ name, id }) => (
                   <SubcategoryButton

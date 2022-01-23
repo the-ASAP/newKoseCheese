@@ -35,7 +35,7 @@ const fakeResults = [
   }
 ];
 
-export const SearchPanel = ({ setOpen, isPromo }) => {
+export const SearchPanel = ({ setOpen }) => {
   const [searchTerm, setSearchTerm] = React.useState('');
 
   const [results, setResults] = React.useState([]);
@@ -72,7 +72,7 @@ export const SearchPanel = ({ setOpen, isPromo }) => {
         // Выставить состояние isSearching
         // setIsSearching(true);
         // Сделать запрос к АПИ
-        axios.post(`/api/search/`, { query: searchTerm }).then((res) => {
+        axios.post(`https://koico.ru/api/search/`, { query: searchTerm }).then((res) => {
           let { data } = res.data;
           // Выставить состояние в false, так-как запрос завершен
           setIsSearching(false);
@@ -105,7 +105,7 @@ export const SearchPanel = ({ setOpen, isPromo }) => {
       className={clsx(
         s.item,
         searchTerm && s.itemOpen,
-        !isPromo && windowSize > 768 && s.itemBorder
+        windowSize > 768 && s.itemBorder
       )}
     >
       <input
@@ -124,7 +124,7 @@ export const SearchPanel = ({ setOpen, isPromo }) => {
         )}
       </button>
       {searchTerm && (
-        <div className={clsx(s.results, !isPromo && windowSize > 768 && s.resultsPromo)}>
+        <div className={clsx(s.results, windowSize > 768 && s.resultsPromo)}>
           {isSearching ? (
             <SearchLoader />
           ) : (

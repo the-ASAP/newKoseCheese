@@ -12,7 +12,7 @@ import { H1 } from 'components/layout/H1/H1';
 import APIBitrix from 'api/APIBitrix';
 import MockAPI from 'api/MockAPI';
 
-const Products = ({ newProducts, discountProduct, categories, seo }) => {
+const Products = ({ newProductsBitrix, categoriesBitrix, seo }) => {
   const discountModal = useModal(false, false);
 
   return (
@@ -31,8 +31,8 @@ const Products = ({ newProducts, discountProduct, categories, seo }) => {
         )}
         <H1 additionClass={'products'}>Каталог</H1>
       </Wrapper>
-      <NewProductsSection products={[]} categories={categories} />
-      <NewTastesSection title={'Новые вкусы'} newProducts={newProducts} />
+      <NewProductsSection products={[]} categories={categoriesBitrix} />
+      <NewTastesSection title={'Новые вкусы'} newProducts={newProductsBitrix} />
       {/* <DiscountSection {...discountProduct} /> */}
     </>
   );
@@ -41,10 +41,10 @@ const Products = ({ newProducts, discountProduct, categories, seo }) => {
 export default Products;
 
 export const getServerSideProps = async () => {
-  const categories = await APIBitrix.get('products/categories/');
-  const newProducts = await APIBitrix.get('products/slider/new/').then((res) => res.products);
+  const categoriesBitrix = await APIBitrix.get('products/categories/');
+  const newProductsBitrix = await APIBitrix.get('products/slider/new/').then((res) => res.products);
   // const { discountProduct } = await MockAPI.getData();
   const seo = await APIBitrix.get(`seo/catalog-page/`);
 
-  return { props: { discountProduct: {}, newProducts, categories, seo } };
+  return { props: { discountProduct: {}, newProductsBitrix, categoriesBitrix, seo } };
 };

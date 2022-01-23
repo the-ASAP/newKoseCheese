@@ -6,12 +6,15 @@ import { delivery } from 'api/content';
 import s from './DeliverySection.module.scss';
 
 export const DeliverySection = ({ deliveryTitles }) => {
+  console.log(deliveryTitles)
   const { activeId, toggleActiveId } = useTabs(deliveryTitles[0].id, false);
-  const [activeCategory, setActiveCategory] = React.useState({});
-  const [deliveryContent, setDeliveryContent] = React.useState(0);
+  const [activeCategory, setActiveCategory] = React.useState(null)
+  const [deliveryContent, setDeliveryContent] = React.useState(null);
+
   React.useEffect(() => {
     if (deliveryTitles) setActiveCategory(deliveryTitles.find(({ id }) => id === activeId));
   }, [activeId, deliveryTitles]);
+
   const getContent = async () => {
     const { data: content } = await delivery.getDeliveryContent(activeCategory?.id);
     if (content) setDeliveryContent(content);
@@ -20,6 +23,7 @@ export const DeliverySection = ({ deliveryTitles }) => {
   React.useEffect(() => {
     if (activeCategory) getContent();
   }, [activeCategory]);
+
   return (
     <>
       <Tabs>

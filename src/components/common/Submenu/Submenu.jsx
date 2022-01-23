@@ -62,9 +62,9 @@ export const Submenu = () => {
               onClick={menuModalHandler}
               className={clsx(s.button, s.burger, menuModalValue && s.burgerOpen)}>
          <svg width="1.5rem" height="0.75rem" viewBox="0 0 14 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M0 1H14" stroke="#FAEEE2" stroke-width="1.24365"/>
-          <path d="M0 6H14" stroke="#FAEEE2" stroke-width="1.24365"/>
-          <path d="M0 11H14" stroke="#FAEEE2" stroke-width="1.24365"/>
+          <path d="M0 1H14" stroke="#FAEEE2" strokeWidth="1.24365"/>
+          <path d="M0 6H14" stroke="#FAEEE2" strokeWidth="1.24365"/>
+          <path d="M0 11H14" stroke="#FAEEE2" strokeWidth="1.24365"/>
         </svg>
         <span className={s.text}>Меню</span>
       </button>

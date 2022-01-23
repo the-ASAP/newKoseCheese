@@ -141,7 +141,7 @@ export const Header = ({ router, cat }) => {
               {isClientSide && windowSize > 768 && (
                 <>
                   {isSearchOpen && (
-                    <SearchPanel setOpen={searchPanelHandler} isPromo={isPromoPage} />
+                    <SearchPanel setOpen={searchPanelHandler} />
                   )}
                   <button
                     type="button"
