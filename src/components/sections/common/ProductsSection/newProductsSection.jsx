@@ -126,7 +126,7 @@ export const NewProductsSection = ({ products, categories }) => {
             )}
           </div>
             
-          <div>
+          <div className={s.filter}>
             <NewDropdownCustom
               value={filterDropdown[0]?.title}
               options={filterDropdown.map(elem => elem.title)}

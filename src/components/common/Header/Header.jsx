@@ -56,18 +56,26 @@ export const Header = ({ router, cat }) => {
   const [headerColors, setHeaderColors] = useState(true);
 
   const [useShowButtonId, setUseShowButtonId] = useState(null)
+  const [mouseEnter, setMouseEnter] = useState(false)
   const [moveData, setMoveData] = useState([])
   const isClientSide = useClientSide();
 
   const onMouseEnter = (id) => {
     setUseShowButtonId(id)
+    setMouseEnter(true)
+  }
+
+  const onMouseLeave = (id) => {
+    setMouseEnter(false)
+    setMoveData([new Date(), null])
   }
 
   useEffect(() => {
-    setUseShowButtonId(moveData[1])
-    const handler = setTimeout(() => setUseShowButtonId(null), 2000)
+    const handler = setTimeout(() => {
+      if(mouseEnter === false) setUseShowButtonId(null)
+    }, 2000)
     return () => clearTimeout(handler)
-  }, [moveData])
+  }, [moveData, mouseEnter])
 
   useEffect(() => {
     const dontShowButton = () => setUseShowButtonId(null)
@@ -191,9 +199,10 @@ export const Header = ({ router, cat }) => {
                   id={id}
                   subcategories={subcategories}
                   showButtonId={useShowButtonId}
-                  // onMouseEnter={() => onMouseEnter(id)}
-                  onMouseMove={() => setMoveData([new Date(), id])}
-                  onMouseMoveCat={() => setMoveData([new Date(), id])}
+                  onMouseEnter={() => onMouseEnter(id)}
+                  onMouseLeave={() => onMouseLeave()}
+                  onMouseEnterCat={() => onMouseEnter(id)}
+                  onMouseLeaveCat={() => onMouseLeave()}
                 />
               ))}
             </NewTabs>}

@@ -1,6 +1,23 @@
 @import '/src/styles/mixins.scss';
 @import '/src/styles/root.scss';
 
+.header {
+  position: sticky;
+  top: 5rem;
+  background-color: #FFF3E7;
+  z-index: 2;
+  height: 8rem;
+}
+
+.filter {
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid rgba($gen, 0.3);
+  position: sticky;
+  top: 12rem;
+  z-index: 2;
+  background-color: #FFF3E7;
+}
+
 .subcategories {
   @extend %flexbox;
   justify-content: center;
