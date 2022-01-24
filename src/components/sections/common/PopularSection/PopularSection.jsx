@@ -78,7 +78,7 @@ export const PopularSection = ({ products, categories }) => {
             activeProducts.length > 0 && (
               <div className={s.body}>
                 {products.map((product) => {
-                  return <Product key={product.id} {...product} />;
+                  return product?.status && <Product key={product.id} {...product} />
                 })}
               </div>
             )

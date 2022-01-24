@@ -146,7 +146,7 @@ export const NewProductsSection = ({ products, categories }) => {
             sortProducts?.length > 0 && (
               <div className={s.body}>
                 {sortProducts.map((product) => {
-                  return <Product key={product.id} {...product} />;
+                  return product.status && <Product key={product.id} {...product} />
                 })}
               </div>
             )

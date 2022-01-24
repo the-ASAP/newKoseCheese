@@ -34,9 +34,9 @@ export const Product = (props) => {
   return (
     <div className={clsx(s.card, additionClass && s[additionClass])}>
       <ControlButtons productProps={cartProductsProps} />
-      <span className={clsx(s.status, status ? s.inStock : s.outStock)}>
+      {/* <span className={clsx(s.status, status ? s.inStock : s.outStock)}>
         {status ? 'В наличии' : 'Нет в наличии'}
-      </span>
+      </span> */}
       <img height={160} src={BASE_SITE_URL + previewImage} alt={name} className={s.image} />
       <div className={s.body}>
         <h3 className={s.name}>{name}</h3>
