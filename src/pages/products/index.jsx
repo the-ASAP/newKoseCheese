@@ -10,7 +10,6 @@ import { Wrapper } from 'components/layout/Wrapper/Wrapper';
 
 import { H1 } from 'components/layout/H1/H1';
 import APIBitrix from 'api/APIBitrix';
-import MockAPI from 'api/MockAPI';
 
 const Products = ({ newProductsBitrix, categoriesBitrix, seo }) => {
   const discountModal = useModal(false, false);

@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { BASE_SITE_URL } from 'constants.js';
-import { PurchaseControl } from '../PurchaseControl/PurchaseControl';
+import { NewPurchaseControl } from '../PurchaseControl/NewPurchaseControl';
 import { FavoriteControl } from '../FavoriteControl/FavoriteControl';
 
 import s from './Purchase.module.scss';
@@ -43,7 +43,7 @@ export const Purchase = ({ inFavorite, id, active, inCart, inOrder, params }) =>
         </div>
         <div className={s.controls}>
           {inFavorite && <FavoriteControl product={properties} />}
-          {inCart && <PurchaseControl inCart additionClass="inCart" product={properties} />}
+          {inCart && <NewPurchaseControl inCart additionClass="inCart" product={properties} />}
         </div>
       </div>
     </div>
