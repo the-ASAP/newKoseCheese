@@ -3,11 +3,9 @@ import React, { useEffect, useState, useRef } from 'react';
 import { FavoriteIcon, ProductsIcon, PurchaseIcon } from 'components/SVG/Icons';
 import { useDispatch, useSelector } from 'react-redux';
 import {
-  cartChangeModalState,
-  favoriteChangeModalState,
   popUpChangeModalState
 } from 'redux/slices/modals';
-import { cartItemsSelector, reqAddToCart, reqRemoveFromCart } from 'redux/slices/cart';
+import { cartItemsSelector, reqAddToCart, reqIncProductCount} from 'redux/slices/cart';
 import { favoriteItemsSelector } from 'redux/slices/favorite';
 import { addToFavorite, removeFromFavorite } from 'redux/slices/favorite';
 import { addFavorite, removeFavorite } from 'functions';
@@ -34,8 +32,10 @@ export const ControlButtons = ({ productProps }) => {
 
   const cartHandler = () => {
     if(itemsInCart.some(item => item.id === id)) {
-      let deletedProduct = itemsInCart.filter(item => item.id === id)[0]
-      dispatch(reqRemoveFromCart(deletedProduct))
+      // let deletedProduct = itemsInCart.find(item => item.id === id)
+      // dispatch(reqRemoveFromCart(deletedProduct))
+      let incProduct = itemsInCart.find(item => item.id === id)
+      dispatch(reqIncProductCount({...incProduct, quantity: parseInt(incProduct?.quantity, 10) + 1}))
     }
     else {
       if (productProps.status) {

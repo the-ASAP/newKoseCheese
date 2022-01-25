@@ -12,10 +12,11 @@
   position: relative;
   @extend %flexbox;
   justify-content: center;
+  align-items: center;
   width: 10rem;
   height: 2.5rem;
   margin-right: 1.125rem;
-  margin-bottom: 0.9375rem;
+  // margin-bottom: 0.9375rem;
   border: 1px solid $grey;
   border-radius: 8px;
   font-family: $font-service;
