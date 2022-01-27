@@ -18,6 +18,7 @@ import { useDispatch } from 'react-redux';
 import { useRouter } from 'next/router';
 import { DropdownCustom } from 'components/common/DropdownCustom/DropdownCustom';
 import { setConfirmOrder } from 'redux/slices/order';
+import { formatPhone } from 'functions';
 import YandexDelivery from 'yandexDelivery';
 
 import { YMaps, Map } from 'react-yandex-maps';
@@ -115,7 +116,7 @@ export const OrderingSection = ({ formData, setCost, cost }) => {
           type: 'text',
           name: 'physical_delivery_floor',
           id: 'physical_delivery_floor',
-          component: Input
+          component: NewInput
         },
         {
           label: 'Квартира',
@@ -264,10 +265,16 @@ export const OrderingSection = ({ formData, setCost, cost }) => {
 
   const ymapsRef = useRef(null);
   const [userAddress, setUserAddress] = React.useState('');
+  const [floor, setFloor] = React.useState('')
   
   React.useEffect(() => {
     formPropsRef.current.setFieldValue('physical_delivery_address', userAddress);
   }, [userAddress])
+
+  React.useEffect(() => {
+    formPropsRef.current.setFieldValue('physical_delivery_floor', floor);
+  }, [floor])
+
 
 
   const handleSubmit = (values) => {
@@ -362,6 +369,16 @@ export const OrderingSection = ({ formData, setCost, cost }) => {
                           />
                         );
                       }
+                      if(input.id === 'physical_delivery_floor') {
+                        return (
+                        <ComponentName
+                            key={index}
+                            {...input}
+                            value={floor}
+                            onChange={(e) => setFloor(formatPhone(e.target.value))}  
+                          />
+                        )
+                      }
                       return <ComponentName key={index} {...input} />;
                     })}
                   </div>
@@ -372,12 +389,10 @@ export const OrderingSection = ({ formData, setCost, cost }) => {
                       deliveryParams={userAddress}
                     />
                   )}
-                  {cost && (
+                  {cost && cost === "Адреса не существует" && (
                     <>
-                      {cost instanceof Number && <span className={s.info}>Доставка:</span>}
                         <span className={s.value}>
                           {cost}
-                          {cost instanceof Number && ' руб.'}
                         </span>
                     </>
                   )}

@@ -37,7 +37,7 @@ export const Submenu = () => {
   return (
     <div className={s.container}>
       <Link href="/products">
-        <a className={s.button}>
+        <a className={s.button} onClick={() => dispatch(closeAllModals())}>
           <ProductsIcon/>
           <span className={s.text}>Каталог</span>
         </a>

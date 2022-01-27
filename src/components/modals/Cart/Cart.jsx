@@ -23,7 +23,7 @@ export const Cart = ({ closeModal }) => {
           <CloseButton close={discountModal.hideModal} />
         </div>
       )}
-      <div>
+      <div className={s.products}>
         {itemsInCart.map((item) => (
           <Purchase inCart key={item.item_id} params={item} />
         ))}

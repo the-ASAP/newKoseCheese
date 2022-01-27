@@ -15,9 +15,9 @@ export const CartSection = ({ cost }) => {
   return (
     <>
       <div className={s.container}>
-        <div className={s.cart}>
-          {/* <div className={s.field}>
-            {cost && (
+        <div className={s.cart}> 
+          <div className={s.field}>
+            {cost && cost !== 'Адреса не существует' && (
               <>
                 {isNumber(cost) && <span className={s.info}>Доставка:</span>}
                 <span className={s.value}>
@@ -26,7 +26,7 @@ export const CartSection = ({ cost }) => {
                 </span>
               </>
             )}
-          </div> */}
+          </div>
           <TotalPrice value={isNumber(cost) ? totalPrice + cost : totalPrice} />
           <div className={s.header}>
             <h2>Корзина</h2>
