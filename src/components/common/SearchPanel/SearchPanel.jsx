@@ -7,6 +7,8 @@ import clsx from 'clsx';
 import s from './SearchPanel.module.scss';
 import { SearchLoader } from '../SearchLoader/SearchLoader';
 import { windowSize } from '../../../constants';
+import { useDispatch } from "react-redux";
+import { closeAllModals } from "redux/slices/modals";
 
 const initialValue = {
   search: ''
@@ -36,6 +38,7 @@ const fakeResults = [
 ];
 
 export const SearchPanel = ({ setOpen }) => {
+  const dispatch = useDispatch()
   const [searchTerm, setSearchTerm] = React.useState('');
 
   const [results, setResults] = React.useState([]);
@@ -130,7 +133,7 @@ export const SearchPanel = ({ setOpen }) => {
           ) : (
             results.map(({ id, name }) => (
               <Link key={id} href={`/products/${id}`}>
-                <a className={s.link}>{name}</a>
+                <a className={s.link} onClick={() => dispatch(closeAllModals())}>{name}</a>
               </Link>
             ))
           )}
