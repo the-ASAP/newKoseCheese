@@ -18,7 +18,7 @@ import { useDispatch } from 'react-redux';
 import { useRouter } from 'next/router';
 import { DropdownCustom } from 'components/common/DropdownCustom/DropdownCustom';
 import { setConfirmOrder } from 'redux/slices/order';
-import { formatPhone } from 'functions';
+import { formatPhone, formatPhoneDephis } from 'functions';
 import YandexDelivery from 'yandexDelivery';
 
 import { YMaps, Map } from 'react-yandex-maps';
@@ -214,10 +214,11 @@ export const OrderingSection = ({ formData, setCost, cost }) => {
   }, [deliveryDistance]);
 
   const [activeButton, setActiveButton] = React.useState(true);
+
   React.useEffect(() => {
-    if (cost === 'Адреса не существует' && stageForm + 1 === steps.length) setActiveButton(false);
+    if (cost === 'Адреса не существует') setActiveButton(false)
     else setActiveButton(true);
-  }, [cost, stageForm]);
+  }, [cost]);
 
   const changeFormSteps = () => {
     const isErrors = Object.keys(formPropsRef.current.errors).length;
@@ -263,9 +264,10 @@ export const OrderingSection = ({ formData, setCost, cost }) => {
 
   const router = useRouter();
 
-  const ymapsRef = useRef(null);
-  const [userAddress, setUserAddress] = React.useState('');
+  const ymapsRef = useRef(null)
+  const [userAddress, setUserAddress] = React.useState('')
   const [floor, setFloor] = React.useState('')
+  const [apartment, setApartment] = React.useState('')
   
   React.useEffect(() => {
     formPropsRef.current.setFieldValue('physical_delivery_address', userAddress);
@@ -275,7 +277,9 @@ export const OrderingSection = ({ formData, setCost, cost }) => {
     formPropsRef.current.setFieldValue('physical_delivery_floor', floor);
   }, [floor])
 
-
+  React.useEffect(() => {
+    formPropsRef.current.setFieldValue('physical_delivery_apartment', apartment)
+  }, [apartment])
 
   const handleSubmit = (values) => {
     if (stageForm + 1 === steps.length && cost !== 'Адреса не существует') purchaseOrder();
@@ -293,6 +297,7 @@ export const OrderingSection = ({ formData, setCost, cost }) => {
             case 'exact':
               // setCost(address.properties._data.text);
               setUserAddress(address.properties._data.text);
+              setCost(null)
               changeFormSteps();
               break;
             case 'number':
@@ -310,6 +315,7 @@ export const OrderingSection = ({ formData, setCost, cost }) => {
               // setCost(address.properties._data.text);
               // setDeliveryDistance(address.properties._data.text);
               setUserAddress(address.properties._data.text);
+              setCost(null)
               changeFormSteps();
           }
         } else {
@@ -375,7 +381,17 @@ export const OrderingSection = ({ formData, setCost, cost }) => {
                             key={index}
                             {...input}
                             value={floor}
-                            onChange={(e) => setFloor(formatPhone(e.target.value))}  
+                            onChange={(e) => setFloor(formatPhoneDephis(e.target.value))}  
+                          />
+                        )
+                      }
+                      if(input.id === 'physical_delivery_apartment') {
+                        return (
+                        <ComponentName
+                            key={index}
+                            {...input}
+                            value={floor}
+                            onChange={(e) => setApartment(formatPhone(e.target.value))}  
                           />
                         )
                       }

@@ -27,7 +27,7 @@
   color: #184240;
 
   & ul {
-    margin-top: 1.875rem;
+    // margin-top: 1.875rem;
     list-style: circle;
     & li {
       margin-top: 1.875rem;
@@ -61,12 +61,12 @@
 
 @media (max-width: $tablet) {
   .content {
-    & ul {
-      & li {
-        margin-top: 20px;
-        font-size: 14px;
-      }
-    }
+    // & ul {
+    //   & li {
+    //     margin-top: 20px;
+    //     font-size: 14px;
+    //   }
+    // }
   }
 }
 
@@ -84,7 +84,7 @@
   }
   .content {
     & ul {
-      margin-top: 20px;
+      // margin-top: 20px;
     }
   }
 

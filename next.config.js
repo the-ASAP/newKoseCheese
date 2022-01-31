@@ -6,5 +6,5 @@ module.exports = {
   },
   images: {
     domains: ['koico.ru']
-  }
+  },
 };

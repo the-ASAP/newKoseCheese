@@ -123,14 +123,6 @@ export const getServerSideProps = async () => {
 
   return {
     props: {
-      discountProduct: {
-        image: '',
-        offer: '10%',
-        category: 'Бюш-де-шевр',
-        name: '',
-        date: 'До 15.05.2021',
-        id: '40'
-      },
       categories,
       posts,
       newProducts,

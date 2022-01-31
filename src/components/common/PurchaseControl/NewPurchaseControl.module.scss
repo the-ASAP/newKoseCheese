@@ -59,6 +59,8 @@
   text-transform: uppercase;
   color: $accent;
   background-color: $gen;
+  margin-top: 1rem;
+
   &:hover {
     border-color: $gen;
     background-color: transparent;
@@ -68,6 +70,7 @@
 
 .favorite {
   @extend %button--circle;
+  margin-top: 1rem;
 }
 
 .subscribe {
@@ -123,8 +126,12 @@
     flex-wrap: initial;
     margin-top: 1rem;
   }
+  .add {
+    margin-top: 0;
+  }
   .favorite {
     min-width: 2.75rem;
+    margin-top: 0;
   }
   .inCart {
     margin-top: 10px;

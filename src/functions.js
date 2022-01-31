@@ -1,6 +1,7 @@
 import React from 'react';
 
 export const formatPhone = (phone) => phone.replace(/[^0-9.]/gim, '');
+export const formatPhoneDephis = (phone) => phone.replace(/^(\d+-?)+\d+$/, '');
 export const stringFromArray = (array, field) => array.map((el) => el[field]).join(', ');
 export const useOutsideClicker = (ref, action) => {
   React.useEffect(() => {

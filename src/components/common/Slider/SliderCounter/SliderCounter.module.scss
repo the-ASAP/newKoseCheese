@@ -52,6 +52,10 @@
 }
 
 @media (max-width: $mobile) {
+  .container {
+    display: none;
+  }
+  
   .large {
     font-size: 24px;
   }
@@ -61,9 +65,5 @@
   .arrowsRight {
     justify-content: flex-end;
     padding-right: 24px;
-  }
-
-  .nav {
-    display: none;
   }
 }
