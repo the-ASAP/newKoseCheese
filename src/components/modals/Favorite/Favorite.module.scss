@@ -11,6 +11,7 @@
 @media (max-width: 768px) {
     .subcategories {
         width: 100%;
+        flex-wrap: wrap;
     }
     .products {
         flex-grow: 1;
