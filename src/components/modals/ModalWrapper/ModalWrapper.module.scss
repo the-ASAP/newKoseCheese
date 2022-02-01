@@ -66,10 +66,21 @@
 }
 
 @media (max-width: $mobile) {
+  .modalBox {
+    align-items: flex-start;
+  }
   .modalContainer {
     padding: 0 18px 0 18px;
+    display: flex;
+    flex-direction: column;
+    height: calc(100vh - 65px);
   }
   .cookiesContainer {
     padding: 30px 20px 38px 30px;
+  }
+  .popup {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
   }
 }

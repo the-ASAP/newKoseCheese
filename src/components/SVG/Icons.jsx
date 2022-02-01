@@ -112,6 +112,15 @@ export const PurchaseIcon = () => (
   </svg>
 );
 
+export const NewPurchaseIcon = () => (
+  <svg width="27" height="27" viewBox="0 0 27 27" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M10.0785 12.6611V13.8506H16.9008V12.6611H10.0785ZM12.8539 9.75586V17.002H14.1185V9.75586H12.8539Z" fill="#184240"/>
+<rect x="7.9043" y="7.23071" width="11.1154" height="11.7885" stroke="#184240"/>
+<path d="M16.8284 8.75008V6.05777C16.8284 4.19912 15.3217 2.69238 13.463 2.69238V2.69238C11.6044 2.69238 10.0977 4.19912 10.0977 6.05777V8.75008" stroke="#184240"/>
+</svg>
+
+)
+
 export const MinusIcon = () => (
   <svg
     width="11"

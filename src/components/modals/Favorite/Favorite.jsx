@@ -44,7 +44,7 @@ export const Favorite = ({ closeModal }) => {
             />
           ))}
       </div>
-      <div>
+      <div className={s.products}>
         {itemsInFavorite.map(
           (item) =>
             activeId === item.parent_category_id && (

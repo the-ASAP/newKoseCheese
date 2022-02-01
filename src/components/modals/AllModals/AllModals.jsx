@@ -86,7 +86,8 @@ export const AllModals = () => {
       <ModalWrapper closeModal={() => dispatch(popUpChangeModalState(false))}
                     show={popupModalValue.visible}
                     stopScroll
-                    {...mainPopupProperties}>
+                    {...mainPopupProperties}
+                    additionClass={"popup"}>
         <WarnPopup text={popupModalValue.text}/>
       </ModalWrapper>
       <ModalWrapper closeModal={() => dispatch(newPhonePopupChangeState(false))}

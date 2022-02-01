@@ -8,3 +8,12 @@
     border-bottom: 1px solid rgba($gen, .3);
 }
 
+@media (max-width: 768px) {
+    .subcategories {
+        width: 100%;
+    }
+    .products {
+        flex-grow: 1;
+    }
+}
+

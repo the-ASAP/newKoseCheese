@@ -18,14 +18,10 @@
   background-color: $lightest;
   color: rgba($gen, 0.3);
   transition: background-color 0.3s, color 0.3s;
+  z-index: 1;
   &:first-child {
     margin-right: 0.6875rem;
   }
-  // &:active,
-  // &:focus {
-  //   background-color: $gen;
-  //   color: $accent;
-  // }
 }
 
 .favClicked {
@@ -43,19 +39,56 @@
     stroke: $accent;
   }
 }
-// .cart {
-//   &:active,
-//   &:focus {
-//     path,
-//     circle {
-//       stroke: $accent;
-//     }
-//   }
-// }
 
-// .favorite {
-//   &:active,
-//   &:focus {
-//
-//   }
-// }
+.newButton {
+  z-index: 1;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 130px;
+  height: 30px;
+  border-radius: 11px;
+  font-size: 0.875rem;
+  background-color: $lightest;
+  color: rgba($gen, 0.3);
+  transition: background-color 0.3s, color 0.3s;
+  margin: 0 auto;
+  &:first-child {
+    margin-right: 0.6875rem;
+  }
+
+  &__text {
+    font-size: 0.75rem;
+    line-height: 1.375rem;
+    color: $gen;
+  }
+}
+
+@media (max-width: 768px) {
+  .button {
+    &:first-child {
+      margin: 0;
+    }
+    &:last-child {
+      display: none;
+    }
+  }
+  .newButton {
+    display: flex;
+  }
+  .newButtonClicked {
+    background-color: $gen;
+
+    span {
+      color: #fff;
+    }
+
+    svg {
+      path,
+      circle,
+      rect {
+        stroke: $accent;
+      }
+    }
+  }
+}

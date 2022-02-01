@@ -45,9 +45,15 @@
 }
 
 @media (max-width: $mobile) {
+    .container {
+        height: 3rem;
+        width: 100%;
+    }
+
     .header {
         display: block;
         height: auto;
         padding-bottom: 1rem;
+        width: 100%;
     }
 }
