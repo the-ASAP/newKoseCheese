@@ -47,6 +47,11 @@ const Card = ({ id, product, products, posts, seo }) => {
 
   const isClientSide = useClientSide();
 
+  React.useEffect(() => {
+    localStorage.removeItem('activeCaterogy')
+    localStorage.removeItem('activeSubCaterogy')
+  }, [])
+
   return (
     <>
       <Head>

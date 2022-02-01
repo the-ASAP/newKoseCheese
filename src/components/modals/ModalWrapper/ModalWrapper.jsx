@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React from 'react';
 import s from 'components/modals/ModalWrapper/ModalWrapper.module.scss';
 import clsx from 'clsx';
@@ -26,11 +27,16 @@ export const ModalWrapper = (props) => {
   React.useEffect(() => {
     if (show) {
       setRender(true);
-      document.body.style.overflow = "hidden"
       document.addEventListener('keydown', closeModalOnEscape);
     }
-    else document.body.style.overflow = "auto"
-    
+
+    let documentWidth = parseInt(document.documentElement.clientWidth)
+    let windowsWidth = parseInt(window.innerWidth)
+    let scrollbarWidth = windowsWidth - documentWidth;
+
+    document.body.style.overflow = show ? "hidden" : "auto";
+    document.body.style.paddingRight = show ? `${scrollbarWidth}px` : "0"
+
     return () => document.removeEventListener('keydown', closeModalOnEscape);
   }, [show]);
 
