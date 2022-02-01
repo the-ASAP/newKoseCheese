@@ -26,16 +26,18 @@ export const ModalWrapper = (props) => {
   React.useEffect(() => {
     if (show) {
       setRender(true);
+      document.body.style.overflow = "hidden"
       document.addEventListener('keydown', closeModalOnEscape);
     }
-
-    // document.body.style.overflow = stopScroll && show ? "hidden" : "unset";
-
+    else document.body.style.overflow = "auto"
+    
     return () => document.removeEventListener('keydown', closeModalOnEscape);
   }, [show]);
 
   const onAnimationEnd = (e) => {
-    if (!show) setRender(false);
+    if (!show) {
+      setRender(false);
+    }
   };
 
   return (

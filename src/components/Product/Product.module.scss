@@ -218,6 +218,7 @@
     .image {
       width: 212px;
       height: 167px;
+      margin: 0 auto;
     }
 
     .name {
@@ -226,6 +227,11 @@
 
     .addition {
       font-size: 14px;
+    }
+
+    .price {
+      margin-top: 0.5rem;
+      margin-bottom: 0.5rem;
     }
   }
   //.image {

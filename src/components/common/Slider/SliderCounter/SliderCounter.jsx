@@ -6,7 +6,7 @@ export const SliderCounter = (props) => {
   const { isGallery, counter, counterBottom, currentCount, allCount, prev, next, additionClass, hide } = props;
   return (
     <div className={clsx(s.container, isGallery && s.full, counterBottom && s.bottom, s[additionClass])}>
-      {counter && (
+      {/* {counter && (
         <div className={clsx(s.counter, isGallery && s.large)}>
                   <span>
                      {currentCount < 10 ? `0${currentCount}` : currentCount}
@@ -16,7 +16,7 @@ export const SliderCounter = (props) => {
                      {allCount < 10 ? `0${allCount}` : allCount}
                   </span>
         </div>
-      )}
+      )} */}
       {!hide && <div className={s.nav}>
         <button type='button' ref={prev} className={s.prev}>
           <svg

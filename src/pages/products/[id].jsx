@@ -38,9 +38,9 @@ const Card = ({ id, product, products, posts, seo }) => {
       hide: windowSize <= 768,
       counter: false,
       seeAll: {
-        visible: windowSize >= 768 && true,
-        position: windowSize >= 768 ? 'right' : 'bottom',
-        link: '/products'
+        visible: windowSize >= 0,
+        position: "newCenter",
+        link: "/products"
       }
     }
   };

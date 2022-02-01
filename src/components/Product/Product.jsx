@@ -39,7 +39,9 @@ export const Product = (props) => {
         <img height={160} src={BASE_SITE_URL + previewImage} alt={name} className={s.image} />
       </Link>
       <div className={s.body}>
-        <h3 className={s.name}>{name}</h3>
+        <Link href={`/products/${id}`}>
+          <h3 className={s.name}>{name}</h3>
+        </Link>
         {addition && <span className={s.addition}>{addition}</span>}
         <div>
         <div className={s.info}>
