@@ -74,10 +74,7 @@ export const Header = ({ router, cat }) => {
     const handler = setTimeout(() => {
       if(mouseEnter === false) setUseShowButtonId(null)
     }, 800)
-    return () => {
-      setUseShowButtonId(null)
-      return clearTimeout(handler)
-    }
+    return () => clearTimeout(handler)
   }, [moveData, mouseEnter])
 
   useEffect(() => {
