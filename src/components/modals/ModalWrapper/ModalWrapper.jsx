@@ -27,14 +27,19 @@ export const ModalWrapper = (props) => {
   React.useEffect(() => {
     if (show) {
       setRender(true);
+      document.body.style.overflow = "hidden"
+      document.body.style.paddingRight = `${scrollbarWidth}px`
       document.addEventListener('keydown', closeModalOnEscape);
+    }
+    else {
+      document.body.style.overflow = "auto"
+      document.body.style.paddingRight = `0`
     }
 
     let documentWidth = parseInt(document.documentElement.clientWidth)
     let windowsWidth = parseInt(window.innerWidth)
     let scrollbarWidth = windowsWidth - documentWidth;
 
-    document.body.style.overflow = show ? "hidden" : "auto";
     document.body.style.paddingRight = show ? `${scrollbarWidth}px` : "0"
 
     return () => document.removeEventListener('keydown', closeModalOnEscape);
