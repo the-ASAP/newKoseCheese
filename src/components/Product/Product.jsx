@@ -49,6 +49,9 @@ export const Product = (props) => {
         <NewPurchaseButton productProps={cartProductsProps} />
         </div>
       </div>
+      <Link href={`/products/${id}`}>
+        <a className={s.link} />
+      </Link>
     </div>
   );
 };

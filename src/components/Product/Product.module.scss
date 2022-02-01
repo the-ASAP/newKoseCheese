@@ -144,6 +144,10 @@
 }
 
 @media (max-width: $mobile) {
+  .link {
+    display: none;
+  }
+
   .card:not(.card_slider) {
     height: 280px;
     padding: 0; 
