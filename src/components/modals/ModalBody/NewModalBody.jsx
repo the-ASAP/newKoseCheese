@@ -10,16 +10,14 @@ export const NewModalBody = ({ closeModal, title, children }) => {
 
   return (
     <>
-        <div className={s.container}>
+        {/* <div className={s.container}>
             <h2 className={s.title}></h2>
             <CloseButton close={closeModal}/>
-        </div>
+        </div> */}
         <div className={s.header}>
             <h2 className={s.title}>{title}</h2>
-            <div>
-                <TotalPrice value={totalPrice} />
-                {/* <span className={s.oldPrice}>Цена: {totalPrice} руб.</span> */}
-            </div>
+            <CloseButton close={closeModal}/>
+            <TotalPrice value={totalPrice} />
         </div>
         {children}
     </>

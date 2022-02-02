@@ -9,6 +9,7 @@
   border-color: $gen;
   border-radius: 0.9375rem;
   text-transform: uppercase;
+  white-space: nowrap;
 
   &:hover,
   &.active {

@@ -52,9 +52,11 @@
     }
 
     .header {
-        display: block;
+        // display: block;
         height: auto;
         padding-bottom: 1rem;
         width: 100%;
+        flex-wrap: wrap;
+        margin-top: 1rem;
     }
 }

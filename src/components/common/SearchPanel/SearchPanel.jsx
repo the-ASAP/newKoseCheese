@@ -14,28 +14,6 @@ const initialValue = {
   search: ''
 };
 
-const fakeResults = [
-  {
-    url: '/',
-    name: 'Камамбер козий',
-    weight: 210
-  },
-  {
-    url: '/',
-    name: 'Сыр Бюш Де Шевр коровий с прованскими травами',
-    weight: 210
-  },
-  {
-    url: '/',
-    name: 'Камамбер козий',
-    weight: 210
-  },
-  {
-    url: '/',
-    name: 'Сыр Бюш Де Шевр коровий с прованскими травами',
-    weight: 210
-  }
-];
 
 export const SearchPanel = ({ setOpen }) => {
   const dispatch = useDispatch()
@@ -131,9 +109,9 @@ export const SearchPanel = ({ setOpen }) => {
           {isSearching ? (
             <SearchLoader />
           ) : (
-            results.map(({ id, name }) => (
+            results.map(({ id, name, addition }) => (
               <Link key={id} href={`/products/${id}`}>
-                <a className={s.link} onClick={() => dispatch(closeAllModals())}>{name}</a>
+                <a className={s.link} onClick={() => dispatch(closeAllModals())}>{name} {addition}</a>
               </Link>
             ))
           )}
