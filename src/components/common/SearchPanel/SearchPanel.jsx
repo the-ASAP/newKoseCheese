@@ -55,11 +55,13 @@ export const SearchPanel = ({ setOpen }) => {
         // Сделать запрос к АПИ
         axios.post(`https://koico.ru/api/search/`, { query: searchTerm }).then((res) => {
           let { data } = res.data;
+          console.log(data, data.length)
           // Выставить состояние в false, так-как запрос завершен
           setIsSearching(false);
           // Выставит состояние с результатом
           if (data.length) {
             setResults(data);
+
           } else {
             setResults([
               {

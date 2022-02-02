@@ -26,6 +26,7 @@
     .products {
         overflow-y: scroll;
         flex-grow: 1;
+        max-height: 50%;
         // height: 30rem;
     }
 }
