@@ -77,8 +77,20 @@
   }
   .cart {
     padding-left: 0;
+    display: flex;
+    flex-direction: column;
   }
+  .header {
+    order: -1;
+    padding: 0;
+    border-bottom: none;
+  }
+
   .footer {
     border-top: none;
+  }
+
+  .field {
+    display: none;
   }
 }
