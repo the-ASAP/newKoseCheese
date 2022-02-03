@@ -246,7 +246,7 @@ export const CartIconMobile = () => (
           strokeLinecap="round" strokeLinejoin="round"/>
     <circle cx="14" cy="26" r="1.5" stroke="#FAEEE2"/>
     <circle cx="23" cy="26" r="1.5" stroke="#FAEEE2"/>
-    <circle cx="27" cy="9" r="5" fill="#F86969"/>
+    {/* <circle cx="27" cy="9" r="5" fill="#F86969"/> */}
   </svg>
 );
 

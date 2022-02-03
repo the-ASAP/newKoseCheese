@@ -1,4 +1,5 @@
-import React from "react";
+// @ts-nocheck
+import React, {useState, useEffect} from "react";
 import Link from "next/link";
 import clsx from "clsx";
 import { CartIconMobile, FavoriteIconMobile, ProductsIcon, ProfileIcon } from "components/SVG/Icons";
@@ -10,6 +11,7 @@ import {
   menuModalSelector,
   closeAllModals
 } from "redux/slices/modals";
+import { cartItemsSelector } from 'redux/slices/cart';
 import s from "./Submenu.module.scss";
 
 export const Submenu = () => {
@@ -34,6 +36,15 @@ export const Submenu = () => {
     dispatch(menuChangeModalState(!menuModalValue));
   };
 
+  const itemsInCart = useSelector(cartItemsSelector);
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    const res = itemsInCart.reduce((acc, item) => (acc += Number(item.quantity)), 0);
+    setCount(res);
+  }, [itemsInCart]);
+
+
   return (
     <div className={s.container}>
       <Link href="/products">
@@ -52,6 +63,7 @@ export const Submenu = () => {
               onClick={cartModalHandler} className={s.button}>
         <CartIconMobile/>
         <span className={s.text}>Корзина</span>
+        {count > 0 && <div className={s.circle}>{count}</div>}
       </button>
       <button type="button"
               onClick={favoriteModalHandler} className={s.button}>

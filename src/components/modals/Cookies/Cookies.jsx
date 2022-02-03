@@ -1,9 +1,10 @@
 import React from "react";
-
-import s from "./Cookies.module.scss";
+import MainCookies from 'js-cookie'
+import s from "./Cookies.module.scss"
 
 const cookiesWritesHandler = () => {
-  document.cookie = "hideCookie=true; max-age=2,628e+6";
+  // document.cookie = "hideCookie=true; max-age=2,628e+6";
+  MainCookies.set('hideCookie', 'true')
 };
 
 export const Cookies = ({ close }) => (

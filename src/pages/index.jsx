@@ -24,6 +24,7 @@ import { addToFavorite } from 'redux/slices/favorite';
 import { successPurchasePopupChangeState, popUpChangeModalState } from 'redux/slices/modals';
 // import { addCategories } from 'redux/slices/categories'
 import { categoriesItemsSelector } from 'redux/slices/categories'
+import MainCookies from 'js-cookie'
 
 const cookiesModalProperties = {
   animation: {
@@ -45,7 +46,7 @@ const Index = ({ promoContent, discountProduct, categories, posts, newProducts, 
     // if(categories && categoriesInStore.categories.length === 0) dispatch(addCategories(categories))
 
     setTimeout(() => {
-      if (!getCookie('hideCookie')) {
+      if (!MainCookies.get('hideCookie')) {
         cookiesModal.showModal();
       }
 
