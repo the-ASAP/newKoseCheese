@@ -70,15 +70,15 @@ const Index = ({ promoContent, discountProduct, categories, posts, newProducts, 
     //   );
     // }
 
-    dispatch(
-      popUpChangeModalState({
-        visible: true,
-        text: `На сайте ведутся технические работы!
-          Для оформления заказа, перейдите по ссылке:
-          http://menu102.fods.in/
-        `
-      })
-    );
+    // dispatch(
+    //   popUpChangeModalState({
+    //     visible: true,
+    //     text: `На сайте ведутся технические работы!
+    //       Для оформления заказа, перейдите по ссылке:
+    //       http://menu102.fods.in/
+    //     `
+    //   })
+    // );
   }, []);
 
   return (
