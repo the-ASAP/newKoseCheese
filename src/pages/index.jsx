@@ -98,15 +98,13 @@ const Index = ({ promoContent, discountProduct, categories, posts, newProducts, 
       <InstagramSection />
       <PartnersSection />
 
-      {cookiesModal.isShowed && (
-        <ModalWrapper
-          show={cookiesModal.isShowed}
-          closeModal={cookiesModal.hideModal}
-          {...cookiesModalProperties}
-        >
-          <Cookies close={cookiesModal.hideModal} />
-        </ModalWrapper>
-      )}
+      <ModalWrapper
+        show={cookiesModal.isShowed}
+        closeModal={cookiesModal.hideModal}
+        {...cookiesModalProperties}
+      >
+        <Cookies close={cookiesModal.hideModal} />
+      </ModalWrapper>
     </>
   );
 };

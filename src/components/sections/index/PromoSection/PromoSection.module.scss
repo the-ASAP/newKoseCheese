@@ -91,10 +91,13 @@
     display: block;
     height: fit-content;
     margin-top: 50px;
+    padding-bottom: 3rem;
   }
   .title {
     font-size: 29px;
-    margin-top: 48px;
+    margin-top: 2rem;
+    font-size: 1.125rem;
+    line-height: 145%;
   }
   .link {
     margin-top: 110px;
@@ -102,9 +105,5 @@
   .intro {
     font-size: 2.25rem;
     line-height: 110.69%;
-  }
-  .title {
-      font-size: 1.125rem;
-      line-height: 145%;
   }
 }

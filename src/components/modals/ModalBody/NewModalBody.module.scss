@@ -4,8 +4,10 @@
 .header {
     @extend %flexbox;
     justify-content: space-between;
-    height: 5rem;
+    flex-wrap: wrap;
+    padding-bottom: 1rem;
     border-bottom: 1px solid rgba($gen, .3);
+    margin-top: 1rem;
 }
 
 .container {

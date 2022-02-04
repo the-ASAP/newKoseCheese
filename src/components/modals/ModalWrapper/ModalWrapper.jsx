@@ -49,7 +49,7 @@ export const ModalWrapper = (props) => {
       setRender(false);
     }
   };
-
+  
   return (
     shouldRender && (
       <div
