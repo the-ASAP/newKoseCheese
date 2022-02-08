@@ -37,14 +37,6 @@ export const CartSection = ({ cost }) => {
             ))}
           </div>
         </div>
-        <div className={s.footer}>
-          <div className={s.fields}>
-            {/* <div className={s.field}>
-              <span className={s.info}>Цена:</span>
-              <span className={s.value}>{totalPrice} руб.</span>
-            </div> */}
-          </div>
-        </div>
       </div>
     </>
   );

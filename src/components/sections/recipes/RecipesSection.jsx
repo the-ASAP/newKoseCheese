@@ -12,41 +12,13 @@ import { RecipeLoader } from "components/common/RecipeLoader/RecipeLoader";
 import s from "./RecipesSection.module.scss";
 
 export const RecipesSection = ({ categories, items }) => {
-
-  const { id: categoryId, subcategories: subCategoryId } = categories[0];
-  const { activeId: activeCategoryId, toggleActiveId: toggleCategoryId } = useTabs(categoryId, false);
-  const { activeId: activeSubCategoryId, toggleActiveId: toggleSubCategoryId } = useTabs(subCategoryId[0].id, false);
-
   const [isLoading, setLoading] = React.useState(false);
-
-  const [activeCategory, setActiveCategory] = React.useState(categories[0]);
   const [activePosts, setActivePosts] = React.useState(items);
-
-  React.useEffect(() => {
-    setActiveCategory(categories.find(category => category.id === activeCategoryId));
-  }, [activeCategoryId]);
-
-
-  React.useEffect(() => {
-    toggleSubCategoryId(activeCategory.subcategories ? activeCategory.subcategories[0].id : activeCategory.id);
-  }, [activeCategory]);
-
-  React.useEffect(() => {
-    const getPosts = async () => {
-      setLoading(true);
-      const posts = await APIBitrix.get(`articles/collection/${activeSubCategoryId}`);
-      setActivePosts(posts);
-      setLoading(false);
-    };
-
-    getPosts();
-
-  }, [activeSubCategoryId]);
 
 
   return (
     <>
-      <Tabs>
+      {/* <Tabs>
         {categories.map(({ name, id }) => (
           <TabButton
             key={id}
@@ -67,13 +39,12 @@ export const RecipesSection = ({ categories, items }) => {
               active={activeSubCategoryId}
               toggleActive={toggleSubCategoryId}/>)
         }
-      </div>
+      </div> */}
       <div className={s.posts}>
         {isLoading ?
           <RecipeLoader/>
           :
-          activePosts.length > 0 &&
-          activePosts.map((post, i) =>
+          activePosts?.map((post, i) =>
             <Recipe
               key={i}
               isPreview {...post} />)

@@ -96,6 +96,15 @@
   margin-top: 0.5rem;
 }
 
+.value {
+  font-family: $font-service;
+  width: 100%;
+  text-align: center;
+  margin-top: 3rem;
+  display: block;
+}
+
+
 @media (max-width: $landscape) {
   .purchase {
     width: 382px;
@@ -145,15 +154,11 @@
   .title {
     text-align: left;
   }
+
+  .value {
+    position: absolute;
+    bottom: 1rem;
+    left: 0;
+  }
 }
 
-.value {
-  font-family: $font-service;
-  width: 100%;
-  text-align: center;
-  margin-top: 3rem;
-  display: block;
-  position: absolute;
-  bottom: 1rem;
-  left: 0;
-}

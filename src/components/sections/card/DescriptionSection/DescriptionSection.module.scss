@@ -45,6 +45,10 @@
   &Text {
     display: inline;
     max-width: 80%;
+    font-family: $font-service;
+    font-size: 1rem;
+    line-height: 1.5;
+    opacity: 0.8;
   }
 }
 
@@ -112,7 +116,7 @@
   max-width: 85%;
   margin-top: 1rem;
   font-family: $font-service;
-  font-size: 0.875rem;
+  font-size: 1rem;
   line-height: 1.5;
   opacity: 0.8;
 }

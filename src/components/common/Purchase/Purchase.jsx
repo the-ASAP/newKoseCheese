@@ -1,12 +1,15 @@
 import React from 'react';
-
+import Link from 'next/link'
+import { useRouter } from 'next/router'
 import { BASE_SITE_URL } from 'constants.js';
 import { NewPurchaseControl } from '../PurchaseControl/NewPurchaseControl';
 import { FavoriteControl } from '../FavoriteControl/FavoriteControl';
+import { useDispatch } from "react-redux";
+import { closeAllModals } from "redux/slices/modals";
 
 import s from './Purchase.module.scss';
 
-export const Purchase = ({ inFavorite, id, active, inCart, inOrder, params }) => {
+export const Purchase = ({ inFavorite, active, inCart, inOrder, params }) => {
   const defaults = {
     previewImage: '',
     name: '',
@@ -19,11 +22,21 @@ export const Purchase = ({ inFavorite, id, active, inCart, inOrder, params }) =>
     ...defaults,
     ...params
   };
-  const { previewImage, name, addition, price, weight, quantity } = properties;
+
+  const { previewImage, name, addition, price, weight, quantity, id } = properties;
+
+  const router = useRouter()
+  const dispatch = useDispatch();
+
+  const handleClick = (id) => {
+    router.push(`/products/${id}`)
+    dispatch(closeAllModals())
+  }
+
   return (
     <div className={s.container}>
       <div className={s.wrapper}>
-        <img src={BASE_SITE_URL + previewImage} alt="" className={s.image} />
+          <img src={BASE_SITE_URL + previewImage} alt="" className={s.image} onClick={() => handleClick(id)}/>
       </div>
       <div className={s.info}>
         <div className={s.block}>
