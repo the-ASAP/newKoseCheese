@@ -90,7 +90,7 @@ export const AuthSection = () => {
               // <Input id="phone" label="Номер телефона" name="phone" type="text"/>
               <Input id="code" label="Код подтверждения" name="code" type="text" autoFocus />
             )}
-            {isLoginPage ? (
+            {!isLoginPage ? (
               <>
                 <button type="submit" className={s.submit}>
                   Войти

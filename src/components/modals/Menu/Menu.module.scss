@@ -5,7 +5,9 @@
   display: flex;
   align-content: flex-start;
   flex-wrap: wrap;
-  height: calc(100% - 65px);
+  // height: calc(100% - 65px);
+  height: 35rem;
+  min-height: 35rem;
   border-bottom: 1px solid rgba($accent, .3);
 }
 

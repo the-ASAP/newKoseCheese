@@ -18,6 +18,7 @@ import {
 
 import { addToFavorite } from 'redux/slices/favorite';
 import { RemoveButton } from '../../buttons/RemoveButton/RemoveButton';
+import { popUpChangeModalState } from 'redux/slices/modals';
 import s from './NewPurchaseControl.module.scss';
 
 export const NewPurchaseControl = ({ product, inCart, ...other }) => {
@@ -71,9 +72,19 @@ export const NewPurchaseControl = ({ product, inCart, ...other }) => {
       dispatch(reqAddToCart({ ...product, quantity }));
       dispatch(cartChangeModalState(true));
     } else if (!product.status) {
-      alert('Товара временно нет в наличии');
+      dispatch(
+        popUpChangeModalState({
+          visible: true,
+          text: 'Товара временно нет в наличии'
+        })
+      );
     } else if (isItemInCart) {
-      alert('Товара уже в корзине');
+      dispatch(
+        popUpChangeModalState({
+          visible: true,
+          text: 'Товар уже в корзине'
+        })
+      );
     }
   };
 

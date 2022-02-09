@@ -104,7 +104,7 @@ export const reqIncProductCount = createAsyncThunk(
           dispatch(putProducts(res.data));
         } else {
           throw new Error(
-            'Ошибка при изменении количества. Попробуйте обновить страницу и изменить еще раз'
+            'Товара больше нет в наличии!'
           );
         }
       });

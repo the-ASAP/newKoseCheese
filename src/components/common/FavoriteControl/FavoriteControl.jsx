@@ -9,6 +9,7 @@ import { cartItemsSelector, reqAddToCart } from 'redux/slices/cart';
 import { cartChangeModalState, closeAllModals } from 'redux/slices/modals';
 import { removeFromFavorite } from 'redux/slices/favorite';
 import { removeFavorite } from 'functions';
+import { popUpChangeModalState } from 'redux/slices/modals';
 
 export const FavoriteControl = ({ product }) => {
   const dispatch = useDispatch();
@@ -25,9 +26,19 @@ export const FavoriteControl = ({ product }) => {
       // dispatch(closeAllModals());
       // dispatch(cartChangeModalState(true));
     } else if (!product.status) {
-      alert('Товара временно нет в наличии');
+      dispatch(
+        popUpChangeModalState({
+          visible: true,
+          text: 'Товара временно нет в наличии'
+        })
+      );
     } else if (isItemInCart) {
-      alert('Товара уже в корзине');
+      dispatch(
+        popUpChangeModalState({
+          visible: true,
+          text: 'Товар уже в корзине'
+        })
+      );
     }
   };
 

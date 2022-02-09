@@ -5,18 +5,25 @@ import { Input } from 'components/forms/Input/Input';
 import { Textarea } from 'components/forms/Textarea/Textarea';
 import { ModalSuccess } from 'components/modals/ModalSuccess/ModalSuccess';
 import { PROFILE_VALIDATION_SCHEMA } from '../../../constants';
+import { useDispatch } from 'react-redux';
+import { privacyChangeModalState } from 'redux/slices/modals';
 import s from './Letter.module.scss';
 
 export const Letter = ({ closeModal }) => {
+  const dispatch = useDispatch()
   const [accept, setAccept] = useState(false);
   const [success, setSuccces] = useState(false);
   const onSubmit = (values) => {
-    console.log('123', values);
     setSuccces(true);
     fetch('/api/forms/to-admin/')
       .then((res) => res.json())
       .then((data) => console.log(data));
   };
+
+  const privacyModalHandler = () => {
+    dispatch(privacyChangeModalState(true));
+  }
+
   return (
     <div className={s.container}>
       <div className={s.close}>
@@ -57,7 +64,7 @@ export const Letter = ({ closeModal }) => {
                   />
                   <span className={s.politicsText}>
                     Я даю согласие на обработку персональных данных и соглашаюсь с&nbsp;
-                    <button type="button" className={s.politicsLink}>
+                    <button type="button" className={s.politicsLink} onClick={privacyModalHandler}>
                       политикой конфиденциальности.
                     </button>
                   </span>

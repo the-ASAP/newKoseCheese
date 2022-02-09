@@ -138,10 +138,10 @@
   .submit {
     position: absolute;
     left: 50%;
-    bottom: -3rem;
     transform: translateX(-50%);
     width: calc(100% - 30px);
     max-width: 420px;
+    // margin: 0;
   }
   .steps {
     justify-content: center;
@@ -156,9 +156,11 @@
   }
 
   .value {
-    position: absolute;
-    bottom: 1rem;
-    left: 0;
+    margin-top: 1rem;
+  }
+
+  .value + .submit {
+    margin-top: 1rem;
   }
 }
 
