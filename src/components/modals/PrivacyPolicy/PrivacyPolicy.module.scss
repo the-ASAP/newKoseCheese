@@ -1,7 +1,10 @@
 @import "/src/styles/root";
+@import "/src/styles/mixins";
 
 .container {
   padding: 3.125rem 0.9375rem;
+  overflow: scroll;
+  @extend %scrollbar;
 }
 .header {
   display: flex;
@@ -17,5 +20,6 @@
   line-height: 1.5;
   margin-top: 1.875rem;
   font-family: $font-service;
+
 }
 

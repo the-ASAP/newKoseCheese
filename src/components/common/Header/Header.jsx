@@ -180,7 +180,7 @@ export const Header = ({ router, cat }) => {
               className={clsx(
                 s.burger,
                 s.button,
-                (isPromoPage || menuModalValue) && s.button_accent,
+                // (isPromoPage || menuModalValue) && s.button_accent,
                 menuModalValue && s.burgerOpen
               )}
               onClick={() => menuModalHandler(!menuModalValue)}

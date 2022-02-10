@@ -82,7 +82,8 @@
 
 @media (max-width: $tablet) {
   .title {
-    font-size: 48px;
+    font-size: 2rem;
+    max-width: 40rem;
   }
 }
 

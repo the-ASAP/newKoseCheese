@@ -8,11 +8,20 @@
     border-bottom: 1px solid rgba($gen, .3);
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1150px) {
     .subcategories {
         width: 100%;
-        flex-wrap: wrap;
+        flex-wrap: nowrap;
+        min-height: 4rem;
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+        overflow-x: scroll;
+        margin: 0;
     }
+}
+
+@media (max-width: 768px) {
+    
     .products {
         flex-grow: 1;
     }

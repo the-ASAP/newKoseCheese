@@ -77,13 +77,20 @@
   }
 }
 
-@media (max-width: $tablet) {
+@media (max-width: 1150px) {
+  // .item {
+  //   left: 27rem;
+  //   width: 16rem;
+  // }
+}
+
+@media (max-width: 1150px) {
   .item {
     position: relative;
     top: unset;
     left: unset;
-    transform: none;
     width: 100%;
+    transform: none;
     margin: 20px 0 30px;
     border: 1px solid rgba($accent, .5);
     background-color: #416261;

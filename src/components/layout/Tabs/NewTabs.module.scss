@@ -17,6 +17,16 @@
   
 }
 
+@media (max-width: 1150px) {
+  .container {
+    width: 100%;
+    overflow-x: scroll;
+    justify-content: space-around;
+    > * {
+      margin-right: 20px;
+    }
+  }
+}
 
 @media (max-width: $mobile) {
   .container {
@@ -24,9 +34,7 @@
     justify-content: flex-start;
     padding: 0;
     width: 100%;
-    > * {
-      margin-right: 20px;
-    }
+
   }
   .farm {
     overflow: auto;

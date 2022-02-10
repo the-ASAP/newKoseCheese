@@ -101,9 +101,9 @@ export const SearchPanel = ({ setOpen }) => {
       />
       <button type="button" className={s.icon} onClick={() => setSearchTerm('')}>
         {searchTerm ? (
-          <CloseIcon color={windowSize > 768 ? '#184240' : '#FFF3E7'} />
+          <CloseIcon color={windowSize > 1150 ? '#184240' : '#FFF3E7'} />
         ) : (
-          <SearchIcon color={windowSize > 768 ? '#184240' : '#FFF3E7'} />
+          <SearchIcon color={windowSize > 1150 ? '#184240' : '#FFF3E7'} />
         )}
       </button>
       {searchTerm && (

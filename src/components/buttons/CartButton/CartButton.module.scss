@@ -55,6 +55,12 @@
   }
 }
 
+@media (max-width: 1150px) {
+  .cart {
+    margin-right: 1rem;
+  }
+}
+
 @media (max-width: $mobile) {
   .button {
     display: none;

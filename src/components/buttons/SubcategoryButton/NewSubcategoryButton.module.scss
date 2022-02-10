@@ -82,23 +82,12 @@
     }
 }
 
-@media (max-width: $landscape) {
-  .subcategory {
-    margin-bottom: 20px;
-  }
+@media (max-width: 1150px) {
+  
 }
 
-@media (max-width: $tablet) {
-  //.mainButton {
-  //  margin-bottom: 20px;
-  //}
-}
 
 @media (max-width: $mobile) {
-
-  //.mainButton {
-  //  margin-bottom: 16px;
-  //}
   .subcategory {
     margin-bottom: 1rem;
     &.product {

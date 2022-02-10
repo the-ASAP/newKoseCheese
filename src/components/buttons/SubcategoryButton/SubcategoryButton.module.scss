@@ -38,18 +38,6 @@
   }
 }
 
-@media (max-width: $landscape) {
-  .subcategory {
-    margin-bottom: 20px;
-  }
-}
-
-@media (max-width: $tablet) {
-  //.mainButton {
-  //  margin-bottom: 20px;
-  //}
-}
-
 @media (max-width: $mobile) {
   .subcategory {
     margin-bottom: 0;

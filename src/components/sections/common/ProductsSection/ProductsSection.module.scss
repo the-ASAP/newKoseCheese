@@ -48,6 +48,14 @@
   }
 }
 
+@media (max-width: 1150px) {
+  .subcategories {
+    width: 100%;
+    flex-wrap: nowrap;
+    overflow-x: scroll;
+  }
+}
+
 @media (max-width: $mobile) {
   .body {
     width: 100%;
@@ -56,8 +64,5 @@
   }
   .subcategories {
     justify-content: flex-start;
-    width: 100%;
-    flex-wrap: nowrap;
-    overflow-x: scroll;
   }
 }

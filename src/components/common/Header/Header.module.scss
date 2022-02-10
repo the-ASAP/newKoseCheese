@@ -282,6 +282,9 @@
     margin-left: 0;
     order: -1;
   }
+  .search {
+    display: none;
+  }
 }
 
 @media (max-width: $tablet) {
@@ -296,6 +299,16 @@
   }
 }
 
+@media (max-width: 1150px) {
+  .nav {
+    position: absolute;
+    width: 100%;
+  }
+  .logo {
+    margin: 0
+  }
+}
+
 @media (max-width: $mobile) {
   .button {
     display: none;
@@ -305,6 +318,10 @@
   }
   .logo {
     transform: none;
+    margin: 0;
+  }
+  .nav {
+    position: relative;
     margin: 0;
   }
 }

@@ -131,6 +131,12 @@
   @extend %outStock;
 }
 
+@media (max-width: 1150px) {
+  .image {
+    margin: 0;
+  }
+}
+
 @media (max-width: $landscape) {
   .card {
     width: 33%;

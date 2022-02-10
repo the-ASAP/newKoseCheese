@@ -64,6 +64,12 @@
   }
 }
 
+@media (max-width: 1150px) {
+  .newButton {
+    margin-top: 1rem;
+  }
+}
+
 @media (max-width: 768px) {
   .button {
     &:first-child {

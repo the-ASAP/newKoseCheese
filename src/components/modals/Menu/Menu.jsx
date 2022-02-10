@@ -20,9 +20,10 @@ const headerLinks = [
   { title: 'Каталог', link: 'products'},
   { title: 'Ферма', link: '/farm' },
   { title: 'Сыроварня', link: '/cheeseboard' },
+  { title: 'Рецепты', link: '/articles'},
   { title: 'Контроль качества', link: '/control' },
   { title: 'Условия доставки', link: '/delivery' },
-  { title: 'Вопросы', link: '/questions' }
+  { title: 'Вопросы', link: '/questions' },
 ];
 
 
