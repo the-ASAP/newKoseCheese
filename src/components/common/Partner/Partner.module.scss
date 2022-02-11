@@ -1,5 +1,5 @@
 @import '/src/styles/root';
-
+ 
 .item {
   display: flex;
   justify-content: center;
@@ -29,15 +29,15 @@
   object-fit: contain;
 }
 
-@media (max-width: $tablet) {
-  .item {
-    width: 100%;
-    border-right: none;
-    &:nth-child(n + 4) {
-      margin-top: -1px;
-    }
-  }
-}
+// @media (max-width: $tablet) {
+//   .item {
+//     width: 100%;
+//     border-right: none;
+//     &:nth-child(n + 4) {
+//       margin-top: -1px;
+//     }
+//   }
+// }
 
 @media (max-width: $mobile) {
   .item {
