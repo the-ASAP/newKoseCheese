@@ -12,6 +12,8 @@ class ProductsAPI {
 
   getNewProducts = () => API.get('newProducts');
 
+  sendRefundToEmail = (data) => API.post('forms/refund', { data });
+
   // auth = (username, password) => API.post('/api/auth/token/', {username, password, api: 'operator.up-line'})
   // checkToken = (payload) => API.post('/api/auth/CheckTokenLifeTime', payload)
   // refreshToken = () => API.get('/api/auth/refreshToken')

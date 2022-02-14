@@ -12,15 +12,12 @@
   padding-bottom: 1rem;
 }
 
-
 .top {
-  
 }
 
 @media (max-width: 1150px) {
   .container {
     width: 100%;
-    overflow-x: scroll;
     justify-content: flex-start;
     > * {
       margin-right: 20px;
@@ -31,10 +28,7 @@
 @media (max-width: $mobile) {
   .container {
     overflow-x: scroll;
-    justify-content: flex-start;
     padding: 0;
-    width: 100%;
-
   }
   .farm {
     overflow: auto;

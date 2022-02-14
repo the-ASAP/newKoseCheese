@@ -150,13 +150,9 @@
 }
 
 @media (max-width: $mobile) {
-  .link {
-    display: none;
-  }
-
   .card:not(.card_slider) {
     height: 280px;
-    padding: 0; 
+    padding: 0;
     // control buttons
 
     .body {
@@ -173,7 +169,7 @@
       //   margin-right: 0;
       // }
       // svg {
-        // width: 60%;
+      // width: 60%;
       // }
     }
     .image {

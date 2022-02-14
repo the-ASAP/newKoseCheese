@@ -20,7 +20,7 @@ export const CartSection = ({ cost }) => {
             {cost && cost !== 'Адреса не существует' && (
               <>
                 {isNumber(cost) && <span className={s.info}>Доставка:</span>}
-                <span className={s.value}>
+                <span className={s.value}> 
                   {cost}
                   {isNumber(cost) && ' руб.'}
                 </span>

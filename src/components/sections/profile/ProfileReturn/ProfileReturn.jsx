@@ -138,7 +138,7 @@ export const ProfileReturn = () => {
                           На внутренний счет
                         </label>
                       </div>
-                      {/* <div className={s.onchange}>
+                      <div className={s.onchange}>
                         <Input
                           id="card"
                           name="replace"
@@ -147,11 +147,11 @@ export const ProfileReturn = () => {
                           additionClass="checkbox"
                         />
                         <label htmlFor="card" className={s.label}>
-                          Деньги на карту
+                          Деньгами на карту
                         </label>
-                      </div> */}
+                      </div>
                     </div>
-                    {/* <Input label="Номер карты" type="number" id="cardNumber" name="cardNumber" /> */}
+                    <Input label="Номер карты" type="number" id="cardNumber" name="cardNumber" />
                   </div>
                   <div className={s.block}>
                     <span className={s.subtitle}>*Добавить фото чека и продукта</span>
