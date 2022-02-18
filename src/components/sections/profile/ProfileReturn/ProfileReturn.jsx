@@ -1,51 +1,55 @@
-import React from "react";
-import { ProfileSteps } from "components/common/Profile/ProfileSteps/ProfileSteps";
-import { Order } from "components/Order/Order";
-import { FormContainer } from "components/forms/FormContainer/FormContainer";
-import { Input } from "components/forms/Input/Input";
-import { DropdownCustom } from "components/common/DropdownCustom/DropdownCustom";
-import { InputPhoto } from "components/forms/InputPhoto/InputPhoto";
-import { windowSize } from "constants.js";
-import { useClientSide } from "hooks.js";
-import { returnOrderSelector } from "redux/slices/returnOrder";
-import s from "./ProfileReturn.module.scss";
-import { Field } from "formik";
-import Dropdown from "react-dropdown";
+import React from 'react';
+import { ProfileSteps } from 'components/common/Profile/ProfileSteps/ProfileSteps';
+import { Order } from 'components/Order/Order';
+import { FormContainer } from 'components/forms/FormContainer/FormContainer';
+import { Input } from 'components/forms/Input/Input';
+import { DropdownCustom } from 'components/common/DropdownCustom/DropdownCustom';
+import { InputPhoto } from 'components/forms/InputPhoto/InputPhoto';
+import { windowSize } from 'constants.js';
+import { useClientSide } from 'hooks.js';
+import { returnOrderSelector } from 'redux/slices/returnOrder';
+import s from './ProfileReturn.module.scss';
+import { Field } from 'formik';
+import Dropdown from 'react-dropdown';
 import { Textarea } from 'components/forms/Textarea/Textarea';
+import APIBitrix from 'api/APIBitrix';
 
 const initialValues = {
-  name: "Сергей",
+  name: 'Сергей',
   phone: +79271015487,
-  point: "",
-  orderProduct: ""
+  point: '',
+  orderProduct: ''
 };
-const returnReasonOptions = [
-  "Товар просрочен", "Ненадлежащее качество товара", "Я передумал"
-];
+const returnReasonOptions = ['Товар просрочен', 'Ненадлежащее качество товара', 'Я передумал'];
 
 const salePoints = [
-  "г. Москва, ул. Академика Королева, 12", "г. Москва, ул. Степана Разина, 3", "г. Москва, ул. Метро, 34"
+  'г. Москва, ул. Академика Королева, 12',
+  'г. Москва, ул. Степана Разина, 3',
+  'г. Москва, ул. Метро, 34'
 ];
 
 export const ProfileReturn = () => {
-
   const allOrders = [36956, 34951, 43123, 23461];
 
   const currentProducts = [
     {
-      name: "Камамбер козий",
+      name: 'Камамбер козий',
       count: 4
-    }, {
-      name: "Брю-де-шар",
+    },
+    {
+      name: 'Брю-де-шар',
       count: 7
     }
   ];
 
-  const [orderNumber, setOrderNumber] = React.useState("");
+  const [orderNumber, setOrderNumber] = React.useState('');
   const [curProducts, setCurProducts] = React.useState(currentProducts);
 
-  const submitHandler = (value) => {
-    console.log(value);
+  const submitHandler = (values) => {
+    console.log(values);
+    APIBitrix.post('forms/refund/', {
+      values
+    });
   };
 
   const selectHandler = (value) => {
@@ -53,14 +57,12 @@ export const ProfileReturn = () => {
   };
 
   React.useEffect(() => {
-
     // async stuff
     orderNumber && setCurProducts(currentProducts);
-
   }, [orderNumber]);
 
   const isClientSide = useClientSide();
-  const [showSalePoints, setShowSalePoints] = React.useState(false)
+  const [showSalePoints, setShowSalePoints] = React.useState(false);
 
   return (
     <>
@@ -205,8 +207,7 @@ export const ProfileReturn = () => {
                         </label>
                       </div>
                     </div>
-                    {
-                      showSalePoints && 
+                    {showSalePoints && (
                       <DropdownCustom
                         label="Точка продаж"
                         placeholder="Выберите точку продаж"
@@ -215,7 +216,7 @@ export const ProfileReturn = () => {
                           formProps.setFieldValue('point', e.value);
                         }}
                       />
-                    }
+                    )}
                   </div>
                 </div>
                 <button type="submit" className={s.submit}>
@@ -229,4 +230,3 @@ export const ProfileReturn = () => {
     </>
   );
 };
-

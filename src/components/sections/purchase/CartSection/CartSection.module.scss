@@ -99,4 +99,14 @@
   .footer {
     border-top: none;
   }
+
+  .field {
+    justify-content: flex-start;
+    margin-top: 1.375rem;
+    order: 0;
+
+    & + div {
+      width: auto;
+    }
+  }
 }

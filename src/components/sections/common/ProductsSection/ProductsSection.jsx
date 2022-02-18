@@ -116,7 +116,6 @@ export const ProductsSection = ({ products, categories }) => {
             </div>
           )}
         </div>
-
         {isLoading ? (
           <ProductLoader />
         ) : (
@@ -130,7 +129,7 @@ export const ProductsSection = ({ products, categories }) => {
               {activeProducts.map((product, index) => (
                 <Product key={product.id} {...product} />
               ))}
-            </div>
+            </div> 
           )
         )}
         {isClientSide &&

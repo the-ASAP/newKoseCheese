@@ -5,12 +5,13 @@ import s from 'components/buttons/BackButton/BackButton.module.scss';
 
 export const BackButton = ({ additionClass, clickHandler }) => {
   const router = useRouter();
+
   return (
     <div className={clsx(s.container, s[additionClass])}>
       <button
         type="button"
-        className={s.button}
         onClick={() => (clickHandler ? clickHandler() : router.back())}
+        className={s.button}
       >
         <svg
           width="11"

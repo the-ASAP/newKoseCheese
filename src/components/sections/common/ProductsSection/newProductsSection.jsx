@@ -1,5 +1,5 @@
 // @ts-nocheck
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback, useRef } from 'react';
 
 import { Product } from 'components/Product/Product';
 import { SubcategoryButton } from 'components/buttons/SubcategoryButton/SubcategoryButton';
@@ -21,23 +21,69 @@ export const NewProductsSection = ({ products, categories }) => {
   const [categoryId, setCategoryId] = useState(null);
   const [subCategoryId, setSubCategoryId] = useState(null);
   const [activeCategory, setActiveCategory] = useState(null);
-  const [activeProducts, setActiveProducts] = useState(false);
+  const [paginationCategory, setPaginationCategory] = useState(null);
+  const [activeProducts, setActiveProducts] = useState([]);
   const [sortProducts, setSortProducts] = useState(null);
   const [isLoading, setLoading] = useState(false);
-  // const [goodsPagination, setGoodsPage] = useState({
-  //   perPage: 4,
-  //   currentPage: 4,
-  //   limit: 4
-  // });
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalCount, setTotalCount] = useState(0);
+  const [fetching, setFetching] = useState(true);
+  const productsRef = useRef(null);
+
+  useEffect(async () => {
+    try {
+      if (fetching) {
+        const requestProducts = await APIBitrix.post(`products/collection/all/`, {
+          section_id:
+            paginationCategory || localStorage.getItem('activeCategory') || categories[0]?.id,
+          page: currentPage,
+          limit: 10
+        });
+        setTotalCount(requestProducts?.data.count);
+        setActiveProducts([...activeProducts, ...requestProducts.data.items]);
+        setCurrentPage((prevState) => prevState + 1);
+      }
+    } finally {
+      setFetching(false);
+    }
+  }, [fetching, paginationCategory]);
+
+  useEffect(() => {
+    document.addEventListener('scroll', scrollHandler);
+
+    return () => document.removeEventListener('scroll', scrollHandler);
+  }, [fetching]);
+
+  const setCategoryForPagination = (id) => {
+    setPaginationCategory(id);
+    setFetching(true);
+    setCurrentPage(1);
+    setActiveProducts([]);
+  };
+
+  const scrollHandler = () => {
+    if (productsRef.current) {
+      const elementBoundary = productsRef.current.getBoundingClientRect();
+      const bottom = elementBoundary.bottom;
+      if (
+        typeof window !== 'undefined' &&
+        bottom < window.innerHeight &&
+        activeProducts.length < totalCount
+      ) {
+        setFetching(true);
+      }
+    }
+  };
 
   useEffect(() => {
     const id = localStorage.getItem('activeCategory');
-    if (id) setCategoryId(id);
-    else setCategoryId(categories[0]?.id)
+    if (id) {
+      setCategoryId(id);
+    } else setCategoryId(categories[0]?.id);
   }, []);
 
   useEffect(() => {
-    if(categoryId) {
+    if (categoryId) {
       let newActiveCategory = categories.find((category) => category?.id === categoryId);
       setActiveCategory(newActiveCategory);
     }
@@ -45,9 +91,9 @@ export const NewProductsSection = ({ products, categories }) => {
 
   useEffect(() => {
     if (activeCategory?.subcategories) {
-      const subId = localStorage.getItem('activeSubCaterogy')
-      if(subId) setSubCategoryId(subId)
-      else setSubCategoryId(activeCategory?.subcategories[0].id);
+      const subId = localStorage.getItem('activeSubCaterogy');
+      if (subId) setSubCategoryId(subId);
+      // else setSubCategoryId(activeCategory?.subcategories[0].id);
     } else {
       setSubCategoryId(null);
       setLoading(activeCategory?.id);
@@ -58,21 +104,16 @@ export const NewProductsSection = ({ products, categories }) => {
     if (subCategoryId) setLoading(subCategoryId);
   }, [subCategoryId]);
 
-  useEffect(async () => {
-    // const requestId = activeCategory.subcategories ? subCategoryId : activeCategory.id;
-    if (isLoading) {
-      const requestProducts = await APIBitrix.get(`products/collection/${isLoading}`);
-      setActiveProducts(requestProducts);
-    }
-  }, [isLoading]);
-
   useEffect(() => {
     if (activeProducts !== false) {
       setLoading(false);
-      // setGoodsPage((prev) => ({ ...prev, limit: activeProducts.length }));
 
-      const sortArr = sortProductsFunction(activeProducts, filterDropdown[0].value, filterDropdown[0].sort)
-      setSortProducts(sortArr)
+      const sortArr = sortProductsFunction(
+        activeProducts,
+        filterDropdown[0].value,
+        filterDropdown[0].sort
+      );
+      setSortProducts(sortArr);
     }
   }, [activeProducts]);
 
@@ -86,30 +127,31 @@ export const NewProductsSection = ({ products, categories }) => {
   const handleSelectCategory = (id) => {
     setCategoryId(id);
     localStorage.setItem('activeCategory', id);
+    setCategoryForPagination(id);
   };
 
-  // const handleSetGoodsPagination = () => {
-  //   setGoodsPage((prev) => ({ ...prev, currentPage: prev.currentPage + prev.perPage }));
-  // };
+  const handleSelectSubcategory = (id) => {
+    setSubCategoryId(id);
+    setCategoryForPagination(id);
+  };
 
   return (
     <>
       <Section>
         <Wrapper>
-          <div className={s.header}>
-           
-              <Tabs>
-                {categories.map(({ name, id }) => (
-                  <SubcategoryButton
-                    key={id}
-                    title={name}
-                    id={id}
-                    active={categoryId}
-                    toggleActive={handleSelectCategory}
-                  />
-                ))}
-              </Tabs>
-            
+          <div className={activeCategory?.subcategories ? s.header : s.header__sm}>
+            <Tabs>
+              {categories.map(({ name, id }) => (
+                <SubcategoryButton
+                  key={id}
+                  title={name}
+                  id={id}
+                  active={categoryId}
+                  toggleActive={handleSelectCategory}
+                />
+              ))}
+            </Tabs>
+
             {activeCategory?.subcategories && (
               <div className={s.subcategories}>
                 {activeCategory.subcategories.map(({ name, id }) => (
@@ -118,35 +160,38 @@ export const NewProductsSection = ({ products, categories }) => {
                     id={id}
                     title={name}
                     active={subCategoryId}
-                    toggleActive={setSubCategoryId}
+                    toggleActive={handleSelectSubcategory}
                     additionClass="product"
                   />
                 ))}
               </div>
             )}
           </div>
-            
+
           <div className={s.filter}>
             <NewDropdownCustom
               value={filterDropdown[0]?.title}
-              options={filterDropdown.map(elem => elem.title)}
+              options={filterDropdown.map((elem) => elem.title)}
               selectHandler={(e) => {
-                filterDropdown.forEach(elem => {
-                  if(elem.title === e.value) {
-                    const sortArr = sortProductsFunction(activeProducts, elem.value, elem.sort)
-                    setSortProducts([...sortArr])  
+                filterDropdown.forEach((elem) => {
+                  if (elem.title === e.value) {
+                    const sortArr = sortProductsFunction(activeProducts, elem.value, elem.sort);
+                    setSortProducts([...sortArr]);
                   }
-                })
+                });
               }}
             />
           </div>
+
           {isLoading ? (
             <ProductLoader />
           ) : (
             sortProducts?.length > 0 && (
-              <div className={s.body}>
+              <div ref={productsRef} className={s.body}>
                 {sortProducts.map((product) => {
-                  return product.status && <Product key={product.id} {...product} />
+                  return (
+                    product.status && <Product key={`${product.id}-${product.code}`} {...product} />
+                  );
                 })}
               </div>
             )

@@ -21,7 +21,7 @@ const Products = ({ newProductsBitrix, categoriesBitrix, seo }) => {
         <meta name="description" content={seo?.meta_description || `KO&CO`} />
         <title>{seo?.meta_title || `Каталог`}</title>
       </Head>
-      <Wrapper style={{marginTop: '6rem'}}>
+      <Wrapper style={{ marginTop: '6rem' }}>
         {discountModal.isShowed && (
           <Discount
             text="Вам представлена скидка на первый заказ 10%"
@@ -35,7 +35,7 @@ const Products = ({ newProductsBitrix, categoriesBitrix, seo }) => {
       {/* <DiscountSection {...discountProduct} /> */}
     </>
   );
-};
+}; 
 
 export default Products;
 
