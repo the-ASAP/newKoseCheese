@@ -1,0 +1,52 @@
+.button {
+  position: relative;
+}
+
+.button::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -0.625rem;
+  width: 0;
+  height: 1px;
+  opacity: 0;
+  background-color: #FFF3E7;
+  -webkit-transition: width 0.3s, opacity 0.3s;
+  transition: width 0.3s, opacity 0.3s;
+}
+
+.button:hover::after {
+  width: 100%;
+  opacity: 1;
+}
+
+.button {
+  display: block;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  font-family: "Roboto", "sans-serif";
+  font-size: 1.125rem;
+  text-transform: none;
+  text-align: left;
+}
+
+.button::after {
+  background-color: #184240;
+}
+
+.button:not(:last-child) {
+  margin-bottom: 1.25rem;
+}
+
+.active:after {
+  width: 100%;
+  opacity: 1;
+}
+
+@media (max-width: 1023px) {
+  .button {
+    font-size: 16px;
+  }
+}
+/*# sourceMappingURL=ProfileButton.module.css.map */

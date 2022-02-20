@@ -1,0 +1,180 @@
+.tab, .submit {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-item-align: center;
+      align-self: center;
+}
+
+.tab, .submit {
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  border: 1px solid #FFF3E7;
+  font-size: 0.875rem;
+  color: black;
+}
+
+.tab {
+  min-height: 1.875rem;
+  padding: 0 1.25rem;
+  border-color: #184240;
+  border-radius: 0.9375rem;
+  text-transform: uppercase;
+}
+
+.tab:hover, .active.tab {
+  background-color: #184240;
+  color: #FFF3E7;
+}
+
+.submit {
+  background-color: #E3DED2;
+  border: 1px solid #E3DED2;
+  border-radius: 2.25rem;
+  height: 4rem;
+  width: 16.875rem;
+  color: #184240;
+  letter-spacing: 0.54px;
+}
+
+.submit:hover {
+  border-color: transparent;
+  background-color: #184240;
+  color: #FFF3E7;
+}
+
+.submit > span {
+  position: relative;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  font-family: "Roboto", "sans-serif";
+  font-weight: 500;
+  letter-spacing: 0.28px;
+}
+
+.submit > span::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 1px;
+  background-color: #184240;
+  -webkit-transition: bottom 0.3s;
+  transition: bottom 0.3s;
+}
+
+.submit > span:hover::after, .submit > span:focus::after {
+  bottom: -5px;
+}
+
+.wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: 100%;
+}
+
+.header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  font-family: "Roboto", "sans-serif";
+  margin-bottom: 1.8125rem;
+}
+
+.tabs {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+}
+
+.tab:not(:last-child) {
+  margin-right: .625rem;
+}
+
+.dates {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.dates > *:not(:last-child) {
+  margin-right: 1.1875rem;
+}
+
+.dates > .field:not(:first-child) {
+  margin-top: 0;
+}
+
+.submit {
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+  width: 9.375rem;
+  height: 2.5rem;
+}
+
+.submit:hover > span::after {
+  opacity: 0;
+}
+
+.submit > span {
+  font-size: .75rem;
+  font-weight: 400;
+}
+
+@media (max-width: 1199px) {
+  .wrapper {
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    margin-top: 45px;
+  }
+  .dates {
+    margin-top: 16px;
+  }
+}
+
+@media (max-width: 767px) {
+  .wrapper {
+    margin-top: 20px;
+  }
+  .dates,
+  .tabs {
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+  }
+  .dates {
+    margin-top: 8px;
+  }
+  .tab {
+    margin-bottom: 10px;
+  }
+  .submit {
+    margin-top: 18px;
+  }
+}
+/*# sourceMappingURL=ProfileControls.module.css.map */

@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,UAAU,CAAC;EACT,KAAK,EAAE,KAAK;EACZ,UAAU,EAAE,QAAQ;CACrB;;AAED,AAAA,UAAU,CAAC;EACT,KAAK,EAAE,IAAI;CACZ",
+    "sources": [
+        "../src/components/forms/FormContainer/FormContainer.module.scss"
+    ],
+    "names": [],
+    "file": "FormContainer.module.css"
+}

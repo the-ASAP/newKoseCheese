@@ -1,0 +1,18 @@
+.field {
+  margin-top: 5px;
+  font-size: 14px;
+}
+
+.field:first-child {
+  margin-top: 0;
+}
+
+.label {
+  margin-right: 5px;
+  font-family: "Roboto", "sans-serif";
+}
+
+.value {
+  font-family: "Roboto-medium", "sans-serif";
+}
+/*# sourceMappingURL=ProductProperty.module.css.map */

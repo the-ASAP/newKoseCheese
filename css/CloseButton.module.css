@@ -1,0 +1,47 @@
+.close {
+  position: relative;
+  width: 1.875rem;
+  height: 1.875rem;
+  border-radius: 50%;
+  background-color: rgba(24, 66, 64, 0.1);
+}
+
+.close::after, .close::before {
+  -webkit-transition: background-color .3s;
+  transition: background-color .3s;
+  content: '';
+  width: 0.875rem;
+  height: 1px;
+  background-color: #184240;
+  position: absolute;
+  top: 50%;
+  right: calc(50% - 0.4375rem);
+}
+
+.close::after {
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+}
+
+.close::before {
+  -webkit-transform: rotate(135deg);
+          transform: rotate(135deg);
+}
+
+.close:hover {
+  background-color: #184240;
+}
+
+.close:hover::after, .close:hover::before {
+  background-color: #FFF3E7;
+}
+
+.closeSmall {
+  width: 1.625rem;
+  height: 1.625rem;
+}
+
+.privacy {
+  position: fixed;
+}
+/*# sourceMappingURL=CloseButton.module.css.map */

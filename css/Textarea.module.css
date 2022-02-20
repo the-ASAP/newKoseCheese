@@ -1,0 +1,33 @@
+.container {
+  width: 100%;
+  margin-top: 1.25rem;
+}
+
+.label {
+  display: block;
+  margin-bottom: 4px;
+  font-family: "Roboto", "sans-serif";
+  font-size: 0.875rem;
+  line-height: 1.6;
+}
+
+.input {
+  width: 100%;
+  min-height: 7.9rem;
+  padding: .8rem;
+  border: 1px solid #AEAEAE;
+  resize: none;
+  font-family: "Roboto", "sans-serif";
+  -webkit-transition: border-color .3s;
+  transition: border-color .3s;
+}
+
+.input:focus {
+  border-color: #184240;
+}
+
+.feedback {
+  min-height: 14.625rem;
+  max-width: 930px;
+}
+/*# sourceMappingURL=Textarea.module.css.map */

@@ -2,7 +2,7 @@ import React from "react";
 import ContentLoader from "react-content-loader";
 import s from "./ProductLoader.module.scss";
 
-export const ProductLoader = () => (
+export const ProductLoader = ({customStyle}) => (
     <>
       {["", "", "", ""].map((_, i) => <ContentLoader
         speed={2}
@@ -14,6 +14,7 @@ export const ProductLoader = () => (
         className={s.item}
         foregroundOpacity={0.5}
         key={i}
+        style={customStyle}
       >
         <rect x="535" y="475" rx="3" ry="3" width="67" height="11"/>
         <rect x="500" y="473" rx="3" ry="3" width="140" height="11"/>

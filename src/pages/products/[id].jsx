@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { DescriptionSection } from 'components/sections/card/DescriptionSection/DescriptionSection';
 
 import { Slider } from 'components/common/Slider/Slider';
@@ -15,7 +15,6 @@ import { useClientSide } from 'hooks.js';
 import Head from 'next/head';
 
 const Card = ({ id, product, products, posts, seo }) => {
-  const [scrollPosition, setScrollPosition] = useState(0);
   const sliderParams = {
     slider: {
       slidesPerView: 'auto',
@@ -51,9 +50,6 @@ const Card = ({ id, product, products, posts, seo }) => {
   React.useEffect(() => {
     localStorage.removeItem('activeCaterogy');
     localStorage.removeItem('activeSubCaterogy');
-    window && window.addEventListener('scroll', () => setScrollPosition(window.pageYOffset));
-    window.addEventListener('popstate', () => window.scrollTo(0, scrollPosition));
-
   }, []);
 
   return (
@@ -62,11 +58,11 @@ const Card = ({ id, product, products, posts, seo }) => {
         <meta name="keywords" content={seo?.meta_keywords || `KO&CO`} />
         <meta name="description" content={seo?.meta_description || `KO&CO`} />
         <title>{seo?.meta_title || `KO&CO`}</title>
-        <script
+        {/* <script
         dangerouslySetInnerHTML={{
           __html: `history.scrollRestoration = "manual"`,
         }}
-      />
+      /> */}
       </Head>
       <Wrapper>
         <DescriptionSection product={product} id={id} />

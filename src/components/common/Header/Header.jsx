@@ -67,6 +67,7 @@ export const Header = ({ router, cat }) => {
 
   const onMouseLeave = (id) => {
     setMouseEnter(false);
+    setUseShowButtonId(null)
     setMoveData([new Date(), null]);
   };
 

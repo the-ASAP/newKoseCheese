@@ -1,10 +1,6 @@
 // @ts-nocheck
 import React, {useState, useEffect} from 'react';
 import { Wrapper } from 'components/layout/Wrapper/Wrapper';
-import { NewTabs } from 'components/layout/Tabs/NewTabs';
-import { NewSubcategoryButton } from 'components/buttons/SubcategoryButton/NewSubcategoryButton';
-import { useClientSide } from 'hooks.js';
-import { windowSize } from 'constants.js';
 import s from './PromoSection.module.scss';
 
 export const PromoSection = ({ image, previewText, detailText, categories }) => {

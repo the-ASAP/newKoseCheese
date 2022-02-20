@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,KAAK,CAAC;EACJ,QAAQ,EAAE,QAAQ;EAClB,IAAI,EAAE,CAAC;EACP,GAAG,EAAE,CAAC;EACN,KAAK,EAAE,IAAI;EACX,MAAM,EAAE,IAAI;EACZ,mBAAmB,EAAE,MAAM;EAC3B,eAAe,EAAE,KAAK;EACtB,OAAO,EAAE,CAAC;EACV,SAAS,EAAE,UAAU;EACrB,UAAU,EAAE,2CAA2C;CACxD",
+    "sources": [
+        "../src/components/common/ZoomImage/ZoomImage.module.scss"
+    ],
+    "names": [],
+    "file": "ZoomImage.module.css"
+}

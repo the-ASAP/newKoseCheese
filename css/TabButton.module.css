@@ -1,0 +1,51 @@
+.btn {
+  position: relative;
+  text-transform: uppercase;
+  margin-right: 2.375rem;
+  cursor: pointer;
+  color: #8D9A9A;
+  -webkit-transition: color 0.3s;
+  transition: color 0.3s;
+  font-family: "Playfair", "serif";
+  white-space: nowrap;
+}
+
+.btn:hover {
+  color: #184240;
+}
+
+.btn::after {
+  content: "";
+  position: absolute;
+  bottom: -1.3125rem;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background-color: #184240;
+  opacity: 0;
+  -webkit-transition: opacity 0.3s;
+  transition: opacity 0.3s;
+}
+
+.btn.active {
+  color: #184240;
+}
+
+.btn.active::after {
+  opacity: 1;
+}
+
+.btn.small {
+  text-transform: none;
+}
+
+.btn.small::after {
+  display: none;
+}
+
+@media (max-width: 767px) {
+  .farm {
+    width: 100%;
+  }
+}
+/*# sourceMappingURL=TabButton.module.css.map */

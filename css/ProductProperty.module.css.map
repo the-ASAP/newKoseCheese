@@ -1,0 +1,10 @@
+{
+    "version": 3,
+    "mappings": "AAEA,AAAA,MAAM,CAAC;EACL,UAAU,EAAE,GAAG;EACf,SAAS,EAAE,IAAI;CAIhB;;AAND,AAGE,MAHI,AAGH,YAAY,CAAC;EACZ,UAAU,EAAE,CAAC;CACd;;AAGH,AAAA,MAAM,CAAC;EACL,YAAY,EAAE,GAAG;EACjB,WAAW,ECJE,QAAQ,EAAE,YAAY;CDMpC;;AAED,AAAA,MAAM,CAAC;EACL,WAAW,ECRQ,eAAe,EAAE,YAAY;CDSjD",
+    "sources": [
+        "../src/components/Product/ProductProperty/ProductProperty.module.scss",
+        "../src/styles/root.scss"
+    ],
+    "names": [],
+    "file": "ProductProperty.module.css"
+}

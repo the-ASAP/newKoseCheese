@@ -1,0 +1,118 @@
+.label {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-item-align: center;
+      align-self: center;
+}
+
+.text {
+  position: relative;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  font-family: "Roboto", "sans-serif";
+  font-weight: 500;
+  letter-spacing: 0.28px;
+}
+
+.text::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 1px;
+  background-color: #184240;
+  -webkit-transition: bottom 0.3s;
+  transition: bottom 0.3s;
+}
+
+.text:hover::after, .text:focus::after {
+  bottom: -5px;
+}
+
+.item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  width: 13.75rem;
+  height: 13.75rem;
+  margin-right: 0.9375rem;
+}
+
+.replace {
+  width: 7.5rem;
+  height: 7.5rem;
+}
+
+.box {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.image {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.label {
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 100%;
+  height: 100%;
+  border: 1px solid #C4C4C4;
+  cursor: pointer;
+  -webkit-transition: background-color .3s;
+  transition: background-color .3s;
+}
+
+.label circle {
+  -webkit-transition: fill .3s, opacity .3s;
+  transition: fill .3s, opacity .3s;
+}
+
+.label:hover {
+  background-color: rgba(24, 66, 64, 0.3);
+}
+
+.text {
+  margin-top: 1.25rem;
+  font-family: "Roboto-medium", "sans-serif";
+  cursor: pointer;
+}
+
+.input {
+  visibility: hidden;
+  opacity: 0;
+  position: absolute;
+  left: -9999px;
+  top: -9999px;
+}
+
+@media (max-width: 1199px) {
+  .item {
+    width: 140px;
+    height: 140px;
+  }
+}
+/*# sourceMappingURL=InputPhoto.module.css.map */

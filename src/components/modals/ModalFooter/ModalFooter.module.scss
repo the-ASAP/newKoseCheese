@@ -1,5 +1,5 @@
-@import "/src/styles/root";
-@import "/src/styles/mixins";
+@import '/src/styles/root';
+@import '/src/styles/mixins';
 
 .container {
   position: sticky;
@@ -36,5 +36,9 @@
     // padding-bottom: 70px;
     padding: 0;
     min-height: 115px;
+  }
+
+  .checkout {
+    margin-top: 3.875rem;
   }
 }

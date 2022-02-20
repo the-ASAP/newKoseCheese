@@ -9,7 +9,7 @@ import { Wrapper } from 'components/layout/Wrapper/Wrapper';
 import { windowSize } from 'constants.js';
 import { ProductLoader } from 'components/Product/ProductLoader/ProductLoader';
 import { useClientSide } from 'hooks.js';
-
+import clsx from 'clsx';
 import APIBitrix from 'api/APIBitrix';
 import { DropdownCustom } from 'components/common/DropdownCustom/DropdownCustom';
 import { NewDropdownCustom } from 'components/common/DropdownCustom/NewDropdownCustom';
@@ -39,8 +39,8 @@ export const NewProductsSection = ({ products, categories }) => {
           page: currentPage,
           limit: 10
         });
-        setTotalCount(requestProducts?.data.count);
-        setActiveProducts([...activeProducts, ...requestProducts.data.items]);
+        await setTotalCount(requestProducts?.data.count);
+        await setActiveProducts((prevState) => [...prevState, ...requestProducts.data.items]);
         setCurrentPage((prevState) => prevState + 1);
       }
     } finally {
@@ -104,18 +104,18 @@ export const NewProductsSection = ({ products, categories }) => {
     if (subCategoryId) setLoading(subCategoryId);
   }, [subCategoryId]);
 
-  useEffect(() => {
-    if (activeProducts !== false) {
-      setLoading(false);
+  // useEffect(() => {
+  //   if (activeProducts ) {
+  //     setLoading(false);
 
-      const sortArr = sortProductsFunction(
-        activeProducts,
-        filterDropdown[0].value,
-        filterDropdown[0].sort
-      );
-      setSortProducts(sortArr);
-    }
-  }, [activeProducts]);
+  //     const sortArr = sortProductsFunction(
+  //       activeProducts,
+  //       filterDropdown[0].value,
+  //       filterDropdown[0].sort
+  //     );
+  //     setSortProducts(sortArr);
+  //   }
+  // }, [activeProducts]);
 
   const isClientSide = useClientSide();
 
@@ -139,7 +139,7 @@ export const NewProductsSection = ({ products, categories }) => {
     <>
       <Section>
         <Wrapper>
-          <div className={activeCategory?.subcategories ? s.header : s.header__sm}>
+          <div className={clsx(s.header, !activeCategory?.subcategories && s.header__sm)}>
             <Tabs>
               {categories.map(({ name, id }) => (
                 <SubcategoryButton
@@ -168,7 +168,7 @@ export const NewProductsSection = ({ products, categories }) => {
             )}
           </div>
 
-          <div className={s.filter}>
+          <div className={clsx(s.filter, !activeCategory?.subcategories && s.filter__sm)}>
             <NewDropdownCustom
               value={filterDropdown[0]?.title}
               options={filterDropdown.map((elem) => elem.title)}
@@ -183,16 +183,19 @@ export const NewProductsSection = ({ products, categories }) => {
             />
           </div>
 
-          {isLoading ? (
+          {isLoading && !activeProducts?.length ? (
             <ProductLoader />
           ) : (
-            sortProducts?.length > 0 && (
+            activeProducts?.length > 0 && (
               <div ref={productsRef} className={s.body}>
-                {sortProducts.map((product) => {
+                {activeProducts.map((product) => {
                   return (
                     product.status && <Product key={`${product.id}-${product.code}`} {...product} />
                   );
                 })}
+                {fetching && (
+                  <ProductLoader customStyle={{ marginTop: 0, paddingTop: 0, height: '27rem' }} />
+                )}
               </div>
             )
           )}

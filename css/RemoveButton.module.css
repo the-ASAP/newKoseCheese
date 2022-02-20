@@ -1,0 +1,40 @@
+.btn {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-item-align: center;
+      align-self: center;
+}
+
+.btn {
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 50%;
+  background-color: rgba(24, 66, 64, 0.1);
+}
+
+.btn:hover {
+  background-color: #184240;
+}
+
+.btn:hover path,
+.btn:hover rect {
+  stroke: #FFF3E7;
+}
+
+.btn {
+  width: 40px;
+  height: 40px;
+}
+
+.btn:hover path {
+  stroke: unset;
+  fill: #FFF3E7;
+}
+/*# sourceMappingURL=RemoveButton.module.css.map */

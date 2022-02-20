@@ -20,6 +20,10 @@
   top: 12rem;
   z-index: 2;
   background-color: #fff3e7;
+
+  &__sm {
+    top: 10rem;
+  }
 }
 
 .subcategories {

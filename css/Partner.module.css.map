@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AACI,QADI,AACH,IAAK,CAAA,WAAW,EAAE;EACf,YAAY,EAAE,SAAS;CAC1B",
+    "sources": [
+        "../src/components/sections/index/PromoSection/Partner/Partner.module.scss"
+    ],
+    "names": [],
+    "file": "Partner.module.css"
+}

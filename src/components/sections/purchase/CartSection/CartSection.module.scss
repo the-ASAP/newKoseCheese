@@ -22,15 +22,29 @@
   justify-content: space-between;
 }
 
-.header {
+.title {
   order: -1;
+  grid-area: title;
   // padding-bottom: 1.25rem;
   // border-bottom: 1px solid rgba($gen, 0.3);
 }
 
+.header {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  grid-template-areas:
+    '. field'
+    'title total';
+}
+
+.total {
+  grid-area: total;
+}
+
 .footer {
   display: flex;
-  justify-content: flex-end;
+  justify-content: flex-start;
   flex-wrap: wrap;
   margin-top: 1.875rem;
   padding-top: 3.125rem;
@@ -42,10 +56,11 @@
 }
 .field {
   display: flex;
-  justify-content: flex-end;
+  justify-content: flex-start;
   width: 100%;
   margin-top: 0.375rem;
   order: -2;
+  grid-area: field;
 
   & + div {
     width: auto;
@@ -71,6 +86,19 @@
   .cart {
     padding-left: 12px;
   }
+
+  .header {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(3, auto);
+    grid-template-areas:
+      'title'
+      'field'
+      'total';
+  }
+  .field {
+    margin-top: 1.375rem;
+  }
 }
 
 @media (max-width: $mobile) {
@@ -90,7 +118,7 @@
     display: flex;
     flex-direction: column;
   }
-  .header {
+  .title {
     order: -1;
     padding: 0;
     border-bottom: none;
@@ -101,8 +129,6 @@
   }
 
   .field {
-    justify-content: flex-start;
-    margin-top: 1.375rem;
     order: 0;
 
     & + div {

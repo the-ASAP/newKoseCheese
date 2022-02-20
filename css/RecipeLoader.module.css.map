@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,KAAK,CAAC;EACJ,KAAK,EAAE,IAAI;EACX,MAAM,EAAE,QAAQ;CACjB",
+    "sources": [
+        "../src/components/common/RecipeLoader/RecipeLoader.module.scss"
+    ],
+    "names": [],
+    "file": "RecipeLoader.module.css"
+}

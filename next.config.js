@@ -7,4 +7,7 @@ module.exports = {
   images: {
     domains: ['koico.ru']
   },
+  experimental: {
+    scrollRestoration: false
+  }
 };
