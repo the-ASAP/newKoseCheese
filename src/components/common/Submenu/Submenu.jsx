@@ -12,6 +12,7 @@ import {
   closeAllModals
 } from "redux/slices/modals";
 import { cartItemsSelector } from 'redux/slices/cart';
+import { favoriteItemsSelector } from 'redux/slices/favorite';
 import s from "./Submenu.module.scss";
 
 export const Submenu = () => {
@@ -37,12 +38,19 @@ export const Submenu = () => {
   };
 
   const itemsInCart = useSelector(cartItemsSelector);
+  const itemsInFavorites = useSelector(favoriteItemsSelector);
   const [count, setCount] = useState(0);
+  const [favoriteCount, setFavoriteCount] = useState(0);
 
   useEffect(() => {
     const res = itemsInCart.reduce((acc, item) => (acc += Number(item.quantity)), 0);
     setCount(res);
   }, [itemsInCart]);
+
+  useEffect(() => {
+    const res = itemsInFavorites.reduce((acc, item) => (acc += Number(item.quantity)), 0);
+    setFavoriteCount(res);
+  }, [itemsInFavorites]);
 
 
   return (
@@ -69,6 +77,7 @@ export const Submenu = () => {
               onClick={favoriteModalHandler} className={s.button}>
         <FavoriteIconMobile/>
         <span className={s.text}>Избранное</span>
+        {favoriteCount > 0 && <div className={s.circle}>{favoriteCount}</div>}
       </button>
       <button type="button"
               onClick={menuModalHandler}
