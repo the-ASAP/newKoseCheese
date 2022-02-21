@@ -4,7 +4,7 @@ import { useRouter } from 'next/router';
 import s from 'components/buttons/SubcategoryButton/NewSubcategoryButton.module.scss';
 
 export const NewSubcategoryButton = ({
-  mouseEnter,
+  setShowButtonId,
   title,
   id,
   active,
@@ -22,12 +22,14 @@ export const NewSubcategoryButton = ({
   const newSetActiveCategory = (id) => {
     localStorage.setItem('activeCategory', id);
     localStorage.removeItem('activeSubCaterogy');
+    setShowButtonId(null)
     history.push('/products');
   };
 
   const newSetActiveSubCategory = (id, subId) => {
     localStorage.setItem('activeCategory', id);
     localStorage.setItem('activeSubCaterogy', subId);
+    setShowButtonId(null)
     history.push('/products');
   };
 
@@ -45,7 +47,7 @@ export const NewSubcategoryButton = ({
       </button>
       {subcategories && (
         <div
-          className={clsx(s.block, showButtonId === id && mouseEnter && s.block_active)}
+          className={clsx(s.block, showButtonId === id  && s.block_active)}
           onMouseEnter={onMouseEnterCat}
           onMouseLeave={onMouseLeaveCat}
           // onMouseMove={onMouseMoveCat}

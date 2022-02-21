@@ -197,8 +197,8 @@ export const Header = ({ router, cat }) => {
                     key={id}
                     title={name}
                     id={id}
-                    mouseEnter={mouseEnter}
                     subcategories={subcategories}
+                    setShowButtonId={setUseShowButtonId}
                     showButtonId={useShowButtonId}
                     onMouseEnter={() => onMouseEnter(id)}
                     onMouseLeave={() => onMouseLeave()}
