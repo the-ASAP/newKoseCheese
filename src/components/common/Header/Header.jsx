@@ -67,7 +67,6 @@ export const Header = ({ router, cat }) => {
 
   const onMouseLeave = (id) => {
     setMouseEnter(false);
-    setUseShowButtonId(null)
     setMoveData([new Date(), null]);
   };
 
@@ -198,6 +197,7 @@ export const Header = ({ router, cat }) => {
                     key={id}
                     title={name}
                     id={id}
+                    mouseEnter={mouseEnter}
                     subcategories={subcategories}
                     showButtonId={useShowButtonId}
                     onMouseEnter={() => onMouseEnter(id)}
