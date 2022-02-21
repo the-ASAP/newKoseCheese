@@ -35,7 +35,7 @@ export const NewSubcategoryButton = ({
     <div className={s.wrapper}>
       <button
         type="button"
-        className={clsx(s.subcategory, active === id && mouseEnter && s.active, s[additionClass])}
+        className={clsx(s.subcategory, active === id && s.active, s[additionClass])}
         onMouseEnter={onMouseEnter}
         onMouseMove={onMouseMove}
         onMouseLeave={onMouseLeave}
@@ -45,7 +45,7 @@ export const NewSubcategoryButton = ({
       </button>
       {subcategories && (
         <div
-          className={clsx(s.block, showButtonId === id && s.block_active)}
+          className={clsx(s.block, showButtonId === id && mouseEnter && s.block_active)}
           onMouseEnter={onMouseEnterCat}
           onMouseLeave={onMouseLeaveCat}
           // onMouseMove={onMouseMoveCat}
