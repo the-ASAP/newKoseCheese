@@ -20,6 +20,11 @@ const Products = ({ newProductsBitrix, categoriesBitrix, seo }) => {
         <meta name="keywords" content={seo?.meta_keywords || `KO&CO`} />
         <meta name="description" content={seo?.meta_description || `KO&CO`} />
         <title>{seo?.meta_title || `Каталог`}</title>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `history.scrollRestoration = "manual"`
+          }}
+        />
       </Head>
       <Wrapper style={{ marginTop: '6rem' }}>
         {discountModal.isShowed && (
@@ -35,7 +40,7 @@ const Products = ({ newProductsBitrix, categoriesBitrix, seo }) => {
       {/* <DiscountSection {...discountProduct} /> */}
     </>
   );
-}; 
+};
 
 export default Products;
 

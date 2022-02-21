@@ -58,11 +58,11 @@ const Card = ({ id, product, products, posts, seo }) => {
         <meta name="keywords" content={seo?.meta_keywords || `KO&CO`} />
         <meta name="description" content={seo?.meta_description || `KO&CO`} />
         <title>{seo?.meta_title || `KO&CO`}</title>
-        {/* <script
+        <script
         dangerouslySetInnerHTML={{
           __html: `history.scrollRestoration = "manual"`,
         }}
-      /> */}
+      />
       </Head>
       <Wrapper>
         <DescriptionSection product={product} id={id} />

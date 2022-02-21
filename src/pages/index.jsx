@@ -23,8 +23,8 @@ import { favoriteItemsSelector } from 'redux/slices/favorite';
 import { addToFavorite } from 'redux/slices/favorite';
 import { successPurchasePopupChangeState, popUpChangeModalState } from 'redux/slices/modals';
 // import { addCategories } from 'redux/slices/categories'
-import { categoriesItemsSelector } from 'redux/slices/categories'
-import MainCookies from 'js-cookie'
+import { categoriesItemsSelector } from 'redux/slices/categories';
+import MainCookies from 'js-cookie';
 
 const cookiesModalProperties = {
   animation: {
@@ -36,7 +36,15 @@ const cookiesModalProperties = {
     containerClass: 'cookiesContainer'
   }
 };
-const Index = ({ promoContent, discountProduct, categories, posts, newProducts, popularProducts, seo }) => {
+const Index = ({
+  promoContent,
+  discountProduct,
+  categories,
+  posts,
+  newProducts,
+  popularProducts,
+  seo
+}) => {
   const cookiesModal = useModal(false, false);
   // const categoriesInStore = useSelector(categoriesItemsSelector)
   const itemsFavorite = useSelector(favoriteItemsSelector);
@@ -69,7 +77,6 @@ const Index = ({ promoContent, discountProduct, categories, posts, newProducts, 
     //     })
     //   );
     // }
-
     // dispatch(
     //   popUpChangeModalState({
     //     visible: true,
@@ -87,8 +94,13 @@ const Index = ({ promoContent, discountProduct, categories, posts, newProducts, 
         <meta name="keywords" content={seo?.meta_keywords || `KO&CO`} />
         <meta name="description" content={seo?.meta_description || `KO&CO`} />
         <title>{seo?.meta_title || `Главная страница`}</title>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `history.scrollRestoration = "manual"`
+          }}
+        />
       </Head>
-      <PromoSection {...promoContent} categories={categories}/>
+      <PromoSection {...promoContent} categories={categories} />
       <NewTastesSection title={'Новые вкусы'} newProducts={newProducts} />
       <PopularSection products={popularProducts} categories={categories} />
       {/* <DiscountSection {...discountProduct} /> */}
@@ -115,7 +127,9 @@ export const getServerSideProps = async () => {
   const promoContent = await APIBitrix.get('content/main/promo-section/').then((res) => res[0]);
   const categories = await APIBitrix.get('products/categories/').then((res) => res);
   const newProducts = await APIBitrix.get('products/slider/new/').then((res) => res.products);
-  const popularProducts = await APIBitrix.get('products/slider/popular/').then((res) => res.products);
+  const popularProducts = await APIBitrix.get('products/slider/popular/').then(
+    (res) => res.products
+  );
   const posts = await APIBitrix.get(`articles/collection/`);
   const seo = await APIBitrix.get(`seo/main-page/`);
   // const { discountProduct } = MockAPI.getData();
