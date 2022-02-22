@@ -12,6 +12,11 @@ html {
   box-sizing: border-box;
 }
 
+.plug{
+  height: 90px;
+  background-color: $accent;
+}
+
 body {
   font-family: $font-main; // FF MAIN
   cursor: default;

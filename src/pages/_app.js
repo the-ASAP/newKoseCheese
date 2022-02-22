@@ -18,7 +18,7 @@ import APIBitrix from 'api/APIBitrix';
 import { useDispatch, useSelector } from 'react-redux';
 import { addUserId } from '../redux/slices/user';
 import { reqGetProducts } from '../redux/slices/cart';
-import { categoriesItemsSelector, addCategories } from 'redux/slices/categories'
+import { categoriesItemsSelector, addCategories } from 'redux/slices/categories';
 
 const MyApp = ({ Component, pageProps, router }) => {
   // // preloader
@@ -52,13 +52,13 @@ const MyApp = ({ Component, pageProps, router }) => {
     dispatch(addUserId(localStorage.getItem('fuser_id')));
     dispatch(reqGetProducts());
 
-    categories = await APIBitrix.get('products/categories/').then((res) => res);  
-    dispatch(addCategories(categories))
+    categories = await APIBitrix.get('products/categories/').then((res) => res);
+    dispatch(addCategories(categories));
     // const categoriesInStore = useSelector(categoriesItemsSelector)
     // if(categories && categoriesInStore.categories.length === 0) dispatch(addCategories(categories))
   };
 
-  let categories = []
+  let categories = [];
   React.useEffect(async () => {
     getProducts();
     // избранное
@@ -67,6 +67,7 @@ const MyApp = ({ Component, pageProps, router }) => {
   return (
     <>
       <Header router={router} />
+      <div className="plug"></div>
       <Main router={router}>
         <Component {...pageProps} />
         <AllModals />
