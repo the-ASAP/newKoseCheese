@@ -29,10 +29,31 @@ export const NewProductsSection = ({ products, categories }) => {
   const [totalCount, setTotalCount] = useState(0);
   const [fetching, setFetching] = useState(true);
   const productsRef = useRef(null);
+  const currRef = useRef(null);
+
+  // const rememberPosition = () => {
+  //   if (currRef.current) {
+  //     localStorage.setItem('scrollTop', `${currRef.current.pageYOffset}`);
+  //   }
+  // };
+
+  // useEffect(() => {
+  //   if (window) {
+  //     document.addEventListener('scroll', () =>
+  //       localStorage.setItem('scrollTop', `${currRef.current.pageYOffset}`)
+  //     );
+  //   }
+
+  //   return () => {
+  //     document.removeEventListener('scroll', () =>
+  //       localStorage.setItem('scrollTop', `${currRef.current.pageYOffset}`)
+  //     );
+  //   };
+  // }, [currRef.current]);
 
   useEffect(async () => {
     try {
-      if (fetching) {
+      if (fetching && window) {
         const requestProducts = await APIBitrix.post(`products/collection/all/`, {
           section_id:
             paginationCategory || localStorage.getItem('activeCategory') || categories[0]?.id,
@@ -41,6 +62,10 @@ export const NewProductsSection = ({ products, categories }) => {
         });
         await setTotalCount(requestProducts?.data.count);
         await setActiveProducts((prevState) => [...prevState, ...requestProducts.data.items]);
+        // await window.scrollTo({
+        //   top: 1928,
+        //   behavior: 'smooth'
+        // });
         setCurrentPage((prevState) => prevState + 1);
       }
     } finally {
@@ -137,7 +162,7 @@ export const NewProductsSection = ({ products, categories }) => {
 
   return (
     <>
-      <Section>
+      <Section ref={currRef}>
         <Wrapper>
           <div className={clsx(s.header, !activeCategory?.subcategories && s.header__sm)}>
             <Tabs>

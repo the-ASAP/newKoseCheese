@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Head from 'next/head';
+import { useRouter } from 'next/router';
 
 import { NewProductsSection } from 'components/sections/common/ProductsSection/newProductsSection';
 import { NewTastesSection } from 'components/sections/common/NewTastesSection/NewTastesSection';
@@ -13,6 +14,9 @@ import APIBitrix from 'api/APIBitrix';
 
 const Products = ({ newProductsBitrix, categoriesBitrix, seo }) => {
   const discountModal = useModal(false, false);
+  const router = useRouter();
+  const isCatalogPage = router.pathname === '/products';
+
 
   return (
     <>
@@ -22,12 +26,11 @@ const Products = ({ newProductsBitrix, categoriesBitrix, seo }) => {
         <title>{seo?.meta_title || `Каталог`}</title>
         <script
           dangerouslySetInnerHTML={{
-            __html: `history.scrollRestoration = "manual"`
+            __html: `history.scrollRestoration = "auto"`
           }}
         />
       </Head>
-      {/* <Wrapper style={{ marginTop: '6rem' }}> */}
-      <Wrapper style={{ marginTop: '0rem' }}>
+      <Wrapper style={{ marginTop: '6rem' }}>
         {discountModal.isShowed && (
           <Discount
             text="Вам представлена скидка на первый заказ 10%"

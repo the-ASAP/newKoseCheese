@@ -66,8 +66,7 @@ const MyApp = ({ Component, pageProps, router }) => {
 
   return (
     <>
-      {/* <Header router={router} /> */}
-      <div className="plug"></div>
+      <Header router={router} />
       <Main router={router}>
         <Component {...pageProps} />
         <AllModals />
