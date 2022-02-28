@@ -56,7 +56,7 @@ export const NewProductsSection = ({ products, categories }) => {
       if (fetching && window) {
         const requestProducts = await APIBitrix.post(`products/collection/all/`, {
           section_id:
-            paginationCategory || localStorage.getItem('activeCategory') || categories[0]?.id,
+            paginationCategory || localStorage.getItem('activeSubCaterogy') || localStorage.getItem('activeCategory') || categories[0]?.id,
           page: currentPage,
           limit: 10
         });
