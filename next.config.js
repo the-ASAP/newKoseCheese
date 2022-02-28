@@ -8,6 +8,6 @@ module.exports = {
     domains: ['koico.ru']
   },
   experimental: {
-    scrollRestoration: true
+    scrollRestoration: false
   }
 };
