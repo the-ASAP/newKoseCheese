@@ -15,8 +15,10 @@ import APIBitrix from 'api/APIBitrix';
 const Products = ({ newProductsBitrix, categoriesBitrix, seo }) => {
   const discountModal = useModal(false, false);
   const router = useRouter();
-  const isCatalogPage = router.pathname === '/products';
 
+  useEffect(() => {
+    window && console.log(window.pageYOffset);
+  });
 
   return (
     <>
@@ -26,7 +28,7 @@ const Products = ({ newProductsBitrix, categoriesBitrix, seo }) => {
         <title>{seo?.meta_title || `Каталог`}</title>
         <script
           dangerouslySetInnerHTML={{
-            __html: `history.scrollRestoration = "auto"`
+            __html: `history.scrollRestoration = "manual"`
           }}
         />
       </Head>

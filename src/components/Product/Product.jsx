@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import clsx from 'clsx';
 import Link from 'next/link';
 import { allTastes, BASE_SITE_URL } from '/src/constants.js';
@@ -7,6 +7,7 @@ import s from 'components/Product/Product.module.scss';
 import NewPurchaseButton from 'components/buttons/ControlButtons/NewPurchaseButton';
 
 export const Product = (props) => {
+  const [scrollPosition, setScrollPosition] = useState(0);
   const defaults = {
     status: false,
     previewImage: '',
@@ -32,8 +33,16 @@ export const Product = (props) => {
   const { status, previewImage, name, addition, weight, price, tastes, additionClass, id } =
     properties;
 
+  const rememberPosition = () => {
+    window &&  localStorage.setItem('scrollToPosition', `${window.pageYOffset}`);
+  };
+
+
   return (
-    <div className={clsx(s.card, additionClass && s[additionClass])}>
+    <div
+      onClick={() => rememberPosition()}
+      className={clsx(s.card, additionClass && s[additionClass])}
+    >
       <ControlButtons productProps={cartProductsProps} />
       <Link href={`/products/${id}`}>
         <img height={160} src={BASE_SITE_URL + previewImage} alt={name} className={s.image} />
@@ -44,11 +53,11 @@ export const Product = (props) => {
         </Link>
         {addition && <span className={s.addition}>{addition}</span>}
         <div>
-        <div className={s.info}>
-          <span className={s.weight}>{weight} г.</span>
-        </div>
-        <h3 className={s.price}>{parseInt(price, 10)} руб.</h3>
-        <NewPurchaseButton productProps={cartProductsProps} />
+          <div className={s.info}>
+            <span className={s.weight}>{weight} г.</span>
+          </div>
+          <h3 className={s.price}>{parseInt(price, 10)} руб.</h3>
+          <NewPurchaseButton productProps={cartProductsProps} />
         </div>
       </div>
       <Link href={`/products/${id}`}>

@@ -29,27 +29,6 @@ export const NewProductsSection = ({ products, categories }) => {
   const [totalCount, setTotalCount] = useState(0);
   const [fetching, setFetching] = useState(true);
   const productsRef = useRef(null);
-  const currRef = useRef(null);
-
-  // const rememberPosition = () => {
-  //   if (currRef.current) {
-  //     localStorage.setItem('scrollTop', `${currRef.current.pageYOffset}`);
-  //   }
-  // };
-
-  // useEffect(() => {
-  //   if (window) {
-  //     document.addEventListener('scroll', () =>
-  //       localStorage.setItem('scrollTop', `${currRef.current.pageYOffset}`)
-  //     );
-  //   }
-
-  //   return () => {
-  //     document.removeEventListener('scroll', () =>
-  //       localStorage.setItem('scrollTop', `${currRef.current.pageYOffset}`)
-  //     );
-  //   };
-  // }, [currRef.current]);
 
   useEffect(async () => {
     try {
@@ -62,11 +41,13 @@ export const NewProductsSection = ({ products, categories }) => {
         });
         await setTotalCount(requestProducts?.data.count);
         await setActiveProducts((prevState) => [...prevState, ...requestProducts.data.items]);
-        // await window.scrollTo({
-        //   top: 1928,
-        //   behavior: 'smooth'
-        // });
-        setCurrentPage((prevState) => prevState + 1);
+        localStorage.getItem('scrollToPosition') &&
+          (await window.scrollTo({
+            top: +localStorage.getItem('scrollToPosition'),
+            behavior: 'smooth'
+          }));
+        await setCurrentPage((prevState) => prevState + 1);
+        await localStorage.removeItem('scrollToPosition');
       }
     } finally {
       setFetching(false);
@@ -80,6 +61,7 @@ export const NewProductsSection = ({ products, categories }) => {
   }, [fetching]);
 
   const setCategoryForPagination = (id) => {
+    // обнуляем все данные при выборе новой категории
     setPaginationCategory(id);
     setFetching(true);
     setCurrentPage(1);
@@ -90,8 +72,10 @@ export const NewProductsSection = ({ products, categories }) => {
     if (productsRef.current) {
       const elementBoundary = productsRef.current.getBoundingClientRect();
       const bottom = elementBoundary.bottom;
+      window && console.log(window.pageYOffset);
       if (
-        typeof window !== 'undefined' &&
+        // если долистали до конца блока и не все продукты загружены, отправлять повторный запрос
+        window &&
         bottom < window.innerHeight &&
         activeProducts.length < totalCount
       ) {
@@ -162,7 +146,7 @@ export const NewProductsSection = ({ products, categories }) => {
 
   return (
     <>
-      <Section ref={currRef}>
+      <Section>
         <Wrapper>
           <div className={clsx(s.header, !activeCategory?.subcategories && s.header__sm)}>
             <Tabs>
