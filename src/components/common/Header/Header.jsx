@@ -141,11 +141,11 @@ export const Header = ({ router, cat }) => {
                   <a className={clsx(s.link, isPromoPage && s.link_accent)}>Войти</a>
                 </Link>
               )} */}
-                <Link href="/profile">
+                {/* <Link href="/profile">
                   <a className={clsx(s.link, isPromoPage && !headerColors && s.link_accent)}>
                     Профиль
                   </a>
-                </Link>
+                </Link> */}
               </nav>
               <div className={s.control}>
                 {isClientSide && windowSize > 768 && (

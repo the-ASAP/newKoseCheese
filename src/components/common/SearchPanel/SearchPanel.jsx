@@ -65,7 +65,7 @@ export const SearchPanel = ({ setOpen }) => {
           } else {
             setResults([
               {
-                id: 1,
+                id: null,
                 name: 'К сожалению ничего не найдено'
               }
             ]);
@@ -112,9 +112,12 @@ export const SearchPanel = ({ setOpen }) => {
             <SearchLoader />
           ) : (
             results.map(({ id, name, addition }) => (
-              <Link key={id} href={`/products/${id}`}>
-                <a className={s.link} onClick={() => dispatch(closeAllModals())}>{name} {addition}</a>
-              </Link>
+              id ? 
+                <Link key={id} href={`/products/${id}`}>
+                  <a className={s.link} onClick={() => dispatch(closeAllModals())}>{name} {addition}</a>
+                </Link>
+              : 
+              <a className={s.link} onClick={() => dispatch(closeAllModals())}>{name} {addition}</a>
             ))
           )}
         </div>

@@ -130,9 +130,11 @@ export const DescriptionSection = ({ id, product }) => {
           </div>
           <div className={s.price}>
             {newPrice && <span className={s.newPrice}>{newPrice} руб.</span>}
-            <span className={newPrice ? s.oldPrice : s.commonPrice}>
+
+            {/* Вывод старой цены */}
+            {/* <span className={newPrice ? s.oldPrice : s.commonPrice}>
               {parseInt(price, 10)} руб.
-            </span>
+            </span> */}
           </div>
           <span className={s.weight}>
             <span className={s.weightProperty}>Вес:</span> {weight} г.
