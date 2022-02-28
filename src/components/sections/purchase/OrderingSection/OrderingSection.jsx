@@ -324,16 +324,16 @@ export const OrderingSection = ({ formData, setCost, cost }) => {
       });
     }
   };
-
+  
   return (
     <div className={s.container}>
       <FormContainer
         enableReinitialize
         initialValues={steps[stageForm].initialValues}
-        validateOnMount
+        validateOnMountr
         validationSchema={steps[stageForm].validationSchema}
-        onSubmit={purchaseOrder}
-        // onSubmit={handleSubmit}
+        // onSubmit={purchaseOrder}
+        onSubmit={handleSubmit}
       >
         {(formProps) => {
           formPropsRef.current = formProps;
@@ -414,7 +414,7 @@ export const OrderingSection = ({ formData, setCost, cost }) => {
                   )}
                   <button
                     type="submit"
-                    onClick={handleSubmit}
+                    // onClick={handleSubmit}
                     className={s.submit}
                     style={!activeButton ? { opacity: 0.5 } : {}}
                     // onSubmit={handleSubmit}

@@ -68,10 +68,6 @@ export const Thumbnails = ({ gallery }) => {
     setActiveMain(`${BASE_SITE_URL}${gallery[0]}`);
   }, [gallery]);
 
-  React.useEffect(() => {
-    console.log(activeMain);
-  }, [activeMain]);
-
   return (
     <div className={s.container}>
       <div ref={containerRef} className={s.main}>

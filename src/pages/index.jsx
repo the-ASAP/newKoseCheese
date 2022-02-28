@@ -67,16 +67,16 @@ const Index = ({
   }, []);
 
   useEffect(() => {
-    // if (window && window.location?.search && window.location.search.includes('bxOrderId')) {
-    //   // убрал текст из модалки временно
-    //   dispatch(
-    //     successPurchasePopupChangeState({
-    //       visible: true,
-    //       order: window.location.search.split('=')[1].split('&')[0]
-    //       // mail: 'testmail'
-    //     })
-    //   );
-    // }
+    if (window && window.location?.search && window.location.search.includes('bxOrderId')) {
+      // убрал текст из модалки временно
+      dispatch(
+        successPurchasePopupChangeState({
+          visible: true,
+          order: window.location.search.split('=')[1].split('&')[0]
+          // mail: 'testmail'
+        })
+      );
+    }
     // dispatch(
     //   popUpChangeModalState({
     //     visible: true,

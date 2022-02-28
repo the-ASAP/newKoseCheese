@@ -9,7 +9,6 @@ const ActiveProducts = ({ activeCategory, activeSubcategoryId }) => {
   const id = activeCategory?.subcategories ? activeSubcategoryId : activeCategory?.id;
 
   useEffect(async () => {
-    console.log(id);
     const res = await APIBitrix.get(`products/collection/${id}`);
     setActiveProducts(res);
   }, []);

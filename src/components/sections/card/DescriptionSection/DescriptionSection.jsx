@@ -36,7 +36,6 @@ const defaults = {
 };
 
 export const DescriptionSection = ({ id, product }) => {
-  console.log(product)
   SwiperCore.use([Pagination]);
   const properties = {
     ...defaults,
