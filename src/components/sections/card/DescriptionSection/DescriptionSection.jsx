@@ -70,6 +70,7 @@ export const DescriptionSection = ({ id, product }) => {
   //       <ProductProperty title="Вес" value={weight}/>
   //     </div>
   //   </div>;
+  
   return (
     <>
       <BackButton />
@@ -128,8 +129,8 @@ export const DescriptionSection = ({ id, product }) => {
             <NewPurchaseControl className={s.purchase} product={properties} id={id} cart={false} />
           </div>
           <div className={s.price}>
-            {newPrice && <span className={s.newPrice}>{newPrice} руб.</span>}
-
+            {/* {newPrice && <span className={s.newPrice}>{newPrice} руб.</span>} */}
+            <span className={s.newPrice}>{price} руб.</span>
             {/* Вывод старой цены */}
             {/* <span className={newPrice ? s.oldPrice : s.commonPrice}>
               {parseInt(price, 10)} руб.
