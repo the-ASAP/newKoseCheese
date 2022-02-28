@@ -15,11 +15,11 @@ export const ModalFooter = () => {
       {/* <span className={s.cost}>сумма: {totalPrice} руб.</span> */}
       {/* <span className={s.discount}>скидка: 135 руб.</span> */}
       {/* <TotalPrice value={totalPrice} /> */}
-      <Link href="/purchase">
+      {/* <Link href="/purchase">
         <a onClick={() => dispatch(closeAllModals())} className={s.checkout}>
           Оформить заказ
         </a>
-      </Link>
+      </Link> */}
       {/* <button type="button" onClick={async () => { */}
       {/*  await APIBitrix.post("basket/order/", { */}
       {/*    fuser_id: localStorage.getItem("fuser_id") */}
