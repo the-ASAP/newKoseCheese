@@ -31,13 +31,12 @@ const defaults = {
   date: '',
   previewText: '',
   quantity: 1,
-  compose:
-    'молоко козье пастеризованное, закваска (мезофильные молочнокислые микроорганизмы), пищевая соль, молокосвёртывающий ферментный препарат животного происхождения.',
-  storage:
-    'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias cumque deserunt enim expedita ipsa iure maxime reiciendis tempora veniam voluptatem.\n'
+  compose: "",
+  storage: ""
 };
 
 export const DescriptionSection = ({ id, product }) => {
+  console.log(product)
   SwiperCore.use([Pagination]);
   const properties = {
     ...defaults,
@@ -55,7 +54,7 @@ export const DescriptionSection = ({ id, product }) => {
     discount,
     tastes,
     gallery,
-    compose,
+    compose = '',
     storage,
     status,
     count
@@ -91,7 +90,7 @@ export const DescriptionSection = ({ id, product }) => {
             </div>
           )}
           {/* {isClientSide && windowSize >= 768 && productProperties} */}
-          {compose && isClientSide && windowSize > 768 && (
+          {compose && windowSize > 768 && (
             <div className={s.compose}>
               <div className={s.composeWrapper}>
                 <span className={s.composeProperty}>Состав: </span>
@@ -145,7 +144,7 @@ export const DescriptionSection = ({ id, product }) => {
           <p className={s.about}>{parse(previewText)}</p>
           <div className={s.nutrients}>
             {nutritional.map((nutrient) => (
-              <ProductNutrient key={nutrient.id} {...nutrient} />
+              <ProductNutrient key={nutrient.id + Date.now()} {...nutrient} />
             ))}
           </div>
           {/* { */}

@@ -208,7 +208,7 @@ export const NewProductsSection = ({ products, categories }) => {
             />
           </div>
 
-          {isLoading && !activeProducts?.length ? (
+          {isLoading && !activeProducts?.length && totalCount !== 0 ? (
             <ProductLoader />
           ) : (
             activeProducts?.length > 0 && (
@@ -218,7 +218,7 @@ export const NewProductsSection = ({ products, categories }) => {
                     product.status && <Product key={`${product.id}-${product.code}`} {...product} />
                   );
                 })}
-                {fetching && (
+                {fetching && totalCount !== 0 && (
                   <ProductLoader customStyle={{ marginTop: 0, paddingTop: 0, height: '27rem' }} />
                 )}
               </div>
