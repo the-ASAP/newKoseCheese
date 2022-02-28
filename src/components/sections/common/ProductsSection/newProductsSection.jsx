@@ -35,7 +35,7 @@ export const NewProductsSection = ({ products, categories }) => {
       if (fetching && window) {
         const requestProducts = await APIBitrix.post(`products/collection/all/`, {
           section_id:
-            paginationCategory || localStorage.getItem('activeCategory') || categories[0]?.id,
+            paginationCategory || localStorage.getItem('activeSubCaterogy') || localStorage.getItem('activeCategory') || categories[0]?.id,
           page: currentPage,
           limit: 10
         });
@@ -192,7 +192,7 @@ export const NewProductsSection = ({ products, categories }) => {
             />
           </div>
 
-          {isLoading && !activeProducts?.length ? (
+          {isLoading && !activeProducts?.length && totalCount !== 0 ? (
             <ProductLoader />
           ) : (
             activeProducts?.length > 0 && (
@@ -202,7 +202,7 @@ export const NewProductsSection = ({ products, categories }) => {
                     product.status && <Product key={`${product.id}-${product.code}`} {...product} />
                   );
                 })}
-                {fetching && (
+                {fetching && totalCount !== 0 && (
                   <ProductLoader customStyle={{ marginTop: 0, paddingTop: 0, height: '27rem' }} />
                 )}
               </div>
