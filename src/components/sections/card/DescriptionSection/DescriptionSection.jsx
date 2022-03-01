@@ -70,7 +70,7 @@ export const DescriptionSection = ({ id, product }) => {
   //       <ProductProperty title="Вес" value={weight}/>
   //     </div>
   //   </div>;
-  
+  console.log(compose)
   return (
     <>
       <BackButton />
@@ -94,7 +94,7 @@ export const DescriptionSection = ({ id, product }) => {
             <div className={s.compose}>
               <div className={s.composeWrapper}>
                 <span className={s.composeProperty}>Состав: </span>
-                <p className={s.composeText}>{compose}</p>
+                <p className={s.composeText}>{parse(compose)}</p>
               </div>
             </div>
           )}
@@ -122,7 +122,7 @@ export const DescriptionSection = ({ id, product }) => {
             <span className={clsx(s.status, status && count > 0 ? s.inStock : s.outStock)}>
               {status && count > 0 ? 'в наличии' : 'нет в наличии'}
               {count > 0 && ` ${count}  шт `}
-              {date && `до ${date}`} 
+              {date && `до ${date}`}
             </span>
           </div> */}
           <div className={s.newPurchase}>
