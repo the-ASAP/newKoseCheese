@@ -50,8 +50,12 @@
 .logo {
   @extend %flexbox;
   justify-content: center;
-  width: 31%;
+  // width: 31%;
   // margin-left: 9%;
+  
+  // Для пяти элементовы
+  width: 44%;
+  margin-left: 6%;
 
   path {
     transition: fill 0.3s ease-in;
