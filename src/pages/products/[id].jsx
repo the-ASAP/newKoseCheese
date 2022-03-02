@@ -15,6 +15,7 @@ import { useClientSide } from 'hooks.js';
 import Head from 'next/head';
 
 const Card = ({ id, product, products, posts, seo }) => {
+  console.log(product)
   const sliderParams = {
     slider: {
       slidesPerView: 'auto',

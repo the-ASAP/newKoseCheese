@@ -155,7 +155,7 @@ export const reqRemoveFromCart = createAsyncThunk(
     try {
       await APIBitrix.post('basket/remove/', {
         fuser_id: user.id,
-        item_id: productData.item_id
+        product_id: productData.item_id
       }).then((res) => {
         if (res.code === 200) {
           dispatch(putProducts(res.data));

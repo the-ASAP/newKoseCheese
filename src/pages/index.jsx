@@ -66,26 +66,25 @@ const Index = ({
     }, 1000);
   }, []);
 
-  useEffect(() => {
+  useEffect(async () => {
     if (window && window.location?.search && window.location.search.includes('bxOrderId')) {
       // убрал текст из модалки временно
       dispatch(
         successPurchasePopupChangeState({
           visible: true,
           order: window.location.search.split('=')[1].split('&')[0]
-          // mail: 'testmail'
         })
       );
+
+      const bxOrderId = new URLSearchParams(window.location.search).get('bxOrderId')
+      const orderId = new URLSearchParams(window.location.search).get('orderId')
+
+      if (bxOrderId, orderId) {
+        await APIBitrix.post('payment/status/', {
+          bxOrderId, orderId
+        })
+      }
     }
-    // dispatch(
-    //   popUpChangeModalState({
-    //     visible: true,
-    //     text: `На сайте ведутся технические работы!
-    //       Для оформления заказа, перейдите по ссылке:
-    //       http://menu102.fods.in/
-    //     `
-    //   })
-    // );
   }, []);
 
   return (
