@@ -5,26 +5,29 @@ import { FarmContentSmallSection } from "components/sections/farm/FarmContentSma
 import { GallerySection } from "components/sections/farm/GallerySection/GallerySection";
 import { CheeseboardBackground } from "components/common/CheeseboardBackground/CheeseboardBackground";
 import Head from "next/head";
-import MockAPI from "api/MockAPI";
+import APIBitrix from 'api/APIBitrix';
 
+const Cheeseboard = ({ content }) => {
+  const { section, items } = content
 
-const Cheeseboard = ({ farmCategories, resolvedUrl, cheeseboard }) => (
-  <>
-    <Head>
-      <title>Сыроварня</title>
-    </Head>
-    <IntroSection categories={farmCategories} url={resolvedUrl} pageData={cheeseboard}/>
-    <FarmContentSmallSection pageData={cheeseboard} firstItem="left"/>
-    {cheeseboard.gallery && <GallerySection pageData={cheeseboard}/>}
-    <FarmContentLargeSection pageData={cheeseboard} />
-    <CheeseboardBackground />
-  </>
-);
+  return (
+    <>
+      <Head>
+        <title>Сыроварня</title>
+      </Head>
+      <IntroSection pageData={section} />
+      <FarmContentSmallSection pageData={[items[0], items[1]]} firstItem="left"/>
+      <GallerySection pageData={items[2]}/>
+      <FarmContentLargeSection pageData={items[3]} />
+      <CheeseboardBackground />
+    </>
+  )
+};
 
 export default Cheeseboard;
 
-export const getServerSideProps = async ({ resolvedUrl }) => {
-  const { cheeseboard, farmCategories } = await MockAPI.getData();
-  return { props: { resolvedUrl, farmCategories, cheeseboard } };
-};
+export const getServerSideProps = async () => {
+  const content = await APIBitrix.get(`content/cheese-factory/`).then(res => res);
 
+  return { props: { content } };
+};

@@ -1,9 +1,9 @@
 import React from 'react';
 import { MainSection } from 'components/sections/control/MainSection';
 import Head from 'next/head';
-import MockAPI from 'api/MockAPI';
+import APIBitrix from 'api/APIBitrix';
 
-const Control = ({farm, seo}) => {
+const Control = ({content, seo}) => {
     return (
         <>
             <Head>
@@ -11,15 +11,15 @@ const Control = ({farm, seo}) => {
                 <meta name="description" content={seo?.meta_description || `KO&CO`} />
                 <title>{seo?.meta_title || `KO&CO`}</title>
             </Head>
-            <MainSection farm={farm}/>
+            <MainSection content={content}/>
         </>
     )
 }
 
 export default Control
 
-export const getServerSideProps = async ({ resolvedUrl }) => {
-    const { farm, farmCategories } = await MockAPI.getData()
-  
-    return { props: { resolvedUrl, farmCategories, farm, } };
+export const getServerSideProps = async () => {
+    const content = await APIBitrix.get(`content/quality-control/`).then(res => res);
+
+    return { props: { content } };
   };

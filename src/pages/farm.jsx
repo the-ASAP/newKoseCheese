@@ -6,7 +6,6 @@ import { FarmContentSmallSection } from 'components/sections/farm/FarmContentSma
 import { GallerySection } from 'components/sections/farm/GallerySection/GallerySection';
 import { PlanSection } from 'components/sections/farm/PlanSection/PlanSection';
 import Head from 'next/head';
-import MockAPI from 'api/MockAPI';
 import APIBitrix from 'api/APIBitrix';
 
 const Farm = ({ content, seo }) => {
