@@ -70,7 +70,7 @@ export const DescriptionSection = ({ id, product }) => {
   //       <ProductProperty title="Вес" value={weight}/>
   //     </div>
   //   </div>;
-  console.log(compose)
+
   return (
     <>
       <BackButton />

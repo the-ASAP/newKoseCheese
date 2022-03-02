@@ -12,32 +12,35 @@ const additionAccordionClasses = {
   contentClass: 'content--main'
 };
 
-const Questions = ({ questions, seo }) => (
-  <>
-    <Head>
-      <meta name="keywords" content={seo?.meta_keywords || `KO&CO`} />
-      <meta name="description" content={seo?.meta_description || `KO&CO`} />
-      <title>{seo?.meta_title || `KO&CO`}</title>
-    </Head>
-    <Section>
-      <Wrapper>
-        <H1>Вопросы</H1>
-        <div>
-          {questions.map(({ question, answer, id }) => (
-            <Accordion key={id} title={question} additionClasses={additionAccordionClasses} button>
-              {answer}
+const Questions = ({ questions, seo }) => {
+  console.log(questions)
+  return (
+    <>
+      <Head>
+        <meta name="keywords" content={seo?.meta_keywords || `KO&CO`} />
+        <meta name="description" content={seo?.meta_description || `KO&CO`} />
+        <title>{seo?.meta_title || `KO&CO`}</title>
+      </Head>
+      <Section>
+        <Wrapper>
+          <H1>Вопросы</H1>
+          <div>
+          {questions?.map(({ name, description, id }) => (
+            <Accordion key={id} title={name} additionClasses={additionAccordionClasses} button>
+              {description}
             </Accordion>
           ))}
         </div>
-      </Wrapper>
-    </Section>
-  </>
-);
+        </Wrapper>
+      </Section>
+    </>
+  )
+};
 
 export default Questions;
 
 export const getServerSideProps = async () => {
-  const { questions } = await MockAPI.getData();
+  const questions = await APIBitrix.get(`content/questions/categories/`)
   const seo = await APIBitrix.get(`seo/questions-page/`);
 
   return {

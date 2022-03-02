@@ -9,7 +9,8 @@ import Head from 'next/head';
 import MockAPI from 'api/MockAPI';
 import APIBitrix from 'api/APIBitrix';
 
-const Farm = ({ farmCategories, resolvedUrl, farm, seo }) => {
+const Farm = ({ content, seo }) => {
+  const { section, items } = content
   return (
     <>
       <Head>
@@ -17,19 +18,19 @@ const Farm = ({ farmCategories, resolvedUrl, farm, seo }) => {
         <meta name="description" content={seo?.meta_description || `KO&CO`} />
         <title>{seo?.meta_title || `KO&CO`}</title>
       </Head>
-      <IntroSection categories={farmCategories} url={resolvedUrl} pageData={farm} />
-      <FarmContentLargeSection pageData={farm} />
-      <FarmContentSmallSection pageData={farm} firstItem="right" />
-      {farm.gallery && <GallerySection pageData={farm} />}
-      <PlanSection pageData={farm} />
+      <IntroSection pageData={section} />
+      <FarmContentLargeSection pageData={items[0]} />
+      <FarmContentSmallSection pageData={[items[1], items[2]]} firstItem="right" />
+      <GallerySection pageData={items[3]} />
+      <PlanSection pageData={items[4]} />
     </>
   );
 };
 export default Farm;
 
 export const getServerSideProps = async ({ resolvedUrl }) => {
-  const { farm, farmCategories } = await MockAPI.getData();
+  const content = await APIBitrix.get(`content/farm/`).then(res => res);
   const seo = await APIBitrix.get(`seo/farm-page/`);
 
-  return { props: { resolvedUrl, farmCategories, farm, seo } };
+  return { props: { resolvedUrl, content, seo } };
 };

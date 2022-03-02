@@ -2,13 +2,12 @@ import React from "react";
 import s from "./FarmContentSmall.module.scss";
 
 export const FarmContentSmall = ({ content }) => {
-  const { title, image, text } = content;
+  const { name, previewImage, previewText } = content;
   return (
     <div className={s.container}>
-      {title && <h2 className={s.title}>{title}</h2>}
-      <img className={s.image} src={image} alt=""/>
-      {text && <p className={s.text}>{text}</p>}
+      {name && <h2 className={s.title}>{name}</h2>}
+      <img className={s.image} src={previewImage} alt=""/>
+      {previewText && <p className={s.text}>{previewText}</p>}
     </div>
   );
 };
-

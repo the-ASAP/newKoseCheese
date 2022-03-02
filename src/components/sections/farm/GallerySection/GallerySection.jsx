@@ -6,7 +6,6 @@ import { Slider } from "components/common/Slider/Slider";
 import { ImageSlide } from "components/common/ImageSlide/ImageSlide";
 import s from "./GallerySection.module.scss";
 
-
 const sliderParams = {
   slider: {
     slidesPerView: 1,
@@ -20,12 +19,13 @@ const sliderParams = {
   }
 };
 
-export const GallerySection = ({ pageData: { gallery } }) => {
+export const GallerySection = ({ pageData }) => {
+  const { slider_gallery } = pageData
   return (
     <Section>
       <Wrapper>
         <h2 className={s.title}>Галлерея</h2>
-        <Slider params={sliderParams} slides={gallery}>
+        <Slider params={sliderParams} slides={slider_gallery}>
           <ImageSlide/>
         </Slider>
       </Wrapper>
@@ -33,5 +33,3 @@ export const GallerySection = ({ pageData: { gallery } }) => {
 
   );
 };
-
-
