@@ -21,6 +21,7 @@ const sliderParams = {
 
 export const GallerySection = ({ pageData }) => {
   const { slider_gallery } = pageData
+
   return (
     <Section>
       <Wrapper>
