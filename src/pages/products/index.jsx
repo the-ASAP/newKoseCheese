@@ -32,7 +32,7 @@ const Products = ({ newProductsBitrix, categoriesBitrix, seo }) => {
           }}
         />
       </Head>
-      <Wrapper style={{ marginTop: '-4rem' }}>
+      <Wrapper additionClass={`catalog`}>
         {discountModal.isShowed && (
           <Discount
             text="Вам представлена скидка на первый заказ 10%"

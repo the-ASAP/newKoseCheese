@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import clsx from 'clsx';
 import { useRouter } from 'next/router';
 import s from 'components/buttons/SubcategoryButton/NewSubcategoryButton.module.scss';
