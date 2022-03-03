@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import { menuChangeModalState } from 'redux/slices/modals';
 import { MainLogo } from 'components/SVG/MainLogo';
 import { CloseIcon } from 'components/SVG/Icons';
-import { email, instargam, tel, telegram } from 'contacts';
+import { email, instagram, tel, telegram } from 'contacts';
 import s from './Menu.module.scss';
 import { SearchPanel } from '../../common/SearchPanel/SearchPanel';
 
@@ -68,7 +68,7 @@ export const Menu = () => {
           <a href={telegram} className={s.social}>
             Telegram
           </a>
-          <a href={instargam} className={s.social}>
+          <a href={instagram} className={s.social}>
             Instagram
           </a>
         </div>
