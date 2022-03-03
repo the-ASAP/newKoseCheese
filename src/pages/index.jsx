@@ -99,12 +99,12 @@ const Index = ({
           }}
         />
       </Head>
-      <PromoSection {...promoContent} categories={categories} />
-      <NewTastesSection title={'Новые вкусы'} newProducts={newProducts} />
-      <PopularSection products={popularProducts} categories={categories} />
+      {categories && <PromoSection {...promoContent} categories={categories} />}
+      {newProducts && <NewTastesSection title={'Новые вкусы'} newProducts={newProducts} />}
+      {categories && <PopularSection products={popularProducts} categories={categories} />}
       {/* <DiscountSection {...discountProduct} /> */}
 
-      <RecipesSliderSection recipes={posts} title="Рецепты" />
+      {posts && <RecipesSliderSection recipes={posts} title="Рецепты" />}
       {/* <TelegramPromoSection /> */}
       <InstagramSection />
       <PartnersSection />
