@@ -144,11 +144,13 @@ export const NewProductsSection = ({ products, categories }) => {
     setCategoryId(id);
     localStorage.setItem('activeCategory', id);
     setCategoryForPagination(id);
+    paramsForPagination.page = 1
   };
 
   const handleSelectSubcategory = (id) => {
     setSubCategoryId(id);
     setCategoryForPagination(id);
+    paramsForPagination.page = 1;
   };
 
   return (
