@@ -17,6 +17,13 @@ import { sortProductsFunction } from 'functions';
 import { filterDropdown } from 'constants.js';
 import s from './ProductsSection.module.scss';
 
+  let paramsForPagination = {
+    limit: 10,
+    page: 1,
+    sort_value: 'sort',
+    sort_type: 'DESC'
+  }
+
 export const NewProductsSection = ({ products, categories }) => {
   const [categoryId, setCategoryId] = useState(null);
   const [subCategoryId, setSubCategoryId] = useState(null);
@@ -31,13 +38,14 @@ export const NewProductsSection = ({ products, categories }) => {
   const productsRef = useRef(null);
 
   useEffect(async () => {
-    try {
+    if (fetching === true) {
+      try {
+      console.log(paramsForPagination)
       if (fetching && window) {
         const requestProducts = await APIBitrix.post(`products/collection/all/`, {
           section_id:
             paginationCategory || localStorage.getItem('activeSubCaterogy') || localStorage.getItem('activeCategory') || categories[0]?.id,
-          page: currentPage,
-          limit: 10
+          ...paramsForPagination,
         });
         await setTotalCount(requestProducts?.data.count);
         await setActiveProducts((prevState) => [...prevState, ...requestProducts.data.items]);
@@ -46,13 +54,18 @@ export const NewProductsSection = ({ products, categories }) => {
             top: +localStorage.getItem('scrollToPosition'),
             behavior: 'smooth'
           }));
-        await setCurrentPage((prevState) => prevState + 1);
+        // await setCurrentPage((prevState) => prevState + 1);
+        paramsForPagination.limit === 10
+          ? paramsForPagination.page += 1
+          : paramsForPagination.page = paramsForPagination.limit / 10 + 1
+        paramsForPagination.limit = 10
         await localStorage.removeItem('scrollToPosition');
       }
-    } finally {
-      setFetching(false);
+      } finally {
+        setFetching(false);
+      }
     }
-  }, [fetching, paginationCategory]);
+  }, [fetching]);
 
   useEffect(() => {
     document.addEventListener('scroll', scrollHandler);
@@ -72,7 +85,6 @@ export const NewProductsSection = ({ products, categories }) => {
     if (productsRef.current) {
       const elementBoundary = productsRef.current.getBoundingClientRect();
       const bottom = elementBoundary.bottom;
-      window && console.log(window.pageYOffset);
       if (
         // если долистали до конца блока и не все продукты загружены, отправлять повторный запрос
         window &&
@@ -128,11 +140,6 @@ export const NewProductsSection = ({ products, categories }) => {
 
   const isClientSide = useClientSide();
 
-  const selectHandlerForDropdown = (name) => {
-    const thatCategory = categories.find((category) => category.name === name).id;
-    setCategoryId(thatCategory);
-  };
-
   const handleSelectCategory = (id) => {
     setCategoryId(id);
     localStorage.setItem('activeCategory', id);
@@ -184,8 +191,15 @@ export const NewProductsSection = ({ products, categories }) => {
               selectHandler={(e) => {
                 filterDropdown.forEach((elem) => {
                   if (elem.title === e.value) {
-                    const sortArr = sortProductsFunction(activeProducts, elem.value, elem.sort);
-                    setSortProducts([...sortArr]);
+                    // const sortArr = sortProductsFunction(activeProducts, elem.value, elem.sort);
+                    // setSortProducts([...sortArr]);
+                    console.log(paramsForPagination.limit, paramsForPagination.page)
+                    paramsForPagination.limit = paramsForPagination.limit * (paramsForPagination.page - 1)
+                    paramsForPagination.page = 1
+                    paramsForPagination.sort_value = elem.value
+                    paramsForPagination.sort_type = elem.sort
+                    setActiveProducts([])
+                    setFetching(true)
                   }
                 });
               }}
@@ -208,13 +222,6 @@ export const NewProductsSection = ({ products, categories }) => {
               </div>
             )
           )}
-          {/* {isClientSide &&
-            windowSize <= 1200 &&
-            goodsPagination.currentPage <= goodsPagination.limit && (
-              <button type="button" className={s.more} onClick={handleSetGoodsPagination}>
-                Показать еще <span>({goodsPagination.perPage})</span>
-              </button>
-            )} */}
         </Wrapper>
       </Section>
     </>
