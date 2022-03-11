@@ -17,6 +17,7 @@ const QuoteInfo = {
 
 export const MainSection = ({ content }) => {
     const { section, items } = content
+
     return (
         <Section>
             <Wrapper>
