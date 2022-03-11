@@ -6,7 +6,7 @@ export const FarmContentSmall = ({ content }) => {
   return (
     <div className={s.container}>
       {name && <h2 className={s.title}>{name}</h2>}
-      <img className={s.image} src={previewImage} alt=""/>
+      {previewImage && <img className={s.image} src={previewImage} alt="" />}
       {previewText && <p className={s.text}>{previewText}</p>}
     </div>
   );

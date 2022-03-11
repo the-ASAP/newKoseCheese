@@ -26,9 +26,9 @@ export const GallerySection = ({ pageData }) => {
     <Section>
       <Wrapper>
         <h2 className={s.title}>Галлерея</h2>
-        <Slider params={sliderParams} slides={slider_gallery}>
-          <ImageSlide/>
-        </Slider>
+        {slider_gallery && <Slider params={sliderParams} slides={slider_gallery}>
+          <ImageSlide />
+        </Slider>}
       </Wrapper>
     </Section>
 

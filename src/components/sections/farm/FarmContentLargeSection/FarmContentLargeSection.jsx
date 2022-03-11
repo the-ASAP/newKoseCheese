@@ -10,10 +10,10 @@ export const FarmContentLargeSection = ({ pageData, orientation = "left" }) => {
       <Wrapper>
         {orientation === 'left' ?
           <div className={s.container}>
-            <img src={previewImage} className={s.image} alt=""/>
+            {previewImage && <img src={previewImage} className={s.image} alt="" />}
             <div className={s.content}>
-              <h2 className={s.title}>{name}</h2>
-              <p className={s.text}>{previewText}</p>
+              {name && <h2 className={s.title}>{name}</h2>}
+              {previewText && <p className={s.text}>{previewText}</p>}
             </div>
           </div>
         :
