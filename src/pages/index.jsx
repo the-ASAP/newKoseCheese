@@ -106,7 +106,7 @@ const Index = ({
 
       {posts && <RecipesSliderSection recipes={posts} title="Рецепты" />}
       {/* <TelegramPromoSection /> */}
-      <InstagramSection />
+      {/* <InstagramSection /> */}
       <PartnersSection />
 
       <ModalWrapper
