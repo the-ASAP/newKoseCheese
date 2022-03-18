@@ -2,7 +2,11 @@
 
 .promo {
   margin-top: 3.125rem;
-  height: 38.75rem;
+  height: 35rem;
+  width: 90%;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
   object-fit: cover;
 }
 
@@ -24,4 +28,3 @@
     margin-top: 30px;
   }
 }
-

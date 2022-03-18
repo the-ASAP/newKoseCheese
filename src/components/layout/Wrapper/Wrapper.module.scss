@@ -6,6 +6,11 @@
   max-width: 1320px;
 }
 
+.slider90 {
+  width: calc(80% - 120px);
+  margin: 0 auto;
+}
+
 @media (max-width: $tablet) {
   .container {
     width: calc(100% - 44px);

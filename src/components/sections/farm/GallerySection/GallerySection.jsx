@@ -12,10 +12,11 @@ const sliderParams = {
     slidesPerGroup: 1,
     spaceBetween: 20,
     slideClass: "recipe_slide"
+
   },
   nav: {
     counter: true,
-    isGallery: true,
+    // isGallery: true,
   }
 };
 
@@ -24,9 +25,8 @@ export const GallerySection = ({ pageData }) => {
 
   return (
     <Section>
-      <Wrapper>
-        <h2 className={s.title}>Галлерея</h2>
-        {slider_gallery && <Slider params={sliderParams} slides={slider_gallery}>
+      <Wrapper additionClass={"slider90"}>
+        {slider_gallery && <Slider title={"Галерея"} params={sliderParams} slides={slider_gallery}>
           <ImageSlide />
         </Slider>}
       </Wrapper>
