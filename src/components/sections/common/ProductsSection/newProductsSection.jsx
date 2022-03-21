@@ -82,7 +82,7 @@ export const NewProductsSection = ({ products, categories }) => {
   };
 
   const scrollHandler = () => {
-    if (productsRef.current) {
+    if (productsRef.current && !fetching) {
       const elementBoundary = productsRef.current.getBoundingClientRect();
       const bottom = elementBoundary.bottom;
       if (
