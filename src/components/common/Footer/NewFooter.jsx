@@ -6,7 +6,7 @@ import { Wrapper } from 'components/layout/Wrapper/Wrapper';
 import { formatPhone } from 'functions.js';
 import { useDispatch } from 'react-redux';
 import { letterChangeModalState } from 'redux/slices/modals';
-import { email, tel, instagram, telegram, adress } from 'contacts';
+import { email, tel, telegramSecond, telegram, adress } from 'contacts';
 import clsx from 'clsx';
 import s from './NewFooter.module.scss';
 
@@ -30,11 +30,11 @@ export const NewFooter = () => {
       <Wrapper>
         <div className={s.container}>
           <div className={s.block}>
-              <a className={s.link} href={instagram}>
-                <h2 className={s.title}>Instagram</h2>
-              </a>
               <a className={s.link} href={telegram}>
                 <h2 className={s.title}>Telegram</h2>
+              </a>
+              <a className={s.link} href={telegramSecond}>
+                <h2 className={s.title}>Наши лавки</h2>
               </a>
           </div>
           <div className={s.block}>
