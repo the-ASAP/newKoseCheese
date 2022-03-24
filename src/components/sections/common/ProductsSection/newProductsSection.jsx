@@ -40,7 +40,6 @@ export const NewProductsSection = ({ products, categories }) => {
   useEffect(async () => {
     if (fetching === true) {
       try {
-      console.log(paramsForPagination)
       if (fetching && window) {
         const requestProducts = await APIBitrix.post(`products/collection/all/`, {
           section_id:
@@ -101,6 +100,10 @@ export const NewProductsSection = ({ products, categories }) => {
     if (id) {
       setCategoryId(id);
     } else setCategoryId(categories[0]?.id);
+
+    return () => {
+      paramsForPagination.page = 1
+    }
   }, []);
 
   useEffect(() => {
@@ -195,7 +198,6 @@ export const NewProductsSection = ({ products, categories }) => {
                   if (elem.title === e.value) {
                     // const sortArr = sortProductsFunction(activeProducts, elem.value, elem.sort);
                     // setSortProducts([...sortArr]);
-                    console.log(paramsForPagination.limit, paramsForPagination.page)
                     paramsForPagination.limit = paramsForPagination.limit * (paramsForPagination.page - 1)
                     paramsForPagination.page = 1
                     paramsForPagination.sort_value = elem.value
