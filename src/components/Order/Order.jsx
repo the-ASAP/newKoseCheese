@@ -9,21 +9,21 @@ import { useDispatch } from "react-redux";
 import s from "components/Order/Order.module.scss";
 
 
-export const Order = ({ controls, subscribe, data }) => {
+export const Order = ({ controls, subscribe, data, showOrderControls = true }) => {
   let { products, ...orderInfo } = data;
 
   const quantityProducts = data.products.reduce((acc, item) => {
     if(item && item.quantity) {
       return acc + ~~Number(item.quantity)
     }
-  }, 0) 
+  }, 0)
 
   orderInfo = {...orderInfo, count: quantityProducts}
 
   const getOrders = (controlPanel, props) => products.length ? products.map((order, i) => i < 2 &&
     <OrderItem controls={controlPanel} key={i} {...order} {...props}/>) : "";
 
-  
+
   return (
     <div className={s.container}>
       <OrderHeader data={orderInfo}/>
@@ -34,7 +34,7 @@ export const Order = ({ controls, subscribe, data }) => {
               <div>
                 {getOrders(true, formProps)}
               </div>
-              <OrderControls formProps={formProps} order={data}/>
+              {showOrderControls && <OrderControls formProps={formProps} order={data} />}
             </>
           )}
         </FormContainer>
@@ -45,4 +45,3 @@ export const Order = ({ controls, subscribe, data }) => {
     </div>
   );
 };
-

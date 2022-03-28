@@ -1,6 +1,6 @@
-import React from 'react';
+// @ts-nocheck
+import React, { useState } from 'react';
 import { ProfileSteps } from 'components/common/Profile/ProfileSteps/ProfileSteps';
-import { Order } from 'components/Order/Order';
 import { FormContainer } from 'components/forms/FormContainer/FormContainer';
 import { Input } from 'components/forms/Input/Input';
 import { DropdownCustom } from 'components/common/DropdownCustom/DropdownCustom';
@@ -13,6 +13,11 @@ import { Field } from 'formik';
 import Dropdown from 'react-dropdown';
 import { Textarea } from 'components/forms/Textarea/Textarea';
 import APIBitrix from 'api/APIBitrix';
+import { incPage, historyAttrItemsSelector, addNewHistory } from 'redux/slices/historyAttr';
+import { historyItemsSelector } from 'redux/slices/history'
+import { useDispatch, useSelector } from 'react-redux'
+import { Order } from "components/Order/Order";
+import { FarmContentLargeSection } from 'components/sections/farm/FarmContentLargeSection/FarmContentLargeSection';
 
 const initialValues = {
   name: 'Сергей',
@@ -29,7 +34,9 @@ const salePoints = [
 ];
 
 export const ProfileReturn = () => {
-  const allOrders = [36956, 34951, 43123, 23461];
+  const { orders } = useSelector(historyItemsSelector)
+
+  const allOrders = orders.map(order => order.id)
 
   const currentProducts = [
     {
@@ -42,8 +49,20 @@ export const ProfileReturn = () => {
     }
   ];
 
-  const [orderNumber, setOrderNumber] = React.useState('');
-  const [curProducts, setCurProducts] = React.useState(currentProducts);
+  const [orderNumber, setOrderNumber] = React.useState(0);
+  const [curProducts, setCurProducts] = React.useState(null);
+  const [productDropDownDisabled, setProductDropDownDisabled] = useState(true)
+  const [order, setOrder] = useState(null)
+
+  React.useEffect(() => {
+    if (orderNumber) {
+      const selectedProduct = orders.find(item => item.id === orderNumber.value)
+      setCurProducts(selectedProduct)
+    }
+  }, [orderNumber]);
+
+  const isClientSide = useClientSide();
+  const [showSalePoints, setShowSalePoints] = React.useState(false);
 
   const submitHandler = (values) => {
     console.log(values);
@@ -56,19 +75,18 @@ export const ProfileReturn = () => {
     setOrderNumber(value);
   };
 
-  React.useEffect(() => {
-    // async stuff
-    orderNumber && setCurProducts(currentProducts);
-  }, [orderNumber]);
-
-  const isClientSide = useClientSide();
-  const [showSalePoints, setShowSalePoints] = React.useState(false);
+  console.log(curProducts)
 
   return (
     <>
       {isClientSide && (
         <>
           <ProfileSteps />
+          {curProducts &&
+            <div className={s.order}>
+              <Order data={{ ...curProducts, status: 'Замена' }} controls showOrderControls={false}/>
+            </div>
+          }
           <FormContainer initialValues={initialValues} onSubmit={submitHandler}>
             {(formProps) => (
               <>
@@ -81,21 +99,27 @@ export const ProfileReturn = () => {
                       options={allOrders}
                       selectHandler={(e) => {
                         formProps.setFieldValue('orderNumber', e.value);
+                        setOrderNumber(e.value)
+                        setProductDropDownDisabled(false)
                         selectHandler(e);
                       }}
                     />
-                    {curProducts.length > 0 && (
-                      <DropdownCustom
-                        label="*Выберите товар из списка"
-                        placeholder=""
-                        options={curProducts.map(
-                          (product) => `${product.name}, ${product.count} шт.`
-                        )}
-                        selectHandler={(e) => {
-                          formProps.setFieldValue('orderProduct', e.value);
-                        }}
-                      />
-                    )}
+
+                    <DropdownCustom
+                      label={`*Выберите товар из списка" ${productDropDownDisabled ? "(Необходимо выбрать номер заказа)" : ""}`}
+                      placeholder=""
+                      disabled={productDropDownDisabled}
+                      options={curProducts?.products?.map(
+                        (product, i) => ({
+                          value: product.id,
+                          label: product.addition ? `${product.name} ${product.addition}` : `${product.name}`
+                        })
+                      )}
+                      selectHandler={(e) => {
+                        formProps.setFieldValue('orderProduct', e.value);
+                      }}
+                    />
+
                     {/* <Input label="*Телефон" type="number" id="phone" name="phone" />
                     <Input label="*Имя" type="text" id="name" name="name" />
                     <Input label="Фамилия" type="text" id="surname" name="surname" />

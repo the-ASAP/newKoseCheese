@@ -15,7 +15,7 @@ export const ProfileOrders = () => {
   const addMoreProducts = () => {
     dispatch(incPage())
   }
-  
+
   // @ts-ignore
   React.useEffect(() => {
     return historyAttr.page !== 1 ? dispatch(addNewHistory()) : null
@@ -24,9 +24,8 @@ export const ProfileOrders = () => {
   return (
     <>
       <ProfileControls/>
-      {history && history?.orders?.map((order, i) => <Order data={order} key={i} controls/>)}
+      {history && history?.orders?.map((order, i) => <Order data={order} key={Date.now() + i} controls/>)}
       {history?.orders?.length > 0 && (history?.count > history?.orders.length) && <button type="button" className={s.more} onClick={addMoreProducts}>Показать еще +</button>}
     </>
   );
 };
-

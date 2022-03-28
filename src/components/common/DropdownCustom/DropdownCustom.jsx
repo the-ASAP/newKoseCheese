@@ -4,7 +4,7 @@ import "react-dropdown/style.css";
 import s from "./DropdownCustom.module.scss";
 
 export const DropdownCustom = (props) => {
-  const { label, placeholder, options, selectHandler, value } = props;
+  const { label, placeholder, options, selectHandler, value, disabled = false } = props;
   return (
     <div className={s.container}>
       <span className={s.label}>{label}</span>
@@ -16,6 +16,7 @@ export const DropdownCustom = (props) => {
                 arrowOpen={<span className={s.arrowOpen}/>}
                 arrowClosed={<span className={s.arrowClosed}/>}
                 value={value}
+                disabled={disabled}
                 onChange={(e) => {
                   selectHandler(e);
                 }}/>

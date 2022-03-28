@@ -12,9 +12,9 @@ export const ProfileHeader = () => {
     <>
       <H1 additionClass="profile">Личный кабинет</H1>
       <header className={s.header}>
-        <h3 className={s.title}>
+        {/* <h3 className={s.title}>
           Здравствуйте <span>{userInfo?.name}</span>
-        </h3>
+        </h3> */}
         <div className={s.row}>
           <div className={s.info}>
             <div className={s.field}>
@@ -24,7 +24,7 @@ export const ProfileHeader = () => {
             {/* <div className={s.field}>
               <span className={s.label}>Баланс:</span>
               <span className={s.value}>320 руб.</span>
-            </div> 
+            </div>
             <div className={s.field}>
               <span className={s.label}>Всего покупок:</span>
               <span className={s.value}>?</span>
