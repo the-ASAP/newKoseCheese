@@ -27,6 +27,7 @@ export const AuthSection = () => {
   const userId = useSelector(userIdSelector);
   const dispatch = useDispatch();
 
+  console.log('this is auth')
   const regHandler = async ({ phone }) => {
     phone = phone.replace(/\s+/g, '');
     const response = await APIAuth.reg(phone);
