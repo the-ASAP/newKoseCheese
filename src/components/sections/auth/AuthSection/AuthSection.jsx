@@ -50,16 +50,16 @@ export const AuthSection = () => {
       //   Authorization: `Bearer ${confirmRequest.token}`
       // }
       {
-        Authorization: `Bearer 1`
+        Authorization: `Bearer b860b4deb858e2ab40bbcb532b53f8574b9973a04512c0ec4c01ee90013b8b47ec0a56ac`
       }
     ).then((res) => console.log(res.data));
 
-    // await dispatch(setUserInfo(profileInfo));
-    // localStorage.setItem('authToken', confirmRequest.token);
-    // // localStorage.setItem('fuser_id', userData.user_id);
-    // // localStorage.removeItem("fuser_id");
-    // await dispatch(setLogged(true));
-    // router.push('/profile');
+    await dispatch(setUserInfo(profileInfo));
+    localStorage.setItem('authToken', 'b860b4deb858e2ab40bbcb532b53f8574b9973a04512c0ec4c01ee90013b8b47ec0a56ac');
+    // localStorage.setItem('fuser_id', userData.user_id);
+    // localStorage.removeItem("fuser_id");
+    await dispatch(setLogged(true));
+    router.push('/profile');
   };
 
   const privacyModalHandler = () => {
