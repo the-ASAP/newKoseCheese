@@ -20,6 +20,7 @@ import {
   ProfileSubscribe
 } from 'components/sections/profile';
 import { BackButton } from 'components/buttons/BackButton/BackButton';
+import Link from 'next/link';
 
 const profileData = [
   {
@@ -56,7 +57,7 @@ const profileData = [
     id: 7,
     title: 'Возврат товара',
     component: <ProfileReturn />
-  }
+  },
 ];
 
 const Profile = () => {

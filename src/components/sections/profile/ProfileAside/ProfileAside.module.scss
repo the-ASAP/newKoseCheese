@@ -87,3 +87,45 @@
     margin-bottom: 30px;
   }
 }
+
+
+
+
+
+
+
+
+
+
+.link {
+  @extend %underline;
+  display: block;
+  width: fit-content;
+  font-family: $font-service;
+  font-size: 1.125rem;
+  text-transform: none;
+  text-align: left;
+  color: #184240;
+  margin-top: 2rem;
+
+  &::after {
+    background-color: $gen;
+  }
+
+  &:not(:last-child) {
+    margin-bottom: 1.25rem;
+  }
+}
+
+.active {
+  &:after {
+    width: 100%;
+    opacity: 1;
+  }
+}
+
+@media (max-width: $tablet) {
+  .link {
+    font-size: 16px;
+  }
+}

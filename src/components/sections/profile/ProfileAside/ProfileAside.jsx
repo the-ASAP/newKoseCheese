@@ -3,6 +3,7 @@ import { ProfileButton } from "components/buttons/ProfileButton/ProfileButton";
 import Dropdown from "react-dropdown";
 import { windowSize } from "constants.js";
 import { useClientSide } from "hooks";
+import Link from 'next/link';
 import s from "./ProfileAside.module.scss";
 
 export const ProfileAside = ({ categories, active, setActive }) => {
@@ -36,9 +37,12 @@ export const ProfileAside = ({ categories, active, setActive }) => {
               </ProfileButton>
             ))
         }
+        <Link href="/">
+          <a className={s.link}>
+            Выйти из профиля
+          </a>
+        </Link>
       </nav>
     </aside>
   );
 };
-
-
