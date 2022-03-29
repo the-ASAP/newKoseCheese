@@ -20,8 +20,8 @@ export const Order = ({ controls, subscribe, data, showOrderControls = true }) =
 
   orderInfo = {...orderInfo, count: quantityProducts}
 
-  const getOrders = (controlPanel, props) => products.length ? products.map((order, i) => i < 2 &&
-    <OrderItem controls={controlPanel} key={i} {...order} {...props}/>) : "";
+  const getOrders = (controlPanel, props) => products?.map((order, i) =>
+    <OrderItem controls={controlPanel} key={i} {...order} {...props}/>);
 
 
   return (
