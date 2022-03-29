@@ -81,7 +81,7 @@ const Profile = () => {
 
   return (
     <Wrapper>
-      <ProfileHeader />
+      {/* <ProfileHeader /> */}
       <ProfileWrapper>
         {activePage.id === 7 && windowSize <= 1200 && windowSize >= 768 ? (
           <BackButton clickHandler={backButtonHandler} additionClass="profile" />
