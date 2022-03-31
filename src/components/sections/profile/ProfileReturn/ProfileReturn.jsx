@@ -25,6 +25,7 @@ const initialValues = {
   point: '',
   orderProduct: ''
 };
+
 const returnReasonOptions = ['Товар просрочен', 'Ненадлежащее качество товара', 'Я передумал'];
 
 const salePoints = [
@@ -38,21 +39,10 @@ export const ProfileReturn = () => {
 
   const allOrders = orders.map(order => order.id)
 
-  const currentProducts = [
-    {
-      name: 'Камамбер козий',
-      count: 4
-    },
-    {
-      name: 'Брю-де-шар',
-      count: 7
-    }
-  ];
 
   const [orderNumber, setOrderNumber] = React.useState(0);
   const [curProducts, setCurProducts] = React.useState(null);
   const [productDropDownDisabled, setProductDropDownDisabled] = useState(true)
-  const [order, setOrder] = useState(null)
 
   React.useEffect(() => {
     if (orderNumber) {
@@ -62,7 +52,9 @@ export const ProfileReturn = () => {
   }, [orderNumber]);
 
   const isClientSide = useClientSide();
+
   const [showSalePoints, setShowSalePoints] = React.useState(false);
+  const [showDCardNumber, setShowCardNumber] = React.useState(false);
 
   const submitHandler = (values) => {
     console.log(values);
@@ -75,8 +67,6 @@ export const ProfileReturn = () => {
     setOrderNumber(value);
   };
 
-  console.log(curProducts)
-
   return (
     <>
       {isClientSide && (
@@ -84,7 +74,12 @@ export const ProfileReturn = () => {
           <ProfileSteps />
           {curProducts &&
             <div className={s.order}>
-              <Order data={{ ...curProducts, status: 'Замена' }} controls showOrderControls={false}/>
+              <Order data={{ ...curProducts, status: 'Замена' }}
+                controls
+                return
+                showOrderControls={false}
+                showControlButtons={true}
+              />
             </div>
           }
           <FormContainer initialValues={initialValues} onSubmit={submitHandler}>
@@ -105,7 +100,7 @@ export const ProfileReturn = () => {
                       }}
                     />
 
-                    <DropdownCustom
+                    {/* <DropdownCustom
                       label={`*Выберите товар из списка" ${productDropDownDisabled ? "(Необходимо выбрать номер заказа)" : ""}`}
                       placeholder=""
                       disabled={productDropDownDisabled}
@@ -118,12 +113,13 @@ export const ProfileReturn = () => {
                       selectHandler={(e) => {
                         formProps.setFieldValue('orderProduct', e.value);
                       }}
-                    />
+                    /> */}
 
                     {/* <Input label="*Телефон" type="number" id="phone" name="phone" />
                     <Input label="*Имя" type="text" id="name" name="name" />
-                    <Input label="Фамилия" type="text" id="surname" name="surname" />
-                    <Input label="Е-mail" type="text" id="email" name="email" /> */}
+                     */}
+                    <Input label="*Фио" type="text" id="fio" name="fio" />
+                    <Input label="*Е-mail" type="text" id="email" name="email" />
                     <DropdownCustom
                       label="*Причина замены"
                       placeholder="Выберите причину"
@@ -147,6 +143,7 @@ export const ProfileReturn = () => {
                           value="product"
                           type="radio"
                           additionClass="checkbox"
+                          onClick={() => setShowCardNumber(false)}
                         />
                         <label htmlFor="product" className={s.label}>
                           Товар
@@ -159,6 +156,7 @@ export const ProfileReturn = () => {
                           value="internal"
                           type="radio"
                           additionClass="checkbox"
+                          onClick={() => setShowCardNumber(false)}
                         />
                         <label htmlFor="internal" className={s.label}>
                           На внутренний счет
@@ -171,13 +169,16 @@ export const ProfileReturn = () => {
                           value="card"
                           type="radio"
                           additionClass="checkbox"
+                          onClick={() => setShowCardNumber(true)}
                         />
                         <label htmlFor="card" className={s.label}>
                           Деньгами на карту
                         </label>
                       </div>
                     </div>
-                    <Input label="Номер карты" type="number" id="cardNumber" name="cardNumber" />
+                    {showDCardNumber &&
+                      <Input label="Номер карты" type="number" id="cardNumber" name="cardNumber" />
+                    }
                   </div>
                   <div className={s.block}>
                     <span className={s.subtitle}>*Добавить фото чека и продукта</span>

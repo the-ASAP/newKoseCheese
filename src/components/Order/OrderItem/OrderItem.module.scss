@@ -54,6 +54,45 @@
   font-family: $font-service;
 }
 
+
+.counter {
+  position: relative;
+  @extend %flexbox;
+  justify-content: center;
+  align-items: center;
+  width: 10rem;
+  height: 2.5rem;
+  margin-right: 1.125rem;
+  border-radius: 8px;
+  font-family: $font-service;
+  user-select: none;
+    border: 1px solid $grey;
+}
+.count2 {
+  font-size: 1.125rem;
+}
+
+.change {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40%;
+  height: 100%;
+  transition: top 0.1s;
+  &:active {
+    top: 55%;
+  }
+}
+.minus {
+  left: 0;
+}
+.plus {
+  right: 0;
+}
+
 @media (max-width: $tablet) {
   .title {
     font-size: 18px;

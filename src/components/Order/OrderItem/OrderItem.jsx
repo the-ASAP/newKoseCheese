@@ -1,10 +1,22 @@
 import React from "react";
 import clsx from "clsx";
 import { Input } from "components/forms/Input/Input";
+import { MinusIcon, PlusIcon } from 'components/SVG/Icons';
 import s from "components/Order/OrderItem/OrderItem.module.scss";
 
 export const OrderItem = (data) => {
-  const { img, name, addition, price, weight, quantity, controls } = data;
+  const { img, name, addition, price, weight, quantity, controls, controlButtons } = data;
+
+  console.log(Number(~~quantity))
+  const [numQuantity, setNumQuantity] = React.useState(Number(~~quantity));
+
+  const decNumQuan = () => {
+    if(numQuantity > 1) setNumQuantity(prev => --prev)
+   }
+
+  const incNumQuan = () => {
+    if(numQuantity !== ~~quantity) setNumQuantity(prev => ++prev)
+  }
 
   return (
     <div className={clsx(s.container, !controls && s.border)}>
@@ -22,8 +34,28 @@ export const OrderItem = (data) => {
           <span className={s.weight}>{weight} г.</span>
         </div>
       </div>
-      <span className={s.count}>{~~quantity} шт.</span>
+      {controlButtons ?
+        <div className={s.counter}>
+          <button
+            type="button"
+            className={clsx(s.change, s.minus)}
+            onClick={() => decNumQuan()}
+          >
+            <MinusIcon />
+          </button>
+          <span className={s.count2}>{numQuantity} шт.</span>
+          <button
+            type="button"
+            className={clsx(s.change, s.plus)}
+            onClick={() => incNumQuan()}
+          >
+            <PlusIcon />
+          </button>
+        </div>
+        :
+        <span className={s.count}>{numQuantity} шт.</span>
+      }
+
     </div>
   );
 };
-

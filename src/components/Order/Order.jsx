@@ -8,8 +8,7 @@ import { SubscribeControls } from "components/Order/SubscribeControls/SubscribeC
 import { useDispatch } from "react-redux";
 import s from "components/Order/Order.module.scss";
 
-
-export const Order = ({ controls, subscribe, data, showOrderControls = true }) => {
+export const Order = ({ controls, subscribe, data, showOrderControls = true, showControlButtons }) => {
   let { products, ...orderInfo } = data;
 
   const quantityProducts = data.products.reduce((acc, item) => {
@@ -20,8 +19,9 @@ export const Order = ({ controls, subscribe, data, showOrderControls = true }) =
 
   orderInfo = {...orderInfo, count: quantityProducts}
 
+  console.log(showControlButtons)
   const getOrders = (controlPanel, props) => products?.map((order, i) =>
-    <OrderItem controls={controlPanel} key={i} {...order} {...props}/>);
+    <OrderItem controls={controlPanel} key={i} controlButtons={showControlButtons} {...order} {...props}/>);
 
 
   return (
