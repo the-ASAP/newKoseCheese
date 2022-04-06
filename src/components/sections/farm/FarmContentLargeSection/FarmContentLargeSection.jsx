@@ -1,4 +1,5 @@
 import React from "react";
+import ReactHtmlParser from 'react-html-parser';
 import { Section } from "components/layout/Section/Section";
 import { Wrapper } from "components/layout/Wrapper/Wrapper";
 import s from "components/sections/farm/FarmContentLargeSection/FarmContentLargeSection.module.scss";
@@ -12,7 +13,9 @@ export const FarmContentLargeSection = ({ pageData, orientation = "left" }) => {
             {pageData?.previewImage && <img src={pageData.previewImage} className={s.image} alt="" />}
             <div className={s.content}>
               {pageData?.name && <h2 className={s.title}>{pageData.name}</h2>}
-              {pageData?.previewText && <p className={s.text}>{pageData.previewText}</p>}
+              {pageData?.previewText && <p className={s.text}>
+                {ReactHtmlParser(pageData.previewText)}
+              </p>}
             </div>
           </div>
         :
