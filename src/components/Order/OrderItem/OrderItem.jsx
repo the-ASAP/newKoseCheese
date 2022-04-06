@@ -7,7 +7,6 @@ import s from "components/Order/OrderItem/OrderItem.module.scss";
 export const OrderItem = (data) => {
   const { img, name, addition, price, weight, quantity, controls, controlButtons } = data;
 
-  console.log(Number(~~quantity))
   const [numQuantity, setNumQuantity] = React.useState(Number(~~quantity));
 
   const decNumQuan = () => {

@@ -6,7 +6,6 @@ import { PROFILE_VALIDATION_SCHEMA } from "constants.js";
 import { InputPhoto } from "components/forms/InputPhoto/InputPhoto";
 import s from "./ProfileFeedback.module.scss";
 
-
 export const ProfileFeedback = () => {
   const initialValues = {
     phone: +79271024567
@@ -35,4 +34,3 @@ export const ProfileFeedback = () => {
     </>
   );
 };
-

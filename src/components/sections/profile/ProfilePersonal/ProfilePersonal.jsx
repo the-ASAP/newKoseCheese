@@ -4,7 +4,7 @@ import { FormContainer } from 'components/forms/FormContainer/FormContainer';
 import { PROFILE_VALIDATION_SCHEMA } from 'constants.js';
 import APIBitrix from 'api/APIBitrix';
 import { useDispatch, useSelector } from 'react-redux';
-import { setUserInfo, setUserPhone, userIdSelector, userInfoSelector } from 'redux/slices/user';
+import { setUserInfo, userIdSelector, userInfoSelector } from 'redux/slices/user';
 import { InputPhone } from 'components/forms/InputPhone/InputPhone';
 import { newPhonePopupChangeState, popUpChangeModalState } from 'redux/slices/modals';
 import s from './ProfilePersonal.module.scss';
@@ -43,6 +43,7 @@ export const ProfilePersonal = () => {
     dispatch(newPhonePopupChangeState(true));
   };
 
+  console.log(userInfo.phone)
   return (
     <div className={s.wrapper}>
       <div className={s.container}>
@@ -57,7 +58,7 @@ export const ProfilePersonal = () => {
           >
             {() => (
               <>
-                <InputPhone id="phone" label="* Телефон" name="phone" disabled />
+                <InputPhone id="phone" label="* Телефон" name="phone" value={userInfo.phone} disabled />
                 <button type="button" onClick={callChangePhonePopup} className={s.changePhone}>
                   Изменить номер телефона
                 </button>
