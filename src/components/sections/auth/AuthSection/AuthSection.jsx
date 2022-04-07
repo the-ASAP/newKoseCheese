@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { FormContainer } from 'components/forms/FormContainer/FormContainer';
 import { InputPhone } from 'components/forms/InputPhone/InputPhone';
 import { useDispatch, useSelector } from 'react-redux';
-import { addUserId, setLogged, setUserInfo, userIdSelector } from 'redux/slices/user';
+import { userInfoSelector, setUserInfo, userIdSelector} from 'redux/slices/user';
 import { AUTH_VALIDATION_SCHEMA } from 'constants.js';
 import APIAuth from 'api/APIAuth';
 import { useRouter } from 'next/router';
@@ -27,7 +27,6 @@ export const AuthSection = () => {
   const userId = useSelector(userIdSelector);
   const dispatch = useDispatch();
 
-  console.log('this is auth')
   const regHandler = async ({ phone }) => {
     phone = phone.replace(/\s+/g, '');
     const response = await APIAuth.reg(phone);
@@ -42,24 +41,19 @@ export const AuthSection = () => {
     };
 
     const confirmRequest = await APIAuth.confirm(userData, verification);
-    await dispatch(addUserId(userData.user_id));
+    localStorage.setItem('authToken', confirmRequest.token);
 
     const profileInfo = await APIBitrix.post(
       'user/personal-data/',
       {},
-      // {
-      //   Authorization: `Bearer ${confirmRequest.token}`
-      // }
       {
-        Authorization: `Bearer b860b4deb858e2ab40bbcb532b53f8574b9973a04512c0ec4c01ee90013b8b47ec0a56ac`
+        Authorization: `Bearer ${confirmRequest.token}`
       }
-    ).then((res) => console.log(res.data));
+    ).then((res) => {
+      const userInfo = res.data
+      dispatch(setUserInfo({ ...userInfo, isLogged: true, fuserId: localStorage.getItem('fuser_id') }))
+    });
 
-    await dispatch(setUserInfo(profileInfo));
-    localStorage.setItem('authToken', 'b860b4deb858e2ab40bbcb532b53f8574b9973a04512c0ec4c01ee90013b8b47ec0a56ac');
-    // localStorage.setItem('fuser_id', userData.user_id);
-    // localStorage.removeItem("fuser_id");
-    await dispatch(setLogged(true));
     router.push('/profile');
   };
 
@@ -76,49 +70,52 @@ export const AuthSection = () => {
         validateOnChange={false}
         validateOnBlur={false}
         className="loginForm"
-        // submitHandler={(values) => {
-        //   confirmField ? confirmHandler(formData, values) : regHandler(values);
-        // }}
         onSubmit={(values) => {
-          confirmField ? confirmHandler(formData, values) : confirmHandler(formData, values);
+          confirmField ? confirmHandler(formData, values) : regHandler(values);
         }}
       >
         {() => (
           <>
             {!confirmField ? (
-              <InputPhone label="Номер телефона" id="phone" name="phone" />
-            ) : (
-              // <Input id="phone" label="Номер телефона" name="phone" type="text"/>
-              <Input id="code" label="Код подтверждения" name="code" type="text" autoFocus />
-            )}
-            {isLoginPage ? (
               <>
+                <InputPhone label="Номер телефона" id="phone" name="phone" />
+                <button type="submit" className={s.submit}>
+                  Получить код доступа
+                </button>
+              </>
+
+            ) : (
+              <>
+                <Input id="code" label="Код подтверждения" name="code" type="text" autoFocus />
                 <button type="submit" className={s.submit}>
                   Войти
                 </button>
-                <Link href="/registration">
-                  <a className={s.reg}>Зарегистрироваться</a>
-                </Link>
-              </>
-            ) : (
-              <>
-                <div className={s.politics}>
-                  <Input id="policy" name="policy" type="checkbox" additionClass="checkbox" />
-                  <div className={s.label}>
-                    <span>Я ознакомлен(-а)</span>
-                    <button type="button" className={s.privacy} onClick={privacyModalHandler}>
-                      с политикой конфиденциальности
-                    </button>
-                  </div>
-                </div>
-                <button className={s.submit} type="submit">
-                  Зарегистрироваться
-                </button>
-                <Link href="/login">
-                  <a className={s.reg}>Войти</a>
-                </Link>
               </>
             )}
+
+                {/* <Link href="/registration">
+                  <a className={s.reg}>Зарегистрироваться</a>
+                </Link> */}
+
+
+              {/* <>
+                 <div className={s.politics}>
+                   <Input id="policy" name="policy" type="checkbox" additionClass="checkbox" />
+                   <div className={s.label}>
+                     <span>Я ознакомлен(-а)</span>
+                     <button type="button" className={s.privacy} onClick={privacyModalHandler}>
+                       с политикой конфиденциальности
+                     </button>
+                   </div>
+                 </div>
+                 <button className={s.submit} type="submit">
+                   Зарегистрироваться
+                 </button>
+                 <Link href="/login">
+                   <a className={s.reg}>Войти</a>
+                 </Link>
+               </> */}
+
           </>
         )}
       </FormContainer>

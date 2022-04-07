@@ -5,8 +5,6 @@ import { wrapper } from 'redux/store';
 import 'nprogress/nprogress.css';
 import 'styles/global.scss';
 import 'swiper/swiper.scss';
-import NProgress from 'nprogress';
-import Router from 'next/router';
 import { Header } from 'components/common/Header/Header';
 import { Main } from 'components/layout/Main/Main';
 import { NewFooter } from 'components/common/Footer/NewFooter';
@@ -16,52 +14,61 @@ import { windowSize } from 'constants.js';
 import { useClientSide } from 'hooks.js';
 import APIBitrix from 'api/APIBitrix';
 import { useDispatch, useSelector } from 'react-redux';
-import { addUserId } from '../redux/slices/user';
+import { setUserInfo } from '../redux/slices/user';
 import { reqGetProducts } from '../redux/slices/cart';
 import { categoriesItemsSelector, addCategories } from 'redux/slices/categories';
 
 const MyApp = ({ Component, pageProps, router }) => {
-  // // preloader
-  // NProgress.configure({ easing: 'ease', speed: 500 });
-
-  // Router.onRouteChangeStart = () => {
-  //   NProgress.start();
-  // };
-
-  // Router.onRouteChangeComplete = () => {
-  //   NProgress.done();
-  // };
-
-  // Router.onRouteChangeError = () => {
-  //   NProgress.done();
-  // };
-
   const isClientSide = useClientSide();
   const dispatch = useDispatch();
+  const categoriesItems = useSelector(categoriesItemsSelector)
 
   const putClientInStorage = async () => {
-    const getClientId = await APIBitrix.get('user/fuser-id/').then((res) => res.fuser_id);
-    localStorage.setItem('fuser_id', getClientId);
-    dispatch(addUserId(localStorage.getItem('fuser_id')));
+    if (!localStorage.getItem('fuser_id')) {
+      const getClientId = await APIBitrix.get('user/fuser-id/').then((res) => res.fuser_id);
+      localStorage.setItem('fuser_id', getClientId);
+    }
+    dispatch(setUserInfo({ user_id: localStorage.getItem('fuser_id') }));
+    dispatch(reqGetProducts());
   };
 
   const getProducts = async () => {
-    if (!localStorage.getItem('fuser_id')) {
-      putClientInStorage();
-    }
-    dispatch(addUserId(localStorage.getItem('fuser_id')));
-    dispatch(reqGetProducts());
+    if (localStorage.getItem('authToken')) {
+      if (!localStorage.getItem('fuser_id')) {
+        const getClientId = await APIBitrix.get('user/fuser-id/').then((res) => res.fuser_id);
+        localStorage.setItem('fuser_id', getClientId);
+      }
 
-    categories = await APIBitrix.get('products/categories/').then((res) => res);
-    dispatch(addCategories(categories));
-    // const categoriesInStore = useSelector(categoriesItemsSelector)
-    // if(categories && categoriesInStore.categories.length === 0) dispatch(addCategories(categories))
+      const dataAuthToken = await APIBitrix.getAuth(
+        'user/new-token/',
+        {
+          Authorization: `Bearer ${localStorage.getItem('authToken')}`
+        }
+      ).then(async ({ data }) => {
+        if (data.token) {
+          localStorage.setItem('authToken', data.token)
+
+          await APIBitrix.post(
+            'user/personal-data/',
+            {},
+          ).then((res) => {
+            const userInfo = res.data
+            dispatch(setUserInfo({ ...userInfo, isLogged: true, fuserId: localStorage.getItem('fuser_id') }))
+            dispatch(reqGetProducts());
+          });
+        }
+        else putClientInStorage();
+      })
+    }
+    else putClientInStorage();
   };
 
   let categories = [];
   React.useEffect(async () => {
     getProducts();
-    // избранное
+
+    categories = await APIBitrix.get('products/categories/').then((res) => res);
+    if(!categoriesItems.length) dispatch(addCategories(categories));
   }, []);
 
   return (

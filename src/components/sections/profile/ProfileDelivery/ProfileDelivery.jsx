@@ -1,41 +1,55 @@
 // @ts-nocheck
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { AddressForm } from "components/forms/AddressFrom/AddressForm";
 import s from "./ProfileDelivery.module.scss";
-
+import APIBitrix from 'api/APIBitrix'
+import { popUpChangeModalState } from 'redux/slices/modals';
+import { useDispatch } from 'react-redux';
 
 export const ProfileDelivery = (props) => {
+  const dispatch = useDispatch()
+  const [addresses, setAddresses] = React.useState([]);
 
-  const initialAddresses = [{
-    id: 1,
-    title: "Домашний адрес",
-    city: "Саратов",
-    street: "Московская",
-    house: '37',
-    floor: '1',
-    apartment: '1'
-  },
-];
-
-
-  const [addresses, setAddresses] = React.useState(initialAddresses);
+  useEffect(() => {
+    const getAddresses = async () => {
+      await APIBitrix.get(`user/addresses/items/`).then(res => setAddresses(res))
+    }
+    getAddresses()
+  }, [])
 
   const addNewAddressHandler = () => {
     setAddresses(prev => [
       ...prev,
       {
-        id: (new Date).getTime()
+        newId: (new Date).getTime()
       }
     ]);
   };
 
-  const removeAddressHandler = (formProps, id) => {
-    setAddresses(addresses.filter(point => id !== point.id));
+  const removeAddressHandler = async (formProps, id) => {
+    await APIBitrix.post(`user/addresses/delete/`, { ids: id })
+      .then(() => {
+        dispatch(popUpChangeModalState({
+          visible: true,
+          text: 'Адресс удален'
+        }))
+        setAddresses(addresses.filter(point => id !== point.id));
+      })
+      .catch(() => {
+        dispatch(popUpChangeModalState({
+          visible: true,
+          text: 'Произошла ошибка'
+        }))
+      })
+
+
+
   };
+
   return (
     <div className={s.wrapper}>
       {
-        addresses.map(point =>
+        addresses?.map(point =>
           <AddressForm
             key={point.id}
             id={point.id}
@@ -46,4 +60,3 @@ export const ProfileDelivery = (props) => {
     </div>
   );
 };
-

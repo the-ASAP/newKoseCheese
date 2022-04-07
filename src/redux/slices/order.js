@@ -51,10 +51,10 @@ export const getOrderFormData = createAsyncThunk(
   'order/form-data/',
   async (_, { dispatch, getState }) => {
     const {
-      user: { id, isLogged }
+      user: { user_id, isLogged }
     } = getState();
     await APIBitrix.post('order/form-data/', {
-      fuser_id: id
+      fuser_id: user_id
       //   user_id: isLoged ? id : 0
     }).then((res) => {
       dispatch(getFormData(res));
@@ -64,10 +64,10 @@ export const getOrderFormData = createAsyncThunk(
 
 export const setConfirmOrder = createAsyncThunk('order/confirm/', async (data, { getState }) => {
   const {
-    user: { id, isLogged }
+    user: { user_id, isLogged }
   } = getState();
   await APIBitrix.post('order/confirm/', {
-    fuser_id: id,
+    fuser_id: user_id,
     ...data
   }).then(({ data: res }) => {
     purchaseConfirm(res);

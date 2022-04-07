@@ -62,6 +62,17 @@ class APIBitrix {
       .catch((err) => this.handleError(err));
   };
 
+  getAuth = async (path = '', headers) => {
+    const service = await this.create(headers);
+    return service
+      .request({
+        method: 'GET',
+        url: `${this.url}${path}`
+      })
+      .then((res) => res)
+      .catch((err) => this.handleError(err));
+  };
+
   post = async (path = '', data = {}, headers) => {
     const service = await this.create(headers);
     return service

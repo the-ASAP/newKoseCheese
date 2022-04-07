@@ -4,12 +4,8 @@ import Head from 'next/head';
 
 import { PromoSection } from 'components/sections/index/PromoSection/PromoSection';
 import { NewTastesSection } from 'components/sections/common/NewTastesSection/NewTastesSection';
-import { NewProductsSection } from 'components/sections/common/ProductsSection/newProductsSection';
 import { PopularSection } from 'components/sections/common/PopularSection/PopularSection';
-import { DiscountSection } from 'components/sections/common/DiscountSection/DiscountSection';
 import { RecipesSliderSection } from 'components/sections/common/RecipesSliderSection/RecipesSliderSection';
-import { TelegramPromoSection } from 'components/sections/index/TelegramPromoSection/TelegramPromoSection';
-import { InstagramSection } from 'components/sections/index/InstagramSection/InstagramSection';
 import { ModalWrapper } from 'components/modals/ModalWrapper/ModalWrapper';
 import { Cookies } from 'components/modals/Cookies/Cookies';
 
@@ -17,12 +13,10 @@ import { useModal } from 'hooks';
 
 import { PartnersSection } from 'components/sections/index/PartnersSection/PartnersSection';
 import APIBitrix from 'api/APIBitrix';
-import { getCookie } from 'functions';
 import { useDispatch, useSelector } from 'react-redux';
 import { favoriteItemsSelector } from 'redux/slices/favorite';
 import { addToFavorite } from 'redux/slices/favorite';
 import { successPurchasePopupChangeState, popUpChangeModalState } from 'redux/slices/modals';
-// import { addCategories } from 'redux/slices/categories'
 import { categoriesItemsSelector } from 'redux/slices/categories';
 import MainCookies from 'js-cookie';
 

@@ -1,10 +1,11 @@
+// @ts-nocheck
 import React from 'react';
 import { Input } from 'components/forms/Input/Input';
 import { FormContainer } from 'components/forms/FormContainer/FormContainer';
 import { PROFILE_VALIDATION_SCHEMA } from 'constants.js';
 import APIBitrix from 'api/APIBitrix';
 import { useDispatch, useSelector } from 'react-redux';
-import { setUserInfo, setUserPhone, userIdSelector, userInfoSelector } from 'redux/slices/user';
+import { setUserInfo, userIdSelector, userInfoSelector } from 'redux/slices/user';
 import { InputPhone } from 'components/forms/InputPhone/InputPhone';
 import { newPhonePopupChangeState, popUpChangeModalState } from 'redux/slices/modals';
 import s from './ProfilePersonal.module.scss';
@@ -20,23 +21,33 @@ export const ProfilePersonal = () => {
       name,
       surname,
       email
+    }).then((res) => {
+      if (res.code === 404) {
+        dispatch(
+          popUpChangeModalState({
+            visible: true,
+            text: 'Произошла ошибка.'
+          })
+        );
+      }
+      else {
+        dispatch(
+          popUpChangeModalState({
+            visible: true,
+            text: 'Данные успешно изменены.'
+          })
+        );
+
+        dispatch(
+            setUserInfo({
+              phone,
+              name,
+              surname,
+              email
+            })
+          );
+        }
     });
-
-    await dispatch(
-      setUserInfo({
-        phone,
-        name,
-        surname,
-        email
-      })
-    );
-
-    await dispatch(
-      popUpChangeModalState({
-        visible: true,
-        text: 'Данные успешно изменены.'
-      })
-    );
   };
 
   const callChangePhonePopup = () => {
@@ -57,7 +68,7 @@ export const ProfilePersonal = () => {
           >
             {() => (
               <>
-                <InputPhone id="phone" label="* Телефон" name="phone" disabled />
+                <InputPhone id="phone" label="* Телефон" name="phone" value={`${userInfo.phone}`} disabled />
                 <button type="button" onClick={callChangePhonePopup} className={s.changePhone}>
                   Изменить номер телефона
                 </button>

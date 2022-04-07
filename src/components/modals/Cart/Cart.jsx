@@ -13,7 +13,6 @@ import s from './Cart.module.scss';
 export const Cart = ({ closeModal }) => {
   const discountModal = useModal(false);
   const itemsInCart = useSelector(cartItemsSelector);
-  console.log(itemsInCart)
 
   return (
     <NewModalBody closeModal={closeModal} title="Корзина">
@@ -26,7 +25,7 @@ export const Cart = ({ closeModal }) => {
       )}
       <div className={s.products}>
         {itemsInCart.map((item) => (
-          <Purchase inCart key={item.item_id} params={item} />
+          <Purchase inCart key={item.id} params={item} />
         ))}
       </div>
       {itemsInCart?.length ? (

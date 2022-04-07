@@ -5,10 +5,9 @@ import { FormContainer } from "components/forms/FormContainer/FormContainer";
 
 import { OrderControls } from "components/Order/OrderControls/OrderControls";
 import { SubscribeControls } from "components/Order/SubscribeControls/SubscribeControls";
-import { useDispatch } from "react-redux";
 import s from "components/Order/Order.module.scss";
 
-export const Order = ({ controls, subscribe, data, showOrderControls = true, showControlButtons }) => {
+export const Order = ({ controls, subscribe, data, showOrderControls = true, showControlButtons, }) => {
   let { products, ...orderInfo } = data;
 
   const quantityProducts = data.products.reduce((acc, item) => {
@@ -19,10 +18,8 @@ export const Order = ({ controls, subscribe, data, showOrderControls = true, sho
 
   orderInfo = {...orderInfo, count: quantityProducts}
 
-  console.log(showControlButtons)
   const getOrders = (controlPanel, props) => products?.map((order, i) =>
     <OrderItem controls={controlPanel} key={i} controlButtons={showControlButtons} {...order} {...props}/>);
-
 
   return (
     <div className={s.container}>

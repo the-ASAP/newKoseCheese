@@ -28,6 +28,7 @@ export const NewPurchaseControl = ({ product, inCart, ...other }) => {
 
   const isItemInCart = productSelector?.id === product.id;
 
+  console.log(productSelector?.quantity)
   const [quantity, setQuantity] = React.useState(
     inCart ? parseInt(productSelector?.quantity, 10) : 1
   );

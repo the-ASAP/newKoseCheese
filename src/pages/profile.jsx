@@ -28,11 +28,11 @@ const profileData = [
     title: 'Заказы',
     component: <ProfileOrders />
   },
-  {
-    id: 2,
-    title: 'Подписки',
-    component: <ProfileSubscribe />
-  },
+  // {
+  //   id: 2,
+  //   title: 'Подписки',
+  //   component: <ProfileSubscribe />
+  // },
   {
     id: 3,
     title: 'Адреса доставки',
@@ -84,7 +84,7 @@ const Profile = () => {
     <Wrapper>
       {/* <ProfileHeader /> */}
       <ProfileWrapper>
-        {activePage.id === 7 && windowSize <= 1200 && windowSize >= 768 ? (
+        {windowSize <= 1200 && windowSize >= 768 ? (
           <BackButton clickHandler={backButtonHandler} additionClass="profile" />
         ) : (
           <ProfileAside categories={profileData} active={activeId} setActive={toggleActiveId} />

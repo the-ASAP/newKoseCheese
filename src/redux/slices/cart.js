@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { HYDRATE } from 'next-redux-wrapper';
 import APIBitrix from 'api/APIBitrix';
@@ -66,7 +67,7 @@ export const reqAddToCart = createAsyncThunk(
     const { user } = getState();
     try {
       await APIBitrix.post('basket/add/', {
-        fuser_id: user.id,
+        fuser_id: user.fuserId,
         product_id: productData.id,
         quantity: productData.quantity
       }).then((res) => {
@@ -90,13 +91,46 @@ export const reqAddToCart = createAsyncThunk(
   }
 );
 
+export const reqAddManyCart = createAsyncThunk(
+  `user/orders-history/repeat/`,
+  async (productsData, { dispatch, getState }) => {
+    const { user } = getState();
+    try {
+      await APIBitrix.post(
+        `user/orders-history/repeat/`,
+        {
+          fuser_id: user.fuserId,
+          items: productsData
+        }
+      ).then((res) => {
+        if (res.code === 200) {
+          dispatch(putProducts(res.data));
+        }
+        else {
+          throw new Error(
+            'Ошибка при добавлении товара. Попробуйте обновить страницу и добавить товар еще раз'
+          );
+        }
+      })
+    }
+    catch ({ message }) {
+      dispatch(
+        popUpChangeModalState({
+          visible: true,
+          text: message
+        })
+      );
+    }
+  }
+)
+
 export const reqIncProductCount = createAsyncThunk(
   'cart/reqIncProductCount',
   async (productData, { dispatch, getState }) => {
     const { user } = getState();
     try {
       await APIBitrix.post('basket/increment/', {
-        fuser_id: user.id,
+        fuser_id: user.fuserId,
         product_id: productData.id,
         quantity: 1
       }).then((res) => {
@@ -125,7 +159,7 @@ export const reqDecProductCount = createAsyncThunk(
     const { user } = getState();
     try {
       await APIBitrix.post('basket/decrement/', {
-        fuser_id: user.id,
+        fuser_id: user.fuserId,
         product_id: productData.id,
         quantity: -1
       }).then((res) => {
@@ -154,7 +188,7 @@ export const reqRemoveFromCart = createAsyncThunk(
     const { user } = getState();
     try {
       await APIBitrix.post('basket/remove/', {
-        fuser_id: user.id,
+        fuser_id: user.fuserId,
         product_id: productData.id
 
       }).then((res) => {
@@ -180,10 +214,11 @@ export const reqRemoveFromCart = createAsyncThunk(
 export const reqGetProducts = createAsyncThunk(
   'cart/reqGetProducts',
   async (_, { dispatch, getState }) => {
+    console.log(getState())
     const { user } = getState();
     try {
       await APIBitrix.post('basket/items/', {
-        fuser_id: user.id
+        fuser_id: user.fuserId || localStorage.getItem('fuser_id')
       }).then((res) => {
         if (res.code === 200) {
           dispatch(putProducts(res.data || []));
