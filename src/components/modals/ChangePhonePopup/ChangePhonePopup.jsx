@@ -17,7 +17,6 @@ export const ChangePhonePopup = () => {
 
   const changePhoneHandler = async ({ newPhone }) => {
     await APIBitrix.post('user/new-phone/', {
-      user_id: userId,
       new_phone: newPhone.replace(/\s+/g, '')
     });
     await setConfirm(true);
@@ -25,7 +24,6 @@ export const ChangePhonePopup = () => {
 
   const confirmNewPhoneHandler = async ({ newPhone, code }) => {
     const response = await APIBitrix.post('user/new-phone/confirm/', {
-      user_id: userId,
       new_phone: newPhone.replace(/\s+/g, ''),
       code
     });
@@ -47,10 +45,6 @@ export const ChangePhonePopup = () => {
     //   visible: true,
     //   text: "Номер телефона был успешно изменен"
     // }));
-  };
-
-  const popupCloseHandler = () => {
-    dispatch(newPhonePopupChangeState(false));
   };
 
   return (

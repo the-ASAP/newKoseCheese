@@ -17,14 +17,9 @@ import { incPage, historyAttrItemsSelector, addNewHistory } from 'redux/slices/h
 import { historyItemsSelector } from 'redux/slices/history'
 import { useDispatch, useSelector } from 'react-redux'
 import { Order } from "components/Order/Order";
-import { FarmContentLargeSection } from 'components/sections/farm/FarmContentLargeSection/FarmContentLargeSection';
+import { userInfoSelector } from 'redux/slices/user';
 
-const initialValues = {
-  name: 'Сергей',
-  phone: +79271015487,
-  point: '',
-  orderProduct: ''
-};
+const initialValues = {};
 
 const returnReasonOptions = ['Товар просрочен', 'Ненадлежащее качество товара', 'Я передумал'];
 
@@ -35,10 +30,10 @@ const salePoints = [
 ];
 
 export const ProfileReturn = () => {
+  const userInfo = useSelector(userInfoSelector);
   const { orders } = useSelector(historyItemsSelector)
 
   const allOrders = orders.map(order => order.id)
-
 
   const [orderNumber, setOrderNumber] = React.useState(0);
   const [curProducts, setCurProducts] = React.useState(null);
@@ -57,10 +52,19 @@ export const ProfileReturn = () => {
   const [showDCardNumber, setShowCardNumber] = React.useState(false);
 
   const submitHandler = (values) => {
-    console.log(values);
-    APIBitrix.post('forms/refund/', {
-      values
-    });
+    const submitValues = {
+      ...values,
+      user_phone: userInfo.phone,
+      images: [values.photo1, values.photo2, values.photo3].filter(Boolean)
+    }
+    delete submitValues.photo1
+    delete submitValues.photo2
+    delete submitValues.photo3
+
+    console.log(submitValues)
+    // APIBitrix.post('forms/refund/', {
+    //   values
+    // });
   };
 
   const selectHandler = (value) => {
@@ -93,7 +97,7 @@ export const ProfileReturn = () => {
                       placeholder=""
                       options={allOrders}
                       selectHandler={(e) => {
-                        formProps.setFieldValue('orderNumber', e.value);
+                        formProps.setFieldValue('order_id', e.value);
                         setOrderNumber(e.value)
                         setProductDropDownDisabled(false)
                         selectHandler(e);
@@ -115,11 +119,9 @@ export const ProfileReturn = () => {
                       }}
                     /> */}
 
-                    {/* <Input label="*Телефон" type="number" id="phone" name="phone" />
-                    <Input label="*Имя" type="text" id="name" name="name" />
-                     */}
-                    <Input label="*Фио" type="text" id="fio" name="fio" />
-                    <Input label="*Е-mail" type="text" id="email" name="email" />
+                    <Input label="*Имя" type="text" id="name" name="user_name" />
+                    <Input label="*Фамилия" type="text" id="surname" name="user_surname" />
+                    <Input label="*Е-mail" type="text" id="email" name="user_email" />
                     <DropdownCustom
                       label="*Причина замены"
                       placeholder="Выберите причину"
@@ -139,8 +141,8 @@ export const ProfileReturn = () => {
                       <div className={s.onchange}>
                         <Input
                           id="product"
-                          name="replace"
-                          value="product"
+                          name="exchange_for"
+                          value="Товар"
                           type="radio"
                           additionClass="checkbox"
                           onClick={() => setShowCardNumber(false)}
@@ -152,8 +154,8 @@ export const ProfileReturn = () => {
                       <div className={s.onchange}>
                         <Input
                           id="internal"
-                          name="replace"
-                          value="internal"
+                          name="exchange_for"
+                          value="На внутренний счет"
                           type="radio"
                           additionClass="checkbox"
                           onClick={() => setShowCardNumber(false)}
@@ -165,8 +167,8 @@ export const ProfileReturn = () => {
                       <div className={s.onchange}>
                         <Input
                           id="card"
-                          name="replace"
-                          value="card"
+                          name="exchange_for"
+                          value="Деньгами на карту"
                           type="radio"
                           additionClass="checkbox"
                           onClick={() => setShowCardNumber(true)}
@@ -177,7 +179,7 @@ export const ProfileReturn = () => {
                       </div>
                     </div>
                     {showDCardNumber &&
-                      <Input label="Номер карты" type="number" id="cardNumber" name="cardNumber" />
+                      <Input label="Номер карты" type="number" id="cardNumber" name="card_number" />
                     }
                   </div>
                   <div className={s.block}>
@@ -208,8 +210,8 @@ export const ProfileReturn = () => {
                       <div className={s.onchange}>
                         <Input
                           id="toCourier"
-                          name="return"
-                          value="toCourier"
+                          name="send_to"
+                          value="Вернём товар курьеру"
                           type="radio"
                           additionClass="checkbox"
                           onClick={(e) => setShowSalePoints(false)}
@@ -221,8 +223,8 @@ export const ProfileReturn = () => {
                       <div className={s.onchange}>
                         <Input
                           id="toPoint"
-                          name="return"
-                          value="toPoint"
+                          name="send_to"
+                          value="Вернём товар на точку продаж"
                           type="radio"
                           additionClass="checkbox"
                           onClick={(e) => setShowSalePoints(true)}

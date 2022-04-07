@@ -7,46 +7,90 @@ import { RemoveButton } from 'components/buttons/RemoveButton/RemoveButton';
 import { FormContainer } from 'components/forms/FormContainer/FormContainer';
 import { YMaps, Map } from 'react-yandex-maps';
 import s from './AddressForm.module.scss';
+import APIBitrix from 'api/APIBitrix'
+import { popUpChangeModalState } from 'redux/slices/modals';
+import { useDispatch } from 'react-redux';
 
 export const AddressForm = ({ initialValues, removeAddressHandler, id }) => {
-  const submitHandler = (values) => {
-    alert(values);
+  const dispatch = useDispatch()
+
+  const submitHandler = async (values) => {
+    const submitValues = {
+      ...values,
+      default: false,
+      address: userAddress,
+    }
+
+    if (initialValues.newId) {
+      await APIBitrix.post(
+        `user/addresses/add/`,
+        {
+          items: [submitValues]
+        }
+      ).then((res) => {
+        if (res.code === 404) {
+          dispatch(popUpChangeModalState({
+            visible: true,
+            text: `Произошла ошибка, проверьте поля или попробуйте отправить данные позже`
+          }))
+        }
+        else {
+          dispatch(popUpChangeModalState({
+            visible: true,
+            text: `Данные успешно добавлены`
+          }))
+        }
+      })
+    }
+    else {
+      await APIBitrix.post(
+        `user/addresses/update/`,
+        submitValues
+      ).then((res) => {
+        if (res.code === 404) {
+          dispatch(popUpChangeModalState({
+            visible: true,
+            text: `Произошла ошибка, проверьте поля или попробуйте отправить данные позже`
+          }))
+        }
+        else {
+          dispatch(popUpChangeModalState({
+            visible: true,
+            text: `Данные успешно изменены`
+          }))
+        }
+      })
+    }
   };
 
   const ymapsRef = React.useRef(null);
-  const [userAddress, setUserAddress] = React.useState('')
+  const [userAddress, setUserAddress] = React.useState(initialValues.address)
 
   return (
     <FormContainer
       enableReinitialize
       initialValues={initialValues}
-      // validationSchema={ADDRESS_VALIDATION_SCHEMA}
-      validateOnChange={false}
-      validateOnBlur={false}
-      submitHandler={submitHandler}
+      onSubmit={submitHandler}
     >
       {(formProps) => (
         <div className={s.form}>
           <div className={s.column}>
-            <Input id={`title_${new Date().getTime()}`} label="Название адреса" name="title" type="text" />
-            <NewInput 
-              id={`user_address_${id}`} 
-              label="Адрес" 
-              name="user__address" 
-              type="text" 
+            <Input id={`title_${new Date().getTime()}`} label="Название адреса" name="name" type="text" />
+            <NewInput
+              id={`user_address_${id}`}
+              label="Адрес"
+              name="address"
+              type="text"
               value={userAddress}
               onChange={(e) => {
                 setUserAddress(e.target.value)
               }}  />
-            {/* <Input id={`city_${new Date().getTime()}`} label="Город" name="city" type="text" />
-            <Input id={`street_${new Date().getTime()}`} label="Улица" name="street" type="text" /> */}
             <div className={s.column}>
-              {/* <Input id={`house_${new Date().getTime()}`} label="Дом" name="house" type="text" /> */}
               <Input
-                id={`floor_${new Date().getTime()}`}
+                id={`approach_${new Date().getTime()}`}
                 label="Подъезд"
-                name="floor"
-                type="email"
+                name="approach"
+                type="text"
               />
             </div>
             <div className={s.column}>
@@ -56,7 +100,6 @@ export const AddressForm = ({ initialValues, removeAddressHandler, id }) => {
                 name="apartment"
                 type="text"
               />
-              {/* <Input id={`code_${new Date().getTime()}`} label="Код" name="code" type="text" /> */}
             </div>
           </div>
           <div className={s.column}>
@@ -69,7 +112,7 @@ export const AddressForm = ({ initialValues, removeAddressHandler, id }) => {
           </div>
           <div className={s.controls}>
             <button type="submit" className={s.submit}>
-              Редактировать
+              Сохранить
             </button>
             <RemoveButton clickHandler={() => removeAddressHandler(formProps, id)} />
           </div>

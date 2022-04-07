@@ -7,7 +7,7 @@ import { OrderControls } from "components/Order/OrderControls/OrderControls";
 import { SubscribeControls } from "components/Order/SubscribeControls/SubscribeControls";
 import s from "components/Order/Order.module.scss";
 
-export const Order = ({ controls, subscribe, data, showOrderControls = true, showControlButtons }) => {
+export const Order = ({ controls, subscribe, data, showOrderControls = true, showControlButtons, }) => {
   let { products, ...orderInfo } = data;
 
   const quantityProducts = data.products.reduce((acc, item) => {

@@ -24,31 +24,43 @@ const MyApp = ({ Component, pageProps, router }) => {
   const categoriesItems = useSelector(categoriesItemsSelector)
 
   const putClientInStorage = async () => {
-    const getClientId = await APIBitrix.get('user/fuser-id/').then((res) => res.fuser_id);
-    localStorage.setItem('fuser_id', getClientId);
+    if (!localStorage.getItem('fuser_id')) {
+      const getClientId = await APIBitrix.get('user/fuser-id/').then((res) => res.fuser_id);
+      localStorage.setItem('fuser_id', getClientId);
+    }
+    dispatch(setUserInfo({ user_id: localStorage.getItem('fuser_id') }));
+    dispatch(reqGetProducts());
   };
 
   const getProducts = async () => {
-    if (localStorage.getItem('authToken') === '*') {
-      await APIBitrix.post(
-        'user/personal-data/',
-        {},
+    if (localStorage.getItem('authToken')) {
+      if (!localStorage.getItem('fuser_id')) {
+        const getClientId = await APIBitrix.get('user/fuser-id/').then((res) => res.fuser_id);
+        localStorage.setItem('fuser_id', getClientId);
+      }
+
+      const dataAuthToken = await APIBitrix.getAuth(
+        'user/new-token/',
         {
           Authorization: `Bearer ${localStorage.getItem('authToken')}`
         }
-      ).then((res) => {
-        const userInfo = res.data
-        dispatch(setUserInfo({ ...userInfo, isLogged: true }))
-        dispatch(reqGetProducts());
-      });
+      ).then(async ({ data }) => {
+        if (data.token) {
+          localStorage.setItem('authToken', data.token)
+
+          await APIBitrix.post(
+            'user/personal-data/',
+            {},
+          ).then((res) => {
+            const userInfo = res.data
+            dispatch(setUserInfo({ ...userInfo, isLogged: true, fuserId: localStorage.getItem('fuser_id') }))
+            dispatch(reqGetProducts());
+          });
+        }
+        else putClientInStorage();
+      })
     }
-    else {
-      if (!localStorage.getItem('fuser_id')) {
-        putClientInStorage();
-      }
-      dispatch(setUserInfo({ user_id: localStorage.getItem('fuser_id') }));
-      dispatch(reqGetProducts());
-    }
+    else putClientInStorage();
   };
 
   let categories = [];

@@ -3,15 +3,18 @@ import { RepeatIcon, ReplaceIcon } from "components/SVG/Icons";
 import { addOrderToReturn } from "redux/slices/returnOrder";
 import { useDispatch } from "react-redux";
 import s from "components/Order/OrderControls/OrderControls.module.scss";
-import { reqAddToCart} from 'redux/slices/cart';
+import { reqAddToCart, reqAddManyCart} from 'redux/slices/cart';
 import { cartChangeModalState } from 'redux/slices/modals';
 
 export const OrderControls = ({ formProps, order }) => {
   const dispatch = useDispatch();
 
   const returnOrderHandler = () => {
-    order.products.map(item => dispatch(reqAddToCart(item)))
-    dispatch(cartChangeModalState(true))
+    // order.products.map(item => dispatch(reqAddToCart(item)))
+    // dispatch(cartChangeModalState(true))
+
+    const submitValues = order.products.map(item => ({ id: item.id, quantity: Number(item.quantity) }))
+    dispatch(reqAddManyCart(submitValues))
   }
 
   return (

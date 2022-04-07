@@ -138,7 +138,7 @@ export const subscribeDays = [
 
 export const PROFILE_VALIDATION_SCHEMA = Yup.object().shape({
   phone: Yup.string()
-    .length(11, 'Номер телефона должен содержать 11 символов')
+    // .length(11, 'Номер телефона должен содержать 11 символов')
     .required('Введите номер телефона'),
   name: Yup.string().min(2, 'Имя должно сидержать больше двух букв').required('Введите имя'),
   surname: Yup.string(),

@@ -41,7 +41,7 @@ export const AuthSection = () => {
     };
 
     const confirmRequest = await APIAuth.confirm(userData, verification);
-    // await dispatch(addUserId(userData.user_id));
+    localStorage.setItem('authToken', confirmRequest.token);
 
     const profileInfo = await APIBitrix.post(
       'user/personal-data/',
@@ -51,11 +51,8 @@ export const AuthSection = () => {
       }
     ).then((res) => {
       const userInfo = res.data
-      dispatch(setUserInfo({ ...userInfo, isLogged: true }))
+      dispatch(setUserInfo({ ...userInfo, isLogged: true, fuserId: localStorage.getItem('fuser_id') }))
     });
-
-    localStorage.setItem('authToken', confirmRequest.token);
-    localStorage.removeItem("fuser_id");
 
     router.push('/profile');
   };
@@ -73,9 +70,6 @@ export const AuthSection = () => {
         validateOnChange={false}
         validateOnBlur={false}
         className="loginForm"
-        // submitHandler={(values) => {
-        //   confirmField ? confirmHandler(formData, values) : regHandler(values);
-        // }}
         onSubmit={(values) => {
           confirmField ? confirmHandler(formData, values) : regHandler(values);
         }}

@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React from 'react';
 import { Input } from 'components/forms/Input/Input';
 import { FormContainer } from 'components/forms/FormContainer/FormContainer';
@@ -20,30 +21,39 @@ export const ProfilePersonal = () => {
       name,
       surname,
       email
+    }).then((res) => {
+      if (res.code === 404) {
+        dispatch(
+          popUpChangeModalState({
+            visible: true,
+            text: 'Произошла ошибка.'
+          })
+        );
+      }
+      else {
+        dispatch(
+          popUpChangeModalState({
+            visible: true,
+            text: 'Данные успешно изменены.'
+          })
+        );
+
+        dispatch(
+            setUserInfo({
+              phone,
+              name,
+              surname,
+              email
+            })
+          );
+        }
     });
-
-    await dispatch(
-      setUserInfo({
-        phone,
-        name,
-        surname,
-        email
-      })
-    );
-
-    await dispatch(
-      popUpChangeModalState({
-        visible: true,
-        text: 'Данные успешно изменены.'
-      })
-    );
   };
 
   const callChangePhonePopup = () => {
     dispatch(newPhonePopupChangeState(true));
   };
 
-  console.log(userInfo.phone)
   return (
     <div className={s.wrapper}>
       <div className={s.container}>
@@ -58,7 +68,7 @@ export const ProfilePersonal = () => {
           >
             {() => (
               <>
-                <InputPhone id="phone" label="* Телефон" name="phone" value={userInfo.phone} disabled />
+                <InputPhone id="phone" label="* Телефон" name="phone" value={`${userInfo.phone}`} disabled />
                 <button type="button" onClick={callChangePhonePopup} className={s.changePhone}>
                   Изменить номер телефона
                 </button>
