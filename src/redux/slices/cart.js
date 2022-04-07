@@ -36,6 +36,7 @@ export const cartSlice = createSlice({
       state.totalPrice -= parseInt(product.price, 10);
     },
     putProducts(state, action) {
+      console.log(action)
       state.items = action.payload;
       state.totalPrice = action.payload.reduce(
         (acc, current) => acc + current.price * current.quantity,
@@ -104,7 +105,7 @@ export const reqAddManyCart = createAsyncThunk(
         }
       ).then((res) => {
         if (res.code === 200) {
-          dispatch(putProducts(res.data));
+          dispatch(putProducts(res.items || []));
         }
         else {
           throw new Error(
@@ -214,13 +215,13 @@ export const reqRemoveFromCart = createAsyncThunk(
 export const reqGetProducts = createAsyncThunk(
   'cart/reqGetProducts',
   async (_, { dispatch, getState }) => {
-    console.log(getState())
     const { user } = getState();
     try {
       await APIBitrix.post('basket/items/', {
         fuser_id: user.fuserId || localStorage.getItem('fuser_id')
       }).then((res) => {
         if (res.code === 200) {
+          console.log(res)
           dispatch(putProducts(res.data || []));
         } else {
           throw new Error('Произошла ошибка при загрузке товаров. Попробуйте обновить страницу');

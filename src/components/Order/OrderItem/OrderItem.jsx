@@ -1,21 +1,46 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import clsx from "clsx";
 import { Input } from "components/forms/Input/Input";
 import { MinusIcon, PlusIcon } from 'components/SVG/Icons';
+import { returnOrderSelector, addProduct, removeProduct, updateProduct } from 'redux/slices/returnOrder';
+import { useDispatch, useSelector } from "react-redux";
+
 import s from "components/Order/OrderItem/OrderItem.module.scss";
 
 export const OrderItem = (data) => {
-  const { img, name, addition, price, weight, quantity, controls, controlButtons } = data;
+  const { id, img, name, addition, price, weight, quantity, controls, controlButtons } = data;
+  const dispatch = useDispatch()
+  const returnProducts = useSelector(returnOrderSelector)
 
   const [numQuantity, setNumQuantity] = React.useState(Number(~~quantity));
 
   const decNumQuan = () => {
-    if(numQuantity > 1) setNumQuantity(prev => --prev)
+    if (numQuantity > 1) {
+      setNumQuantity(prev => --prev)
+    }
    }
 
   const incNumQuan = () => {
-    if(numQuantity !== ~~quantity) setNumQuantity(prev => ++prev)
+    if (numQuantity !== ~~quantity) {
+      setNumQuantity(prev => ++prev)
+    }
   }
+
+  const [checked, setChecked] = useState(false)
+
+  // useEffect(() => {
+  //   if (checked) {
+  //     dispatch(addProduct({
+  //       id,
+  //       addition,
+  //       title: name,
+  //       quantity: Number(~~quantity),
+  //     }))
+  //   }
+  //   else {
+  //     dispatch(removeProduct({id}))
+  //   }
+  // }, [checked])
 
   return (
     <div className={clsx(s.container, !controls && s.border)}>
@@ -26,6 +51,8 @@ export const OrderItem = (data) => {
             containerClass="order"
             name={`${name} ${addition}`}
             id={`${name} ${addition}`}
+            checked={checked}
+            onClick={() => setChecked(prev => !prev)}
           />}
         <img src={img} alt={name} className={s.image}/>
         <div className={s.data}>
