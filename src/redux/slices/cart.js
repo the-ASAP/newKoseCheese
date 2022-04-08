@@ -105,6 +105,14 @@ export const reqAddManyCart = createAsyncThunk(
       ).then((res) => {
         if (res.code === 200) {
           dispatch(putProducts(res.items || []));
+          if (res.messages) {
+            dispatch(
+              popUpChangeModalState({
+                visible: true,
+                text: "Некоторые продукты не были добавлены в корзину, ввиду их отсутствия."
+              })
+            );
+          }
         }
         else {
           throw new Error(

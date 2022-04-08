@@ -49,10 +49,12 @@ export const ProfileReturn = () => {
   const [showSalePoints, setShowSalePoints] = React.useState(false);
   const [showDCardNumber, setShowCardNumber] = React.useState(false);
 
+  const [returnProducts, setReturnProducts] = useState([])
+
   const submitHandler = (values) => {
     const submitValues = {
       ...values,
-      order_items: returnProducts,
+      order_items: [...returnProducts],
       user_phone: userInfo.phone,
       images: [values.photo1, values.photo2, values.photo3].filter(Boolean)
     }
@@ -86,8 +88,6 @@ export const ProfileReturn = () => {
   const selectHandler = (value) => {
     setOrderNumber(value);
   };
-
-  const [returnProducts, setReturnProducts] = useState([])
 
   return (
     <>
