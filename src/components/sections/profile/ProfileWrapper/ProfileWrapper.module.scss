@@ -3,10 +3,12 @@
 .container {
   display: flex;
   justify-content: space-between;
+  min-height: 70vh;
 }
 
 @media (max-width: $mobile) {
   .container {
     flex-wrap: wrap;
+    min-height: 0;
   }
 }

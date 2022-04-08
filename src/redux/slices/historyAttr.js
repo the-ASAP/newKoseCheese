@@ -17,7 +17,7 @@ export const historyAttrSlice = createSlice({
   initialState,
   reducers: {
     startPage(state) {
-        state.page = 1 
+        state.page = 1
     },
     incPage(state) {
       state.page = state.page + 1;
@@ -55,10 +55,17 @@ export const getNewHistory = createAsyncThunk('user/orders-history/items/', asyn
     const { historyAttr } = getState()
     try {
         await APIBitrix.post('user/orders-history/items/', historyAttr).then((res) => {
-            dispatch(getHistory(res.data))
+          if (res.code !== 404) dispatch(getHistory(res.data))
+          else dispatch(
+            popUpChangeModalState({
+              visible: true,
+              text: `Авторизируйтесь для просмотра вашей истории`
+            })
+          );
         })
     }
     catch({message}) {
+      console.log(message)
         dispatch(
             popUpChangeModalState({
               visible: true,

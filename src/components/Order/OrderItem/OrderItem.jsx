@@ -2,45 +2,47 @@ import React, { useState, useEffect } from "react";
 import clsx from "clsx";
 import { Input } from "components/forms/Input/Input";
 import { MinusIcon, PlusIcon } from 'components/SVG/Icons';
-import { returnOrderSelector, addProduct, removeProduct, updateProduct } from 'redux/slices/returnOrder';
-import { useDispatch, useSelector } from "react-redux";
 
 import s from "components/Order/OrderItem/OrderItem.module.scss";
 
 export const OrderItem = (data) => {
-  const { id, img, name, addition, price, weight, quantity, controls, controlButtons } = data;
-  const dispatch = useDispatch()
-  const returnProducts = useSelector(returnOrderSelector)
+  const { id, img, name, addition, price, weight, quantity, controls, controlButtons, setReturnProducts } = data;
 
   const [numQuantity, setNumQuantity] = React.useState(Number(~~quantity));
 
   const decNumQuan = () => {
-    if (numQuantity > 1) {
+    if (numQuantity > 1 && setReturnProducts) {
       setNumQuantity(prev => --prev)
+      setReturnProducts(prev => prev.map(product => {
+        if(product.id === id) product.quantity = numQuantity
+        return product
+      }))
     }
    }
 
   const incNumQuan = () => {
-    if (numQuantity !== ~~quantity) {
+    if (numQuantity !== ~~quantity && setReturnProducts) {
       setNumQuantity(prev => ++prev)
+      setReturnProducts(prev => prev.map(product => {
+        if(product.id === id) product.quantity = numQuantity
+        return product
+      }))
     }
   }
 
   const [checked, setChecked] = useState(false)
 
-  // useEffect(() => {
-  //   if (checked) {
-  //     dispatch(addProduct({
-  //       id,
-  //       addition,
-  //       title: name,
-  //       quantity: Number(~~quantity),
-  //     }))
-  //   }
-  //   else {
-  //     dispatch(removeProduct({id}))
-  //   }
-  // }, [checked])
+  useEffect(() => {
+    if (checked && setReturnProducts) {
+      setReturnProducts(prev => [
+        ...prev,
+        {id, quantity: Number(~~quantity), title: name, addition}
+      ])
+    }
+    if (!checked && setReturnProducts) {
+      setReturnProducts(prev => [...prev].filter(item => item.id !== id))
+    }
+  }, [checked])
 
   return (
     <div className={clsx(s.container, !controls && s.border)}>

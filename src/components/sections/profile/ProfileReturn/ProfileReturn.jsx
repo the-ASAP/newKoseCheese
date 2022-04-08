@@ -7,17 +7,14 @@ import { DropdownCustom } from 'components/common/DropdownCustom/DropdownCustom'
 import { InputPhoto } from 'components/forms/InputPhoto/InputPhoto';
 import { windowSize } from 'constants.js';
 import { useClientSide } from 'hooks.js';
-import { returnOrderSelector } from 'redux/slices/returnOrder';
 import s from './ProfileReturn.module.scss';
-import { Field } from 'formik';
-import Dropdown from 'react-dropdown';
 import { Textarea } from 'components/forms/Textarea/Textarea';
-import APIBitrix from 'api/APIBitrix';
-import { incPage, historyAttrItemsSelector, addNewHistory } from 'redux/slices/historyAttr';
 import { historyItemsSelector } from 'redux/slices/history'
 import { useDispatch, useSelector } from 'react-redux'
 import { Order } from "components/Order/Order";
 import { userInfoSelector } from 'redux/slices/user';
+import APIBitrix from 'api/APIBitrix';
+import { popUpChangeModalState } from 'redux/slices/modals';
 
 const initialValues = {};
 
@@ -30,6 +27,7 @@ const salePoints = [
 ];
 
 export const ProfileReturn = () => {
+  const dispatch = useDispatch()
   const userInfo = useSelector(userInfoSelector);
   const { orders } = useSelector(historyItemsSelector)
 
@@ -54,6 +52,7 @@ export const ProfileReturn = () => {
   const submitHandler = (values) => {
     const submitValues = {
       ...values,
+      order_items: returnProducts,
       user_phone: userInfo.phone,
       images: [values.photo1, values.photo2, values.photo3].filter(Boolean)
     }
@@ -61,15 +60,34 @@ export const ProfileReturn = () => {
     delete submitValues.photo2
     delete submitValues.photo3
 
-    console.log(submitValues)
-    // APIBitrix.post('forms/refund/', {
-    //   values
-    // });
+    APIBitrix.post(
+      'forms/refund/', {
+      submitValues
+    }).then((res) => {
+      if (res.code === 404) {
+        dispatch(
+          popUpChangeModalState({
+            visible: true,
+            text: 'Произошла ошибка. Попробуйте отправить запрос позже'
+          })
+        )
+      }
+      else {
+        dispatch(
+          popUpChangeModalState({
+            visible: true,
+            text: 'Заявка на возврат успешно отправлена.'
+          })
+        )
+      }
+    })
   };
 
   const selectHandler = (value) => {
     setOrderNumber(value);
   };
+
+  const [returnProducts, setReturnProducts] = useState([])
 
   return (
     <>
@@ -83,6 +101,7 @@ export const ProfileReturn = () => {
                 return
                 showOrderControls={false}
                 showControlButtons={true}
+                setReturnProducts={setReturnProducts}
               />
             </div>
           }

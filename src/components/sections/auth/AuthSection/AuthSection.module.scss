@@ -55,3 +55,9 @@
     color: $gen;
   }
 }
+
+@media (max-width: 768px) {
+  .container {
+    margin-top: 1.8rem;
+  }
+}

@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React from "react";
 import { useDispatch, useSelector } from 'react-redux'
 import { historyItemsSelector } from 'redux/slices/history'
@@ -25,7 +26,9 @@ export const ProfileOrders = () => {
     <>
       <ProfileControls/>
       {history && history?.orders?.map((order, i) => <Order data={order} key={Date.now() + i} controls/>)}
-      {history?.orders?.length > 0 && history?.count && (history?.count > history?.orders.length) && <button type="button" className={s.more} onClick={addMoreProducts}>Показать еще +</button>}
+      {(history?.orders?.length > 0 && history?.count && history?.count > history?.orders.length) &&
+        <button type="button" className={s.more} onClick={addMoreProducts}>Показать еще +</button>
+      }
     </>
   );
 };

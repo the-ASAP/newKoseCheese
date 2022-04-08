@@ -11,8 +11,8 @@ export const historySlice = createSlice({
   initialState,
   reducers: {
     getHistory(state, action) {
-      state.count = action.payload.count;
-      state.orders = action.payload.orders
+      state.count = action.payload.count || 0;
+      state.orders = action.payload.orders || [];
     },
     addHistory(state, action) {
       state.orders.push(...action.payload)
