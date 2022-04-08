@@ -28,7 +28,7 @@ const MyApp = ({ Component, pageProps, router }) => {
       const getClientId = await APIBitrix.get('user/fuser-id/').then((res) => res.fuser_id);
       localStorage.setItem('fuser_id', getClientId);
     }
-    dispatch(setUserInfo({ user_id: localStorage.getItem('fuser_id') }));
+    dispatch(setUserInfo({ fuserId: localStorage.getItem('fuser_id') }));
     dispatch(reqGetProducts());
   };
 
