@@ -33,7 +33,11 @@ export const ProfileDelivery = (props) => {
           visible: true,
           text: 'Адресс удален'
         }))
-        setAddresses(addresses.filter(point => id !== point.id));
+        // setAddresses(addresses.filter(point => id !== point.id));
+        const getAddresses = async () => {
+          await APIBitrix.get(`user/addresses/items/`).then(res => setAddresses(res))
+        }
+        getAddresses()
       })
       .catch(() => {
         dispatch(popUpChangeModalState({
@@ -41,10 +45,9 @@ export const ProfileDelivery = (props) => {
           text: 'Произошла ошибка'
         }))
       })
-
-
-
   };
+
+  console.log(addresses)
 
   return (
     <div className={s.wrapper}>

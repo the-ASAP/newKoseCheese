@@ -48,11 +48,11 @@ const profileData = [
     title: 'Отправка отзыва',
     component: <ProfileFeedback />
   },
-  {
-    id: 6,
-    title: 'Программа лояльности',
-    component: <ProfileLoyalty />
-  },
+  // {
+  //   id: 6,
+  //   title: 'Программа лояльности',
+  //   component: <ProfileLoyalty />
+  // },
   {
     id: 7,
     title: 'Возврат товара',
