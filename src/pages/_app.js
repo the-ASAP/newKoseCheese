@@ -23,52 +23,40 @@ const MyApp = ({ Component, pageProps, router }) => {
   const dispatch = useDispatch();
   const categoriesItems = useSelector(categoriesItemsSelector)
 
-  const putClientInStorage = async () => {
+  const getProductsForFUserId = async () => {
     if (!localStorage.getItem('fuser_id')) {
-      const getClientId = await APIBitrix.get('user/fuser-id/').then((res) => res.fuser_id);
-      localStorage.setItem('fuser_id', getClientId);
+      const FUserId = await APIBitrix.get('user/fuser-id/').then((res) => res.fuser_id);
+      localStorage.setItem('fuser_id', FUserId);
     }
-    dispatch(setUserInfo({ fuserId: localStorage.getItem('fuser_id') }));
     dispatch(reqGetProducts());
+  }
+
+  const authGuest = async () => {
+    localStorage.removeItem('authToken')
+    getProductsForFUserId()
+    dispatch(setUserInfo({ fuserId: localStorage.getItem('fuser_id') }));
   };
 
-  const getProducts = async () => {
-    if (localStorage.getItem('authToken')) {
-      if (!localStorage.getItem('fuser_id')) {
-        const getClientId = await APIBitrix.get('user/fuser-id/').then((res) => res.fuser_id);
-        localStorage.setItem('fuser_id', getClientId);
-      }
+  const authClient = async () => {
+    getProductsForFUserId()
 
-      const dataAuthToken = await APIBitrix.getAuth(
-        'user/new-token/',
-        {
-          Authorization: `Bearer ${localStorage.getItem('authToken')}`
-        }
-      ).then(async ({ data }) => {
-        if (data.token) {
-          localStorage.setItem('authToken', data.token)
-
-          await APIBitrix.post(
-            'user/personal-data/',
-            {},
-          ).then((res) => {
-            const userInfo = res.data
-            dispatch(setUserInfo({ ...userInfo, isLogged: true, fuserId: localStorage.getItem('fuser_id') }))
-            dispatch(reqGetProducts());
-          });
-        }
-        else putClientInStorage();
-      })
+    const dataAuthToken = await APIBitrix.getAuth('user/new-token/').then(res => res.data?.token)
+    if (dataAuthToken) {
+      localStorage.setItem('authToken', dataAuthToken)
+      const userInfo = await APIBitrix.post('user/personal-data/').then(res => res.data)
+      if (userInfo) dispatch(setUserInfo({ ...userInfo, isLogged: true, fuserId: localStorage.getItem('fuser_id') }))
     }
-    else putClientInStorage();
+    else authGuest();
   };
 
-  let categories = [];
-  React.useEffect(async () => {
-    getProducts();
 
-    categories = await APIBitrix.get('products/categories/').then((res) => res);
-    if(!categoriesItems.length) dispatch(addCategories(categories));
+  React.useEffect(async () => {
+    authClient();
+
+    if (!categoriesItems.length) {
+      const categories = await APIBitrix.get('products/categories/').then((res) => res);
+      dispatch(addCategories(categories));
+    }
   }, []);
 
   return (

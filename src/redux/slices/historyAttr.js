@@ -54,24 +54,23 @@ export const historyAttrItemsSelector = (state) => state.historyAttr;
 export const getNewHistory = createAsyncThunk('user/orders-history/items/', async(_, {dispatch, getState}) => {
     const { historyAttr } = getState()
     try {
-        await APIBitrix.post('user/orders-history/items/', historyAttr).then((res) => {
-          if (res.code !== 404) dispatch(getHistory(res.data))
-          else dispatch(
-            popUpChangeModalState({
-              visible: true,
-              text: `Авторизируйтесь для просмотра вашей истории`
-            })
-          );
-        })
+      await APIBitrix.post('user/orders-history/items/', historyAttr).then((res) => {
+        if (res.code !== 404) dispatch(getHistory(res.data))
+        else dispatch(
+          popUpChangeModalState({
+            visible: true,
+            text: `Авторизируйтесь для просмотра вашей истории`
+          })
+        );
+      })
     }
     catch({message}) {
-      console.log(message)
-        dispatch(
-            popUpChangeModalState({
-              visible: true,
-              text: message
-            })
-          );
+      dispatch(
+          popUpChangeModalState({
+            visible: true,
+            text: message
+          })
+        );
     }
 })
 

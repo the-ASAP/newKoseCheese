@@ -7,7 +7,6 @@ import { Order } from "components/Order/Order";
 import s from "./ProfileOrders.module.scss";
 import { incPage, historyAttrItemsSelector, addNewHistory } from 'redux/slices/historyAttr';
 
-
 export const ProfileOrders = () => {
   const history = useSelector(historyItemsSelector)
   const historyAttr = useSelector(historyAttrItemsSelector)

@@ -57,10 +57,6 @@ export const AuthSection = () => {
     router.push('/profile');
   };
 
-  const privacyModalHandler = () => {
-    dispatch(privacyChangeModalState(true));
-  };
-
   return (
     <div className={s.container}>
       <h2 className={s.title}>Вход</h2>
