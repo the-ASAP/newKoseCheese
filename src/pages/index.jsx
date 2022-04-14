@@ -79,6 +79,18 @@ const Index = ({
         })
       }
     }
+
+
+      dispatch(
+        popUpChangeModalState({
+          visible: true,
+          // text: `На сайте ведутся технические работы!
+          //   Для оформления заказа, перейдите по ссылке:
+          //   http://menu102.fods.in/
+          // `
+          text: <p>На сайте ведутся технические работы! Для оформления заказа, перейдите по ссылке: <br /><a href="http://menu102.fods.in/">http://menu102.fods.in/</a></p>
+        })
+      );
   }, []);
 
   return (
