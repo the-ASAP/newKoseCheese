@@ -122,22 +122,6 @@ export const ProfileReturn = () => {
                         selectHandler(e);
                       }}
                     />
-
-                    {/* <DropdownCustom
-                      label={`*Выберите товар из списка" ${productDropDownDisabled ? "(Необходимо выбрать номер заказа)" : ""}`}
-                      placeholder=""
-                      disabled={productDropDownDisabled}
-                      options={curProducts?.products?.map(
-                        (product, i) => ({
-                          value: product.id,
-                          label: product.addition ? `${product.name} ${product.addition}` : `${product.name}`
-                        })
-                      )}
-                      selectHandler={(e) => {
-                        formProps.setFieldValue('orderProduct', e.value);
-                      }}
-                    /> */}
-
                     <Input label="*Имя" type="text" id="name" name="user_name" />
                     <Input label="*Фамилия" type="text" id="surname" name="user_surname" />
                     <Input label="*Е-mail" type="text" id="email" name="user_email" />

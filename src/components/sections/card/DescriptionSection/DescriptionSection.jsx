@@ -5,7 +5,7 @@ import parse from 'html-react-parser';
 import Accordion from 'components/common/Accordion/Accordion';
 import { BackButton } from 'components/buttons/BackButton/BackButton';
 import { Thumbnails } from 'components/common/Thumbnails/Thumbnails';
-import { NewPurchaseControl } from 'components/common/PurchaseControl/NewPurchaseControl';
+import { PurchaseControl } from 'components/common/PurchaseControl/PurchaseControl';
 import { ProductProperty } from 'components/Product/ProductProperty/ProductProperty';
 import { allTastes, windowSize, BASE_SITE_URL } from 'constants.js';
 import SwiperCore, { Pagination } from 'swiper/core';
@@ -126,7 +126,7 @@ export const DescriptionSection = ({ id, product }) => {
             </span>
           </div> */}
           <div className={s.newPurchase}>
-            <NewPurchaseControl className={s.purchase} product={properties} id={id} cart={false} />
+            <PurchaseControl className={s.purchase} product={properties} id={id} cart={false} />
           </div>
           <div className={s.price}>
             {/* {newPrice && <span className={s.newPrice}>{newPrice} руб.</span>} */}
